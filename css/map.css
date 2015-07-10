@@ -1,0 +1,467 @@
+html,
+body,
+map {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body > #wrapper {
+    color: #004400;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 301px;
+    /* Set the fixed height of the footer here */
+    
+    height: 60px;
+    background-color: #d0cece;
+    box-shadow: 1px 1px 3px #9e9e9e;
+}
+
+mark{
+    background-color: #d9d9d9;
+    border-radius:5px;
+}
+div {
+    float: left;
+    clear: both;
+    /* padding: 1px, 1px, 1px, 1px;*/
+    
+    margin: 0px;
+    position: relative;
+    color: white;
+    text-align: left;
+    font-size: 12px;
+}
+/*dropcaps
+p:first-child:first-letter { 
+    float: left; 
+    color: #903;
+    font-size: 36px;  
+    line-height: 28px; 
+    padding-top: 4px; 
+    padding-right: 8px; 
+    padding-left: 3px; 
+    font-family: Georgia; 
+}
+*/
+
+#menu {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #d0cece;
+    width: 310px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid #cecece;
+    box-shadow: 1px 1px 3px #9e9e9e;
+}
+a{
+    color:#fefefe;
+}
+IMG{
+    display: block;
+    margin-left: 15px;
+    margin-right: auto
+}
+
+#logo {
+    margin-left: 0px;
+    height: 60px;
+}
+
+#text1 {
+    color: #ffffff;
+    line-height: 120%;
+    margin-left: 30px;
+}
+
+.container {
+    background-color: #d0cece;
+    height: 408px relative;
+    width: 317px;
+    /*it should be width:24% just for instant fix of the text overflow ;*/
+    margin-left: 10px;
+    padding-top: 20px;
+}
+.tab-content{
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.p #text-size {
+    font-size: 12px;
+}
+
+#footer {
+    float: left;
+    height: 30px;
+    background-color: #d0cece;
+    width: 285px;
+    /*it should be width:24% ;*/
+    
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.footer>.nav-pills {
+    padding-left: 20px;
+}
+
+.footer>.nav-pills>li>a {
+    border: 0px;
+    margin: 10px 0px 0px 0px;
+    background-color: #d0cece;
+    padding: 0px 12px 0px 12px;
+}
+
+.footer>.nav-pills>li>a:hover,
+.footer>.nav-pills>li>a:focus {
+    background-color: #d0cece;
+}
+
+p {
+    margin-left: 0px;
+    max-width: 100%;
+}
+/*Customizing Bootstrap */
+/*nav pills options*/
+/* tab color */
+
+.menu.container-fluid {
+    padding: 0px;
+    margin: 0px;
+}
+
+.menu.navbar .navbar-inner {
+    align: center;
+    padding: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.menu.navbar .nav {
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    display: table;
+    width: 107%;
+    float: none;
+}
+
+.menu.navbar .nav li {
+    display: table-cell;
+    width: 50%;
+    float: none;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.menu.nav-pills>li>a {
+    background-color: #d0cece;
+    border-color: #333333;
+    color: #989898;
+    border-radius: 0px;
+    border-left: 0px solid #d9d9d9;
+    border-right: 0px solid #d9d9d9;
+    /*outerborder*/
+    
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    /*outerborder*/
+    /*top right bottom left*/
+    
+    margin-left: 0px;
+    margin-right: 0px;
+    width: auto;
+}
+/* active tab color */
+/*ghost button*/
+
+.menu.nav-pills>li.active>a,
+.menu.nav-pills>li.active>a:hover,
+.menu.nav-pills>li.active>a:focus {
+    color: #696969;
+    background-color: #d9d9d9;
+    border-left: 0px solid #d9d9d9;
+    border-right: 0px solid #d9d9d9;
+    /*outerborder*/
+    
+    border-top: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
+    /*outerborder*/
+    
+    border-radius: 0px;
+}
+
+.menu.nav-pills>li.active>a:focus {
+    background-color: #989898;
+    color: #fefefe;
+}
+
+/* hover tab color */
+.menu.nav-pills>li>a:hover {
+    border-color: #767676;
+    background-color: #d0cece;
+    border-radius: 0px;
+}
+
+.menu.nav-pills>li>a:active {
+    border-color: #787878;
+    background-color: #111111;
+    border-radius: 0px;
+}
+/*layer button and page option*/
+
+.layers {
+    border-color: #696969;
+    background-color: #d0cece;
+    border-radius: 25px;
+    color: #989898;
+    margin: 5px 3px 5px 3px;
+    width: 50px;
+    height: 50px;
+    font-size: 7px;
+    overflow: hidden;
+}
+
+.layers.descrp{
+    visibility: hidden;
+}
+
+
+.layers>button:hover {
+    font-size: 12px;
+    color: #989898;
+    border: 2px solid #d9d9d9;
+}
+
+.layers>button:active:focus {
+    background-color: #d9d9d9;
+    border: 0px solid #cecece;
+    outline: none; 
+    box-shadow: none;
+}
+
+.container>.title {
+    line-height: 20px;
+    margin-top: 0px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+   /* box-shadow: 1px 1px 3px #9e9e9e; */
+    color: #696969;
+    margin-bottom:2px;
+}
+
+/*
+.truck:hover{
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-position: <left|right>; right 30px center;
+    padding-<left|right>: <width of image>px;
+}
+*/
+
+.glyphicon {
+    font-size: 24px;
+}
+
+span.glyphicon-link {
+    font-size: 3.2em;
+}
+
+.btn:active:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#nextsteps {
+    width: 90%;
+}
+
+.clear {
+    width: 110px;
+    margin-top: 50px;
+    background-color: #d9d9d9;
+    color: #989898;
+    border: 1px solid #cecece;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+.next {
+    width: 110px;
+    margin-top: 50px;
+    background-color: #d9d9d9;
+    color: #989898;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+.col-lg-4 i {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+}
+/*about page*/
+
+input {
+    width: 100px;
+    border-radius: 0px;
+}
+
+.about {
+    color: #696969;
+    text-align: left;
+    width: 100%;
+    color: #969696;
+    line-height: 180%;
+    padding-bottom: 2em;
+    padding-right: 2em;
+    padding-left: 2em;
+    padding-top:2em;
+    background-color: none;/*#dbdad3*/
+    border:2px #393939;
+    overflow-y: scroll;
+   /* box-shadow: 1px 1px 3px #9e9e9e; */
+}
+
+p:.about{
+    padding-top:1em;
+}
+.about.nextsteps {
+    margin-top: 50px;
+}
+
+.about>.a {
+    color: orange;
+}
+/*credit at footer*/
+
+#aboutus {
+    display: none;
+    color: #696969;
+}
+
+#aboutus.hr {
+    width: 90%;
+}
+#aboutus_b {
+    color: #696969; 
+}
+#contact {
+    display: none;
+    color: #696969;
+}
+/*Legend*/
+#contact_b{
+    color: #696969;
+}
+#print_b{
+    color: #696969;
+}
+.my-legend {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 3px #9e9e9e;
+    border-radius: 5px;
+    padding: 5px;
+    color: #333;
+}
+
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+}
+
+.my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+}
+
+.my-legend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+}
+
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+}
+
+.my-legend ul.legend-labels li span {}
+
+.my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+}
+
+.my-legend a {
+    color: #777;
+}
+
+/*customizing cartodb legend posion for let it little bit higher than baselayer legend */
+
+.baselayer {
+    color: #333;
+}
+
+.zoombtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 3px;
+    box-shadow: 1px 1px 3px #9e9e9e;
+}
+
+.cartodb-legend.custom {
+    bottom:200px;
+    width:180px;
+}
+
+/*descrption of layers*/
+.l_polluted1_info{
+    padding: 20px;
+    background-color: #f5f5f5;  
+    position: absolute;
+    top:30px;
+    left:45px;
+    display: none;  
+}
+
+.sublayer1_info{
+    display: none;
+    background-color: red;
+}
+

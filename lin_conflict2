@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nag-Brooklyn map</title>
+<meta charset=utf-8 />
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.css' rel='stylesheet' />
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+.cartodb-legend-stack{
+  box-shadow: none;
+}
+</style>
+</style>
+</head>
+<body>
+
+<div id='map'></div>
+    <div class="row">
+        <div id="menu" class="col-md-4 menu">
+               <a href="javascript:window.location.reload(true)" title = "refresh the over all page" class="logo"> <img src="img/logo.png" width=284></a>
+            <div id="logo">
+                <p id="text1"><br>(Short description)Exploring environmental condition at greenpoint neighborhood.</p>
+            </div>
+            <!--nav bar-->
+            <nav class="menu navbar navbar-custom">
+                <div class="container-fluid">
+                  <div role="tabpanel">
+                    <ul class="menu nav nav-pills nav-justified" role="tablist">
+                      <li role="presentation"><a href="#about" class="about" aria-controls="about" role="tab" data-toggle="tab">About</a></li>
+                      <li role="presentation"><a href="#layer" class="layer" aria-controls="layer" role="tab" data-toggle="tab"> Layer</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade" id="about">
+                        <div class="container about text-capitalize" overflow-y: scroll;>
+                            <p>
+                              <mark>The Greenpoint-Williamsburg ToxiCity Map</mark> is an interactive GIS map of toxic “hot spots” in Greenpoint and Williamsburg. </p><p>NAG hopes that this project will help the community better understand the environmental concerns in the area they live in and ultimately to improve the health and well-being of the community by motivating and empowering community members to be more interactive in their local governing and policy-making process.</p><p> This project is funded by a grant from <a href ="#">the NYS Department of Environmental Conservation</a> and <a href ="#">Spatial Analysis and Visualization Initiative (SAVI)</a> at Pratt Institute served as the GIS consultant for the project. 
+                            </p>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="layer" >
+                        <div class="container">
+                          <div class="title">
+                            <h6>*Select buttons to call visualization.</h6>
+                          </div>
+                          <div class="layer">
+                            <p class="subtitle">1.The Sites</p>
+                                <button class="btn btn-default layers polluted2" type="Button" id="sublayer1"><i class="glyphicon glyphicon-trash"></i></button>
+                                <button class="btn btn-default layers polluted" type="Button" id="sublayer2"><i class="glyphicon glyphicon-alert"></i></button>
+                            <p class="subtitle">2.Environmental risks</p>
+                                <button class="btn btn-default layers flood" type="Button" id="sublayer3"><i class="fa fa-tint fa-4x" title="This is flood risk information at the region in two lines of blabla."></i> </button>
+                                <button class="btn btn-default layers spills" type="Button" id="sublayer4"><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true" title="This is oil spill information two lines of blabla."></span></button>
+                            <p class="subtitle">3. Neighborhood</p>
+                                <button class="btn btn-default layers popdens" type="Button" id="sublayer5"><i class="fa fa-users fa-4x"></i></button>
+                                <button class="btn btn-default layers income" type="Button" id="sublayer6"><i class="glyphicon glyphicon-usd"></i></button>
+                                <button class="btn btn-default layers tn Btn--l Btn--blue" type="Button" id="sublayer7"><i class="fa fa-hospital-o fa-4x"></i></button>
+                          </div>
+                            <p id="nextsteps">
+                                <input class="btn btn-default clear" type="Input" value="Clear selection">
+                                <input class="btn btn-default next" type="Submit " value="About the Data">
+                            </p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    </div>
+    <!-- Set the display of this container to none so we can
+     add it programmatically to `legendControl` -->
+
+
+    <div class="footer">
+        <ul class="nav nav-pills nav-justified" role="tablist">
+            <li role="presentation" id="f_links print"><a href="#" id="print_b" role="tab" data-toggle="tab">Print</a></li>
+            <li role="presentation" id="f_links aboutus"><a href="#" id="aboutus_b" class="aboutus" aria-controls="aboutus" role="tab" data-toggle="tab">About Us</a></li>
+            <li role="presentation" id="f_links contact"><a href="#" id="contact_b" class="contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade" id="aboutus">
+        <div role="tabpanel" class="tab-pane fade" id="aboutus">
+        <div class="container aboutus" id="aboutus">
+          <h4>About Us</h4>
+          <strong>NAG-Brooklyn is </strong>Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.<hr>
+          <h6>published date of data / visualization: </h6> <hr>
+          <h6>Information related to copyright / autority in general </h6><h6>
+        </div>
+      <div role="tabpanel" class="tab-pane fade" id="contact">
+        <div class="container contact" id="contact">
+          <h4>Contact</h4><hr>
+          <address>
+          <strong>NAG-Brooklyn</strong><br>
+            Address: 110 Kent Ave,<br>
+            2nd Fl,<br> 
+            Brooklyn, NY 11249<br>
+            <abbr title="Phone">Phone:</abbr> 718.384.2248
+            <a href="mailto:#">nag.bklyn@gmail.com</a>
+          </address>
+          Direction from:
+          Nearby bus station
+          Nearby Subway station
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  <!--Legend-->
+
+<div class='my-legend'>
+<div class='legend-scale'>
+  <ul class='legend-labels baselayer'>
+    <li><span style='background:#deacd3;'></span>Through out truck route</li>
+    <li><span style='background:#ffebf8;'></span>Local truck route</li>
+    <li><span style='background:#aeaeae;'></span>Zipcode</li>
+    <li><span style='background:#09266a;'></span>Community District Boundary</li>
+  </ul>
+</div>
+<div class='legend-source'>Source: <a href="#link to source">Name of source</a></div>
+</div>
+<!--zoom-->
+<div class="btn-group-vertical btn-group-xs zoombtn" role="group" aria-label="...">
+  <button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+   <button type="button" class="btn btn-default btn-xs"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+</div>
+<!--Button Information-->
+<div class="sublayer1_info">
+  <li>Waste transfer station</li>
+</div>
+  <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-image/v0.0.4/leaflet-image.js'></script>
+<link href="css/map.css" rel="stylesheet" />
+    <script src ="js/main.js">  </script>  
+    <script src ="js/interaction.js"></script>
+</body>
+</html>

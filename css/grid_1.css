@@ -1,0 +1,33 @@
+.section {
+    float: left;
+    clear: both;
+    width: 960px;
+}
+
+.section .main {
+    float: left;
+    width: 720px;
+    margin-right: 0px;
+    background-color: blue;
+}
+
+.section .sidebar {
+    float: left;
+    width: 240px;
+    margin-right: 0px;
+    margin-right: 0;
+    background-color:magenta;
+    color:red;
+}
+
+.section .promo {
+    float: left;
+    width: 480px;
+    margin-right: 0px;
+    margin-left: 240px;
+    margin-right: 240px;
+    margin-right: 0;
+    background-color:red
+}
+
+/*# sourceMappingURL=grid.css.map */

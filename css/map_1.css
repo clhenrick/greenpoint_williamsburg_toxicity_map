@@ -1,0 +1,74 @@
+/*body*/
+
+html,
+body,
+map {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin-top: 0px 0px, 0px, 0px;
+}
+
+body {
+    color: #004400;
+}
+
+section {
+    background-color: lightblue;
+    width: 300px;
+    padding: 1px, 1px, 1px, 1px;
+    margin: 0px;
+    text-align: left;
+    position: relative;
+}
+
+.section .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.section.nav {
+    height: 30px;
+}
+
+div.nav li {
+    background-color: magenta;
+    display: inline; //nav style
+    padding: 0px 0px 0px 1px;
+}
+
+div.container {
+    background-color: #cecece;
+    height: 400px;
+    width: 300px;
+}
+
+.section .footer {
+    float: left;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #cecece;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav a {
+    display: block;
+    width: 60px;
+    background-color: #dddddd;
+}
+
+span {}
+/*Grid system*/
