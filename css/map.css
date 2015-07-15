@@ -131,6 +131,8 @@ IMG{
 .footer>.nav-pills>li>a:hover,
 .footer>.nav-pills>li>a:focus {
     background-color: #d0cece;
+outline: 0 !important;
+box-shadow: none !important;
 }
 
 p {
@@ -205,11 +207,14 @@ p {
     /*outerborder*/
     
     border-radius: 0px;
+
 }
 
 .menu.nav-pills>li.active>a:focus {
     background-color: #989898;
     color: #fefefe;
+outline: 0 !important;
+box-shadow: none !important;
 }
 
 /* hover tab color */
@@ -223,6 +228,8 @@ p {
     border-color: #787878;
     background-color: #111111;
     border-radius: 0px;
+    outline: 0 !important;
+box-shadow: none !important;
 }
 /*layer button and page option*/
 
@@ -252,8 +259,8 @@ p {
 .layers>button:active:focus {
     background-color: #d9d9d9;
     border: 0px solid #cecece;
-    outline: none; 
-    box-shadow: none;
+    outline: none !important; 
+    box-shadow: none !important;
 }
 
 .container>.title {
@@ -267,8 +274,8 @@ p {
     color: #696969;
     margin-bottom:2px;
 }
-input::-ms-clear,
-input::-ms-reveal {
+input[type=submit]::-ms-clear,
+input[type=submit]::-ms-reveal {
     display: none; 
     width:0; 
     height:0;}
@@ -290,8 +297,8 @@ span.glyphicon-link {
 }
 
 .btn:active:focus {
-    outline: none;
-    box-shadow: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 #nextsteps {
@@ -469,4 +476,3 @@ p:.about{
     display: none;
     background-color: red;
 }
-
