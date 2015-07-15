@@ -267,7 +267,10 @@ p {
     color: #696969;
     margin-bottom:2px;
 }
-
+.someInputdisplay::-ms-clear {
+    display: none; 
+    width:0; 
+    height:0;}
 /*
 .truck:hover{
     background-image: url("");
