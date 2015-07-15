@@ -89,7 +89,7 @@ IMG{
 
 .container {
     background-color: #d0cece;
-    height: 408px relative;
+    height: 100% relative;
     width: 317px;
     /*it should be width:24% just for instant fix of the text overflow ;*/
     margin-left: 10px;
@@ -256,13 +256,13 @@ p {
 }
 
 .container>.title {
-    line-height: 20px;
+    line-height: 16px;
     margin-top: 0px;
-    padding-left: 12px;
+    /* padding-left: 12px;
     padding-right: 12px;
-    background-color: #d9d9d9;
+     background-color: #d9d9d9;
     border-radius: 5px;
-   /* box-shadow: 1px 1px 3px #9e9e9e; */
+  box-shadow: 1px 1px 3px #9e9e9e; */
     color: #696969;
     margin-bottom:2px;
 }
