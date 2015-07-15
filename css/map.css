@@ -94,6 +94,7 @@ IMG{
     /*it should be width:24% just for instant fix of the text overflow ;*/
     margin-left: 10px;
     padding-top: 20px;
+   overflow-y: scroll;
 }
 .tab-content{
     margin-top: 0px;
@@ -337,7 +338,6 @@ input {
     padding-top:2em;
     background-color: none;/*#dbdad3*/
     border:2px #393939;
-    overflow-y: scroll;
    /* box-shadow: 1px 1px 3px #9e9e9e; */
 }
 
