@@ -31,6 +31,7 @@ body > #wrapper {
 mark{
     background-color: #d9d9d9;
     border-radius:5px;
+    font:bold;
 }
 div {
     float: left;
