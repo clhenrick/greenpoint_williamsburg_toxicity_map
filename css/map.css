@@ -20,7 +20,7 @@ body > #wrapper {
 .footer {
     position: absolute;
     bottom: 0;
-    width: 301px;
+    width: 291px;
     /* Set the fixed height of the footer here */
     
     height: 60px;
@@ -337,7 +337,6 @@ input {
 }
 
 .about {
-    color: #696969;
     text-align: left;
     width: 100%;
     color: #1f1f1f;
