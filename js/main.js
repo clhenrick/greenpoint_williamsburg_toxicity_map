@@ -96,12 +96,12 @@ cartodb.createLayer(map_object, fld_url)
             sublayers[i].hide();
             //alert("Congrats, you added sublayer #" + i + "!");
         }
-        $('#sublayer1').click(function() {
+        $('.btn').click(function() {
             $('.btn').removeClass('selected');
             sublayers[0].show(); //baselayer
             sublayers[1].show();
             sublayers[2].show();
-            basemap.bringToBack();
+            //basemap.bringToBack();
         });
     })
     .error(function(err) {
@@ -200,7 +200,7 @@ cartodb.createLayer(map_object, fld_url)
             console.log(ids);
         }
     }
-    //initStaticlayers();
+    initStaticlayers(); // keep it open
 
 // for estimated traffic issue at Cartodb Server, let's off initStaticlayers() for a while.
 /*

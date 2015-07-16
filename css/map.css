@@ -28,11 +28,6 @@ body > #wrapper {
     box-shadow: 1px 1px 3px #9e9e9e;
 }
 
-mark{
-    background-color: #d9d9d9;
-    border-radius:5px;
-    font:bold;
-}
 div {
     float: left;
     clear: both;
@@ -56,7 +51,9 @@ p:first-child:first-letter {
     font-family: Georgia; 
 }
 */
-
+*:focus {
+    outline: 0;
+}
 #menu {
     font-family: 'Open Sans', sans-serif;
     background-color: #d0cece;
@@ -139,6 +136,7 @@ p {
     margin-left: 0px;
     max-width: 100%;
 }
+
 /*Customizing Bootstrap */
 /*nav pills options*/
 /* tab color */
