@@ -2,13 +2,15 @@ var app = app || {};
 
 app.map = (function(w, d, $, _) {    
     var sublayers = [], // For storing the cartodb sublayers
-        sublayerActions = []; // for layer button interactions
+        sublayerActions = [], // for layer button interactions
+        map_object;
 
     function initMap() {
         // map paramaters to pass to Leaflet
         var southWest = L.latLng(40.703, -73.971),
             northEast = L.latLng(40.737, -73.931),
             bounds = L.latLngBounds(southWest, northEast);
+        
         var params = {
             center: [40.7237442, -73.9532883], //Greenpoint
             zoomControl: false,
@@ -17,7 +19,6 @@ app.map = (function(w, d, $, _) {
             minZoom: 12,
             maxBounds: bounds,
             legends: true,
-            cartodb_logo: false,
             infoControl: false,
             attributionControl: true
         };
@@ -36,21 +37,28 @@ app.map = (function(w, d, $, _) {
                 });
             }
         });
-
-        //mapbox basemap
-        var map_object = new L.Map('map', params);
+        
+        map_object = new L.Map('map', params);
         var accessToken = 'pk.eyJ1IjoiYm93b25jIiwiYSI6InFDV2RBNjAifQ._F8zZ-AkgNHp0_h2XKk9Pw';
         var mapid = 'bowonc.me27271c';
         //geocoding
         //map_object.addControl(L.mapbox.geocoderControl('mapbox.places'));
 
+        //mapbox basemap
         var basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v4/' + mapid + '/{z}/{x}/{y}.png?access_token=' + accessToken)
                     .addTo(map_object);
+
+        // attribute MapBox and OSM
+        var attribution = new L.control.attribution({position: 'bottomright', prefix: false});
+        attribution.addAttribution('<a href="https://www.mapbox.com/about/maps/">© Mapbox © OpenStreetMap</a>');
+        attribution.addTo(map_object);
+        
         //changing position of zoom control 
         // Add our zoom control manually where we want to
         var zoomControl = L.control.zoom({
             position: 'topright'
         });
+        
         // zoom control to attach to it
         map_object.addControl(zoomControl);
 
@@ -179,101 +187,22 @@ app.map = (function(w, d, $, _) {
         $('.data-layer').removeClass('selected');
     });
 
-    function load_geojson(ids,url) {
-        var styles = {
-            color: '#f5ebf3',
-            opacity: 1,
-            weight: 2,
-            fillOpacity: 0,
-            lineCap: 'ellipse'
-        };
-        $.getJSON(url, function(json, textStatus) {
-            polys = L.mapbox.featureLayer(json);
-            polys.addTo(map_object);
-            //polys.setStyle(styles);
-            polys.eachLayer(function(layer) {
-                var color = "#B8B8B8";
-                var weight = "1";
-                if (ids === 'zip_url') {
-                    color = "#aeaeae"; //c2bcbc
-                    weight = 1;
-                    opacity = 0.8;
-                    fillOpacity= 0;
-                } else if (ids === 'local_truck') {
-                    color = "#f8d8e6";
-                    weight = 2;
-                    opacity = 0.5;
-                    fillOpacity = 0;
-                } else if (ids === 'ttruck_url') {
-                    color = "#deacd3";
-                    weight = 3;
-                    opacity = 0.4;
-                    fillOpacity = 0;
-                } else if (ids === 'nycd_url') {
-                    color = "#788ab0";
-                    weight = 6;
-                    opacity = 1;
-                    fillOpacity = 0;
-                }
-                polys.setStyle({
-                    color: color,
-                    fillOpacity: fillOpacity,
-                    lineCap: 'ellipse',
-                    opacity: opacity,
-                    weight : weight
-                });
-            }); //ef_eachlayer 
-        }); //eo_getjson
-    } // eof  
-
-    var c_id = "nag-brooklyn";
-    var c_geojson = "format=geojson&q=";
-    var c_k1 = "3f9ce315e";
-    var c_k2 = "95db0a5eb7";
-    var c_k3 = "c44f38bd534dad54850";
-    var c_key = "&api_key=" + c_k1 +"a"+ c_k2 +c_k3+"d";//just a minimum security for now
-    var c_url = "https://"+c_id+".cartodb.com/api/v2/sql?"+c_geojson;
-
-
-    //load geojson of nycd
-    function initStaticlayers() {
-        /*static layers : should be coded */
-        var queries = {
-            queries: [{
-                id: 'ttruck_url',
-                query: c_url+"SELECT * FROM through_truck_dissolve"+c_key
-            },{
-                id: 'local_truck',
-                query: c_url+"SELECT the_geom FROM local_truck_route_cd1"+c_key
-            },{
-                id: 'nycd_url',
-                query: c_url+"SELECT the_geom FROM nycd_2015 where borocd = 301"+c_key
-            },{
-                id: 'zip_url',
-                query: c_url+"SELECT the_geom FROM nyc_zip_code_tabulation_areas_polygons ORDER BY the_geom <-> ST_SetSRID(ST_MakePoint( -73.945812,40.717283),4326) ASC LIMIT 30"+c_key
-            }] //keep this order to make the ttruck route placed at the under the other layers.
-        };
-      
-      for (var i=0; i < 4; i++) {
-            var urls = queries.queries[i].query;
-            var ids = queries.queries[i].id;
-            load_geojson(ids,urls);
-            console.log(ids);
-        }
-    }
-    
-    // initStaticlayers(); // keep it open
-
     } //end of initmap 
 
-// function searchAddress(){   
-//     console.log("searchbox");
-// }
+    // set up custom zoom buttons
+    var initZoomButtons = function(){
+        $('#zoom-in').on('click', function(){
+          map_object.zoomIn();
+        });
+
+        $('#zoom-out').on('click', function(){
+          map_object.zoomOut();
+        });
+    };
+
     var init = function() {
         initMap();
-        // searchAddress();
-        //initZoomButtons();
-        //app.intro.init();    
+        initZoomButtons();  
     };
 
     // only return init() and the stuff in the el object
@@ -283,6 +212,7 @@ app.map = (function(w, d, $, _) {
         sublayerActions: sublayerActions
         //nag : nag 
     };
+
 })(window, document, jQuery, _);
 
 window.addEventListener('DOMContentLoaded', function() {
