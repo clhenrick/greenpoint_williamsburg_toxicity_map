@@ -2,13 +2,15 @@ var app = app || {};
 
 app.map = (function(w, d, $, _) {    
     var sublayers = [], // For storing the cartodb sublayers
-        sublayerActions = []; // for layer button interactions
+        sublayerActions = [], // for layer button interactions
+        map_object;
 
     function initMap() {
         // map paramaters to pass to Leaflet
         var southWest = L.latLng(40.703, -73.971),
             northEast = L.latLng(40.737, -73.931),
             bounds = L.latLngBounds(southWest, northEast);
+        
         var params = {
             center: [40.7237442, -73.9532883], //Greenpoint
             zoomControl: false,
@@ -17,7 +19,6 @@ app.map = (function(w, d, $, _) {
             minZoom: 12,
             maxBounds: bounds,
             legends: true,
-            cartodb_logo: false,
             infoControl: false,
             attributionControl: true
         };
@@ -36,21 +37,28 @@ app.map = (function(w, d, $, _) {
                 });
             }
         });
-
-        //mapbox basemap
-        var map_object = new L.Map('map', params);
+        
+        map_object = new L.Map('map', params);
         var accessToken = 'pk.eyJ1IjoiYm93b25jIiwiYSI6InFDV2RBNjAifQ._F8zZ-AkgNHp0_h2XKk9Pw';
         var mapid = 'bowonc.me27271c';
         //geocoding
         //map_object.addControl(L.mapbox.geocoderControl('mapbox.places'));
 
+        //mapbox basemap
         var basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v4/' + mapid + '/{z}/{x}/{y}.png?access_token=' + accessToken)
                     .addTo(map_object);
+
+        // attribute MapBox and OSM
+        var attribution = new L.control.attribution({position: 'bottomright', prefix: false});
+        attribution.addAttribution('<a href="https://www.mapbox.com/about/maps/">© Mapbox © OpenStreetMap</a>');
+        attribution.addTo(map_object);
+        
         //changing position of zoom control 
         // Add our zoom control manually where we want to
         var zoomControl = L.control.zoom({
             position: 'topright'
         });
+        
         // zoom control to attach to it
         map_object.addControl(zoomControl);
 
@@ -181,14 +189,20 @@ app.map = (function(w, d, $, _) {
 
     } //end of initmap 
 
-// function searchAddress(){   
-//     console.log("searchbox");
-// }
+    // set up custom zoom buttons
+    var initZoomButtons = function(){
+        $('#zoom-in').on('click', function(){
+          map_object.zoomIn();
+        });
+
+        $('#zoom-out').on('click', function(){
+          map_object.zoomOut();
+        });
+    };
+
     var init = function() {
         initMap();
-        // searchAddress();
-        //initZoomButtons();
-        //app.intro.init();    
+        initZoomButtons();  
     };
 
     // only return init() and the stuff in the el object
@@ -198,6 +212,7 @@ app.map = (function(w, d, $, _) {
         sublayerActions: sublayerActions
         //nag : nag 
     };
+
 })(window, document, jQuery, _);
 
 window.addEventListener('DOMContentLoaded', function() {
