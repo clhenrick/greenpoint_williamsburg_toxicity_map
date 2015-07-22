@@ -83,8 +83,13 @@ app.map = (function(w, d, $, _) {
         };
 
         var viz_json ="https://nag-brooklyn.cartodb.com/api/v2/viz/eebfa096-d35b-11e4-97b2-0e018d66dc29/viz.json";
+        var cdb_options = {
+                cartodb_logo: false, 
+                legends: false,
+                https: true 
+              };
 
-    cartodb.createLayer(map_object, layerSource)
+    cartodb.createLayer(map_object, layerSource, cdb_options)
         .addTo(map_object)
         .on('done', function(layer) {
             layer.setZIndex(5); // make sure the cartodb layer is on top.
@@ -259,30 +264,14 @@ app.map = (function(w, d, $, _) {
     
     // initStaticlayers(); // keep it open
 
-// for estimated traffic issue at Cartodb Server, let's off initStaticlayers() for a while.
-/*
-     var Layers = { 
-        sublayer1: sub1, //call polluted sites 
-        sublayer2: sub2,
-        sublayer3: sub3,
-        sublayer4: sub4,
-        sublayer5: sub5,
-        sublayer6: sub6,
-        sublayer7: sub7
-    };//end of Layeractions
+    } //end of initmap 
 
-
-*/
-    //button interaction 
-
-    }//end of initmap 
-
-function searchAddress(){   
-    console.log("searchbox");
-}
+// function searchAddress(){   
+//     console.log("searchbox");
+// }
     var init = function() {
         initMap();
-        searchAddress();
+        // searchAddress();
         //initZoomButtons();
         //app.intro.init();    
     };
