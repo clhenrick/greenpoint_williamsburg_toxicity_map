@@ -1,8 +1,8 @@
 var app = app || {};
 
 app.map = (function(w, d, $, _) {    
-    // For storing the sublayers
-    var sublayers = [];
+    var sublayers = [], // For storing the cartodb sublayers
+        sublayerActions = []; // for layer button interactions
 
     function initMap() {
         // map paramaters to pass to Leaflet
@@ -53,9 +53,8 @@ app.map = (function(w, d, $, _) {
         });
         // zoom control to attach to it
         map_object.addControl(zoomControl);
-        //It's not working. Why? 
 
-        // Put layer data into a JS object
+        // layer meta-data for Layer Source Object to pass to cartodb.createLayer()
         var layerSource = {
             user_name: 'nag-brooklyn',
             type: 'cartodb',
@@ -78,7 +77,7 @@ app.map = (function(w, d, $, _) {
                 sql: "SELECT * FROM acs_5yr_2013",
                 cartocss: "#acs_5yr_2013{polygon-fill: #ECF0F6;polygon-opacity: 0.8;polygon-comp-op: multiply;line-color: #000000;line-width: 0.5;line-opacity: 0.1;}#acs_5yr_2013 [rounded_mhhi > 75001]{polygon-fill: #216437;}#acs_5yr_2013 [rounded_mhhi > 65001][rounded_mhhi <= 75000]{polygon-fill: #4f8759;}#acs_5yr_2013 [rounded_mhhi > 50001][rounded_mhhi <= 65000]{polygon-fill: #75ab7e;}#acs_5yr_2013 [rounded_mhhi > 25001][rounded_mhhi <= 50000]{polygon-fill: #a5d0b4;}#acs_5yr_2013 [rounded_mhhi > 0 ][rounded_mhhi <= 25000] {polygon-fill: #dcf5e8;}"
             }, {
-                sql: "SELECT * FROM asthma_2012_ct",//population density
+                sql: "SELECT * FROM asthma_2012_ct",
                 cartocss: "#asthma_2012_ct{polygon-fill: #FFFFFF;polygon-opacity: 1;line-color: #666666;line-width: 0.5;line-opacity: .5;comp-op:multiply;}#asthma_2012_ct [ asthma >= 21 ][ asthma <= 35 ] {polygon-fill: #5a3072;}#asthma_2012_ct [ asthma <= 10][ asthma <= 20 ] {polygon-fill: #7a518b;}#asthma_2012_ct [ asthma <= 6][ asthma <= 9] {polygon-fill: #9c7aac;}#asthma_2012_ct [ asthma <= 1][ asthma <= 5] {polygon-fill: #bfa4cd;}#asthma_2012_ct [ asthma = 0] {polygon-fill: #FFFFFF;}"
             }]
         };
@@ -103,15 +102,67 @@ app.map = (function(w, d, $, _) {
             console.log('error with cartodb.createLayer: ', error);
         });
 
-     /*
-        $('.btn').click(function() {
-            $('.btn').removeClass('selected');
-            $(this).addClass('selected');
-            var ids= $(this).attr('id');
-            //Layers[ids]();
-            console.log(ids);
-        });
-    */
+    // button interactions
+    // call like: sublayerActions[i].layer_name();
+    sublayerActions = {
+        waste_transfer_stations : function() {
+            hideShow('waste_transfer_stations', 0);
+            return true;
+        },
+        polluted_points : function() {
+            hideShow('polluted_points', 1);
+            return true;
+        },
+        flood_risk : function() {
+            hideShow('flood_risk', 2);
+            return true;
+        },
+        polluted_polygons : function() {
+            hideShow('polluted_polygons', 3);
+            return true;
+        },
+        acs_pop : function() {
+            hideShow('acs_pop', 4);
+            return true;
+        },
+        acs_income : function() {
+            hideShow('acs_income', 5);
+            return true;
+        },
+        asthma : function() {
+            hideShow('asthma', 6);
+            return true;
+        }
+    };
+
+    // hide or show the data layer
+    function hideShow(id, index) {
+        id = '#' + id;
+        var $button = $(id);
+        var layer = sublayers[index];
+
+        if ($button.hasClass('selected')) {
+            sublayers[index].hide();
+            $button.removeClass('selected');
+        } else if ($button.hasClass('selected') !== true) {
+            
+            // if a choropleth layer is already on, hide it.
+            if (index >3 && index < 7) {
+                for (var i = 4; i < 7; i++) {
+                    sublayers[i].hide();
+                    $($('.data-layer')[i]).removeClass('selected');
+                }
+            }
+
+            sublayers[index].show();
+            $button.addClass('selected');
+        }
+        return true;
+    }
+
+    $('.btn').click(function() {
+        sublayerActions[$(this).attr('id')]();
+    });
 
     function load_geojson(ids,url) {
         var styles = {
@@ -229,7 +280,8 @@ function searchAddress(){
     // only return init() and the stuff in the el object
     return {
         init: init,
-        sublayers : sublayers
+        sublayers : sublayers,
+        sublayerActions: sublayerActions
         //nag : nag 
     };
 })(window, document, jQuery, _);
