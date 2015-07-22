@@ -160,8 +160,18 @@ app.map = (function(w, d, $, _) {
         return true;
     }
 
-    $('.btn').click(function() {
+    // call the appropriate function when user clicks a button
+    $('.data-layer').click(function() {
         sublayerActions[$(this).attr('id')]();
+    });
+
+    // clear all the layers
+    $('.btn.clear').on('click', function(e) {
+        e.preventDefault();
+        sublayers.forEach(function(sublayer) {
+            sublayer.hide();
+        });
+        $('.data-layer').removeClass('selected');
     });
 
     function load_geojson(ids,url) {
