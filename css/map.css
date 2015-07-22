@@ -20,7 +20,7 @@ body > #wrapper {
 .footer {
     position: absolute;
     bottom: 0;
-    width: 301px;
+    width: 295px;
     /* Set the fixed height of the footer here */
     
     height: 60px;
@@ -28,10 +28,6 @@ body > #wrapper {
     box-shadow: 1px 1px 3px #9e9e9e;
 }
 
-mark{
-    background-color: #d9d9d9;
-    border-radius:5px;
-}
 div {
     float: left;
     clear: both;
@@ -55,7 +51,9 @@ p:first-child:first-letter {
     font-family: Georgia; 
 }
 */
-
+*:focus {
+    outline: 0;
+}
 #menu {
     font-family: 'Open Sans', sans-serif;
     background-color: #d0cece;
@@ -89,11 +87,12 @@ IMG{
 
 .container {
     background-color: #d0cece;
-    height: 408px relative;
+    height: 100% relative;
     width: 317px;
     /*it should be width:24% just for instant fix of the text overflow ;*/
-    margin-left: 10px;
+    margin-left: 18px;
     padding-top: 20px;
+   overflow-y: scroll;
 }
 .tab-content{
     margin-top: 0px;
@@ -107,7 +106,7 @@ IMG{
     float: left;
     height: 30px;
     background-color: #d0cece;
-    width: 285px;
+    width: 300px;
     /*it should be width:24% ;*/
     
     position: absolute;
@@ -129,12 +128,15 @@ IMG{
 .footer>.nav-pills>li>a:hover,
 .footer>.nav-pills>li>a:focus {
     background-color: #d0cece;
+outline: 0 !important;
+box-shadow: none !important;
 }
 
 p {
     margin-left: 0px;
     max-width: 100%;
 }
+
 /*Customizing Bootstrap */
 /*nav pills options*/
 /* tab color */
@@ -169,12 +171,12 @@ p {
 }
 
 .menu.nav-pills>li>a {
-    background-color: #d0cece;
+    background-color: #d9d9d9;  
     border-color: #333333;
     color: #989898;
     border-radius: 0px;
-    border-left: 0px solid #d9d9d9;
-    border-right: 0px solid #d9d9d9;
+    border-left: 1px solid #d0cece;
+    border-right: 1px solid #d0cece;
     /*outerborder*/
     
     border-top: 1px solid #d9d9d9;
@@ -194,8 +196,8 @@ p {
 .menu.nav-pills>li.active>a:focus {
     color: #696969;
     background-color: #d9d9d9;
-    border-left: 0px solid #d9d9d9;
-    border-right: 0px solid #d9d9d9;
+    border-left: 1px solid #d0cece;
+    border-right: 1px solid #d0cece;
     /*outerborder*/
     
     border-top: 1px solid #d9d9d9;
@@ -203,11 +205,14 @@ p {
     /*outerborder*/
     
     border-radius: 0px;
+
 }
 
 .menu.nav-pills>li.active>a:focus {
     background-color: #989898;
     color: #fefefe;
+outline: 0 !important;
+box-shadow: none !important;
 }
 
 /* hover tab color */
@@ -221,9 +226,10 @@ p {
     border-color: #787878;
     background-color: #111111;
     border-radius: 0px;
+    outline: 0 !important;
+box-shadow: none !important;
 }
 /*layer button and page option*/
-
 .layers {
     border-color: #696969;
     background-color: #d0cece;
@@ -250,22 +256,26 @@ p {
 .layers>button:active:focus {
     background-color: #d9d9d9;
     border: 0px solid #cecece;
-    outline: none; 
-    box-shadow: none;
+    outline: none !important; 
+    box-shadow: none !important;
 }
 
 .container>.title {
-    line-height: 20px;
+    line-height: 16px;
     margin-top: 0px;
-    padding-left: 12px;
+    /* padding-left: 12px;
     padding-right: 12px;
-    background-color: #d9d9d9;
+     background-color: #d9d9d9;
     border-radius: 5px;
-   /* box-shadow: 1px 1px 3px #9e9e9e; */
+  box-shadow: 1px 1px 3px #9e9e9e; */
     color: #696969;
     margin-bottom:2px;
 }
-
+input[type=submit]::-ms-clear,
+input[type=submit]::-ms-reveal {
+    display: none; 
+    width:0; 
+    height:0;}
 /*
 .truck:hover{
     background-image: url("");
@@ -284,8 +294,8 @@ span.glyphicon-link {
 }
 
 .btn:active:focus {
-    outline: none;
-    box-shadow: none;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 #nextsteps {
@@ -326,20 +336,20 @@ input {
 }
 
 .about {
-    color: #696969;
+    text-indent: 10px;
     text-align: left;
     width: 100%;
-    color: #969696;
+    color: #1f1f1f;
     line-height: 180%;
-    padding-bottom: 2em;
-    padding-right: 2em;
-    padding-left: 2em;
-    padding-top:2em;
+    padding-bottom: 20px;
+    padding-right: 40px;
+    padding-left: 20px;
+    padding-top:20px;
     background-color: none;/*#dbdad3*/
     border:2px #393939;
-    overflow-y: scroll;
    /* box-shadow: 1px 1px 3px #9e9e9e; */
 }
+
 
 p:.about{
     padding-top:1em;
@@ -464,4 +474,3 @@ p:.about{
     display: none;
     background-color: red;
 }
-
