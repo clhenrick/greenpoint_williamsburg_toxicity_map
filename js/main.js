@@ -43,16 +43,17 @@ app.map = (function(w, d, $, _) {
         var mapid = 'bowonc.me27271c';
         //geocoding
         //map_object.addControl(L.mapbox.geocoderControl('mapbox.places'));
-
+        var attr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
         //mapbox basemap
-        var basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v4/' + mapid + '/{z}/{x}/{y}.png?access_token=' + accessToken)
-                    .addTo(map_object);
-
+        var basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v4/' + mapid + '/{z}/{x}/{y}.png?access_token=' + accessToken, 
+        {attribution: attr}
+        ).addTo(map_object);
+/*
         // attribute MapBox and OSM
         var attribution = new L.control.attribution({position: 'bottomright', prefix: false});
         attribution.addAttribution('<a href="https://www.mapbox.com/about/maps/">© Mapbox © OpenStreetMap</a>');
         attribution.addTo(map_object);
-        
+    */
         //changing position of zoom control 
         // Add our zoom control manually where we want to
         var zoomControl = L.control.zoom({
@@ -86,16 +87,17 @@ app.map = (function(w, d, $, _) {
                 cartocss: "#acs_5yr_2013{polygon-fill: #ECF0F6;polygon-opacity: 0.8;polygon-comp-op: multiply;line-color: #000000;line-width: 0.5;line-opacity: 0.1;}#acs_5yr_2013 [rounded_mhhi > 75001]{polygon-fill: #216437;}#acs_5yr_2013 [rounded_mhhi > 65001][rounded_mhhi <= 75000]{polygon-fill: #4f8759;}#acs_5yr_2013 [rounded_mhhi > 50001][rounded_mhhi <= 65000]{polygon-fill: #75ab7e;}#acs_5yr_2013 [rounded_mhhi > 25001][rounded_mhhi <= 50000]{polygon-fill: #a5d0b4;}#acs_5yr_2013 [rounded_mhhi > 0 ][rounded_mhhi <= 25000] {polygon-fill: #dcf5e8;}"
             }, {
                 sql: "SELECT * FROM asthma_2012_ct",
-                cartocss: "#asthma_2012_ct{polygon-fill: #FFFFFF;polygon-opacity: 1;line-color: #666666;line-width: 0.5;line-opacity: .5;comp-op:multiply;}#asthma_2012_ct [ asthma >= 21 ][ asthma <= 35 ] {polygon-fill: #5a3072;}#asthma_2012_ct [ asthma <= 10][ asthma <= 20 ] {polygon-fill: #7a518b;}#asthma_2012_ct [ asthma <= 6][ asthma <= 9] {polygon-fill: #9c7aac;}#asthma_2012_ct [ asthma <= 1][ asthma <= 5] {polygon-fill: #bfa4cd;}#asthma_2012_ct [ asthma = 0] {polygon-fill: #FFFFFF;}"
+                cartocss: "#asthma_2012_ct{polygon-fill: #FFFFFF;polygon-opacity: 0.8;line-color: #666666;line-width: 0.5;line-opacity: .5;comp-op:multiply;}#asthma_2012_ct [ asthma >= 21 ][ asthma <= 35 ] {polygon-fill: #5a3072;}#asthma_2012_ct [ asthma <= 10][ asthma <= 20 ] {polygon-fill: #7a518b;}#asthma_2012_ct [ asthma <= 6][ asthma <= 9] {polygon-fill: #9c7aac;}#asthma_2012_ct [ asthma <= 1][ asthma <= 5] {polygon-fill: #bfa4cd;}#asthma_2012_ct [ asthma = 0] {polygon-fill: #FFFFFF;}"
             }]
         };
 
         var viz_json ="https://nag-brooklyn.cartodb.com/api/v2/viz/eebfa096-d35b-11e4-97b2-0e018d66dc29/viz.json";
         var cdb_options = {
-                cartodb_logo: false, 
+                cartodb_logo: false,
                 legends: false,
-                https: true 
-              };
+                https: true,
+                attributionControl: true
+        };
 
     cartodb.createLayer(map_object, layerSource, cdb_options)
         .addTo(map_object)
@@ -202,7 +204,7 @@ app.map = (function(w, d, $, _) {
 
     var init = function() {
         initMap();
-        initZoomButtons();  
+        initZoomButtons();
     };
 
     // only return init() and the stuff in the el object
