@@ -1,88 +1,93 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Nag-Brooklyn map</title>
-  <meta charset=utf-8 />
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <!-- CSS libraries -->
-  
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link href='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
-  <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
-  <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> 
-  
-  <!-- My Style Sheet -->
-  <link href="css/map.css" rel="stylesheet" />
-<style>
-  body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-  .cartodb-legend-stack {
-      box-shadow: none;
-    }
-</style>
-</style>
-</head>
-<body>
 
-<div id='map'></div>
+<head>
+    <title>Nag-Brooklyn map</title>
+    <meta charset=utf-8 />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- CSS libraries -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- My Style Sheet -->
+    <link href="css/map.css" rel="stylesheet" />
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
     <div class="row">
         <div id="menu" class="col-md-4 menu">
-               <a href="javascript:window.location.reload(true)" title = "refresh the over all page" class="logo"> <img src="img/logo.png" width=284></a>
+            <a href="javascript:window.location.reload(true)" title="refresh the over all page" class="logo"> <img src="img/logo.png" width=284></a>
             <div id="logo">
-                <p id="text1"><br>(Short description)Exploring environmental condition at greenpoint neighborhood.</p>
+                <p id="text1">
+                    <br>Exploring environmental condition at greenpoint neighborhood.</p>
             </div>
             <!--nav bar-->
             <nav class="menu navbar navbar-custom">
                 <div class="container-fluid">
-                  <div role="tabpanel">
-                    <ul class="menu nav nav-pills nav-justified" role="tablist">
-                      <li role="presentation"><a href="#about" class="about" aria-controls="about" role="tab" data-toggle="tab">About</a></li>
-                      <li role="presentation"><a href="#layer" class="layer" aria-controls="layer" role="tab" data-toggle="tab">Map Layers</a></li>
-                    </ul>
-                  </div>
+                    <div role="tabpanel">
+                        <ul class="menu nav nav-pills nav-justified" role="tablist">
+                            <li role="presentation"><a href="#about" class="about" aria-controls="about" role="tab" data-toggle="tab">About</a></li>
+                            <li role="presentation"><a href="#layer" class="layer" aria-controls="layer" role="tab" data-toggle="tab">Map Layers</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade" id="about">
                         <div class="container about" overflow-y: scroll;>
                             <p>
-                              The Greenpoint-Williamsburg ToxiCity Map is an interactive GIS map of toxic “hot spots” in Greenpoint and Williamsburg. </p><p>NAG hopes that this project will help the community better understand the environmental concerns in the area they live in and ultimately to improve the health and well-being of the community by motivating and empowering community members to be more interactive in their local governing and policy-making process.</p><p> This project is funded by a grant from <a href ="#">the NYS Department of Environmental Conservation</a> and <a href ="#">Spatial Analysis and Visualization Initiative (SAVI)</a> at Pratt Institute served as the GIS consultant for the project. 
+                                The Greenpoint-Williamsburg ToxiCity Map is an interactive GIS map of toxic “hot spots” in Greenpoint and Williamsburg. </p>
+                            <p>NAG hopes that this project will help the community better understand the environmental concerns in the area they live in and ultimately to improve the health and well-being of the community by motivating and empowering community members to be more interactive in their local governing and policy-making process.</p>
+                            <p> This project is funded by a grant from <a href="#">the NYS Department of Environmental Conservation</a> and <a href="#">Spatial Analysis and Visualization Initiative (SAVI)</a>.
                             </p>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="layer" >
+                    <div role="tabpanel" class="tab-pane fade" id="layer">
                         <div class="container">
-                          <div class="title">
-                            <h6>Click icons to add map layers.</h6>
-                          </div>
-                          <div class="layer">
-                            <p class="subtitle">1.The Sites</p>
-                                <button class="btn btn-default layers data-layer" type="Button" id="waste_transfer_stations"><i class="glyphicon glyphicon-trash"></i></button>
+                            <div class="title">
+                                <h6>Click icons to add map layers.</h6>
+                            </div>
+                            <div class="layer">
+                                <p class="subtitle">1.Environmental risks</p>
+                                <button class="btn btn-default layers data-layer" type="Button" id="waste_transfer_stations" title="tooltip descriptions for the waste transfer station"><i class="glyphicon glyphicon-trash"></i></button>
                                 <button class="btn btn-default layers data-layer" type="Button" id="polluted_points"><i class="glyphicon glyphicon-alert"></i></button>
-                            <p class="subtitle">2.Environmental risks</p>
                                 <button class="btn btn-default layers data-layer" type="Button" id="flood_risk"><i class="fa fa-tint fa-4x" title="This is flood risk information at the region in two lines of blabla."></i> </button>
                                 <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons"><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true" title="This is oil spill information two lines of blabla."></span></button>
-                            <p class="subtitle">3. Neighborhood</p>
+                                <p class="subtitle">3. Neighborhood</p>
                                 <button class="btn btn-default layers data-layer" type="Button" id="acs_pop"><i class="fa fa-users fa-4x"></i></button>
                                 <button class="btn btn-default layers data-layer" type="Button" id="acs_income"><i class="glyphicon glyphicon-usd"></i></button>
                                 <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="asthma"><i class="fa fa-hospital-o fa-4x"></i></button>
-                          </div>
+                            </div>
                             <p id="nextsteps">
-                                <button class="btn btn-default clear" type="Button" id="clear_selection" >Clear selection</button>
+                                <button class="btn btn-default clear" type="Button" id="clear_selection">Clear selection</button>
                                 <button class="btn btn-default next" type="Button" id="about">About the Data</button>
                             </p>
-                          </div>
                         </div>
                     </div>
                 </div>
-            </nav>
         </div>
+        </nav>
+    </div>
     </div>
     </div>
     <!-- Set the display of this container to none so we can
      add it programmatically to `legendControl` -->
-
-
     <div class="footer">
         <ul class="nav nav-pills nav-justified" role="tablist">
             <li role="presentation" id="f_links print"><a href="#" id="print_b" role="tab" data-toggle="tab">Print</a></li>
@@ -91,13 +96,16 @@
         </ul>
     </div>
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane fade" id="aboutus">
         <div role="tabpanel" class="tab-pane fade" id="aboutus">
-        <div class="container aboutus" id="aboutus">
-          <h4>About Us</h4>
-          <strong>NAG-Brooklyn is </strong>Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.<hr>
-          <h6>published date of data / visualization: </h6> <hr>
-          <h6>Information related to copyright / autority in general </h6><h6>
+            <div role="tabpanel" class="tab-pane fade" id="aboutus">
+                <div class="container aboutus" id="aboutus">
+                    <h4>About Us</h4>
+                    <strong>NAG-Brooklyn is </strong>Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
+                    <hr>
+                    <h6>published date of data / visualization: </h6>
+                    <hr>
+                    <h6>Information related to copyright / autority in general </h6>
+                    <h6>
         </div>
       <div role="tabpanel" class="tab-pane fade" id="contact">
         <div class="container contact" id="contact">
@@ -118,32 +126,13 @@
       </div>
       </div>
     </div>
-    <!--this part should organized in jQuery -->
-  <!--Legend-->
-<div class='my-legend'>
-<div class='legend-scale'>
-  <ul class='legend-labels baselayer'>
-    <li><span style='background:#deacd3;'></span>Through out truck route</li>
-    <li><span style='background:#ffebf8;'></span>Local truck route</li>
-    <li><span style='background:#aeaeae;'></span>Zipcode</li>
-    <li><span style='background:#09266a;'></span>Community District Boundary</li>
-  </ul>
-</div>
-<div class='legend-source'>Source: <a href="#link to source">Name of source</a></div>
-</div>
 <!--zoom-->
 <div class="btn-group-vertical btn-group-xs zoombtn" role="group" aria-label="...">
   <button type="button" class="btn btn-default btn-xs" id="zoom-in"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
    <button type="button" class="btn btn-default btn-xs" id="zoom-out"> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
 </div>
-<!--Button Information-->
-<div class="sublayer1_info">
-  <li>Waste transfer station</li>
-</div>
     <!-- Javascript Libraries -->  
-    <!--<script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.0/mapbox.js'></script>    -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
     <script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
     <script src='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.standalone.js'></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
