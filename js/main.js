@@ -207,7 +207,7 @@ app.map = (function(w, d, $, _) {
         initZoomButtons();
     };
 
-    // only return init() and the stuff in the el object
+
     return {
         init: init,
         sublayers : sublayers,
@@ -219,4 +219,5 @@ app.map = (function(w, d, $, _) {
 
 window.addEventListener('DOMContentLoaded', function() {
     app.map.init();
+    app.interaction.init();
 });

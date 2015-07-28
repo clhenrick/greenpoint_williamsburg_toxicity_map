@@ -6,6 +6,7 @@
     <meta charset=utf-8 />
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <!-- CSS libraries -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
@@ -66,13 +67,13 @@
                             <div class="layer">
                                 <p class="subtitle">1.Environmental risks</p>
                                 <button class="btn btn-default layers data-layer" type="Button" id="waste_transfer_stations" title="tooltip descriptions for the waste transfer station"><i class="glyphicon glyphicon-trash"></i></button>
-                                <button class="btn btn-default layers data-layer" type="Button" id="polluted_points"><i class="glyphicon glyphicon-alert"></i></button>
-                                <button class="btn btn-default layers data-layer" type="Button" id="flood_risk"><i class="fa fa-tint fa-4x" title="This is flood risk information at the region in two lines of blabla."></i> </button>
-                                <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons"><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true" title="This is oil spill information two lines of blabla."></span></button>
+                                <button class="btn btn-default layers data-layer" type="Button" id="polluted_points" title="tooltips for polluted sites"><i class="glyphicon glyphicon-alert"></i></button>
+                                <button class="btn btn-default layers data-layer" type="Button" id="flood_risk" title="This is flood risk information at the region in two lines of blabla."><i class="fa fa-tint fa-4x" ></i> </button>
+                                <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons" title="This is oil spill information two lines of blabla."><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true"></span></button>
                                 <p class="subtitle">3. Neighborhood</p>
-                                <button class="btn btn-default layers data-layer" type="Button" id="acs_pop"><i class="fa fa-users fa-4x"></i></button>
-                                <button class="btn btn-default layers data-layer" type="Button" id="acs_income"><i class="glyphicon glyphicon-usd"></i></button>
-                                <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="asthma"><i class="fa fa-hospital-o fa-4x"></i></button>
+                                <button class="btn btn-default layers data-layer" type="Button" id="acs_pop" title="description of pop density"><i class="fa fa-users fa-4x"></i></button>
+                                <button class="btn btn-default layers data-layer" type="Button" id="acs_income" title="description of median house hold income"><i class="glyphicon glyphicon-usd"></i></button>
+                                <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="asthma" title="description of active asthma patients"><i class="fa fa-hospital-o fa-4x"></i></button>
                             </div>
                             <p id="nextsteps">
                                 <button class="btn btn-default clear" type="Button" id="clear_selection">Clear selection</button>
@@ -136,5 +137,6 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!--<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-image/v0.0.4/leaflet-image.js'></script>-->
     <script src ="js/main.js"></script>
+    <script src ="js/interaction.js"></script>
 </body>
 </html>

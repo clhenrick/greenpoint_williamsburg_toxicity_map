@@ -394,3 +394,11 @@ p:.about{
     bottom:200px;
     width:180px;
 }
+
+/*jQuery UI-tooltip*/
+.ui-tooltip {
+    max-width: 350px;
+    min-width:100px;
+    font-size:10px;
+    line-height:14px;
+}
