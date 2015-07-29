@@ -25,6 +25,7 @@ app.interaction = (function($, _) {
         field: "cotents3"
     }];
     $('.layers').tooltip({
+    	container: 'body',
         content: function() {
             return "wts tooltip!"; //why widget does not working?
         }
@@ -69,6 +70,11 @@ app.interaction = (function($, _) {
         $(this).toggleClass('pressed');
     })
 
+    var buttonId = $('selected').attr('id');
+    function selectedButtonID(){
+    	var sel = 0;
+    }
+    console.log(selectedButtonID);
     $('#aboutus_b').click(function() {
     	$('.container').not('.aboutus').hide();
         $('.aboutus').toggle();

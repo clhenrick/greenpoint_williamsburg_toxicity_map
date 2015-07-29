@@ -287,7 +287,7 @@ span.glyphicon-link {
 }
 
 .clear {
-    width: 110px;
+    width: 130px;
     margin-top: 50px;
     background-color: #d9d9d9;
     color: #989898;
@@ -351,14 +351,13 @@ p:.about{
     display: none;
     padding:20px;
    width: 295px;
+    color: #696969;
 
 }
 .aboutus_show{
     display: block;
 }
-#aboutus {
-    color: #696969;
-}
+
 
 
 #aboutus.hr {
