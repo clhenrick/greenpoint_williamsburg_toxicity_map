@@ -16,6 +16,22 @@ app.interaction = (function($, _) {
 			return "wts tooltip!";
 			}
 		});
+	$('selected').click(function() {
+		$(this).toggleClass('active');
+	})
+	/*
+	var buttonPressed = false;
+	$('selected').click(function(event) {
+		if(buttonPressed == false){
+			buttonPressed = true;
+			('selected').addClass('.pressed');
+		} 
+        else {
+			buttonPressed = false;
+			('selected').removeClass('.pressed');
+		}
+	});
+*/
 	/*
 	$('#'+desc[1].title).tooltip({
 		content:function(){

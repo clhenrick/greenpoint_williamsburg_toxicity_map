@@ -386,8 +386,14 @@ p:.about{
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 10px;
     box-shadow: 1px 1px 3px #9e9e9e;
+}
+.glyphzoom {
+    font-size: 15px;
+    color:#696969;
+    text-align: center;
+    vertical-align: center;
+    margin-top:3px;
 }
 
 .cartodb-legend.custom {
