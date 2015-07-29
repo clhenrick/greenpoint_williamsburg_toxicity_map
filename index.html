@@ -68,7 +68,7 @@
                                 <p class="subtitle">1.Environmental risks</p>
                                 <button class="btn btn-default layers data-layer" type="Button" id="waste_transfer_stations" title="tooltip descriptions for the waste transfer station"><i class="glyphicon glyphicon-trash"></i></button>
                                 <button class="btn btn-default layers data-layer" type="Button" id="polluted_points" title="tooltips for polluted sites"><i class="glyphicon glyphicon-alert"></i></button>
-                                <button class="btn btn-default layers data-layer" type="Button" id="flood_risk" title="This is flood risk information at the region in two lines of blabla."><i class="fa fa-tint fa-4x" ></i> </button>
+                                <button class="btn btn-default layers data-layer" type="Button" id="flood_risk" title="This is flood risk information at the region in two lines of blabla."><i class="fa fa-tint fa-4x"></i> </button>
                                 <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons" title="This is oil spill information two lines of blabla."><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true"></span></button>
                                 <p class="subtitle">3. Neighborhood</p>
                                 <button class="btn btn-default layers data-layer" type="Button" id="acs_pop" title="description of pop density"><i class="fa fa-users fa-4x"></i></button>
@@ -82,34 +82,17 @@
                         </div>
                     </div>
                 </div>
+            </nav>
+               <div class="container aboutus">
+                <h4>About Us</h4>
+                <strong>NAG-Brooklyn is </strong>Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
+                <hr>
+                <h6>published date of data / visualization: </h6>
+                <hr>
+                <h6>Information related to copyright / autority in general </h6>
+                <h6>
         </div>
-        </nav>
-    </div>
-    </div>
-    </div>
-    <!-- Set the display of this container to none so we can
-     add it programmatically to `legendControl` -->
-    <div class="footer">
-        <ul class="nav nav-pills nav-justified" role="tablist">
-            <li role="presentation" id="f_links print"><a href="#" id="print_b" role="tab" data-toggle="tab">Print</a></li>
-            <li role="presentation" id="f_links aboutus"><a href="#" id="aboutus_b" class="aboutus" aria-controls="aboutus" role="tab" data-toggle="tab">About Us</a></li>
-            <li role="presentation" id="f_links contact"><a href="#" id="contact_b" class="contact" aria-controls="contact" role="tab" data-toggle="tab">Contact</a></li>
-        </ul>
-    </div>
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade" id="aboutus">
-            <div role="tabpanel" class="tab-pane fade" id="aboutus">
-                <div class="container aboutus" id="aboutus">
-                    <h4>About Us</h4>
-                    <strong>NAG-Brooklyn is </strong>Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
-                    <hr>
-                    <h6>published date of data / visualization: </h6>
-                    <hr>
-                    <h6>Information related to copyright / autority in general </h6>
-                    <h6>
-        </div>
-      <div role="tabpanel" class="tab-pane fade" id="contact">
-        <div class="container contact" id="contact">
+        <div class="contact container">
           <h4>Contact</h4><hr>
           <address>
           <strong>NAG-Brooklyn</strong><br>
@@ -120,10 +103,19 @@
             <a href="mailto:#">nag.bklyn@gmail.com</a>
           </address>
         </div>
-      </div>
-      </div>
-      </div>
+        </div>
     </div>
+    <!-- Set the display of this container to none so we can
+     add it programmatically to `legendControl` -->
+    <div class="footer">
+        <ul class="nav nav-pills nav-justified">
+            <li><a id="print_b">Print</a></li>
+            <li><a id="aboutus_b">About Us</a></li>
+            <li><a id="contact_b">Contact</a></li>
+        </ul>
+    </div>
+
+
 <!--zoom-->
 <div class="btn-group-vertical btn-group-xs zoombtn" role="group" aria-label="...">
   <button type="button" class="btn btn-default btn-xs" id="zoom-in"><span class="glyphicon glyphzoom glyphicon-plus" aria-hidden="true"></span></button>

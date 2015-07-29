@@ -162,17 +162,17 @@ p {
     width: 107%;
     float: none;
 }
+.menu.navbar .nav.active{
 
+}
 .menu.navbar .nav li {
     display: table-cell;
     width: 50%;
     float: none;
-    margin-left: 0px;
-    margin-right: 0px;
     background-color: #d9d9d9;
     /*outerborder*/
-    margin-left: 1px #d0cece;
-    margin-right: 1px #d0cece;
+    margin-left: 0px #d0cece;
+    margin-right: 0px #d0cece;
 }
 
 .menu.nav-pills>li>a {
@@ -239,7 +239,9 @@ p {
 .layers.descrp{
     visibility: hidden;
 }
-
+.pressed{
+    background-color: #cecece;  
+}
 
 .layers>button:hover {
     font-size: 12px;
@@ -352,10 +354,19 @@ p:.about{
 }
 /*credit at footer*/
 
+.aboutus{
+    display: none;
+    padding:20px;
+   width: 295px;
+    box-shadow: 1px 1px 3px #9e9e9e;
+}
+.aboutus_show{
+    display: block;
+}
 #aboutus {
-    display:none;
     color: #696969;
 }
+
 
 #aboutus.hr {
     width: 90%;
@@ -363,9 +374,12 @@ p:.about{
 #aboutus_b {
     color: #696969; 
 }
-#contact {
+.contact {
     display: none;
+    width: 295px;
     color: #696969;
+    padding:20px;
+    box-shadow: 1px 1px 3px #9e9e9e;
 }
 /*Legend*/
 #contact_b{

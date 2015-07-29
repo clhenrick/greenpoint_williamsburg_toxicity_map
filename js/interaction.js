@@ -2,43 +2,40 @@ var app = app || {};
 
 app.interaction = (function($, _) {
 
-	var desc = [
-		{title:"waste_transfer_stations", field:"cotents1"},
-		{title:"polluted_points", field:"cotents2"},
-		{title:"flood_risk", field:"cotents3"},
-		{title:"polluted_polygons", field:"cotents3"},
-		{title:"acs_pop", field:"cotents3"},
-		{title:"acs_income", field:"cotents3"},
-		{title:"asthma", field:"cotents3"}
-	];
-	$('.layers').tooltip({
-		content:function(){
-			return "wts tooltip!";
-			}
-		});
-	$('selected').click(function() {
-		$(this).toggleClass('active');
-	})
-	/*
-	var buttonPressed = false;
-	$('selected').click(function(event) {
-		if(buttonPressed == false){
-			buttonPressed = true;
-			('selected').addClass('.pressed');
-		} 
-        else {
-			buttonPressed = false;
-			('selected').removeClass('.pressed');
-		}
-	});
-*/
-	/*
-	$('#'+desc[1].title).tooltip({
-		content:function(){
-			return desc[1].field;
-			}
-		});
-	*/
+    var desc = [{
+        title: "waste_transfer_stations",
+        field: "cotents1"
+    }, {
+        title: "polluted_points",
+        field: "cotents2"
+    }, {
+        title: "flood_risk",
+        field: "cotents3"
+    }, {
+        title: "polluted_polygons",
+        field: "cotents3"
+    }, {
+        title: "acs_pop",
+        field: "cotents3"
+    }, {
+        title: "acs_income",
+        field: "cotents3"
+    }, {
+        title: "asthma",
+        field: "cotents3"
+    }];
+    $('.layers').tooltip({
+        content: function() {
+            return "wts tooltip!"; //why widget does not working?
+        }
+    });
+    /*
+    $('#'+desc[1].title).tooltip({
+    	content:function(){
+    		return desc[1].field;
+    		}
+    	});
+    */
     /*  
     function layer_desc() {
 
@@ -67,9 +64,22 @@ app.interaction = (function($, _) {
     };//eof layer_desc
 
 */
+    //layer button pressed effect
+    $('selected' + '.layers').click(function() {
+        $(this).toggleClass('pressed');
+    })
+
+    $('#aboutus_b').click(function() {
+    	$('.container').hide();
+        $('.aboutus').toggle();
+    });
+	$('#contact_b').click(function() {
+    	$('.container').hide();
+	    $('.contact').toggle();
+	});
     var init = function() {
-		//layer_desc();   	
-   	};
+        //layer_desc();   	
+    };
     return {
         init: init
     };
