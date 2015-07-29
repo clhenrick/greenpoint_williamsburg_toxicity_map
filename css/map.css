@@ -1,10 +1,6 @@
 html,
 body,
 map {
-    height: 100%;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -149,22 +145,18 @@ p {
 .menu.navbar .navbar-inner {
     align: center;
     padding: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin:0px;
 }
 
 .menu.navbar .nav {
     background-color: #d9d9d9;
-    margin-top: 10px;
-    margin-left: 0px;
-    margin-right: 0px;
+
+    margin:0px;
     display: table;
     width: 107%;
     float: none;
 }
-.menu.navbar .nav.active{
 
-}
 .menu.navbar .nav li {
     display: table-cell;
     width: 50%;
@@ -179,9 +171,8 @@ p {
     background-color: #d9d9d9;  
     border-color: #333333;
     color: #989898;
-    border-radius: 0px;
+    border-radius: 0px ;
     /*top right bottom left*/
-
     width: auto;
     outline: 0px !important;
 }
@@ -196,7 +187,6 @@ p {
     /*outerborder*/
     border-radius: 0px;
     outline: 0px !important;
-
 }
 
 .menu.nav-pills>li.active>a:focus {
@@ -224,6 +214,9 @@ p {
 
 
 /*layer button and page option*/
+.dlayer{
+    color: #1f1f1f;
+}
 .layers {
     border-color: #696969;
     background-color: #d0cece;
@@ -358,7 +351,7 @@ p:.about{
     display: none;
     padding:20px;
    width: 295px;
-    box-shadow: 1px 1px 3px #9e9e9e;
+
 }
 .aboutus_show{
     display: block;
@@ -379,7 +372,7 @@ p:.about{
     width: 295px;
     color: #696969;
     padding:20px;
-    box-shadow: 1px 1px 3px #9e9e9e;
+
 }
 /*Legend*/
 #contact_b{

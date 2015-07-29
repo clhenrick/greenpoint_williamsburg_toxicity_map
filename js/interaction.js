@@ -70,12 +70,20 @@ app.interaction = (function($, _) {
     })
 
     $('#aboutus_b').click(function() {
-    	$('.container').hide();
+    	$('.container').not('.aboutus').hide();
         $('.aboutus').toggle();
     });
 	$('#contact_b').click(function() {
-    	$('.container').hide();
+    	$('.container').not('.contact').hide();
 	    $('.contact').toggle();
+	});
+	$('#about_b').click(function() {
+    	$('.container').not('.about').hide();
+	    $('.about').toggle();
+	});
+	$('#dlayer_b').click(function() {
+    	$('.container').not('.dlayer').hide();
+	    $('.dlayer').toggle();
 	});
     var init = function() {
         //layer_desc();   	
