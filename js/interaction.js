@@ -30,6 +30,13 @@ app.interaction = (function($, _) {
             return "wts tooltip!"; //why widget does not working?
         }
     });
+    $('.next').click(function(){
+    	var $aboutthedata = $( "<div id='metadata'/>" ),
+		metadata1 = document.createElement( "div" ),
+		metadata2 = document.getElementById( "metadata" );
+ 
+	$( "body" ).append( $aboutthedata, [ metadata1, metadata2 ] );
+    };);
     /*
     $('#'+desc[1].title).tooltip({
     	content:function(){

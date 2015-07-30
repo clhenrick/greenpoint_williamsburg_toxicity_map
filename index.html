@@ -36,7 +36,7 @@
             <a href="javascript:window.location.reload(true)" title="refresh the over all page" class="logo"> <img src="img/logo.png" width=284></a>
             <div id="logo">
                 <p id="text1">
-                    <br>Exploring environmental condition at greenpoint neighborhood.</p>
+                    <br>Exploring environmental conditions in the greenpoint-williumsburg neighborhood.</p>
             </div>
             <!--nav bar-->
             <nav class="menu navbar navbar-custom">
@@ -60,25 +60,28 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="layer">
                         <div class="container dlayer">
-                                <h6>Click icons to add map layers.</h6>
-
-                            <p class="subtitle">Environmental Risks</p>
+                            <p class="subtitle"> &nbsp; Environmental Risks</p>
                             <button class="btn btn-default layers data-layer" type="Button" id="waste_transfer_stations" title="Waste transfer stations are temporary holding sites for waste or recyclables before those materials are sent on other processing facilities."><i class="glyphicon glyphicon-trash"></i></button>
                             <button class="btn btn-default layers data-layer" type="Button" id="polluted_points" title="(E) designation comes from rezoning to notify an environmental requirement on a particular lot.The EPA compiles sites that have regulation requirements through their Facility Registry Service.Spills are cataloged by NYS DEC for all accidental releases of petroleum, toxic chemicals, gases, and other hazardous materials."><i class="glyphicon glyphicon-alert"></i></button>
                             <button class="btn btn-default layers data-layer" type="Button" id="flood_risk" title="The New York Panel on Climate Change has projected what the flood plain will look like in a 100-year and 500-year storm (a storm that typically occurs once every 100 and 500 years, respectively). This map shows the projected flood plains for the year 2020."><i class="fa fa-tint fa-4x"></i> </button>
                             <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons" title="There are Superfund and brownfield sites at the state and federal level. A brownfield site is a property where soil contamination exceeds standards set by NYS DEC (state) or US EPA (federal)."><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true"></span></button>
-                            <p class="subtitle">Neighborhood</p>
+                            <p class="subtitle"> &nbsp;Neighborhood</p>
                             <button class="btn btn-default layers data-layer" type="Button" id="acs_pop" title="This data reflects population estimates from 2009-2013 American Community Survey (ACS). ACS is a running sample of approximately 1 in 40 households in the U.S. This sample is taken each month over a 1, 3 or 5-year period. The longer the sample time, generally the higher reliability of the data due to a larger sample size. These maps use the 5-year estimate from 2009-2013, the latest available 5-year data."><i class="fa fa-users fa-4x"></i></button>
                             <button class="btn btn-default layers data-layer" type="Button" id="acs_income" title="Median household income is the middle income value, meaning half the population has an income above that amount, and half have an income below that amount. Median household income was $52,259 for New York City and $53,046 for the United States, according to the 2009-2013 American Community Survey."><i class="glyphicon glyphicon-usd"></i></button>
                             <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="asthma" title="Residents of Williamsburg and Greenpoint experience higher instances of asthma due to proximity to truck routes and sources of air pollution. This layer shows distribution of hospital visits for asthma from 2008 to 2012. This data was retrieved from Infoshare.org of Community Studies of New York, Inc., a non-profit that compiles and aggregates data."><i class="fa fa-hospital-o fa-4x"></i></button>
-
+                            <p id ="notice">
+                                <h7>*Click icons to add map layers.</h7>
+                            </p>
                             <p id="nextsteps">
-                                <button class="btn btn-default clear" type="Button" id="clear_selection">Clear all selection</button>
+                                <button class="btn btn-default clear" type="Button" id="clear_selection">Clear selected layers</button>
                                 <button class="btn btn-default next" type="Button" id="about">About the Data</button>
                             </p>
                         </div>
                     </div>
-                              <div class="container aboutus">
+                <div class="container metadata">
+                    this area will show meta data of visualization
+                </div>
+                <div class="container aboutus">
                 <h4>About Us</h4>
                 <hr>
                 <strong>NAG-Brooklyn is </strong>Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
