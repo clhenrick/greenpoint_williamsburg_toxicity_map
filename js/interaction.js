@@ -2,7 +2,7 @@ var app = app || {};
 
 app.interaction = (function($, _) {
 
-<<<<<<< HEAD
+
     var desc = [{
         title: "waste_transfer_stations",
         field: "cotents1"
@@ -37,7 +37,7 @@ app.interaction = (function($, _) {
 		metadata2 = document.getElementById( "metadata" );
  
 	$( "body" ).append( $aboutthedata, [ metadata1, metadata2 ] );
-    };);
+    });
     /*
     $('#'+desc[1].title).tooltip({
     	content:function(){
@@ -45,7 +45,7 @@ app.interaction = (function($, _) {
     		}
     	});
     */
-=======
+
 	var desc = [
 		{title:"waste_transfer_stations", field:"cotents1"},
 		{title:"polluted_points", field:"cotents2"},
@@ -85,7 +85,7 @@ app.interaction = (function($, _) {
 			}
 		});
 	*/
->>>>>>> change zoomin button style
+
     /*  
     function layer_desc() {
 
