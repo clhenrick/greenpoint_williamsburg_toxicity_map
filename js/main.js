@@ -40,7 +40,7 @@ app.map = (function(w, d, $, _) {
         
         map_object = new L.Map('map', params);
         var accessToken = 'pk.eyJ1IjoiYm93b25jIiwiYSI6InFDV2RBNjAifQ._F8zZ-AkgNHp0_h2XKk9Pw';
-        var mapid = 'bowonc.me27271c';
+        var mapid = 'bowonc.n26oid7e';
         //geocoding
         //map_object.addControl(L.mapbox.geocoderControl('mapbox.places'));
         var attr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
@@ -68,8 +68,8 @@ app.map = (function(w, d, $, _) {
             user_name: 'nag-brooklyn',
             type: 'cartodb',
             sublayers: [{
-                sql: "SELECT * FROM waste_transfer_stations", 
-                cartocss: "#waste_transfer_stations{marker-fill-opacity: 0.9;marker-line-color: #FFF;marker-line-width: 0.5;marker-line-opacity: 0.5;marker-placement: point;marker-type: ellipse;marker-width: 5;marker-fill: #a00002;marker-allow-overlap: true;}"
+                sql: "SELECT * FROM wts_July30", 
+                cartocss: "#waste_transfer_stations{marker-fill-opacity: 0.9;marker-line-color: #FFF;marker-line-width: 0.5;marker-line-opacity: 0.5;marker-placement: point;marker-type: ellipse;marker-width: 8;marker-fill: #a00002;marker-allow-overlap: true;}"
             }, {
                 sql: "SELECT * FROM polluted_points",
                 cartocss: "#polluted_points {marker-fill-opacity: 0.9;marker-line-color: #FFFFFF;marker-line-width: .5;marker-line-opacity: .7;marker-placement: point;marker-type: ellipse;marker-width: 5;marker-allow-overlap: false;}#polluted_points[nag_id=10] {marker-fill: #7b0006;}#polluted_points[nag_id=7] {marker-fill: #fba782;}#polluted_points[nag_id=8] {marker-fill: #aa04ee;}#polluted_points[nag_id=9] {marker-fill: #e171fb;}"
@@ -86,9 +86,8 @@ app.map = (function(w, d, $, _) {
                 sql: "SELECT * FROM acs_5yr_2013",
                 cartocss: "#acs_5yr_2013{polygon-fill: #ECF0F6;polygon-opacity: 0.8;polygon-comp-op: multiply;line-color: #000000;line-width: 0.5;line-opacity: 0.1;}#acs_5yr_2013 [rounded_mhhi > 75001]{polygon-fill: #216437;}#acs_5yr_2013 [rounded_mhhi > 65001][rounded_mhhi <= 75000]{polygon-fill: #4f8759;}#acs_5yr_2013 [rounded_mhhi > 50001][rounded_mhhi <= 65000]{polygon-fill: #75ab7e;}#acs_5yr_2013 [rounded_mhhi > 25001][rounded_mhhi <= 50000]{polygon-fill: #a5d0b4;}#acs_5yr_2013 [rounded_mhhi > 0 ][rounded_mhhi <= 25000] {polygon-fill: #dcf5e8;}"
             }, {
-                sql: "SELECT * FROM asthma_2012_ct",
-                cartocss: "#asthma_2012_ct{polygon-fill: #FFFFFF;polygon-opacity: 0.8;line-color: #666666;line-width: 0.5;line-opacity: .5;comp-op:multiply;}#asthma_2012_ct [ asthma >= 21 ][ asthma <= 35 ] {polygon-fill: #5a3072;}#asthma_2012_ct [ asthma <= 10][ asthma <= 20 ] {polygon-fill: #7a518b;}#asthma_2012_ct [ asthma <= 6][ asthma <= 9] {polygon-fill: #9c7aac;}#asthma_2012_ct [ asthma <= 1][ asthma <= 5] {polygon-fill: #bfa4cd;}#asthma_2012_ct [ asthma = 0] {polygon-fill: #FFFFFF;}"
-            }]
+                sql: "SELECT * FROM asthma5yr",
+                cartocss: "#asthma_5yr_2012{polygon-fill: #FFFFFF;polygon-opacity: 0.8;line-color: #666666;line-width: 0.5;line-opacity: .5;comp-op:multiply;}#asthma_2012_ct [ asthma5yr >= 21 ][ asthma5yr <= 35 ] {polygon-fill: #5a3072;}#asthma_5yr_2012 [ asthma5yr <= 10][ asthma5yr <= 20 ] {polygon-fill: #7a518b;}#asthma_5yr_2012 [ asthma5yr <= 6][ asthma5yr <= 9] {polygon-fill: #9c7aac;}#asthma_5yr_2012 [ asthma5yr <= 1][ asthma5yr <= 5] {polygon-fill: #bfa4cd;}#asthma_5yr_2012 [ asthma5yr = 0] {polygon-fill: #FFFFFF;}"  }]
         };
 
         var viz_json ="https://nag-brooklyn.cartodb.com/api/v2/viz/eebfa096-d35b-11e4-97b2-0e018d66dc29/viz.json";
@@ -187,6 +186,7 @@ app.map = (function(w, d, $, _) {
             sublayer.hide();
         });
         $('.data-layer').removeClass('selected');
+        $('.data-layer').removeClass('active');
     });
 
     } //end of initmap 

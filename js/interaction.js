@@ -2,29 +2,9 @@ var app = app || {};
 
 app.interaction = (function($, _) {
 
-
-    var desc = [{
-        title: "waste_transfer_stations",
-        field: "cotents1"
-    }, {
-        title: "polluted_points",
-        field: "cotents2"
-    }, {
-        title: "flood_risk",
-        field: "cotents3"
-    }, {
-        title: "polluted_polygons",
-        field: "cotents3"
-    }, {
-        title: "acs_pop",
-        field: "cotents3"
-    }, {
-        title: "acs_income",
-        field: "cotents3"
-    }, {
-        title: "asthma",
-        field: "cotents3"
-    }];
+    //default setup 
+    $('a').css('cursor','pointer');
+    //layer tooltips
     $('.layers').tooltip({
     	container: 'body',
         content: function() {
@@ -38,13 +18,6 @@ app.interaction = (function($, _) {
  
 	$( "body" ).append( $aboutthedata, [ metadata1, metadata2 ] );
     });
-    /*
-    $('#'+desc[1].title).tooltip({
-    	content:function(){
-    		return desc[1].field;
-    		}
-    	});
-    */
 
 	var desc = [
 		{title:"waste_transfer_stations", field:"cotents1"},
@@ -55,36 +28,8 @@ app.interaction = (function($, _) {
 		{title:"acs_income", field:"cotents3"},
 		{title:"asthma", field:"cotents3"}
 	];
-	$('.layers').tooltip({
-		content:function(){
-			return "wts tooltip!";
-			}
-		});
-	$('selected').click(function() {
-		$(this).toggleClass('.pressed');
-	}).hover(function() {
-		$(this).toggleClass('.pressed');
-	}).disableSelection();
-	/*
-	var buttonPressed = false;
-	$('selected').click(function(event) {
-		if(buttonPressed == false){
-			buttonPressed = true;
-			('selected').addClass('.pressed');
-		} 
-        else {
-			buttonPressed = false;
-			('selected').removeClass('.pressed');
-		}
-	});
-*/
-	/*
-	$('#'+desc[1].title).tooltip({
-		content:function(){
-			return desc[1].field;
-			}
-		});
-	*/
+
+
 
     /*  
     function layer_desc() {
@@ -115,14 +60,19 @@ app.interaction = (function($, _) {
 
 */
     //layer button pressed effect
-    $('selected' + '.layers').click(function() {
-        $(this).toggleClass('pressed');
+    $('button'+".layers").click(function() {
+        //$(this).toggleClass('pressed');
+        $(this).toggleClass('active');
     })
 
+
+    //
     var buttonId = $('selected').attr('id');
+    console.log(buttonId);
     function selectedButtonID(){
     	var sel = 0;
     }
+
     console.log(selectedButtonID);
     $('#aboutus_b').click(function() {
     	$('.container').not('.aboutus').hide();
@@ -131,6 +81,7 @@ app.interaction = (function($, _) {
 	$('#contact_b').click(function() {
     	$('.container').not('.contact').hide();
 	    $('.contact').toggle();
+
 	});
 	$('#about_b').click(function() {
     	$('.container').not('.about').hide();

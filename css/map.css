@@ -76,8 +76,9 @@ IMG{
 }
 
 #text1 {
-    color: #ffffff;
-    line-height: 120%;
+    color: #989898;
+    line-height: 140%;
+    font-size: 11px;
     margin-left: 30px;
 }
 
@@ -283,7 +284,8 @@ span.glyphicon-link {
     margin-top: 25px;  
     font: 14px bold;
     font-family: 'Open Sans', sans-serif;
-     border-left: 5px solid #696969;
+     border-left: 5px solid #989898;
+    color:#696969;
 }
 #nextsteps {
     width: 90%;
@@ -296,7 +298,7 @@ span.glyphicon-link {
 }
 
 .clear {
-    width: 140px;
+    width: 110px;
     margin-top: 50px;
     background-color: #d9d9d9;
     color: #989898;
