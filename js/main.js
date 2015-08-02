@@ -10,11 +10,33 @@ app.map = (function(w, d, $, _) {
         var southWest = L.latLng(40.703, -73.971),
             northEast = L.latLng(40.737, -73.931),
             bounds = L.latLngBounds(southWest, northEast);
-        
+
+        //screen resolution setting for map user 
+        var zoomStart = 14; //defualt setting for 1440*900
+
+       function zoomStartSetting(){
+        //screen resolutions
+        //1920x1080   1366x768    1280x1024   1280x800    1024x768    800x600
+        var defaultWidth = 1280;
+        var defualtHeight = 1024; 
+        var screenWidth = $(window).width(); //get the current screen width
+        var screenHeight = $(window).height(); //get the current screen height
+
+        if(screenWidth < defaultWidth  || screenHeight < defualtHeight ){
+            zoomStart = 14;
+            console.log("Browser resolution :"+screenWidth+"/"+screenHeight+"Zoom :"+zoomStart);
+        } else if(screenWidth > defaultWidth || screenHeight > defualtHeight ){
+            zoomStart = 15; //defualt setting for 1440*900
+            console.log("Browser resolution :"+screenWidth+" | "+screenHeight +"Zoom :"+ zoomStart);
+        } else if(screenWidth > defaultWidth || screenHeight > defualtHeight){
+ 
+        } 
+       }
+       zoomStartSetting();
         var params = {
             center: [40.7237442, -73.9532883], //Greenpoint
             zoomControl: false,
-            zoom: 14,
+            zoom: zoomStart,
             maxZoom: 19,
             minZoom: 12,
             maxBounds: bounds,
@@ -69,7 +91,7 @@ app.map = (function(w, d, $, _) {
             type: 'cartodb',
             sublayers: [{
                 sql: "SELECT * FROM wts_July30", 
-                cartocss: "#waste_transfer_stations{marker-fill-opacity: 0.9;marker-line-color: #FFF;marker-line-width: 0.5;marker-line-opacity: 0.5;marker-placement: point;marker-type: ellipse;marker-width: 8;marker-fill: #a00002;marker-allow-overlap: true;}"
+                cartocss: "#wts_july30{ marker-fill-opacity: 0; marker-line-color: #850200; marker-line-width: 3.5; marker-line-opacity: 0.7; marker-placement: point; marker-type: ellipse; marker-width: 7; marker-allow-overlap: true; }"
             }, {
                 sql: "SELECT * FROM polluted_points",
                 cartocss: "#polluted_points {marker-fill-opacity: 0.9;marker-line-color: #FFFFFF;marker-line-width: .5;marker-line-opacity: .7;marker-placement: point;marker-type: ellipse;marker-width: 5;marker-allow-overlap: false;}#polluted_points[nag_id=10] {marker-fill: #7b0006;}#polluted_points[nag_id=7] {marker-fill: #fba782;}#polluted_points[nag_id=8] {marker-fill: #aa04ee;}#polluted_points[nag_id=9] {marker-fill: #e171fb;}"
@@ -86,8 +108,8 @@ app.map = (function(w, d, $, _) {
                 sql: "SELECT * FROM acs_5yr_2013",
                 cartocss: "#acs_5yr_2013{polygon-fill: #ECF0F6;polygon-opacity: 0.8;polygon-comp-op: multiply;line-color: #000000;line-width: 0.5;line-opacity: 0.1;}#acs_5yr_2013 [rounded_mhhi > 75001]{polygon-fill: #216437;}#acs_5yr_2013 [rounded_mhhi > 65001][rounded_mhhi <= 75000]{polygon-fill: #4f8759;}#acs_5yr_2013 [rounded_mhhi > 50001][rounded_mhhi <= 65000]{polygon-fill: #75ab7e;}#acs_5yr_2013 [rounded_mhhi > 25001][rounded_mhhi <= 50000]{polygon-fill: #a5d0b4;}#acs_5yr_2013 [rounded_mhhi > 0 ][rounded_mhhi <= 25000] {polygon-fill: #dcf5e8;}"
             }, {
-                sql: "SELECT * FROM asthma5yr",
-                cartocss: "#asthma_5yr_2012{polygon-fill: #FFFFFF;polygon-opacity: 0.8;line-color: #666666;line-width: 0.5;line-opacity: .5;comp-op:multiply;}#asthma_2012_ct [ asthma5yr >= 21 ][ asthma5yr <= 35 ] {polygon-fill: #5a3072;}#asthma_5yr_2012 [ asthma5yr <= 10][ asthma5yr <= 20 ] {polygon-fill: #7a518b;}#asthma_5yr_2012 [ asthma5yr <= 6][ asthma5yr <= 9] {polygon-fill: #9c7aac;}#asthma_5yr_2012 [ asthma5yr <= 1][ asthma5yr <= 5] {polygon-fill: #bfa4cd;}#asthma_5yr_2012 [ asthma5yr = 0] {polygon-fill: #FFFFFF;}"  }]
+                sql: "SELECT * FROM asthma_5yr_2012",
+                cartocss: "#asthma_2012_ct{ polygon-fill: #FFFFFF; polygon-opacity: .7; line-color: #666666; line-width: 0.2; line-opacity: .5; polygon-comp-op:multiply; } #asthma_5yr_2012[ asthma5yr >= 21 ][ asthma5yr <= 35 ] { polygon-fill: #5a3072; } #asthma_5yr_2012 [ asthma5yr <= 10][ asthma5yr <= 20 ] { polygon-fill: #7a518b; } #asthma_5yr_2012[ asthma5yr <= 6][ asthma5yr <= 9] { polygon-fill: #9c7aac; } #asthma_5yr_2012[ asthma5yr <= 1][ asthma5yr <= 5] { polygon-fill: #bfa4cd; } #asthma_5yr_2012[ asthma5yr = 0] { polygon-fill: #FFFFFF; }"  }]
         };
 
         var viz_json ="https://nag-brooklyn.cartodb.com/api/v2/viz/eebfa096-d35b-11e4-97b2-0e018d66dc29/viz.json";

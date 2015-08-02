@@ -12,7 +12,9 @@ html {
 body > #wrapper {
     color: #004400;
 }
-
+:focus { 
+    outline: none; 
+}
 .footer {
     position: absolute;
     bottom: 0;
@@ -34,6 +36,7 @@ div {
     color: white;
     text-align: left;
     font-size: 12px;
+    outline: none;
 }
 /*dropcaps
 p:first-child:first-letter { 
@@ -114,11 +117,14 @@ IMG{
 .footer>.nav-pills {
     padding-left: 20px;
 }
+.footer>.nav-pills>li{
+    background-color: #cecece;  
+}
+
 
 .footer>.nav-pills>li>a {
     border: 0px;
     margin: 10px 0px 0px 0px;
-    background-color: #d0cece;
     padding: 0px 12px 0px 12px;
 }
 
@@ -134,6 +140,13 @@ p {
     max-width: 100%;
 }
 
+p.copyright{
+    font-size: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    vertical-align: bottom;
+    color:#9e9e9e;
+}
 /*Customizing Bootstrap */
 /*nav pills options*/
 /* tab color */
@@ -235,6 +248,7 @@ p {
 }
 .pressed{
     background-color: #cecece;  
+
 }
 
 .layers>button:hover {
@@ -361,6 +375,7 @@ p:.about{
 .aboutus{
     display: none;
     padding:20px;
+    padding-right: 30px;
    width: 295px;
     color: #696969;
 

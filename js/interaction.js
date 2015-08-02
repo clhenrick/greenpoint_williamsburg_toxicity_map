@@ -1,14 +1,15 @@
 var app = app || {};
 
-app.interaction = (function($, _) {
+app.interaction = (function(d,$, _) {
 
     //default setup 
     $('a').css('cursor','pointer');
+
     //layer tooltips
     $('.layers').tooltip({
     	container: 'body',
-        content: function() {
-            return "wts tooltip!"; //why widget does not working?
+        contents: function() {
+            return "wts tooltip!"; //why widget does not response to contents?
         }
     });
     $('.next').click(function(){
@@ -69,11 +70,7 @@ app.interaction = (function($, _) {
     //
     var buttonId = $('selected').attr('id');
     console.log(buttonId);
-    function selectedButtonID(){
-    	var sel = 0;
-    }
 
-    console.log(selectedButtonID);
     $('#aboutus_b').click(function() {
     	$('.container').not('.aboutus').hide();
         $('.aboutus').toggle();
@@ -97,4 +94,4 @@ app.interaction = (function($, _) {
     return {
         init: init
     };
-})(jQuery, _);
+})(document,jQuery, _);

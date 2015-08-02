@@ -54,7 +54,7 @@
                             <p>
                                 The Greenpoint-Williamsburg ToxiCity Map is an interactive GIS map of toxic “hot spots” in Greenpoint and Williamsburg. </p>
                             <p>NAG hopes that this project will help the community better understand the environmental concerns in the area they live in and ultimately to improve the health and well-being of the community by motivating and empowering community members to be more interactive in their local governing and policy-making process.</p>
-                            <p> This project is funded by a grant from <a href="#">the NYS Department of Environmental Conservation.</a>
+                            <p> This project is funded by a grant from <a href="#" class="text1">the NYS Department of Environmental Conservation.</a>
                             </p>
                         </div>
                     </div>
@@ -62,14 +62,17 @@
                         <div class="container dlayer">
                             <p class="subtitle"> &nbsp; Environmental Risks</p>
                             <button class="btn btn-default layers data-layer" type="Button" id="waste_transfer_stations" title="Waste transfer stations"><i class="glyphicon glyphicon-trash"></i></button>
-                            <button class="btn btn-default layers data-layer" type="Button" id="polluted_points" title="•   Polluted Sites"><i class="glyphicon glyphicon-alert"></i></button>
+                            <button class="btn btn-default layers data-layer" type="Button" id="polluted_points" title="Polluted Sites"><i class="glyphicon glyphicon-alert"></i></button>
                             <button class="btn btn-default layers data-layer" type="Button" id="flood_risk" title="Future Flood Risk"><i class="fa fa-tint fa-4x"></i> </button>
-                            <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons" title="There are Superfund and brownfield sites at the state and federal level. A brownfield site is a property where soil contamination exceeds standards set by NYS DEC (state) or US EPA (federal)."><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true"></span></button>
+                            <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons" title="Polluted Places"><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true"></span></button>
                             <p class="subtitle"> &nbsp;Characteristics</p>
-                            <button class="btn btn-default layers data-layer" type="Button" id="acs_pop" title="This data reflects population estimates from 2009-2013 American Community Survey (ACS). ACS is a running sample of approximately 1 in 40 households in the U.S. This sample is taken each month over a 1, 3 or 5-year period. The longer the sample time, generally the higher reliability of the data due to a larger sample size. These maps use the 5-year estimate from 2009-2013, the latest available 5-year data."><i class="fa fa-users fa-4x"></i></button>
-                            <button class="btn btn-default layers data-layer" type="Button" id="acs_income" title="Median household income is the middle income value, meaning half the population has an income above that amount, and half have an income below that amount. Median household income was $52,259 for New York City and $53,046 for the United States, according to the 2009-2013 American Community Survey."><i class="glyphicon glyphicon-usd"></i></button>
-                            <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="asthma" title="Residents of Williamsburg and Greenpoint experience higher instances of asthma due to proximity to truck routes and sources of air pollution. This layer shows distribution of hospital visits for asthma from 2008 to 2012. This data was retrieved from Infoshare.org of Community Studies of New York, Inc., a non-profit that compiles and aggregates data."><i class="fa fa-hospital-o fa-4x"></i></button>
-                            <p id ="notice">
+                            <button class="btn btn-default layers data-layer" type="Button" id="acs_pop" title="Population Density"><i class="fa fa-users fa-4x"></i></button>
+                            <button class="btn btn-default layers data-layer" type="Button" id="acs_income" title="Median Household Income"><i class="glyphicon glyphicon-usd"></i></button>
+                            <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="asthma" title="Asthma"><i class="fa fa-hospital-o fa-4x"></i></button>
+                            <p class="subtitle"> &nbsp; Industrial History</p>
+                            <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="industry" title="historic industrial area"><i class="fa fa-industry fa-4x"></i></button>
+                            <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="industry2" title="historic industrial area2"><i class="fa  fa-4x"></i></button>
+                            <p id="notice">
                                 <h7>*Click icons to add map layers.</h7>
                             </p>
                             <p id="nextsteps">
@@ -78,27 +81,31 @@
                             </p>
                         </div>
                     </div>
-                <div class="container metadata">
-                    this area will show meta data of visualization
-                </div>
-                <div class="container aboutus">
-                <h4>About Us</h4>
-                <hr>
-                <strong>NAG-Brooklyn is </strong>Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
-                <hr>
-                <i class="fa fa-copyright"></i>2015 NAG-Brooklyn
-        </div>
-        <div class="contact container">
-          <h4>Contact Information</h4><hr>
-          <address>
-          <strong>NAG-Brooklyn</strong><br>
-            Address: 110 Kent Ave,<br>
-            2nd Fl,<br> 
-            Brooklyn, NY 11249<br>
-            <a href="tel:+1-718-384-2248"><i class="fa fa-phone fa-1x" title="718.384.2248"></i></a>
-            <a href="mailto:nag.bklyn@gmail.com"><i class="fa fa-envelope fa-1x" title="nag.bklyn@gmail.com"></i></a>
-          </address>
-        </div>
+                    <div class="container metadata">
+                        this area will show meta data of visualization
+                    </div>
+                    <div class="container aboutus">
+                        <h4>About Us</h4>
+                        <hr>
+                        <p>
+                            &nbsp; <strong>NAG-Brooklyn is </strong>Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. &nbsp; We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
+                        </p>
+                        <hr>
+                        <p class="copyright">Toxicity map<i class="fa fa-copyright"></i>2015 NAG-Brooklyn</p>
+                    </div>
+                    <div class="contact container">
+                        <h4>Contact Information</h4>
+                        <hr>
+                        <address>
+                            <strong>NAG-Brooklyn</strong>
+                            <br> Address: 110 Kent Ave,
+                            <br> 2nd Fl,
+                            <br> Brooklyn, NY 11249
+                            <br>
+                            <a href="tel:+1-718-384-2248"><i class="fa fa-phone fa-2x" title="718.384.2248"></i></a>
+                            <a href="mailto:nag.bklyn@gmail.com"><i class="fa fa-envelope fa-2x" title="nag.bklyn@gmail.com"></i></a>
+                        </address>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -112,21 +119,20 @@
             <li><a id="contact_b">Contact</a></li>
         </ul>
     </div>
-
-
-<!--zoom-->
-<div class="btn-group-vertical btn-group-xs zoombtn" role="group" aria-label="...">
-  <button type="button" class="btn btn-default btn-xs" id="zoom-in"><span class="glyphicon glyphzoom glyphicon-plus" aria-hidden="true"></span></button>
-   <button type="button" class="btn btn-default btn-xs" id="zoom-out"> <span class="glyphicon glyphzoom glyphicon-minus" aria-hidden="true"></span></button>
-</div>
-    <!-- Javascript Libraries -->  
+    <!--zoom-->
+    <div class="btn-group-vertical btn-group-xs zoombtn" role="group" aria-label="...">
+        <button type="button" class="btn btn-default btn-xs" id="zoom-in"><span class="glyphicon glyphzoom glyphicon-plus" aria-hidden="true"></span></button>
+        <button type="button" class="btn btn-default btn-xs" id="zoom-out"> <span class="glyphicon glyphzoom glyphicon-minus" aria-hidden="true"></span></button>
+    </div>
+    <!-- Javascript Libraries -->
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
     <script src='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.standalone.js'></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!--<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-image/v0.0.4/leaflet-image.js'></script>-->
-    <script src ="js/main.js"></script>
-    <script src ="js/interaction.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/interaction.js"></script>
 </body>
+
 </html>
