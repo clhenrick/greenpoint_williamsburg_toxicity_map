@@ -1,6 +1,8 @@
 var app = app || {};
 
 app.interaction = (function(d,$, _) {
+    //loading message for data loading : img, datalayer/map
+
 
     //default setup 
     $('a').css('cursor','pointer');
