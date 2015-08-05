@@ -7,101 +7,99 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <!-- CSS libraries -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.css">-->
+    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">-->
+    <!--<link href='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.css' rel='stylesheet' />-->
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css"/>
     <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!-- My Style Sheet -->
-    <link href="css/map.css" rel="stylesheet" />    
+    <link href="css/test.css" rel="stylesheet" />    
 </head>
 
 <body>
     <div id='map'></div>
-    <div class="row">
-        <div id="menu" class="col-md-4 menu">
-            <a href="javascript:window.location.reload(true)" title="refresh the over all page" class="logo"> <img src="img/logo.png" width=284></a>
-            <div id="logo">
-                <p id="text1">
-                    <br>Exploring environmental conditions in the Greenpoint-williamsburg neighborhoods.</p>
-            </div>
-            <!--nav bar-->
-            <nav class="menu navbar navbar-custom">
-                <div class="container-fluid">
-                    <div role="tabpanel">
-                        <ul class="menu nav nav-pills nav-justified" role="tablist">
-                            <li role="presentation"><a href="#about" aria-controls="about" id="about_b" role="tab" data-toggle="tab">About</a></li>
-                            <li role="presentation"><a href="#layer" aria-controls="layer" id="dlayer_b" role="tab" data-toggle="tab">Map Layers</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade" id="about">
-                        <div class="container about" overflow-y: scroll;>
-                            <p>
-                             <p>The Greenpoint-Williamsburg ToxiCity Map is an interactive map of toxic “hot spots” in Greenpoint and Williamsburg. Data used to compile this map came from city, state and federal sources, guided by on-the-ground knowledge from local activists. Click through the data layers on the map to understand some neighborhood trends such as population density and asthma hospital visits, and locate some specific sites such as former NuHart Plastics factory and the Exxon oil spill. Sites that have already been remediated and sites that require future remediation are included on this map.</p>
+      <div id="menu" class="col-md-4 menu">
+          <a href="javascript:window.location.reload(true)" title="refresh the over all page" class="logo"> <img src="img/logo.png" width=284></a>
+          <div id="logo">
+              <p id="text1">
+                  <br>Exploring environmental conditions in the Greenpoint-williamsburg neighborhoods.</p>
+          </div>
+          <!--nav bar-->
+          <nav class="menu navbar navbar-custom">
+              <div class="container-fluid">
+                  <div role="tabpanel">
+                      <ul class="menu nav nav-pills nav-justified" role="tablist">
+                          <li role="presentation"><a href="#about" aria-controls="about" id="about_b" role="tab" data-toggle="tab">About</a></li>
+                          <li role="presentation"><a href="#layer" aria-controls="layer" id="dlayer_b" role="tab" data-toggle="tab">Map Layers</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade" id="about">
+                      <div class="container1 about" overflow-y: scroll;>
+                          <p>
+                           <p>The Greenpoint-Williamsburg ToxiCity Map is an interactive map of toxic “hot spots” in Greenpoint and Williamsburg. Data used to compile this map came from city, state and federal sources, guided by on-the-ground knowledge from local activists. Click through the data layers on the map to understand some neighborhood trends such as population density and asthma hospital visits, and locate some specific sites such as former NuHart Plastics factory and the Exxon oil spill. Sites that have already been remediated and sites that require future remediation are included on this map.</p>
 
-                            <p>NAG hopes that this project will help the community better understand the environmental concerns in the area they live in and ultimately to improve the health and well-being of the community by motivating and empowering community members to be more engaged in their local governing and policy-making process. </p>
+                          <p>NAG hopes that this project will help the community better understand the environmental concerns in the area they live in and ultimately to improve the health and well-being of the community by motivating and empowering community members to be more engaged in their local governing and policy-making process. </p>
 
-                            <p> This project is funded by a grant from <a href="#" class="text1">the NYS Department of Environmental Conservation.</a>
-                            </p>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="layer">
-                        <div class="container dlayer">
-                            <p class="subtitle"> &nbsp; Environmental Risks</p>
-                            <button class="btn btn-default layers data-layer" type="Button" id="waste_transfer_stations" title="Waste transfer stations"><i class="glyphicon glyphicon-trash"></i></button>
-                            <button class="btn btn-default layers data-layer" type="Button" id="polluted_points" title="Polluted Sites"><i class="glyphicon glyphicon-alert"></i></button>
-                            <button class="btn btn-default layers data-layer" type="Button" id="flood_risk" title="Future Flood Risk"><i class="fa fa-tint fa-4x"></i> </button>
-                            <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons" title="Polluted Places"><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true"></span></button>
-                            <p class="subtitle"> &nbsp; Neighborhood Characteristics</p>
-                            <button class="btn btn-default layers data-layer" type="Button" id="acs_pop" title="Population Density"><i class="fa fa-users fa-4x"></i></button>
-                            <button class="btn btn-default layers data-layer" type="Button" id="acs_income" title="Median Household Income"><i class="glyphicon glyphicon-usd"></i></button>
-                            <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="asthma" title="Asthma"><i class="fa fa-hospital-o fa-4x"></i></button>
-                            <p class="subtitle"> &nbsp; Industrial History</p>
-                            <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="industry" title="historic industrial area"><i class="fa fa-industry fa-4x"></i></button>
-                            <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="industry2" title="historic industrial area2"><i class="fa  fa-4x"></i></button>
-                            <p id="notice">
-                                <h7>*Click icons to add map layers.</h7>
-                            </p>
-                            <p id="nextsteps">
-                                <button class="btn btn-default clear" type="Button" id="clear_selection">Reset layers</button>
-                                <button class="btn btn-default next" type="Button" id="about">About the Data</button>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="container metadata">
-                    </div>
-                    <div class="container aboutus">
-                        <h4>About Us</h4>
-                        <hr>
-                        <p>
-                        Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
-                        This project is funded by a grant from the NYS Department of Environmental Conservation. GIS and interactive mapping consultation was from the Spatial Analysis and Visualization Initiative (SAVI) at Pratt Institute. The mapping platform for this project was generously donated through CartoDB.
-                        </p>
-                        <hr>
-                        <p class="copyright">Toxicity map<i class="fa fa-copyright"></i>2015 NAG-Brooklyn</p>
-                    </div>
-                    <div class="contact container">
-                        <h4>Contact Information</h4>
-                        <hr>
-                        <address>
-                            <strong>NAG-Brooklyn</strong>
-                            <br> Address: 110 Kent Ave,
-                            <br> 2nd Fl,
-                            <br> Brooklyn, NY 11249
-                            <br>
-                            <a href="tel:+1-718-384-2248"><i class="fa fa-phone fa-1x" title="718.384.2248"></i> &nbsp; 1.718.384.2248</a><br />
-                            <a href="mailto:nag.bklyn@gmail.com"><i class="fa fa-envelope fa-1x" title="nag.bklyn@gmail.com"></i> &nbsp; nag.bklyn@gmail.com</a>
-                        </address>
-                    </div>
-                </div>
-            </nav>
-        </div>
+                          <p> This project is funded by a grant from <a href="#" class="text1">the NYS Department of Environmental Conservation.</a>
+                          </p>
+                      </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="layer">
+                      <div class="container1 dlayer">
+                          <p class="subtitle"> &nbsp; Environmental Risks</p>
+                          <button class="btn btn-default layers data-layer" type="Button" id="waste_transfer_stations" title="Waste transfer stations"><i class="glyphicon glyphicon-trash"></i></button>
+                          <button class="btn btn-default layers data-layer" type="Button" id="polluted_points" title="Polluted Sites"><i class="glyphicon glyphicon-alert"></i></button>
+                          <button class="btn btn-default layers data-layer" type="Button" id="flood_risk" title="Future Flood Risk"><i class="fa fa-tint fa-4x"></i> </button>
+                          <button class="btn btn-default layers spills data-layer" type="Button" id="polluted_polygons" title="Polluted Places"><span class="glyphicon glyphicon-oil glyphicon-link" aria-hidden="true"></span></button>
+                          <p class="subtitle"> &nbsp; Neighborhood Characteristics</p>
+                          <button class="btn btn-default layers data-layer" type="Button" id="acs_pop" title="Population Density"><i class="fa fa-users fa-4x"></i></button>
+                          <button class="btn btn-default layers data-layer" type="Button" id="acs_income" title="Median Household Income"><i class="glyphicon glyphicon-usd"></i></button>
+                          <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="asthma" title="Asthma"><i class="fa fa-hospital-o fa-4x"></i></button>
+                          <p class="subtitle"> &nbsp; Industrial History</p>
+                          <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="industry" title="historic industrial area"><i class="fa fa-industry fa-4x"></i></button>
+                          <button class="btn btn-default layers data-layer Btn--l Btn--blue" type="Button" id="industry2" title="historic industrial area2"><i class="fa  fa-4x"></i></button>
+                          <p id="notice">
+                              <h7>*Click icons to add map layers.</h7>
+                          </p>
+                          <p id="nextsteps">
+                              <button class="btn btn-default clear" type="Button" id="clear_selection">Reset layers</button>
+                              <button class="btn btn-default next" type="Button" id="about">About the Data</button>
+                          </p>
+                      </div>
+                  </div>
+                  <div class="container1 metadata">
+                  </div>
+                  <div class="container1 aboutus">
+                      <h4>About Us</h4>
+                      <hr>
+                      <p>
+                      Neighbors Allied for Good Growth (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
+                      This project is funded by a grant from the NYS Department of Environmental Conservation. GIS and interactive mapping consultation was from the Spatial Analysis and Visualization Initiative (SAVI) at Pratt Institute. The mapping platform for this project was generously donated through CartoDB.
+                      </p>
+                      <hr>
+                      <p class="copyright">Toxicity map<i class="fa fa-copyright"></i>2015 NAG-Brooklyn</p>
+                  </div>
+                  <div class="contact container1">
+                      <h4>Contact Information</h4>
+                      <hr>
+                      <address>
+                          <strong>NAG-Brooklyn</strong>
+                          <br> Address: 110 Kent Ave,
+                          <br> 2nd Fl,
+                          <br> Brooklyn, NY 11249
+                          <br>
+                          <a href="tel:+1-718-384-2248"><i class="fa fa-phone fa-1x" title="718.384.2248"></i> &nbsp; 1.718.384.2248</a><br />
+                          <a href="mailto:nag.bklyn@gmail.com"><i class="fa fa-envelope fa-1x" title="nag.bklyn@gmail.com"></i> &nbsp; nag.bklyn@gmail.com</a>
+                      </address>
+                  </div>
+              </div>
+          </nav>
     </div>
-    <!-- Set the display of this container to none so we can
+    <!-- Set the display of this container1 to none so we can
      add it programmatically to `legendControl` -->
-    <div class="footer" class="container-fluid">
+    <div class="footer" class="container1-fluid">
         <ul class="nav nav-pills nav-justified">
             <li><a id="print_b">Print</a></li>
             <li><a id="aboutus_b">About Us</a></li>
