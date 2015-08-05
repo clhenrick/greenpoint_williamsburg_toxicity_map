@@ -5,6 +5,7 @@ app.legend = (function(){
   return {
     
     waste_transfer_stations : {
+      title : ""
       items : [
         {
           color : "",
@@ -14,23 +15,55 @@ app.legend = (function(){
     },
     
     polluted_points : {
+      title : "Poluted Sites (Points)"
       items : [
         {
           color : "",
-          label : "Polluted points"
+          label : ""
+        },
+        {
+          color : "",
+          label : ""
+        },
+        {
+          color : "",
+          label : ""
+        },
+        {
+          color : "",
+          label : ""
+        }
+      ]
+    },
+
+    polluted_areas : {
+      title : "Polluted Sites (Areas)",
+      items : [
+        {
+          color : "",
+          label : ""
+        },
+        {
+          color : "",
+          label : ""
+        },
+        {
+          color : "",
+          label : ""
         }
       ]
     },
     
     flood_risk : {
+      title : "Flood Risk",
       items : [
         {
-          color : "",
-          label : "A"
+          color : "#2E5387 ",
+          label : "Projected 500-year storm"
         },
         {
-          color : "",
-          label : "B"
+          color : "#0f3b82",
+          label : "Projected 100-year storm"
         }
       ]
     },
@@ -39,20 +72,24 @@ app.legend = (function(){
       title : "Asthma",
       items : [
         {
-          color : "",
-          label : "A"
+          color : "#5a3072",
+          label : "21 - 35"
         },
         {
-          color : "",
-          label : "B"
+          color : "#7a518b ",
+          label : "10 - 20"
         },
         {
-          color : "",
-          label : "A"
+          color : "#9c7aac",
+          label : "6 - 9"
         },
         {
-          color : "",
-          label : "B"
+          color : "#bfa4cd",
+          label : "0 - 5"
+        },
+        {
+          color : "#ffffff",
+          label : "0"
         }
       ]
     },
@@ -61,28 +98,24 @@ app.legend = (function(){
       title : "Median Income",
       items : [
         {
-          color : "",
-          label : "A"
+          color : "#216437",
+          label : "$75,001 or more"
         },
         {
-          color : "",
-          label : "B"
+          color : "#4f8759",
+          label : "$65,001 - $75,000"
         },
         {
-          color : "",
-          label : "A"
+          color : "#75ab7e",
+          label : "$50,001 - $65,000"
         },
         {
-          color : "",
-          label : "B"
+          color : "#a5d0b4",
+          label : "$25,001 - $50,000"
         },
         {
-          color : "",
-          label : "A"
-        },
-        {
-          color : "",
-          label : "B"
+          color : "#dcf5e8",
+          label : "0 - $25,000"
         }        
       ]
     },
