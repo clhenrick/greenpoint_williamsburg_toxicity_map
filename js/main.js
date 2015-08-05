@@ -220,7 +220,7 @@ app.map = (function(w, d, $, _) {
     var init = function() {
         initMap();
         initZoomButtons();
-        zoomStartSetting();
+       // zoomStartSetting();
     };
 
 
@@ -235,5 +235,5 @@ app.map = (function(w, d, $, _) {
 
 window.addEventListener('DOMContentLoaded', function() {
     app.map.init();
-    app.interaction.init();
+    //app.interaction.init();
 });

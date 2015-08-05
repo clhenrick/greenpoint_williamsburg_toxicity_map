@@ -335,15 +335,15 @@ input {
 }
 
 .about {
-    text-indent: 10px;
+    text-indent: 1.6em;
     text-align: left;
     width: 100%;
     color: #1f1f1f;
     line-height: 180%;
     padding-bottom: 20px;
     padding-right: 40px;
-    padding-left: 20px;
-    padding-top:20px;
+    padding-left: 16px;
+    padding-top:45px;
     background-color: none;/*#dbdad3*/
     border:2px #393939;
    /* box-shadow: 1px 1px 3px #9e9e9e; */
@@ -366,8 +366,9 @@ p:.about{
     display: none;
     padding:20px;
     padding-right: 30px;
-   width: 295px;
+    width: 295px;
     color: #696969;
+    text-indent: 1.5em;
 
 }
 .aboutus_show{

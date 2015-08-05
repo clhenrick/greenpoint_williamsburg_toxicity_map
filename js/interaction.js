@@ -15,11 +15,10 @@ app.interaction = (function(d,$, _) {
         }
     });
     $('.next').click(function(){
-    	var $aboutthedata = $( "<div id='metadata'/>" ),
-		metadata1 = document.createElement( "div" ),
-		metadata2 = document.getElementById( "metadata" );
- 
-	$( "body" ).append( $aboutthedata, [ metadata1, metadata2 ] );
+    	var $aboutthedata = $( "<p id='desc1'>Here you go!</p>" );
+     	$('.container').not('.metadata').hide();
+	    $('.metadata').toggle();
+		$('.metadata').append( $aboutthedata );
     });
 
 	var desc = [
@@ -31,7 +30,6 @@ app.interaction = (function(d,$, _) {
 		{title:"acs_income", field:"cotents3"},
 		{title:"asthma", field:"cotents3"}
 	];
-
 
 
     /*  
@@ -61,17 +59,35 @@ app.interaction = (function(d,$, _) {
 		
     };//eof layer_desc
 
+
 */
-    //layer button pressed effect
-    $('button'+".layers").click(function() {
-        //$(this).toggleClass('pressed');
-        $(this).toggleClass('active');
-    })
 
 
-    //
-    var buttonId = $('selected').attr('id');
-    console.log(buttonId);
+	function screenshot(){
+		if(screen.width>0 && screen.height>0){
+			try{
+				//$('body').append('<div id="canvas"></div>');
+				html2canvas(document.body, {
+					allowTaint :  false,
+					logging : true,
+					taintTest: false,
+					useCORS: true,
+        			onrendered: function(canvas) {
+            // canvas is the final rendered <canvas> element
+           			var cap = canvas.toDataURL();
+           			window.open(cap);
+			        }
+			    });
+			}
+			catch(err){
+				console.log(err.message);
+			}
+		}
+	}
+
+	$('#print_b').click(function(){
+		screenshot();
+	});
 
     $('#aboutus_b').click(function() {
     	$('.container').not('.aboutus').hide();
