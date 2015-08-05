@@ -1,9 +1,30 @@
 var app = app || {};
 
-app.map = (function(w, d, $, _) {    
+app.map = (function(w, d, $, H) {    
     var sublayers = [], // For storing the cartodb sublayers
         sublayerActions = [], // for layer button interactions
-        map_object;
+        map_object,
+        legend_data = app.legend,
+        hb_source = d.getElementById('legend-template').innerHTML,
+        hb_template = H.compile(hb_source),
+        hb_data = [];
+
+    // register handlebars helpers for rendering legends
+    H.registerHelper('each', function(context, options) {
+        var ret = "";
+        for(var i=0, j=context.length; i<j; i++) {
+          ret = ret + options.fn(context[i]);
+        }
+        return ret;
+    });
+
+    H.registerHelper('if', function(conditional, options) {
+        if (conditional) {
+          return options.fn(this);
+        } else {
+          return options.inverse(this);
+        }
+    });        
 
     function initMap() {
         // map paramaters to pass to Leaflet
@@ -21,16 +42,6 @@ app.map = (function(w, d, $, _) {
         var defualtHeight = 1024; 
         var screenWidth = $(window).width(); //get the current screen width
         var screenHeight = $(window).height(); //get the current screen height
-
-        if(screenWidth < defaultWidth  || screenHeight < defualtHeight ){
-            zoomStart = 14;
-            console.log("Browser resolution :"+screenWidth+"/"+screenHeight+"Zoom :"+zoomStart);
-        } else if(screenWidth > defaultWidth || screenHeight > defualtHeight ){
-            zoomStart = 15; //defualt setting for 1440*900
-            console.log("Browser resolution :"+screenWidth+" | "+screenHeight +"Zoom :"+ zoomStart);
-        } else if(screenWidth > defaultWidth || screenHeight > defualtHeight){
- 
-        } 
        }
 
         var params = {
@@ -70,39 +81,43 @@ app.map = (function(w, d, $, _) {
         var basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v4/' + mapid + '/{z}/{x}/{y}.png?access_token=' + accessToken, 
         {attribution: attr}
         ).addTo(map_object);
-/*
-        // attribute MapBox and OSM
-        var attribution = new L.control.attribution({position: 'bottomright', prefix: false});
-        attribution.addAttribution('<a href="https://www.mapbox.com/about/maps/">© Mapbox © OpenStreetMap</a>');
-        attribution.addTo(map_object);
-    */
-  
+    
+    } // end init map
 
-        // layer meta-data for Layer Source Object to pass to cartodb.createLayer()
+
+    function initCartoDBLayers() {
+    // layer meta-data for Layer Source Object to pass to cartodb.createLayer()
         var layerSource = {
             user_name: 'nag-brooklyn',
             type: 'cartodb',
             sublayers: [{
                 sql: "SELECT * FROM acs_5yr_2013",
-                cartocss: "#acs_5yr_2013{  line-join: round;  polygon-fill: #FFFFFF;  polygon-opacity: .7; polygon-comp-op: multiply; line-color: #696969;  line-width: 0.1;  line-opacity: .5;  image-filters: agg-stack-blur(1,1);}#acs_5yr_2013 [roundedcpop >75001]{polygon-fill: #cfb928;}#acs_5yr_2013 [roundedcpop >55001][ roundedcpop <= 75000] { polygon-fill: #dfcd66; } #acs_5yr_2013 [roundedcpop > 40001][ roundedcpop <= 55000] {polygon-fill: #e8dc91; } #acs_5yr_2013 [roundedcpop > 25001][ roundedcpop <= 40000] { polygon-fill: #f0ecd7; }#acs_5yr_2013 [roundedcpop >0][ roundedcpop <= 25000] {polygon-fill: #fcfaef;}"
+                cartocss: "#acs_5yr_2013{  line-join: round;  polygon-fill: #FFFFFF;  polygon-opacity: .7; polygon-comp-op: multiply; line-color: #696969;  line-width: 0.1;  line-opacity: .5;  image-filters: agg-stack-blur(1,1);}#acs_5yr_2013 [roundedcpop >75001]{polygon-fill: #cfb928;}#acs_5yr_2013 [roundedcpop >55001][ roundedcpop <= 75000] { polygon-fill: #dfcd66; } #acs_5yr_2013 [roundedcpop > 40001][ roundedcpop <= 55000] {polygon-fill: #e8dc91; } #acs_5yr_2013 [roundedcpop > 25001][ roundedcpop <= 40000] { polygon-fill: #f0ecd7; }#acs_5yr_2013 [roundedcpop >0][ roundedcpop <= 25000] {polygon-fill: #fcfaef;}",
+                interactivity: "cartodb_id, roundedcpop"
             }, {
                 sql: "SELECT * FROM acs_5yr_2013",
-                cartocss: "#acs_5yr_2013{polygon-fill: #ECF0F6;polygon-opacity: 0.8;polygon-comp-op: multiply;line-color: #000000;line-width: 0.5;line-opacity: 0.1;}#acs_5yr_2013 [rounded_mhhi > 75001]{polygon-fill: #216437;}#acs_5yr_2013 [rounded_mhhi > 65001][rounded_mhhi <= 75000]{polygon-fill: #4f8759;}#acs_5yr_2013 [rounded_mhhi > 50001][rounded_mhhi <= 65000]{polygon-fill: #75ab7e;}#acs_5yr_2013 [rounded_mhhi > 25001][rounded_mhhi <= 50000]{polygon-fill: #a5d0b4;}#acs_5yr_2013 [rounded_mhhi > 0 ][rounded_mhhi <= 25000] {polygon-fill: #dcf5e8;}"
+                cartocss: "#acs_5yr_2013{polygon-fill: #ECF0F6;polygon-opacity: 0.8;polygon-comp-op: multiply;line-color: #000000;line-width: 0.5;line-opacity: 0.1;}#acs_5yr_2013 [rounded_mhhi > 75001]{polygon-fill: #216437;}#acs_5yr_2013 [rounded_mhhi > 65001][rounded_mhhi <= 75000]{polygon-fill: #4f8759;}#acs_5yr_2013 [rounded_mhhi > 50001][rounded_mhhi <= 65000]{polygon-fill: #75ab7e;}#acs_5yr_2013 [rounded_mhhi > 25001][rounded_mhhi <= 50000]{polygon-fill: #a5d0b4;}#acs_5yr_2013 [rounded_mhhi > 0 ][rounded_mhhi <= 25000] {polygon-fill: #dcf5e8;}",
+                interactivity: "cartodb_id, rounded_mhhi"
             }, {
                 sql: "SELECT * FROM asthma_5yr_2012",
-                cartocss: "#asthma_2012_ct{ polygon-fill: #FFFFFF; polygon-opacity: .7; line-color: #666666; line-width: 0.2; line-opacity: .5; polygon-comp-op:multiply; } #asthma_5yr_2012[ asthma5yr >= 21 ][ asthma5yr <= 35 ] { polygon-fill: #5a3072; } #asthma_5yr_2012 [ asthma5yr <= 10][ asthma5yr <= 20 ] { polygon-fill: #7a518b; } #asthma_5yr_2012[ asthma5yr <= 6][ asthma5yr <= 9] { polygon-fill: #9c7aac; } #asthma_5yr_2012[ asthma5yr <= 1][ asthma5yr <= 5] { polygon-fill: #bfa4cd; } #asthma_5yr_2012[ asthma5yr = 0] { polygon-fill: #FFFFFF; }"  
+                cartocss: "#asthma_2012_ct{ polygon-fill: #FFFFFF; polygon-opacity: .7; line-color: #666666; line-width: 0.2; line-opacity: .5; polygon-comp-op:multiply; } #asthma_5yr_2012[ asthma5yr >= 21 ][ asthma5yr <= 35 ] { polygon-fill: #5a3072; } #asthma_5yr_2012 [ asthma5yr <= 10][ asthma5yr <= 20 ] { polygon-fill: #7a518b; } #asthma_5yr_2012[ asthma5yr <= 6][ asthma5yr <= 9] { polygon-fill: #9c7aac; } #asthma_5yr_2012[ asthma5yr <= 1][ asthma5yr <= 5] { polygon-fill: #bfa4cd; } #asthma_5yr_2012[ asthma5yr = 0] { polygon-fill: #FFFFFF; }",
+                interactivity: "cartodb_id"  
             }, {
                 sql: "SELECT * FROM table_2020_floodplain_dissolve_aug04", 
-                cartocss: "#table_2020_projected_flood_risk{polygon-fill: #2E5387; polygon-opacity: 0.5; polygon-comp-op: multiply; line-color: #bfd1ff; line-width: 0.3; line-opacity: 0; }"
+                cartocss: "#table_2020_projected_flood_risk{polygon-fill: #2E5387; polygon-opacity: 0.5; polygon-comp-op: multiply; line-color: #bfd1ff; line-width: 0.3; line-opacity: 0; }",
+                interactivity: "cartodb_id"
             }, {
                 sql: "SELECT * FROM polluted_polygons_w_remediated_1",
-                cartocss: "#polluted_polygons_w_remediated_1 {polygon-opacity: 0.7;line-color: #FFF;line-width: 0.5;line-opacity: 0;}#polluted_polygons_w_remediated_1[nag_id=1] {polygon-fill:#feb9f0;}#polluted_polygons_w_remediated_1[nag_id=2] {polygon-fill: #feff83;}#polluted_polygons_w_remediated_1[nag_id=3] {polygon-fill: #f3cc81;}"
+                cartocss: "#polluted_polygons_w_remediated_1 {polygon-opacity: 0.7;line-color: #FFF;line-width: 0.5;line-opacity: 0;}#polluted_polygons_w_remediated_1[nag_id=1] {polygon-fill:#feb9f0;}#polluted_polygons_w_remediated_1[nag_id=2] {polygon-fill: #feff83;}#polluted_polygons_w_remediated_1[nag_id=3] {polygon-fill: #f3cc81;}",
+                interactivity: "cartodb_id, acres"
             }, {
                 sql: "SELECT * FROM polluted_points",
-                cartocss: "#polluted_points {marker-fill-opacity: 0.9;marker-line-color: #FFFFFF;marker-line-width: 0.1;marker-line-opacity: 0.1;marker-placement: point;marker-type: ellipse;marker-width: 6.8;marker-allow-overlap: false;}#polluted_points[nag_id=10] {marker-fill: #7b0006;}#polluted_points[nag_id=7] {marker-fill: #fba782;}#polluted_points[nag_id=8] {marker-fill: #aa04ee;}#polluted_points[nag_id=9] {marker-fill: #e171fb;}"
+                cartocss: "#polluted_points {marker-fill-opacity: 0.9;marker-line-color: #FFFFFF;marker-line-width: 0.1;marker-line-opacity: 0.1;marker-placement: point;marker-type: ellipse;marker-width: 6.8;marker-allow-overlap: false;}#polluted_points[nag_id=10] {marker-fill: #7b0006;}#polluted_points[nag_id=7] {marker-fill: #fba782;}#polluted_points[nag_id=8] {marker-fill: #aa04ee;}#polluted_points[nag_id=9] {marker-fill: #e171fb;}",
+                interactivity: "cartodb_id, address"
             }, {
                 sql: "SELECT * FROM wts_July30", 
-                cartocss: "#wts_july30{ marker-fill-opacity: 0; marker-line-color: #850200; marker-line-width: 3.5; marker-line-opacity: 0.7; marker-placement: point; marker-type: ellipse; marker-width: 10; marker-allow-overlap: true; }"
+                cartocss: "#wts_july30{ marker-fill-opacity: 0; marker-line-color: #850200; marker-line-width: 3.5; marker-line-opacity: 0.7; marker-placement: point; marker-type: ellipse; marker-width: 10; marker-allow-overlap: true; }",
+                interactivity: "cartodb_id, address"
             }]
         }; //end of layerSource
 
@@ -114,24 +129,33 @@ app.map = (function(w, d, $, _) {
                 attributionControl: true
         };
 
-    cartodb.createLayer(map_object, layerSource, cdb_options)
-        .addTo(map_object)
-        .on('done', function(layer) {
-            layer.setZIndex(5); // make sure the cartodb layer is on top.
+        cartodb.createLayer(map_object, layerSource, cdb_options)
+            .addTo(map_object)
+            .on('done', function(layer) {
+                layer.setZIndex(5); // make sure the cartodb layer is on top.
 
-            // get the number of sublayers
-            var numSubLayers = layer.getSubLayerCount();
-            for (var i = 0; i < numSubLayers; i++) {
-                layer.getSubLayer(i).setInteraction(true);
-                layer.getSubLayer(i).hide();
-                sublayers.push(layer.getSubLayer(i));
-            }
+                // get the number of sublayers
+                var numSubLayers = layer.getSubLayerCount();
+                for (var i = 0; i < numSubLayers; i++) {
+                    layer.getSubLayer(i).setInteraction(true);
+                    layer.getSubLayer(i).hide();
+                    sublayers.push(layer.getSubLayer(i));
 
-        }).on('error', function(error) {
-            console.log('error with cartodb.createLayer: ', error);
-        });
+                    var fields = layerSource.sublayers[i].interactivity.split(",");
 
-    // button interactions
+                    cartodb.vis.Vis.addInfowindow(
+                        map_object, 
+                        layer.getSubLayer(i),
+                        fields
+                    );
+                }
+
+            }).on('error', function(error) {
+                console.log('error with cartodb.createLayer: ', error);
+            });
+    }  
+
+    // button interactions object
     // call like: sublayerActions[i].layer_name();
     sublayerActions = {
         acs_pop : function() {
@@ -173,26 +197,72 @@ app.map = (function(w, d, $, _) {
         if ($button.hasClass('selected')) {
             sublayers[index].hide();
             $button.removeClass('selected active focus');
+            removeLengend(id.split('#')[1]);
+
         } else if ($button.hasClass('selected') !== true) {
             // if a choropleth layer is already on, hide it.
             if (index >=0  && index < 3) {
                 for (var i = 0; i < 3; i++) {
                     sublayers[i].hide();
-                   $($('.data-layer')[i]).removeClass('selected');
-                   //This matches the array order to the button orders. 
-                   $($('.data-layer')[i+4]).removeClass('active focus');
+                    $($('.data-layer')[i]).removeClass('selected');
+                    //This matches the array order to the button orders. 
+                    $($('.data-layer')[i+4]).removeClass('active focus');
+                    
+                    console.log()
+                    
+                    var id2 = '#' + $('.data-layer')[i+4].getAttribute('id');
+                    var legendDestroy = $(id2 + '-legend');
+
+                    if (legendDestroy.length > 0 && id2 !== id) {
+                        removeLengend(id2.split('#')[1]);
+                    }                   
                }
             }
 
             sublayers[index].show();
+            renderLegend(id.split('#')[1]);
             $button.addClass('selected active');
         }
         return true;
     }
 
+    // renders the data layer's legend
+    function renderLegend(layer) {
+        console.log('layer: ', layer);
+        var data = legend_data[layer];
+        data.id = layer;    
+
+        function passData() {            
+            var html = hb_template(data);
+            $('.map-legends').append(html);
+        }
+
+        function resizeLegendContainer() {
+            var h1 = $('.map-legends').innerHeight(),
+                h2 = $('.legend-sources').innerHeight(),
+                total = h1 + h2 + 35;
+            $('#map-legend-container').innerHeight(total);
+        }
+
+        passData();
+        resizeLegendContainer();
+    }
+
+    function removeLengend(layer) {
+        var target = $('#' + layer + '-legend'),
+            lcontainer = $('#map-legend-container'),
+            tHeight = target.innerHeight(),
+            lHeight = lcontainer.innerHeight();
+
+        target.remove();
+        lcontainer.innerHeight(lHeight - tHeight - 10);
+    }
+
+    /* event listeners */
     // call the appropriate function when user clicks a button
     $('.data-layer').click(function() {
-        sublayerActions[$(this).attr('id')]();
+        var layer = $(this).attr('id');
+        sublayerActions[layer]();
     });
 
     // clear all the layers
@@ -203,8 +273,6 @@ app.map = (function(w, d, $, _) {
         });
         $('.data-layer').removeClass('selected active');
     });
-
-    } //end of initmap 
 
     // set up custom zoom buttons
     var initZoomButtons = function(){
@@ -217,8 +285,11 @@ app.map = (function(w, d, $, _) {
         });
     };
 
+
+    /* get it all going! */
     var init = function() {
         initMap();
+        initCartoDBLayers();
         initZoomButtons();
        // zoomStartSetting();
     };
@@ -227,11 +298,12 @@ app.map = (function(w, d, $, _) {
     return {
         init: init,
         sublayers : sublayers,
-        sublayerActions: sublayerActions
-
+        sublayerActions: sublayerActions,
+        hideShow : hideShow,
+        renderLegend : renderLegend
     };
 
-})(window, document, jQuery, _);
+})(window, document, jQuery, Handlebars);
 
 window.addEventListener('DOMContentLoaded', function() {
     app.map.init();
