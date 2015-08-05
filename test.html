@@ -18,7 +18,7 @@
     <div id="layers">
       <a id="waste_transfer_stations" href="#" class="data-layer">waste transfer stations</a>
       <a id="polluted_points" href="#" class="data-layer">polluted points</a>
-      <a id="polluted_polyongs" href="#" class="data-layer">polluted areas</a>
+      <a id="polluted_polygons" href="#" class="data-layer">polluted areas</a>
       <a id="flood_risk" href="#" class="data-layer">flood risk</a>
       <a id="asthma" href="#" class="data-layer">asthma</a>
       <a id="acs_income" href="#" class="data-layer">median income</a>
@@ -26,12 +26,39 @@
     </div>
 
     <div id='map'></div>
-    
+
+    <!-- underscore template for map's data layers legend -->
+    <script id="map-legend" type="text/x-handlebars-template">
+
+    </script>
+
+      <div class="map-legend">
+        <h3>Map Legend</h3>
+        <ul class="legend-lables">
+          <li> <span></span> Throughout Truck Route</li>
+          <li> <span></span> Local Truck Route</li>
+          <li> <span></span> Zipcodes</li>
+          <li> <span></span> Community District Boundary</li>
+          <% _.each( legend.items, function(item){ %>
+          <li><span style='background:<%-item.color %>;'></span><%-item.label%></li>
+          <% }); %>
+        </ul>
+        <h3>{{title}}</h3>
+        <ul>
+        </ul>
+      </div>
+      <div class="legend-source">
+        <p>Data source: <a href="#">Source</a></p>
+      </div>
+
     <!-- Javascript Libraries -->
     <script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>    
     <script src='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.standalone.js'></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="js/bower_components/underscore/underscore.js"></script>
+    <script src="js/bower_components/handlebars/handlebars.js"></script>
     <!-- js code -->
+    <script src="js/legendstyles.js"></script>
     <script src="js/main.js"></script>
     <script src="js/interaction.js"></script>
     <script src="js/html2canvas.js"></script>
