@@ -15,7 +15,7 @@
 
   <body>
     <!-- tmp layer control -->
-    <div id="layers">
+    <div id="layers" class="ui">
       <a id="waste_transfer_stations" href="#" class="data-layer">waste transfer stations</a>
       <a id="polluted_points" href="#" class="data-layer">polluted points</a>
       <a id="polluted_polygons" href="#" class="data-layer">polluted areas</a>
@@ -27,29 +27,42 @@
 
     <div id='map'></div>
 
-    <!-- underscore template for map's data layers legend -->
-    <script id="map-legend" type="text/x-handlebars-template">
+    <div id="map-legend-container" class="ui">
+      <div class="map-legends">
+        <div class="legend">
+          <h2>Map Legend</h2>
+          <hr>
+          <h3>Basemap Layers</h3>
+          <ul class="legend-labels">
+            <li><span class="through-truck"></span> Throughout Truck Route</li>
+            <li><span class="local-truck"></span> Local Truck Route</li>
+            <li><span class="zipcodes"></span> Zipcodes</li>
+            <!-- <li><span></span> Community District Boundary</li> -->
+          </ul>          
+        </div>
+      </div>
+      <hr>
+      <div class="legend-sources">
+        <p>Data source A: <a href="#">url to source</a></p>
+      </div>
+    </div>
 
+    <!-- handlebars template for map's data layers legend -->
+    <script id="legend-template" type="text/x-handlebars-template">
+      <div class="legend">
+        <h3>{{title}}</h3>
+        <ul class="legend-labels">
+          {{#each item}}
+          <li><span style="background: {{color}}"></span>{{label}}</li>
+          {{/each}}
+        </ul>
+      </div>    
     </script>
 
-      <div class="map-legend">
-        <h3>Map Legend</h3>
-        <ul class="legend-lables">
-          <li> <span></span> Throughout Truck Route</li>
-          <li> <span></span> Local Truck Route</li>
-          <li> <span></span> Zipcodes</li>
-          <li> <span></span> Community District Boundary</li>
-          <% _.each( legend.items, function(item){ %>
-          <li><span style='background:<%-item.color %>;'></span><%-item.label%></li>
-          <% }); %>
-        </ul>
-        <h3>{{title}}</h3>
-        <ul>
-        </ul>
-      </div>
-      <div class="legend-source">
-        <p>Data source: <a href="#">Source</a></p>
-      </div>
+    <!-- handlebars template for map's data layers legend -->
+    <script id="legend-source" type="text/x-handlebars-template">
+      <p>{{name}}<a href="{{url}}">{{source}}</a></p>
+    </script>    
 
     <!-- Javascript Libraries -->
     <script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>    

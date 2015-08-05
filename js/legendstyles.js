@@ -5,33 +5,33 @@ app.legend = (function(){
   return {
     
     waste_transfer_stations : {
-      title : ""
+      title : "",
       items : [
         {
-          color : "",
+          color : "#a00002",
           label : "Waste transfer station"
         }
       ]
     },
     
     polluted_points : {
-      title : "Poluted Sites (Points)"
+      title : "Poluted Sites (Points)",
       items : [
         {
-          color : "",
-          label : ""
+          color : "#aa04ee",
+          label : "EPA Regulated"
         },
         {
-          color : "",
-          label : ""
+          color : "#fba782",
+          label : "E-Designated"
         },
         {
-          color : "",
-          label : ""
+          color : "#7b0006",
+          label : "Spills > 100 Gallons"
         },
         {
-          color : "",
-          label : ""
+          color : "#e171fb",
+          label : "Spills < 100 Gallons"
         }
       ]
     },
@@ -40,16 +40,16 @@ app.legend = (function(){
       title : "Polluted Sites (Areas)",
       items : [
         {
-          color : "",
-          label : ""
+          color : "#feb9f0",
+          label : "Plume"
         },
         {
-          color : "",
-          label : ""
+          color : "#feff83",
+          label : "Superfund"
         },
         {
-          color : "",
-          label : ""
+          color : "#f3cc81",
+          label : "Brownfield"
         }
       ]
     },
