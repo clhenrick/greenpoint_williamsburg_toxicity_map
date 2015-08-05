@@ -36,7 +36,7 @@ app.legend = (function(){
       ]
     },
 
-    polluted_areas : {
+    polluted_polygons : {
       title : "Polluted Sites (Areas)",
       items : [
         {

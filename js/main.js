@@ -197,18 +197,30 @@ app.map = (function(w, d, $, H) {
         if ($button.hasClass('selected')) {
             sublayers[index].hide();
             $button.removeClass('selected active focus');
+            removeLengend(id.split('#')[1]);
+
         } else if ($button.hasClass('selected') !== true) {
             // if a choropleth layer is already on, hide it.
             if (index >=0  && index < 3) {
                 for (var i = 0; i < 3; i++) {
                     sublayers[i].hide();
-                   $($('.data-layer')[i]).removeClass('selected');
-                   //This matches the array order to the button orders. 
-                   $($('.data-layer')[i+4]).removeClass('active focus');
+                    $($('.data-layer')[i]).removeClass('selected');
+                    //This matches the array order to the button orders. 
+                    $($('.data-layer')[i+4]).removeClass('active focus');
+                    
+                    console.log()
+                    
+                    var id2 = '#' + $('.data-layer')[i+4].getAttribute('id');
+                    var legendDestroy = $(id2 + '-legend');
+
+                    if (legendDestroy.length > 0 && id2 !== id) {
+                        removeLengend(id2.split('#')[1]);
+                    }                   
                }
             }
 
             sublayers[index].show();
+            renderLegend(id.split('#')[1]);
             $button.addClass('selected active');
         }
         return true;
@@ -216,9 +228,9 @@ app.map = (function(w, d, $, H) {
 
     // renders the data layer's legend
     function renderLegend(layer) {
+        console.log('layer: ', layer);
         var data = legend_data[layer];
-
-        console.log('data: ', data);       
+        data.id = layer;    
 
         function passData() {            
             var html = hb_template(data);
@@ -236,10 +248,21 @@ app.map = (function(w, d, $, H) {
         resizeLegendContainer();
     }
 
+    function removeLengend(layer) {
+        var target = $('#' + layer + '-legend'),
+            lcontainer = $('#map-legend-container'),
+            tHeight = target.innerHeight(),
+            lHeight = lcontainer.innerHeight();
+
+        target.remove();
+        lcontainer.innerHeight(lHeight - tHeight - 10);
+    }
+
     /* event listeners */
     // call the appropriate function when user clicks a button
     $('.data-layer').click(function() {
-        sublayerActions[$(this).attr('id')]();
+        var layer = $(this).attr('id');
+        sublayerActions[layer]();
     });
 
     // clear all the layers
