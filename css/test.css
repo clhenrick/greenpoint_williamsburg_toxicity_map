@@ -16,3 +16,52 @@ html {
   bottom: 0;
   width: 100%;
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 295px;
+    /* Set the fixed height of the footer here */
+    
+    height: 60px;
+    background-color: #d0cece;
+    box-shadow: 1px 1px 3px #9e9e9e;
+}
+
+div {
+    /* padding: 1px, 1px, 1px, 1px;*/
+    
+    margin: 0px;
+    position: relative;
+    color: white;
+    text-align: left;
+    font-size: 12px;
+    outline: none;
+}
+
+#menu {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #d0cece;
+    width: 310px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid #cecece;
+    box-shadow: 1px 1px 3px #9e9e9e;
+}
+
+a {
+    color:#909090;
+    font-weight: bold;
+}
+
+.container1 {
+    background-color: #d0cece;
+    height: 100% relative;
+    width: 317px;
+    /*it should be width:24% just for instant fix of the text overflow ;*/
+    margin-left: 18px;
+    padding-top: 20px;
+   overflow-y: scroll;
+}
