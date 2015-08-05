@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nag-Brooklyn map</title>
+    <meta charset=utf-8 />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- CSS libraries -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css"/>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- My Style Sheet -->
+    <link href="css/test.css" rel="stylesheet"/>    
+  </head>
+
+  <body>
+    <!-- tmp layer control -->
+    <div id="layers">
+      <a id="waste_transfer_stations" href="#" class="data-layer">waste transfer stations</a>
+      <a id="polluted_points" href="#" class="data-layer">polluted points</a>
+      <a id="polluted_polyongs" href="#" class="data-layer">polluted areas</a>
+      <a id="flood_risk" href="#" class="data-layer">flood risk</a>
+      <a id="asthma" href="#" class="data-layer">asthma</a>
+      <a id="acs_income" href="#" class="data-layer">median income</a>
+      <a id="acs_pop" href="#" class="data-layer">population density</a>
+    </div>
+
+    <div id='map'></div>
+    
+    <!-- Javascript Libraries -->
+    <script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>    
+    <script src='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.standalone.js'></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <!-- js code -->
+    <script src="js/main.js"></script>
+    <script src="js/interaction.js"></script>
+    <script src="js/html2canvas.js"></script>
+  </body>
+</html>
