@@ -71,6 +71,10 @@ body {
   list-style-type: none;
 }
 
+div.legend {
+  margin-bottom: 10px;
+}
+
 ul.legend-labels li {
   list-style: none;
   margin-left: 0;
@@ -86,7 +90,7 @@ ul.legend-labels li span {
   margin-right: 5px;
   margin-left: 0;
   border: 1px solid #999;
-  opacity: 0.7;  
+  opacity: 0.7;
 }
 
 span.through-truck {

@@ -50,9 +50,11 @@
     <!-- handlebars template for map's data layers legend -->
     <script id="legend-template" type="text/x-handlebars-template">
       <div class="legend">
+        {{#if title}}
         <h3>{{title}}</h3>
+        {{/if}}
         <ul class="legend-labels">
-          {{#each item}}
+          {{#each items}}
           <li><span style="background: {{color}}"></span>{{label}}</li>
           {{/each}}
         </ul>

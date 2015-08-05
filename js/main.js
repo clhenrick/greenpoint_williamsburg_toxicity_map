@@ -1,9 +1,30 @@
 var app = app || {};
 
-app.map = (function(w, d, $, _) {    
+app.map = (function(w, d, $, H) {    
     var sublayers = [], // For storing the cartodb sublayers
         sublayerActions = [], // for layer button interactions
-        map_object;
+        map_object,
+        legend_data = app.legend,
+        hb_source = d.getElementById('legend-template').innerHTML,
+        hb_template = H.compile(hb_source),
+        hb_data = [];
+
+    // register handlebars helpers for rendering legends
+    H.registerHelper('each', function(context, options) {
+        var ret = "";
+        for(var i=0, j=context.length; i<j; i++) {
+          ret = ret + options.fn(context[i]);
+        }
+        return ret;
+    });
+
+    H.registerHelper('if', function(conditional, options) {
+        if (conditional) {
+          return options.fn(this);
+        } else {
+          return options.inverse(this);
+        }
+    });        
 
     function initMap() {
         // map paramaters to pass to Leaflet
@@ -134,7 +155,7 @@ app.map = (function(w, d, $, _) {
             });
     }  
 
-    // button interactions
+    // button interactions object
     // call like: sublayerActions[i].layer_name();
     sublayerActions = {
         acs_pop : function() {
@@ -193,6 +214,29 @@ app.map = (function(w, d, $, _) {
         return true;
     }
 
+    // renders the data layer's legend
+    function renderLegend(layer) {
+        var data = legend_data[layer];
+
+        console.log('data: ', data);       
+
+        function passData() {            
+            var html = hb_template(data);
+            $('.map-legends').append(html);
+        }
+
+        function resizeLegendContainer() {
+            var h1 = $('.map-legends').innerHeight(),
+                h2 = $('.legend-sources').innerHeight(),
+                total = h1 + h2 + 35;
+            $('#map-legend-container').innerHeight(total);
+        }
+
+        passData();
+        resizeLegendContainer();
+    }
+
+    /* event listeners */
     // call the appropriate function when user clicks a button
     $('.data-layer').click(function() {
         sublayerActions[$(this).attr('id')]();
@@ -218,6 +262,8 @@ app.map = (function(w, d, $, _) {
         });
     };
 
+
+    /* get it all going! */
     var init = function() {
         initMap();
         initCartoDBLayers();
@@ -230,10 +276,11 @@ app.map = (function(w, d, $, _) {
         init: init,
         sublayers : sublayers,
         sublayerActions: sublayerActions,
-        hideShow : hideShow
+        hideShow : hideShow,
+        renderLegend : renderLegend
     };
 
-})(window, document, jQuery, _);
+})(window, document, jQuery, Handlebars);
 
 window.addEventListener('DOMContentLoaded', function() {
     app.map.init();
