@@ -185,7 +185,7 @@ app.map = (function(w, d, $, _) {
             }
 
             sublayers[index].show();
-            $button.addClass('selected');
+            $button.addClass('selected active');
         }
         return true;
     }
