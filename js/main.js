@@ -7,8 +7,8 @@ app.map = (function(w, d, $, _) {
 
     function initMap() {
         // map paramaters to pass to Leaflet
-        var southWest = L.latLng(40.703, -73.971),
-            northEast = L.latLng(40.737, -73.931),
+        var southWest = L.latLng(40.679628, -74.089720),
+            northEast = L.latLng(40.755792, -73.856475),
             bounds = L.latLngBounds(southWest, northEast);
 
         //screen resolution setting for map user 
@@ -32,7 +32,7 @@ app.map = (function(w, d, $, _) {
  
         } 
        }
-       zoomStartSetting();
+
         var params = {
             center: [40.7237442, -73.9532883], //Greenpoint
             zoomControl: false,
@@ -96,14 +96,14 @@ app.map = (function(w, d, $, _) {
                 sql: "SELECT * FROM polluted_points",
                 cartocss: "#polluted_points {marker-fill-opacity: 0.9;marker-line-color: #FFFFFF;marker-line-width: .5;marker-line-opacity: .7;marker-placement: point;marker-type: ellipse;marker-width: 5;marker-allow-overlap: false;}#polluted_points[nag_id=10] {marker-fill: #7b0006;}#polluted_points[nag_id=7] {marker-fill: #fba782;}#polluted_points[nag_id=8] {marker-fill: #aa04ee;}#polluted_points[nag_id=9] {marker-fill: #e171fb;}"
             }, {
-                sql: "SELECT * FROM table_2020_projected_flood_risk", 
-                cartocss: "#table_2020_projected_flood_risk{polygon-fill: #2E5387;polygon-opacity: 0.3;polygon-comp-op: multiply;line-color: #bfd1ff;line-width: 0.3;line-opacity: 0;}"
+                sql: "SELECT * FROM table_2020_floodplain_dissolve_aug04", 
+                cartocss: "#table_2020_projected_flood_risk{polygon-fill: #2E5387; polygon-opacity: 0.5; polygon-comp-op: multiply; line-color: #bfd1ff; line-width: 0.3; line-opacity: 0; }"
             }, {
                 sql: "SELECT * FROM polluted_polygons_w_remediated_1",
                 cartocss: "#polluted_polygons_w_remediated_1 {polygon-opacity: 0.7;line-color: #FFF;line-width: 0.5;line-opacity: 0;}#polluted_polygons_w_remediated_1[nag_id=1] {polygon-fill:#feb9f0;}#polluted_polygons_w_remediated_1[nag_id=2] {polygon-fill: #feff83;}#polluted_polygons_w_remediated_1[nag_id=3] {polygon-fill: #f3cc81;}"
             }, {
                 sql: "SELECT * FROM acs_5yr_2013",
-                cartocss: "#acs_5yr_2013{polygon-fill: #b6edf0;polygon-opacity: 0.8;polygon-comp-op: multiply;line-color: #f5f5f5;line-width: 0.1;line-opacity: .5;}#acs_5yr_2013 [roundedcpop >75001]{polygon-fill: #090991;}#acs_5yr_2013 [roundedcpop >55001][ roundedcpop <= 75000] {polygon-fill: #1d44b8;}#acs_5yr_2013 [roundedcpop > 40001][ roundedcpop <= 55000] {polygon-fill: #1f83e0;}#acs_5yr_2013 [roundedcpop > 25001][ roundedcpop <= 40000] {polygon-fill: #74b4e8;}#acs_5yr_2013 [roundedcpop >24508][ roundedcpop <= 25000] {polygon-fill: #b6edf0;}"
+                cartocss: "#acs_5yr_2013{  line-join: round;  polygon-fill: #FFFFFF;  polygon-opacity: .7; polygon-comp-op: multiply; line-color: #f5f5f5;  line-width: 0.1;  line-opacity: .5;  image-filters: agg-stack-blur(1,1);}#acs_5yr_2013 [roundedcpop >75001]{polygon-fill: #cfb928;}#acs_5yr_2013 [roundedcpop >55001][ roundedcpop <= 75000] { polygon-fill: #dfcd66; } #acs_5yr_2013 [roundedcpop > 40001][ roundedcpop <= 55000] {polygon-fill: #e8dc91; } #acs_5yr_2013 [roundedcpop > 25001][ roundedcpop <= 40000] { polygon-fill: #f0ecd7; }#acs_5yr_2013 [roundedcpop >0][ roundedcpop <= 25000] {polygon-fill: #fcfaef;}"
             }, {
                 sql: "SELECT * FROM acs_5yr_2013",
                 cartocss: "#acs_5yr_2013{polygon-fill: #ECF0F6;polygon-opacity: 0.8;polygon-comp-op: multiply;line-color: #000000;line-width: 0.5;line-opacity: 0.1;}#acs_5yr_2013 [rounded_mhhi > 75001]{polygon-fill: #216437;}#acs_5yr_2013 [rounded_mhhi > 65001][rounded_mhhi <= 75000]{polygon-fill: #4f8759;}#acs_5yr_2013 [rounded_mhhi > 50001][rounded_mhhi <= 65000]{polygon-fill: #75ab7e;}#acs_5yr_2013 [rounded_mhhi > 25001][rounded_mhhi <= 50000]{polygon-fill: #a5d0b4;}#acs_5yr_2013 [rounded_mhhi > 0 ][rounded_mhhi <= 25000] {polygon-fill: #dcf5e8;}"
@@ -227,6 +227,7 @@ app.map = (function(w, d, $, _) {
     var init = function() {
         initMap();
         initZoomButtons();
+        zoomStartSetting();
     };
 
 
@@ -234,7 +235,7 @@ app.map = (function(w, d, $, _) {
         init: init,
         sublayers : sublayers,
         sublayerActions: sublayerActions
-        //nag : nag 
+
     };
 
 })(window, document, jQuery, _);
