@@ -21,16 +21,6 @@ app.map = (function(w, d, $, _) {
         var defualtHeight = 1024; 
         var screenWidth = $(window).width(); //get the current screen width
         var screenHeight = $(window).height(); //get the current screen height
-
-        if(screenWidth < defaultWidth  || screenHeight < defualtHeight ){
-            zoomStart = 14;
-            console.log("Browser resolution :"+screenWidth+"/"+screenHeight+"Zoom :"+zoomStart);
-        } else if(screenWidth > defaultWidth || screenHeight > defualtHeight ){
-            zoomStart = 15; //defualt setting for 1440*900
-            console.log("Browser resolution :"+screenWidth+" | "+screenHeight +"Zoom :"+ zoomStart);
-        } else if(screenWidth > defaultWidth || screenHeight > defualtHeight){
- 
-        } 
        }
 
         var params = {
@@ -70,15 +60,12 @@ app.map = (function(w, d, $, _) {
         var basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v4/' + mapid + '/{z}/{x}/{y}.png?access_token=' + accessToken, 
         {attribution: attr}
         ).addTo(map_object);
-/*
-        // attribute MapBox and OSM
-        var attribution = new L.control.attribution({position: 'bottomright', prefix: false});
-        attribution.addAttribution('<a href="https://www.mapbox.com/about/maps/">© Mapbox © OpenStreetMap</a>');
-        attribution.addTo(map_object);
-    */
-  
+    
+    } // end init map
 
-        // layer meta-data for Layer Source Object to pass to cartodb.createLayer()
+
+    function initCartoDBLayers() {
+    // layer meta-data for Layer Source Object to pass to cartodb.createLayer()
         var layerSource = {
             user_name: 'nag-brooklyn',
             type: 'cartodb',
@@ -121,30 +108,31 @@ app.map = (function(w, d, $, _) {
                 attributionControl: true
         };
 
-    cartodb.createLayer(map_object, layerSource, cdb_options)
-        .addTo(map_object)
-        .on('done', function(layer) {
-            layer.setZIndex(5); // make sure the cartodb layer is on top.
+        cartodb.createLayer(map_object, layerSource, cdb_options)
+            .addTo(map_object)
+            .on('done', function(layer) {
+                layer.setZIndex(5); // make sure the cartodb layer is on top.
 
-            // get the number of sublayers
-            var numSubLayers = layer.getSubLayerCount();
-            for (var i = 0; i < numSubLayers; i++) {
-                layer.getSubLayer(i).setInteraction(true);
-                layer.getSubLayer(i).hide();
-                sublayers.push(layer.getSubLayer(i));
+                // get the number of sublayers
+                var numSubLayers = layer.getSubLayerCount();
+                for (var i = 0; i < numSubLayers; i++) {
+                    layer.getSubLayer(i).setInteraction(true);
+                    layer.getSubLayer(i).hide();
+                    sublayers.push(layer.getSubLayer(i));
 
-                var fields = layerSource.sublayers[i].interactivity.split(",");
+                    var fields = layerSource.sublayers[i].interactivity.split(",");
 
-                cartodb.vis.Vis.addInfowindow(
-                    map_object, 
-                    layer.getSubLayer(i),
-                    fields
-                );
-            }
+                    cartodb.vis.Vis.addInfowindow(
+                        map_object, 
+                        layer.getSubLayer(i),
+                        fields
+                    );
+                }
 
-        }).on('error', function(error) {
-            console.log('error with cartodb.createLayer: ', error);
-        });
+            }).on('error', function(error) {
+                console.log('error with cartodb.createLayer: ', error);
+            });
+    }  
 
     // button interactions
     // call like: sublayerActions[i].layer_name();
@@ -219,8 +207,6 @@ app.map = (function(w, d, $, _) {
         $('.data-layer').removeClass('selected active');
     });
 
-    } //end of initmap 
-
     // set up custom zoom buttons
     var initZoomButtons = function(){
         $('#zoom-in').on('click', function(){
@@ -234,6 +220,7 @@ app.map = (function(w, d, $, _) {
 
     var init = function() {
         initMap();
+        initCartoDBLayers();
         initZoomButtons();
        // zoomStartSetting();
     };
@@ -242,8 +229,8 @@ app.map = (function(w, d, $, _) {
     return {
         init: init,
         sublayers : sublayers,
-        sublayerActions: sublayerActions
-
+        sublayerActions: sublayerActions,
+        hideShow : hideShow
     };
 
 })(window, document, jQuery, _);
