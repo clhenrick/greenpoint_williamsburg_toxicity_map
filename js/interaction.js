@@ -90,10 +90,14 @@ app.interaction = (function(d,$, _) {
     	$('.container').not('.dlayer').hide();
 	    $('.dlayer').toggle();
 	});
+
+	//not required yet
+	/*
     var init = function() {
         //layer_desc();   	
     };
     return {
         init: init
     };
+    */
 })(document,jQuery, _);
