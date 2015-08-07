@@ -5,9 +5,11 @@ body {
   padding: 0;
 }
 
+
 html {
   position: relative;
   min-height: 100%;
+  font-size: 12px;
 }
 
 #map {
@@ -16,127 +18,129 @@ html {
   bottom: 0;
   width: 100%;
 }
+*:focus {
+    outline: none;
+}
 
-body > #wrapper {
-    color: #004400;
+ul{
+    list-style-type: none;
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    display: table;
+    width:100%;
 }
-:focus { 
-    outline: none; 
+ul li{
+    display: table-cell;
+    text-align: center;
+    padding-top: 15px;
+    white-space: nowrap;
 }
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 295px;
-    /* Set the fixed height of the footer here */
-    
-    height: 60px;
-    background-color: #d0cece;
-    box-shadow: 1px 1px 3px #9e9e9e;
-}
+
 
 div {
     float: left;
     clear: both;
-    /* padding: 1px, 1px, 1px, 1px;*/
-    
     margin: 0px;
+    border: 1px;
     position: relative;
-    color: white;
     text-align: left;
-    font-size: 12px;
-    outline: none;
 }
 
-*:focus {
-    outline: none;
-}
-#menu {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #d0cece;
-    width: 310px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0px;
-    margin: 0px;
-    border: 1px solid #cecece;
-    box-shadow: 1px 1px 3px #9e9e9e;
-}
-a{
+
+div a{
     color:#909090;
     font-weight: bold;
-}
-IMG{
-    display: block;
-    margin-left: 15px;
-    margin-right: auto
-}
-
-#logo {
-    margin-left: 0px;
-    height: 60px;
-}
-
-#text1 {
-    color: #989898;
-    line-height: 140%;
-    font-size: 11px;
-    margin-left: 30px;
-}
-
-.container {
-    background-color: #d0cece;
-    height: 100% relative;
-    width: 317px;
-    /*it should be width:24% just for instant fix of the text overflow ;*/
-    margin-left: 18px;
-    padding-top: 20px;
-   overflow-y: scroll;
-}
-.tab-content{
-    margin-top: 0px;
-    padding-top: 0px;
-}
-.p #text-size {
-    font-size: 12px;
-}
-
-#footer {
-    float: left;
-    height: 30px;
-    background-color: #d0cece;
-    width: 300px;
-    /*it should be width:24% ;*/
-    
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-}
-
-.footer>.nav-pills {
-    padding-left: 20px;
-}
-.footer>.nav-pills>li{
-    background-color: #cecece;  
+    font-size: 13px;
 }
 
 
-.footer>.nav-pills>li>a {
-    border: 0px;
-    margin: 10px 0px 0px 0px;
-    padding: 0px 12px 0px 12px;
-}
-
-.footer>.nav-pills>li>a:hover,
-.footer>.nav-pills>li>a:focus {
-    background-color: #d0cece;
-outline: 0 !important;
-box-shadow: none !important;
-}
-
-p {
+div p{
     margin-left: 0px;
     max-width: 100%;
 }
+
+.tab :div hr{
+    border: 1px #989898;
+    width:100%;
+}
+.tab :div h4{
+    font-size: 24px;
+}
+#logo{
+    display: block;
+    margin-right: auto
+
+}
+
+#menu {
+    background-color: #d0cece;
+    line-height: 140%;
+    width: 321px; /*Should be changed to responsive later 301+20px*/ 
+    height: 100% !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid #cecece;
+    box-shadow: 1px 1px 3px #9e9e9e;
+}
+#text1 {    
+    font-size: 11px;
+    margin: 12px;
+    vertical-align: center;
+
+}
+
+#menu .menunav{
+    background-color: #dedede;
+    width:100%;
+    height: 50px;
+}
+
+#menu .menunav ul {
+    height: 100%;
+}
+
+#menu .menunav li {
+    padding-top: 0;
+    vertical-align: middle;
+    background-color: #dedede;
+    color: #989898;
+    font-size: 20px;
+}
+
+#menu .menunav li:hover {
+    background-color: hsl(0,0%,100%);
+}
+
+#menu .menunav li a:active{
+    background-color: #fefefe; 
+}
+
+#menu .menunav li a:active:focus{
+    background-color: #f0f0f0;
+    color: #989898;
+    font-size: 20px;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    height: 60px; 
+    padding-left: 20px;
+    text-align: justify;
+    /*this part should be merged with menu*/
+    width:301px;
+    background-color: #d0cece;
+    overflow: hidden;
+    border: 1px solid #cecece;
+    box-shadow: 1px 1px 3px #9e9e9e;
+}
+footer a{
+    color: #696969;  
+}
+
+
 
 p.copyright{
     font-size: 10px;
@@ -145,232 +149,150 @@ p.copyright{
     vertical-align: bottom;
     color:#9e9e9e;
 }
-/*Customizing Bootstrap */
-/*nav pills options*/
-/* tab color */
 
-.menu.container-fluid {
-    padding: 0px;
-    margin: 0px;
+
+
+/*glyphicons from awesome font : size fa-2x*/
+
+
+.selected {
+    background-color: #cecece;  
 }
 
-.menu.navbar .navbar-inner {
-    align: center;
-    padding: 0px;
-    margin:0px;
+/*Buttons at layers only*/
+.data-layer{
+    width:50px;
+    height:50px;
+    border-radius: 25px;
+    box-shadow:none;
 }
 
-.menu.navbar .nav {
-    background-color: #d9d9d9;
-
-    margin:0px;
-    display: table;
-    width: 107%;
-    float: none;
+.data-layer:hover {
+    background-color: hsl(0,0%,100%);
 }
 
-.menu.navbar .nav li {
-    display: table-cell;
-    width: 50%;
-    float: none;
-    background-color: #d9d9d9;
-    /*outerborder*/
-    margin-left: 0px #d0cece;
-    margin-right: 0px #d0cece;
-}
-
-.menu.nav-pills>li>a {
-    background-color: #d9d9d9;  
-    border-color: #333333;
-    color: #989898;
-    border-radius: 0px ;
-    /*top right bottom left*/
-    width: auto;
-    outline: 0px !important;
-}
-/* active tab color */
-/*ghost button*/
-
-.menu.nav-pills>li.active>a,
-.menu.nav-pills>li.active>a:hover,
-.menu.nav-pills>li.active>a:focus {
-    color: #696969;
-    background-color: #d9d9d9;
-    /*outerborder*/
-    border-radius: 0px;
-    outline: 0px !important;
-}
-
-.menu.nav-pills>li.active>a:focus {
-    background-color: #989898;
-    color: #fefefe;
-
-    outline: 0px !important;
-    box-shadow: none !important;
-}
-
-/* hover tab color */
-.menu.nav-pills>li>a:hover {
-    border-color: #767676;
-    background-color: #d0cece;
-    border-radius: 0px;
-}
-
-.menu.nav-pills>li>a:active {
-    border-color: #787878;
-    background-color: #111111;
-    border-radius: 0px;
-    outline: 0px !important;
-    box-shadow: none !important;
-}
-
-
-/*layer button and page option*/
+/*layer button tab options*/
 .dlayer{
-    color: #1f1f1f;
-}
-.layers {
-    border-color: #696969;
     background-color: #d0cece;
     border-radius: 25px;
     color: #989898;
-    margin: 5px 3px 5px 3px;
-    width: 50px;
-    height: 50px;
-    font-size: 7px;
     overflow: hidden;
-}
-
-.layers.descrp{
-    visibility: hidden;
-}
-.pressed{
-    background-color: #cecece;  
+    margin: 5px;
 
 }
-
-.layers>button:hover {
+.dlayer>button{
+    box-shadow: none !important;
+    border: 1px solid #989898;
+}
+.dlayer>button i{
+   font-size: 24px;
+    color:#fefefe;
+}
+.dlayer>button i:hover {
+   font-size: 24px;
+    color:#040404;
+}
+.dlayer>button:hover {
     font-size: 12px;
-    color: #989898;
-    border: 2px solid #d9d9d9;
+    color:#040404;
+    box-shadow: none !important;
 }
 
-.layers>button:active:focus {
-    background-color: #d9d9d9;
-    border: 0px solid #cecece;
+.dlayer>button:active{
+    background-color: #fefefe;
+    border: 1px solid #cecece;
     outline: none !important; 
     box-shadow: none !important;
 }
 
-.container>.title {
+.dlayer>button:focus {
+
+}
+
+.dlayer .env, 
+.dlayer .ngh, 
+.dlayer .ind {
+    margin-bottom: 25px; 
+}
+.dlayer .env:not(:first-child), 
+.dlayer .ngh:not(:first-child),
+.dlayer .ind:not(:first-child){
+    padding-right: 5px;
+}
+
+.dlayer .ind p{
+    margin: 15px 0px 15px 0px;   
+}
+
+.tabs {
+    height: 100% relative;
+    /*it should be width:24% just for instant fix of the text overflow ;*/
+    margin: 20px;
+    padding-top: 5px;
+    overflow-y: scroll;
+    display:none; /*$('tabs').hide() $('tabs').css() */
+    padding:15px;
+    line-height: 180%;
+}
+
+
+.tabs .title {
     line-height: 16px;
-    margin-top: 0px;
-    /* padding-left: 12px;
-    padding-right: 12px;
-     background-color: #d9d9d9;
-    border-radius: 5px;
-  box-shadow: 1px 1px 3px #9e9e9e; */
     color: #696969;
     margin-bottom:2px;
 }
-input[type=submit]::-ms-clear,
-input[type=submit]::-ms-reveal {
-    display: none; 
-    width:0; 
-    height:0;}
 
-
-.glyphicon {
-    font-size: 24px;
-}
-
-span.glyphicon-link {
-    font-size: 3.2em;
-}
-
-.btn:active:focus {
-    outline: 0px !important;
-    box-shadow: 0px !important;
-}
-.subtitle{
-    margin-top: 25px;  
+.tabs .subtitle{
+    margin-bottom: 10px; 
     font: 14px bold;
     font-family: 'Open Sans', sans-serif;
-     border-left: 5px solid #989898;
+    border-left: 5px solid #989898;
     color:#696969;
 }
-#nextsteps {
-    width: 90%;
+
+/*submit data alignment */
+.nextsteps {
+    width:180px;  
 }
-#notice{
-    padding-top:18px;
+.nextsteps p{
+    width:200px;
 }
-.metadata{
+.nextsteps >button {
+    margin-top: 50px; 
+    padding: 10px;
+    vertical-align: middle;
+    background-color: #d9d9d9;
+    color: #989898;
+    border: 1px solid #cecece;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+.tabs .metadata{
     display:none;
 }
 
-.clear {
-    width: 110px;
-    margin-top: 50px;
-    background-color: #d9d9d9;
-    color: #989898;
-    border: 1px solid #cecece;
-    font-size: 12px;
-    border-radius: 10px;
-}
 
-.next {
-    width: 110px;
-    margin-top: 50px;
-    background-color: #d9d9d9;
-    color: #989898;
-    border: 1px solid #cecece;
-    border-radius: 5px;
-    font-size: 12px;
-    border-radius: 10px;
-}
-
-.col-lg-4 i {
-    display: block;
-    text-align: center;
-    font-size: 12px;
-}
 /*about page*/
-
-input {
-    width: 100px;
-    border-radius: 0px;
-}
-
-.about {
+.tabs .about {
+    display:hidden;
     text-indent: 1.6em;
     text-align: left;
     width: 100%;
     color: #1f1f1f;
     line-height: 180%;
-    padding-bottom: 20px;
-    padding-right: 40px;
-    padding-left: 16px;
-    padding-top:45px;
     background-color: none;/*#dbdad3*/
-    border:2px #393939;
+    overflow: hidden;
    /* box-shadow: 1px 1px 3px #9e9e9e; */
 }
-
 
 p:.about{
     padding-top:1em;
 }
-.about.nextsteps {
-    margin-top: 50px;
-}
 
-.about>.a {
-    color: orange;
-}
 /*credit at footer*/
 
-.aboutus{
+.tabs .aboutus{
     display: none;
     padding:20px;
     padding-right: 30px;
@@ -379,10 +301,6 @@ p:.about{
     text-indent: 1.5em;
 
 }
-.aboutus_show{
-    display: block;
-}
-
 
 
 #aboutus.hr {
@@ -391,28 +309,18 @@ p:.about{
 #aboutus_b {
     color: #696969; 
 }
-.contact {
+
+.tabs .contact {
     display: none;
     width: 295px;
     color: #696969;
     padding:20px;
 
 }
-/*Legend*/
-#contact_b{
-    color: #696969;
-}
-#print_b{
-    color: #696969;
-}
 
 
-/*customizing cartodb legend posion for let it little bit higher than baselayer legend */
 
-.baselayer {
-    color: #333;
-}
-
+/*Zoomin and out */
 .zoombtn {
     position: absolute;
     top: 10px;
@@ -425,17 +333,4 @@ p:.about{
     text-align: center;
     vertical-align: center;
     margin-top:3px;
-}
-
-.cartodb-legend.custom {
-    bottom:200px;
-    width:180px;
-}
-
-/*jQuery UI-tooltip*/
-.ui-tooltip {
-    max-width: 350px;
-    min-width:100px;
-    font-size:10px;
-    line-height:14px;
 }
