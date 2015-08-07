@@ -60,6 +60,10 @@ body {
   padding: 5px;
 }
 
+.data-layer.selected {
+  background-color: red;
+}
+
 #map-legend-container {
   top: 10px;
   right: 10px;
