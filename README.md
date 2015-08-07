@@ -8,7 +8,7 @@ An interactive map for The Nag showing pollution and demographic data in the nei
 - JQuery
 
 ## Installation:
-...
+- `bower install`
 
 ## Contributors:
 - Bowon Chung
