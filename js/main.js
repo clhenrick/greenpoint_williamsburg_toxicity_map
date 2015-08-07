@@ -4,7 +4,7 @@ app.map = (function(w, d, $, H) {
     var sublayers = [], // For storing the cartodb sublayers
         sublayerActions = [], // for layer button interactions
         map_object,
-        legend_data = app.legend,
+        legend_data = app.legends.data,
         hb_source = d.getElementById('legend-template').innerHTML,
         hb_template = H.compile(hb_source),
         hb_data = [];
@@ -190,47 +190,89 @@ app.map = (function(w, d, $, H) {
 
     // hide or show the data layer
     function hideShow(id, index) {
-        id = '#' + id;
-        var $button = $(id);
-        var layer = sublayers[index];
+        var id_hash = '#' + id, // the button id
+            $button = $(id_hash), // the css id of the selected button
+            $buttons = $('.data-layer'), // the ui buttons for sublayers
+            $legends = $('.legend.dl'), // the sublayer legends currently displayed
+            layer = sublayers[index], // the sublayer data,
+            sublayer_len = sublayers.length;
 
-        if ($button.hasClass('selected')) {
-            sublayers[index].hide();
-            $button.removeClass('selected active focus');
-            removeLengend(id.split('#')[1]);
+        console.log('hideShow id: ', id, ' index: ', index);
 
-        } else if ($button.hasClass('selected') !== true) {
-            // if a choropleth layer is already on, hide it.
-            if (index >=0  && index < 3) {
-                for (var i = 0; i < 3; i++) {
-                    sublayers[i].hide();
-                    $($('.data-layer')[i]).removeClass('selected');
-                    //This matches the array order to the button orders. 
-                    $($('.data-layer')[i+4]).removeClass('active focus');
-                    
-                    console.log()
-                    
-                    var id2 = '#' + $('.data-layer')[i+4].getAttribute('id');
-                    var legendDestroy = $(id2 + '-legend');
-
-                    if (legendDestroy.length > 0 && id2 !== id) {
-                        removeLengend(id2.split('#')[1]);
-                    }                   
-               }
+        // determine if the index is for a choropleth layer
+        if (index >= 0 && index < 3) {
+            // if the layer is already selected turn it off
+            if ($button.hasClass('selected')) {
+                sublayers[index].hide(); 
+                removeLegend(index);
+                $button.removeClass('selected');
+            
+            } else if (!$button.hasClass('selected')) {
+                // otherwise turn it on
+                sublayers[index].show();
+                renderLegend(index);
+                $button.addClass('selected');
             }
 
-            sublayers[index].show();
-            renderLegend(id.split('#')[1]);
-            $button.addClass('selected active');
+            // remove other choropleth legends & layers if they are displayed
+            for (var i=0; i<3; i++) {
+                console.log('i: ', i);
+
+                if ($('#legend-' + i).length && i !== index) {
+                    removeLegend(i);
+                    sublayers[i].hide();                    
+                }
+
+                if (i !== index) {
+                    console.log('index: ', index, ' i: ', i);   
+                    var id2 = '#' + $('.data-layer')[6-i].getAttribute('id');
+                    console.log('other button ids: ', id2);
+                    $(id2).removeClass('selected');
+                }
+                                
+            }
+        
+        } else if (index >= 3) {
+
         }
+
+        // if ($button.hasClass('selected')) {
+        //     sublayers[index].hide();
+        //     $button.removeClass('selected active focus');
+        //     removeLengend(id.split('#')[1]);
+
+        // } else if ($button.hasClass('selected') !== true) {
+        //     // if a choropleth layer is already on, hide it.
+        //     if (index >=0  && index < 3) {
+        //         for (var i = 0; i < 3; i++) {
+        //             sublayers[i].hide();
+        //             $($('.data-layer')[i]).removeClass('selected');
+        //             //This matches the array order to the button orders. 
+        //             $($('.data-layer')[i+4]).removeClass('active focus');
+                    
+        //             console.log()
+                    
+        //             var id2 = '#' + $('.data-layer')[i+4].getAttribute('id');
+        //             var legendDestroy = $(id2 + '-legend');
+
+        //             if (legendDestroy.length > 0 && id2 !== id) {
+        //                 removeLengend(id2.split('#')[1]);
+        //             }                   
+        //        }
+        //     }
+
+        //     sublayers[index].show();
+        //     renderLegend(id.split('#')[1]);
+        //     $button.addClass('selected active');
+        // }
         return true;
     }
 
     // renders the data layer's legend
-    function renderLegend(layer) {
-        console.log('layer: ', layer);
-        var data = legend_data[layer];
-        data.id = layer;    
+    function renderLegend(index) {
+        var data = legend_data[index];
+        console.log(data);
+        data.id = index;
 
         function passData() {            
             var html = hb_template(data);
@@ -248,8 +290,8 @@ app.map = (function(w, d, $, H) {
         resizeLegendContainer();
     }
 
-    function removeLengend(layer) {
-        var target = $('#' + layer + '-legend'),
+    function removeLegend(index) {
+        var target = $('#legend-' + index),
             lcontainer = $('#map-legend-container'),
             tHeight = target.innerHeight(),
             lHeight = lcontainer.innerHeight();
@@ -262,6 +304,7 @@ app.map = (function(w, d, $, H) {
     // call the appropriate function when user clicks a button
     $('.data-layer').click(function() {
         var layer = $(this).attr('id');
+        console.log('clicked button: ', layer);
         sublayerActions[layer]();
     });
 
@@ -271,7 +314,7 @@ app.map = (function(w, d, $, H) {
         sublayers.forEach(function(sublayer) {
             sublayer.hide();
         });
-        $('.data-layer').removeClass('selected active');
+        $('.data-layer').removeClass('selected');
     });
 
     // set up custom zoom buttons
