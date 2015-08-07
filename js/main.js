@@ -248,7 +248,7 @@ app.map = (function(w, d, $, H) {
         function resizeLegendContainer() {
             var h1 = $('.map-legends').innerHeight(),
                 h2 = $('.legend-sources').innerHeight(),
-                total = h1 + h2 + 35;
+                total = h1 + h2 + 10;
             $('#map-legend-container').innerHeight(total);
         }
 
@@ -263,7 +263,7 @@ app.map = (function(w, d, $, H) {
             lHeight = lcontainer.innerHeight();
 
         target.remove();
-        lcontainer.innerHeight(lHeight - tHeight - 10);
+        lcontainer.innerHeight(lHeight - tHeight + 4);
     }
 
     /* event listeners */
@@ -316,5 +316,5 @@ app.map = (function(w, d, $, H) {
 
 window.addEventListener('DOMContentLoaded', function() {
     app.map.init();
-    //app.interaction.init();
+    app.interaction.init();
 });
