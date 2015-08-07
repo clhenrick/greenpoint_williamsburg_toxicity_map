@@ -199,21 +199,21 @@ app.map = (function(w, d, $, H) {
 
         console.log('hideShow id: ', id, ' index: ', index);
 
+        // if the layer is already selected turn it off
+        if ($button.hasClass('selected')) {
+            sublayers[index].hide(); 
+            removeLegend(index);
+            $button.removeClass('selected');
+        
+        } else if (!$button.hasClass('selected')) {
+            // otherwise turn it on
+            sublayers[index].show();
+            renderLegend(index);
+            $button.addClass('selected');
+        }
+
         // determine if the index is for a choropleth layer
         if (index >= 0 && index < 3) {
-            // if the layer is already selected turn it off
-            if ($button.hasClass('selected')) {
-                sublayers[index].hide(); 
-                removeLegend(index);
-                $button.removeClass('selected');
-            
-            } else if (!$button.hasClass('selected')) {
-                // otherwise turn it on
-                sublayers[index].show();
-                renderLegend(index);
-                $button.addClass('selected');
-            }
-
             // remove other choropleth legends & layers if they are displayed
             for (var i=0; i<3; i++) {
                 console.log('i: ', i);
@@ -223,48 +223,14 @@ app.map = (function(w, d, $, H) {
                     sublayers[i].hide();                    
                 }
 
-                if (i !== index) {
-                    console.log('index: ', index, ' i: ', i);   
+                if (i !== index) { 
                     var id2 = '#' + $('.data-layer')[6-i].getAttribute('id');
-                    console.log('other button ids: ', id2);
                     $(id2).removeClass('selected');
                 }
                                 
             }
-        
-        } else if (index >= 3) {
-
         }
-
-        // if ($button.hasClass('selected')) {
-        //     sublayers[index].hide();
-        //     $button.removeClass('selected active focus');
-        //     removeLengend(id.split('#')[1]);
-
-        // } else if ($button.hasClass('selected') !== true) {
-        //     // if a choropleth layer is already on, hide it.
-        //     if (index >=0  && index < 3) {
-        //         for (var i = 0; i < 3; i++) {
-        //             sublayers[i].hide();
-        //             $($('.data-layer')[i]).removeClass('selected');
-        //             //This matches the array order to the button orders. 
-        //             $($('.data-layer')[i+4]).removeClass('active focus');
-                    
-        //             console.log()
-                    
-        //             var id2 = '#' + $('.data-layer')[i+4].getAttribute('id');
-        //             var legendDestroy = $(id2 + '-legend');
-
-        //             if (legendDestroy.length > 0 && id2 !== id) {
-        //                 removeLengend(id2.split('#')[1]);
-        //             }                   
-        //        }
-        //     }
-
-        //     sublayers[index].show();
-        //     renderLegend(id.split('#')[1]);
-        //     $button.addClass('selected active');
-        // }
+        
         return true;
     }
 
