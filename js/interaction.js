@@ -103,17 +103,17 @@ app.interaction = (function(d,$, _) {
 	    $('.about').toggle();
 	});
 	$('#dlayer_b').click(function() {
-    	$('.container').not('.dlayer').hide();
+    	$('.container').not('.dlayer').hide(); 
 	    $('.dlayer').toggle();
 	});
 
 	//not required yet
-	/*
+	
     var init = function() {
         //layer_desc();   	
     };
     return {
         init: init
     };
-    */
+    
 })(document,jQuery, _);
