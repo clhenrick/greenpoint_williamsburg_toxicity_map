@@ -316,5 +316,5 @@ app.map = (function(w, d, $, H) {
 
 window.addEventListener('DOMContentLoaded', function() {
     app.map.init();
-    app.interaction.init();
+   // app.interaction.init();
 });

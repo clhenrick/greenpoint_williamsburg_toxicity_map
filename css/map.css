@@ -5,11 +5,6 @@ body {
   padding: 0;
 }
 
-@font-face {
-    font-family: "iconvault_forecastfont";
-    src: url("img/iconvault_forecastfont.woff") format('woff');
-}
-
 
 html {
   position: relative;
@@ -78,7 +73,6 @@ div p{
 }
 
 .tabs a {
-    font-style: bold;
     color:#08185a; /*orange replacement*/
     text-decoration: none;
 }
@@ -158,12 +152,12 @@ footer a{
 
 
 
-.copyright p{
-    width:250px;
+p> .copyright {
+    width:270px;
     font-size: 12px;
     vertical-align: middle;
     color:#696969;
-    text-align: center;
+    text-align: right;
 }
 
 
@@ -190,8 +184,6 @@ footer a{
 /*layer button tab options*/
 .dlayer{
     overflow: hidden;
-    margin: 5px;
-
 }
 .dlayer .env>button,
 .dlayer .ngh>button,
@@ -199,6 +191,7 @@ footer a{
     border-radius: 25px;
     box-shadow: none !important;
     border: 1px solid #989898;
+    margin: 5px 3px 0px 0px;
 }
 .dlayer .env>button i,
 .dlayer .ngh>button i,
@@ -213,10 +206,17 @@ footer a{
     color:#334a5a;
 
 }
-
-.dlayer .env>button:hover:active,
-.dlayer .ngh>button:hover:active,
-.dlayer .ind>button:hover:active{
+.dlayer .env>button:hover,
+.dlayer .ngh>button:hover,
+.dlayer .ind>button:hover{
+    background-color: #d6d6d6;
+    border: 1px solid #989898;
+    color:#334a5a;
+    outline: none !important; 
+}
+.dlayer .env>button:active,
+.dlayer .ngh>button:active,
+.dlayer .ind>button:active{
     background-color: #fefefe;
     border: 1px solid #cecece;
     color:#334a5a;
@@ -229,6 +229,7 @@ footer a{
 .dlayer .ngh, 
 .dlayer .ind {
     margin-bottom: 25px;
+    margin-top: 10px;
 }
 
 .dlayer .env:not(:first-child), 
@@ -266,7 +267,7 @@ footer a{
     font-family: 'Open Sans', sans-serif;
     border-left: 5px solid #989898;
     color:#696969;
-    text-indent: 1em;
+    text-indent: 5px;
 }
 
 .tabs h4{
@@ -308,9 +309,10 @@ footer a{
     overflow:auto;
     padding-top: 10px;
 }
-.tabs .metadata .desc .desc_contents span{
+.tabs .metadata span>.desc_contents {
     overflow-y: scroll;
-    width:250px;
+    width:250px; 
+    padding-right:50px;
 }
 
 /*about page*/
@@ -333,13 +335,14 @@ footer a{
 /*credit at footer*/
 
 .tabs .aboutus{
+    max-height: 60% absolute;
     display: none;
     padding:20px;
     padding-right: 30px;
     width: 295px;
     color: #696969;
     text-indent: 1.5em;
-
+    overflow:scroll;
 }
 
 
@@ -366,7 +369,7 @@ footer a{
     position: absolute;
     width:15px;
     top: 10px;
-    right: 305px;
+    right: 240px;
 }
 .zoombtn>button{
     width:25px;

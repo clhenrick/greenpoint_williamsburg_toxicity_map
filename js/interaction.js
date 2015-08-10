@@ -21,11 +21,10 @@ app.interaction = (function(d, $, _) {
         $('.tabs').not('.metadata').hide();
         if($aboutthedata.length <= 0){
        	$.each(desc,function(i,val){
-        	$aboutthedata = $("<div class='desc'><h6 class='subtitle' id='desc"+i+"'>"+desc[i].title+"</h6><span class='desc_contents' id='contents"+i+"'>"+desc[i].field+"</span></div>");
+        	$aboutthedata = $("<div class='desc'><h6 class='subtitle desc'>"+desc[i].title+"</h6> <span class='desc_contents contents'>"+desc[i].field+"</span> </div>");
         	$('.metadata').append($aboutthedata);
-        	$('.desc_contents').hide();
+        	$('.contents').hide();
 	    })
-
     	}else if($aboutthedata.length > 0){
     		console.log('no more append.');	
     	}
@@ -121,14 +120,19 @@ $('#print_b').click(function() {
 $('#aboutus_b').click(function() {
     $('.tabs').not('.aboutus').hide();
     $('.aboutus').toggle();
-}); $('#contact_b').click(function() {
+}); 
+$('#contact_b').click(function() {
     $('.tabs').not('.contact').hide();
     $('.contact').toggle();
 
-}); $('#about_b').click(function() {
+}); 
+$('#about_b').click(function() {
     $('.tabs').not('.about').hide();
+    $('li').css();
     $('.about').toggle();
-}); $('#dlayer_b').click(function() {
+
+}); 
+$('#dlayer_b').click(function() {
     $('.tabs').not('.dlayer').hide();
     $('.dlayer').toggle();
 });
