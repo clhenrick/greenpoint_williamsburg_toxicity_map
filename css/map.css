@@ -5,6 +5,11 @@ body {
   padding: 0;
 }
 
+@font-face {
+    font-family: "iconvault_forecastfont";
+    src: url("img/iconvault_forecastfont.woff") format('woff');
+}
+
 
 html {
   position: relative;
@@ -59,13 +64,23 @@ div p{
     margin-left: 0px;
     max-width: 100%;
 }
-
-.tab :div hr{
+/*
+.tabs hr{
     border: 1px #989898;
-    width:100%;
+    height: 1px;
+    margin: 10px 0px 10px 0px;
+    width: 240px;
+    margin-left: 0px;
 }
-.tab :div h4{
+*/
+.tabs div h4{
     font-size: 24px;
+}
+
+.tabs a {
+    font-style: bold;
+    color:#08185a; /*orange replacement*/
+    text-decoration: none;
 }
 #logo{
     display: block;
@@ -91,6 +106,7 @@ div p{
 }
 
 #menu .menunav{
+    float:none;
     background-color: #dedede;
     width:100%;
     height: 50px;
@@ -101,11 +117,11 @@ div p{
 }
 
 #menu .menunav li {
-    padding-top: 0;
+
+    padding-top: 0px;
     vertical-align: middle;
     background-color: #dedede;
     color: #989898;
-    font-size: 20px;
 }
 
 #menu .menunav li:hover {
@@ -142,12 +158,12 @@ footer a{
 
 
 
-p.copyright{
-    font-size: 10px;
-    padding-left: 10px;
-    padding-top: 10px;
-    vertical-align: bottom;
-    color:#9e9e9e;
+.copyright p{
+    width:250px;
+    font-size: 12px;
+    vertical-align: middle;
+    color:#696969;
+    text-align: center;
 }
 
 
@@ -173,51 +189,52 @@ p.copyright{
 
 /*layer button tab options*/
 .dlayer{
-    background-color: #d0cece;
-    border-radius: 25px;
-    color: #989898;
     overflow: hidden;
     margin: 5px;
 
 }
-.dlayer>button{
+.dlayer .env>button,
+.dlayer .ngh>button,
+.dlayer .ind>button{
+    border-radius: 25px;
     box-shadow: none !important;
     border: 1px solid #989898;
 }
-.dlayer>button i{
+.dlayer .env>button i,
+.dlayer .ngh>button i,
+.dlayer .ind>button i{
    font-size: 24px;
-    color:#fefefe;
+    color:#989898;
 }
-.dlayer>button i:hover {
+.dlayer .env>button i:hover:active,
+.dlayer .ngh>button i:hover:active,
+.dlayer .ind>button i:hover:active {
    font-size: 24px;
-    color:#040404;
-}
-.dlayer>button:hover {
-    font-size: 12px;
-    color:#040404;
-    box-shadow: none !important;
+    color:#334a5a;
+
 }
 
-.dlayer>button:active{
+.dlayer .env>button:hover:active,
+.dlayer .ngh>button:hover:active,
+.dlayer .ind>button:hover:active{
     background-color: #fefefe;
     border: 1px solid #cecece;
+    color:#334a5a;
     outline: none !important; 
-    box-shadow: none !important;
 }
 
-.dlayer>button:focus {
 
-}
 
 .dlayer .env, 
 .dlayer .ngh, 
 .dlayer .ind {
-    margin-bottom: 25px; 
+    margin-bottom: 25px;
 }
+
 .dlayer .env:not(:first-child), 
 .dlayer .ngh:not(:first-child),
 .dlayer .ind:not(:first-child){
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .dlayer .ind p{
@@ -235,21 +252,33 @@ p.copyright{
     line-height: 180%;
 }
 
-
 .tabs .title {
     line-height: 16px;
     color: #696969;
     margin-bottom:2px;
 }
-
+/*.dlayer .env, 
+.dlayer .ngh, 
+.dlayer .ind */
 .tabs .subtitle{
-    margin-bottom: 10px; 
+    margin: 0px 20px 20px 0px; 
     font: 14px bold;
     font-family: 'Open Sans', sans-serif;
     border-left: 5px solid #989898;
     color:#696969;
+    text-indent: 1em;
 }
 
+.tabs h4{
+    font-size: 18px;
+    color:#696969;
+    padding-bottom:15px; 
+}
+
+.tabs p{
+    text-indent: 1em;
+    margin-bottom: 10px;
+}
 /*submit data alignment */
 .nextsteps {
     width:180px;  
@@ -258,20 +287,31 @@ p.copyright{
     width:200px;
 }
 .nextsteps >button {
-    margin-top: 50px; 
+    margin:50px 0px 10px 0px;
     padding: 10px;
     vertical-align: middle;
     background-color: #d9d9d9;
     color: #989898;
-    border: 1px solid #cecece;
+    border: 1px solid #989898;
     font-size: 12px;
     border-radius: 10px;
+    width:120px;
 }
 
-.tabs .metadata{
+.nextsteps >button:active{
+    background-color: #fefefe;
+}
+
+.tabs .metadata .desc{
     display:none;
+    color:#696969;
+    overflow:auto;
+    padding-top: 10px;
 }
-
+.tabs .metadata .desc .desc_contents span{
+    overflow-y: scroll;
+    width:250px;
+}
 
 /*about page*/
 .tabs .about {
@@ -282,14 +322,14 @@ p.copyright{
     color: #1f1f1f;
     line-height: 180%;
     background-color: none;/*#dbdad3*/
-    overflow: hidden;
    /* box-shadow: 1px 1px 3px #9e9e9e; */
 }
 
-p:.about{
-    padding-top:1em;
-}
 
+.pressed{
+    background-color: #fefefe;
+    color:#696969;
+}
 /*credit at footer*/
 
 .tabs .aboutus{
@@ -303,34 +343,44 @@ p:.about{
 }
 
 
-#aboutus.hr {
-    width: 90%;
-}
 #aboutus_b {
     color: #696969; 
 }
 
 .tabs .contact {
     display: none;
-    width: 295px;
+    width: 100%;
     color: #696969;
     padding:20px;
 
 }
+.contact #address {
+    width:100%;
+}
+
 
 
 
 /*Zoomin and out */
 .zoombtn {
     position: absolute;
+    width:15px;
     top: 10px;
-    right: 10px;
+    right: 305px;
+}
+.zoombtn>button{
+    width:25px;
+    height:25px;
+    background-color: #cecece;
+    border:0px;
+    vertical-align: middle;
+    padding:3px;
     box-shadow: 1px 1px 3px #9e9e9e;
 }
 .glyphzoom {
     font-size: 15px;
     color:#696969;
     text-align: center;
-    vertical-align: center;
+    vertical-align: middle;
     margin-top:3px;
 }
