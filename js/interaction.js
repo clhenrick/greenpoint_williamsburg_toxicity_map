@@ -25,6 +25,9 @@ app.interaction = (function(d, $, _) {
         	$('.metadata').append($aboutthedata);
         	$('.contents').hide();
 	    })
+       		$('.desc:nth-child(even)').click(function(){
+			      $('.contents:nth-child(even)').toggle();
+	       	});
     	}else if($aboutthedata.length > 0){
     		console.log('no more append.');	
     	}
