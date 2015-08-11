@@ -251,6 +251,9 @@ p> .copyright {
     display:none; /*$('tabs').hide() $('tabs').css() */
     padding:15px;
     line-height: 180%;
+    height:auto;
+    max-height:150%;
+    overflow:auto;  
 }
 
 .tabs .title {
@@ -299,7 +302,7 @@ p> .copyright {
     width:120px;
 }
 
-.nextsteps >button:active{
+.nextsteps >button:active:hover{
     background-color: #fefefe;
 }
 
@@ -307,9 +310,9 @@ p> .copyright {
     display:none;
     color:#696969;
     overflow:auto;
-    padding-top: 10px;
+    padding:0px;
 }
-.tabs .metadata span>.desc_contents {
+.tabs .metadata .contents {
     overflow-y: scroll;
     width:250px; 
     padding-right:50px;
@@ -345,7 +348,9 @@ p> .copyright {
     overflow:scroll;
 }
 
-
+.accodion{
+    width:250px;
+}
 #aboutus_b {
     color: #696969; 
 }
@@ -386,4 +391,47 @@ p> .copyright {
     text-align: center;
     vertical-align: middle;
     margin-top:3px;
+}
+
+/*accodion at about the data*/
+.ui-accordion{
+    width:250px;
+    border:0px;
+    background-color: #d0cece;
+}
+.ui-accordion:hover{
+    border:0px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: transparent;
+    background-color: #d0cece;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    border:0px;
+    border-left: 5px solid #989898;
+    border-radius: 0px;
+    
+    } 
+.ui-state-default:active:hover, 
+.ui-widget-content:active:hover 
+.ui-state-default:active:hover, 
+.ui-widget-header:active:hover 
+.ui-state-default:active:hover {
+    border:0px;
+}
+
+.ui-widget-content{
+    border:0px;
+     background: transparent;   
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+    background: transparent;
+    background-color: #d0cece;
+    padding-top: 0px;
+    margin-top: 0px;
+    max-height: 100px;
+    min-height: 10px;
+    max-width: 228px;
+    max-height: 100px;
+    overflow-y: scroll;
 }
