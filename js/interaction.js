@@ -98,7 +98,6 @@ app.interaction = (function(d, $, _) {
 function screenshot() {
     if (screen.width > 0 && screen.height > 0) {
         try {
-            $('body').append('<div id="canvas"></div>');
             html2canvas(document.body, {
                 allowTaint: false,
                 logging: true,
