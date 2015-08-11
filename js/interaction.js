@@ -6,6 +6,8 @@ app.interaction = (function(d, $, _) {
 
     //default setup 
     $('a').css('cursor', 'pointer');
+$div = $('.ui-widget-content .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default ');
+$div.css('background', 'none');
 
     //layer tooltips
     $('.dlayer').tooltip({
@@ -21,13 +23,18 @@ app.interaction = (function(d, $, _) {
         $('.tabs').not('.metadata').hide();
         if($aboutthedata.length <= 0){
        	$.each(desc,function(i,val){
-        	$aboutthedata = $("<div class='desc'><h6 class='subtitle desc'>"+desc[i].title+"</h6> <span class='desc_contents contents'>"+desc[i].field+"</span> </div>");
+        	$aboutthedata = $("<div class='desc accordion'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
         	$('.metadata').append($aboutthedata);
         	$('.contents').hide();
 	    })
-       		$('.desc:nth-child(even)').click(function(){
-			      $('.contents:nth-child(even)').toggle();
-	       	});
+  		$('.accordion').accordion( {
+  			animate: 200,
+  			active:2,	
+  			collapsible: true,
+  			icons: false,
+  			heightStyle: "fill"
+
+  		});
     	}else if($aboutthedata.length > 0){
     		console.log('no more append.');	
     	}
