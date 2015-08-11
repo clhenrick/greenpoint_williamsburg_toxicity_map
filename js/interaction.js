@@ -130,7 +130,6 @@ $('#contact_b').click(function() {
 }); 
 $('#about_b').click(function() {
     $('.tabs').not('.about').hide();
-    $('li').css();
     $('.about').toggle();
 
 }); 

@@ -233,13 +233,13 @@ app.map = (function(w, d, $, H) {
         
         return true;
     }
-
+    var legendIndex =[];
     // renders the data layer's legend
     function renderLegend(index) {
         var data = legend_data[index];
-        console.log(data);
+        //console.log(data);
         data.id = index;
-
+        console.log(index.id);
         function passData() {            
             var html = hb_template(data);
             $('.map-legends').append(html);
