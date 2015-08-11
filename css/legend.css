@@ -2,24 +2,18 @@
   position: absolute;
   display: inline-block;
 
-  font-family: sans-serif;
+  font-family: 'Open Sans',sans-serif;
   font-size: 12px;  
   
   background: #FFFFFF;
-  border: 1px solid gray;
-  border-radius: 5px;
+  border: 0px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px #9e9e9e;
   
-  padding: 10px;
-  margin: 10px;
+  padding: 0px 10px 10px 0px;
+  margin: 0px 0px 10px 10px;
 
   z-index: 5;
-}
-
-.ui hr {
-  background-color: hsl(0, 100%, 35%);
-  height: 1px;
-  border-width: 0;
-  margin: 8px 0 8px 0;  
 }
 
 .ui h3 {
@@ -35,18 +29,23 @@
 }
 
 #map-legend-container {
-  top: 32px;
+  top: 10px;
   right: 10px;
   width: 200px;
-  height: 120px;
+  height: 100px;
+}
+
+#map-legend-container p{
+  text-align: right;
 }
 
 #map-legend-container ul {
   list-style-type: none;
+
 }
 
 div.legend {
-  padding-bottom: 10px;
+  padding: 10px 20px 0px 10px;
 }
 
 ul.legend-labels li {
@@ -56,28 +55,34 @@ ul.legend-labels li {
   text-align: left;
   line-height: 18px;
   padding-top: 0;
-  padding-bottom: 2px;  
+  padding-bottom: 4px;  
 }
 
 ul.legend-labels li span {
   display: block;
   float: left;
   height: 16px;
-  width: 30px;
+  width: 25px;
   margin-right: 5px;
   margin-left: 0;
-  border: 1px solid #999;
   opacity: 0.7;
 }
 
+.outline{ 
+  border: 1px solid #cecece;
+}
+
 span.through-truck {
-  background: hsl(0,0%,60%);
+  background-color: #bd9faa;/*hsl(10,6%,81%);*/
+  height: 5px;
 }
 
 span.local-truck {
-  background: hsl(0,0%,80%);
+  background-color: #e9dae0; /*hsl(336,6%,91%);*/
+  height: 5px;
 }
 
 span.zipcodes {
-  border: 1px dashed hsl(0,0%,50%);
+  border: 1px dashed #989898;
+  background-color: #fefefe;
 }

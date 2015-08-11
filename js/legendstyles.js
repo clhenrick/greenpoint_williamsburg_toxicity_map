@@ -8,100 +8,87 @@ app.legends = (function(){
         title : "Population Density", // ppl per sq mile
         items : [
           {
-            color : "#cfb928",
-            label : "7,501 or more"
-          },
-          {
-            color : "#dfcd66",
-            label : "5,501 - 7,500"
-          },
-          {
-            color : "#e8dc91",
-            label : "4,001 - 5,500"
-          },
-          {
-            color : "#f0ecd7",
-            label : "2,501 - 4,000"
-          },
-          {
+            color : "#ffffff",
+            label : "0"
+          },{
             color : "#fcfaef",
             label : "1 - 2,500"
-          },
-          {
-            color : "#ffffff",
-            label : "0"
+          },{
+            color : "#f0ecd7",
+            label : "2,501 - 4,000"
+          },{
+            color : "#e8dc91",
+            label : "4,001 - 5,500"
+          },{
+            color : "#dfcd66",
+            label : "5,501 - 7,500"
+          },{
+            color : "#cfb928",
+            label : "7,501 or more"
           }
         ]
       },
 
       {
-        title : "Median Income",
+        title : "Median Household Income",
         items : [
-          {
-            color : "#216437",
-            label : "$75,001 or more"
-          },
-          {
-            color : "#4f8759",
-            label : "$65,001 - $75,000"
-          },
-          {
-            color : "#75ab7e",
-            label : "$50,001 - $65,000"
-          },
-          {
-            color : "#a5d0b4",
-            label : "$25,001 - $50,000"
-          },
-          {
+            {
             color : "#dcf5e8",
             label : "0 - $25,000"
-          }        
-        ]
-      },
-
-      {
-        title : "Asthma",
-        items : [
-          {
-            color : "#5a3072",
-            label : "21 - 35"
-          },
-          {
-            color : "#7a518b ",
-            label : "10 - 20"
-          },
-          {
-            color : "#9c7aac",
-            label : "6 - 9"
-          },
-          {
-            color : "#bfa4cd",
-            label : "0 - 5"
-          },
-          {
-            color : "#ffffff",
-            label : "0"
+          },{
+            color : "#a5d0b4",
+            label : "$25,001 - $50,000"
+          },{
+            color : "#75ab7e",
+            label : "$50,001 - $65,000"
+          },{
+            color : "#4f8759",
+            label : "$65,001 - $75,000"
+          },{
+            color : "#216437",
+            label : "$75,001 or more"
           }
         ]
       },
 
       {
-        title : "Flood Risk",
+        title : "Asthma Rate",
+        items : [
+            {
+            color : "#ffffff",
+            label : "0"
+          },{
+            color : "#bfa4cd",
+            label : "0 - 5"
+          },{
+            color : "#9c7aac",
+            label : "6 - 9"
+          },{
+            color : "#7a518b ",
+            label : "10 - 20"
+          },{
+            color : "#5a3072",
+            label : "21 - 35"
+          }
+        ]
+      },
+
+      {
+        title : "Future Flood Risk",
         items : [
           {
-            color : "#2E5387 ",
+            color : "#93a5b6",
             label : "Projected 500-year storm"
           },
           {
-            color : "#0f3b82",
+            color : "#2E5387",
             label : "Projected 100-year storm"
           }
         ]
       },
 
       {
-        title : "Polluted Sites (Areas)",
+        title : "Polluted Places",
         items : [
           {
             color : "#feb9f0",
@@ -119,7 +106,7 @@ app.legends = (function(){
       },
 
       {
-        title : "Poluted Sites (Points)",
+        title : "Poluted Sites",
         items : [
           {
             color : "#aa04ee",
@@ -145,7 +132,7 @@ app.legends = (function(){
         items : [
           {
             color : "#a00002",
-            label : "Waste transfer station"
+            label : "Waste Transfer Stations"
           }
         ]
       }

@@ -201,15 +201,15 @@ app.map = (function(w, d, $, H) {
 
         // if the layer is already selected turn it off
         if ($button.hasClass('selected')) {
-            sublayers[index].hide(); 
+            sublayers[index].hide();
             removeLegend(index);
-            $button.removeClass('selected');
+            $button.removeClass('selected active pressed');
         
         } else if (!$button.hasClass('selected')) {
             // otherwise turn it on
             sublayers[index].show();
             renderLegend(index);
-            $button.addClass('selected');
+            $button.addClass('selected active pressed');
         }
 
         // determine if the index is for a choropleth layer
@@ -220,12 +220,12 @@ app.map = (function(w, d, $, H) {
 
                 if ($('#legend-' + i).length && i !== index) {
                     removeLegend(i);
-                    sublayers[i].hide();                    
+                    sublayers[i].hide();                 
                 }
 
                 if (i !== index) { 
                     var id2 = '#' + $('.data-layer')[6-i].getAttribute('id');
-                    $(id2).removeClass('selected');
+                    $(id2).removeClass('selected active pressed');
                 }
                                 
             }
@@ -233,13 +233,13 @@ app.map = (function(w, d, $, H) {
         
         return true;
     }
-
+    var legendIndex =[];
     // renders the data layer's legend
     function renderLegend(index) {
         var data = legend_data[index];
-        console.log(data);
+        //console.log(data);
         data.id = index;
-
+        console.log(index.id);
         function passData() {            
             var html = hb_template(data);
             $('.map-legends').append(html);
@@ -263,7 +263,7 @@ app.map = (function(w, d, $, H) {
             lHeight = lcontainer.innerHeight();
 
         target.remove();
-        lcontainer.innerHeight(lHeight - tHeight + 4);
+        lcontainer.innerHeight(lHeight - tHeight);
     }
 
     /* event listeners */
@@ -275,12 +275,12 @@ app.map = (function(w, d, $, H) {
     });
 
     // clear all the layers
-    $('.btn.clear').on('click', function(e) {
+    $('.nextsteps .clear').on('click', function(e) {
         e.preventDefault();
         sublayers.forEach(function(sublayer) {
             sublayer.hide();
         });
-        $('.data-layer').removeClass('selected');
+        $('.data-layer').removeClass('selected pressed active');
     });
 
     // set up custom zoom buttons
@@ -316,5 +316,5 @@ app.map = (function(w, d, $, H) {
 
 window.addEventListener('DOMContentLoaded', function() {
     app.map.init();
-    app.interaction.init();
+   // app.interaction.init();
 });
