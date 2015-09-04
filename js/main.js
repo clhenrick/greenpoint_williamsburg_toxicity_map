@@ -209,7 +209,7 @@ app.map = (function(w, d, $, H) {
         var data = legend_data[index];
         //console.log(data);
         data.id = index;
-        console.log(index.id);
+        
         function passData() {            
             var html = hb_template(data);
             $('.map-legends').append(html);

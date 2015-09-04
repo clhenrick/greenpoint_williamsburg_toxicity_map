@@ -93,7 +93,7 @@ app.legends = (function(){
 
       {
         title : "Polluted Places",
-        type : 'point',
+        type : 'polygon',
         items : [
           {
             color : "#feb9f0",
@@ -138,7 +138,7 @@ app.legends = (function(){
         type : 'point-donut',
         items : [
           {
-            color : "#a00002",
+            color : "#fff",
             label : "Waste Transfer Stations"
           }
         ]

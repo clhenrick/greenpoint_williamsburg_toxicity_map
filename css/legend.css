@@ -55,21 +55,34 @@ ul.legend-labels li {
   text-align: left;
   line-height: 18px;
   padding-top: 0;
-  padding-bottom: 4px;  
+  padding-bottom: 4px;
 }
 
 ul.legend-labels li span {
   display: block;
   float: left;
-  height: 16px;
-  width: 25px;
+  height: 15px;
+  width: 15px;
   margin-right: 5px;
   margin-left: 0;
   opacity: 0.7;
+  border: 1px solid #cecece; 
 }
 
-.outline{ 
-  border: 1px solid #cecece;
+ul.legend-labels li span.point {
+  border-radius: 50%;
+  width: 7px;
+  height: 7px;
+}
+
+ul.legend-labels li span.point-donut {
+  background: none;
+  border-radius: 50%;
+  border-color: #101010;
+  border-width: 3px;
+  padding: 2px;
+  width: 1px;
+  height: 1px;
 }
 
 span.through-truck {
