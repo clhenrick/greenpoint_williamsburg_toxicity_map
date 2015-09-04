@@ -19,7 +19,7 @@ $div.css('background', 'none');
 
 
     var $aboutthedata =[];
-    $('.next').click(function() {
+    $('.aboutdata').click(function() {
         $('.tabs').not('.metadata').hide();
         if($aboutthedata.length <= 0){
        	$.each(desc,function(i,val){
@@ -82,35 +82,7 @@ $('li').click(function() {
 
     }
 });
-/*  
-    function layer_desc() {
 
-		var desc = [
-		{title:"waste transfer station", field:"cotents1"},
-		{title:"title2", field:"cotents2"},
-		{title:"title3", field:"cotents3"},
-		{title:"title3", field:"cotents4"},
-		{title:"title3", field:"cotents5"},
-		{title:"title3", field:"cotents6"},
-		{title:"title3", field:"cotents7"}
-		];
-		//about map layers
-
-		$('.layers').tooltip({
-		  items: "[title]",
-		  content: function() {
-		    var element = $( this );
-		    if ( element.is( "[title]" ) ) {
-		     var line = "<strong>"+desc[0].title +"</strong>"+"<br>"+desc[0].field;
-		      return line;    
-		    }
-		  }
-		});//tooptips on map 
-		
-    };//eof layer_desc
-
-
-*/
 
 
 function screenshot() {
