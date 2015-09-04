@@ -52,7 +52,7 @@ app.map = (function(w, d, $, H) {
             zoom: zoomStart,
             maxZoom: 19,
             minZoom: 12,
-            scrollwheel: disable,
+            scrollwheel: false,
             maxBounds: bounds,
             legends: true,
             infoControl: false,
