@@ -71,6 +71,17 @@ $div.css('background', 'none');
     }];
 
 
+$('li').click(function() {
+    /* Act on the event */
+    if($('li').hasClass('#dlayer_b')){
+        //changes color of background 
+        //open maplayer 
+        //
+    }
+    if($('li').hasClass('#about_b')){
+
+    }
+});
 /*  
     function layer_desc() {
 
