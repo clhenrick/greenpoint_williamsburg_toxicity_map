@@ -247,8 +247,9 @@ app.map = (function(w, d, $, H) {
     // clear all the layers
     $('.nextsteps .clear').on('click', function(e) {
         e.preventDefault();
-        sublayers.forEach(function(sublayer) {
+        sublayers.forEach(function(sublayer,i) {
             sublayer.hide();
+            removeLegend(i);
         });
         $('.data-layer').removeClass('selected pressed active');
     });
