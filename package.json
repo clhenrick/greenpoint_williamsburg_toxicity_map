@@ -1,0 +1,27 @@
+{
+  "name": "greenpoint_williamsburg_toxicity_map",
+  "version": "1.0.0",
+  "description": "'interactive map of environmental toxins & demographic information for Greenpoint & Williamsburg, Brooklyn, NY'",
+  "main": "'n/a'",
+  "scripts": {
+    "test": "''"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bowon/demo_july10.git"
+  },
+  "keywords": [
+    "map",
+    "brooklyn",
+    "toxicity"
+  ],
+  "author": "Bowon Chung & Chris Henrick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bowon/demo_july10/issues"
+  },
+  "homepage": "https://github.com/bowon/demo_july10#readme",
+  "dependencies": {
+    "async": "^1.4.2"
+  }
+}
