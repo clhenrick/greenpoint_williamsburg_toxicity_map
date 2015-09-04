@@ -24,7 +24,3 @@
     marker-width: 6;
   }
 }
-
-
-
-
