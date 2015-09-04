@@ -6,6 +6,7 @@ app.map = (function(w, d, $, H) {
         map_object,
         legend_data = app.legends.data,
         layerSource = app.layers,
+        carto = app.cartocss,
         hb_source = d.getElementById('legend-template').innerHTML,
         hb_template = H.compile(hb_source),
         hb_data = [];
