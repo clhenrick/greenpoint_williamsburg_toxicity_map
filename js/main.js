@@ -51,6 +51,7 @@ app.map = (function(w, d, $, H) {
             zoom: zoomStart,
             maxZoom: 19,
             minZoom: 12,
+            scrollwheel: disable,
             maxBounds: bounds,
             legends: true,
             infoControl: false,
