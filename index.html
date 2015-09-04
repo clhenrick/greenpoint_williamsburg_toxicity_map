@@ -132,11 +132,14 @@
     <!-- handlebars template for map's data layers legend -->
     <script id="legend-template" type="text/x-handlebars-template">
         <div class="legend dl" id="legend-{{id}}">
+            
             {{#if title}}
-            <h3>{{title}}</h3> {{/if}}
+            <h3>{{title}}</h3>
+            {{/if}}
+
             <ul class="legend-labels">
                 {{#each items}}
-                <li><span style="background: {{color}}" class="outline"></span>{{label}}</li>
+                <li class="{{../type}}"><span style="background: {{color}}" class="outline"></span>{{label}}</li>
                 {{/each}}
             </ul>
         </div>
