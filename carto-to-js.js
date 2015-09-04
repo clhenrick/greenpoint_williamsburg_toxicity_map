@@ -31,7 +31,6 @@ function iterateFiles() {
 
       if (i === mssFiles.length -1 ){
         writeJSON();
-        console.log(test);
       }      
 
     });
