@@ -6,6 +6,7 @@ app.legends = (function(){
     data : [
       {
         title : "Population Density", // ppl per sq mile
+        type : 'polygon',
         items : [
           {
             color : "#ffffff",
@@ -31,6 +32,7 @@ app.legends = (function(){
 
       {
         title : "Median Household Income",
+        type : 'polygon',
         items : [
             {
             color : "#dcf5e8",
@@ -53,6 +55,7 @@ app.legends = (function(){
 
       {
         title : "Asthma Rate",
+        type : 'polygon',
         items : [
             {
             color : "#ffffff",
@@ -75,6 +78,7 @@ app.legends = (function(){
 
       {
         title : "Future Flood Risk",
+        type : 'polygon',
         items : [
           {
             color : "#93a5b6",
@@ -89,6 +93,7 @@ app.legends = (function(){
 
       {
         title : "Polluted Places",
+        type : 'point',
         items : [
           {
             color : "#feb9f0",
@@ -107,6 +112,7 @@ app.legends = (function(){
 
       {
         title : "Poluted Sites",
+        type : 'point',
         items : [
           {
             color : "#aa04ee",
@@ -129,6 +135,7 @@ app.legends = (function(){
 
       {
         title : "",
+        type : 'point-donut',
         items : [
           {
             color : "#a00002",
