@@ -47,7 +47,7 @@ app.map = (function(w, d, $, H) {
        }
 
         var params = {
-            center: [40.7237442, -73.9532883], //Greenpoint
+            center: [40.718640, -73.950605], //Greenpoint
             zoomControl: false,
             zoom: zoomStart,
             maxZoom: 19,
@@ -88,8 +88,7 @@ app.map = (function(w, d, $, H) {
     } // end init map
 
 
-    function initCartoDBLayers() {
-        var viz_json ="https://nag-brooklyn.cartodb.com/api/v2/viz/eebfa096-d35b-11e4-97b2-0e018d66dc29/viz.json";
+    function initCartoDBLayers() {        
         var cdb_options = {
                 cartodb_logo: false,
                 legends: false,
@@ -109,7 +108,7 @@ app.map = (function(w, d, $, H) {
                     layer.getSubLayer(i).hide();
                     sublayers.push(layer.getSubLayer(i));
 
-                    var fields = layerSource.sublayers[i].interactivity.split(",");
+                    var fields = layerSource.sublayers[i].interactivity.trim().split(",");
 
                     cartodb.vis.Vis.addInfowindow(
                         map_object, 
@@ -195,7 +194,7 @@ app.map = (function(w, d, $, H) {
                     var id2 = '#' + $('.data-layer')[6-i].getAttribute('id');
                     $(id2).removeClass('selected active pressed');
                 }
-                                
+               
             }
         }
         
