@@ -96,16 +96,8 @@ app.legends = (function(){
         type : 'polygon',
         items : [
           {
-            color : "#feb9f0",
+            color : "#FFCC00",
             label : "Plume"
-          },
-          {
-            color : "#feff83",
-            label : "Superfund"
-          },
-          {
-            color : "#f3cc81",
-            label : "Brownfield"
           }
         ]
       },
