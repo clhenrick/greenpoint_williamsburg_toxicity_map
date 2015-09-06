@@ -6,6 +6,7 @@ app.interaction = (function(d, $, _) {
 
     //default setup 
     $('a').css('cursor', 'pointer');
+
 $div = $('.ui-widget-content .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default ');
 $div.css('background', 'none');
 
@@ -17,24 +18,41 @@ $div.css('background', 'none');
         }
     });
 
-
-    var $aboutthedata =[];
+var $aboutthedata =[];
+$('#aboutdata').click(function() {
+    $('.tabs').not('.metadata').hide(); 
+    if($aboutthedata.length <= 0){
+        $.each(desc,function(i,val){
+            $aboutthedata = $("<div class='desc'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
+            $('.metadata').append($aboutthedata);
+            $('.desc').css({
+                "width":"230px",
+                "overflow-y":"scroll auto"
+            });
+        })
+    }else if($aboutthedata.length > 0){
+            console.log('no more append.'); 
+    }
+    $('.metadata').toggle();  
+});
+/*
     $('.aboutdata').click(function() {
         $('.tabs').not('.metadata').hide();
-        if($aboutthedata.length <= 0){
-       	$.each(desc,function(i,val){
-        	$aboutthedata = $("<div class='desc accordion'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
-        	$('.metadata').append($aboutthedata);
-        	$('.contents').hide();
-	    })
-  		$('.accordion').accordion( {
-  			animate: 200,
-  			active:2,	
-  			collapsible: true,
-  			icons: false,
-  			heightStyle: "fill"
 
-  		});
+        if($aboutthedata.length <= 0){
+           	$.each(desc,function(i,val){
+            	$aboutthedata = $("<div class='desc accordion'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
+            	$('.metadata').append($aboutthedata);
+            	$('.contents').hide();
+    	    })
+      		$('.accordion').accordion( {
+      			animate: 200,
+      			active:2,	
+      			collapsible: true,
+      			icons: false,
+      			heightStyle: "fill"
+
+      		});
     	}else if($aboutthedata.length > 0){
     		console.log('no more append.');	
     	}
@@ -43,10 +61,10 @@ $div.css('background', 'none');
     });
 
 
-
+*/
     var desc = [{
         title: "Waste Transfer Stations",
-        field: "..."
+        field: "This layer shows waste transfer stations, scrap metal facilities, and recycling sorting facilities. A waste transfer station is a facility that receives solid waste from waste collection vehicles, and it is transferred to larger tractor-trailers or marine barges to be taken to a processing facility outside of the city. These types of facilities are typically associated with truck traffic dropping off or picking up waste or recycling, and contribute to air pollution and truck congestion in Williamsburg and Greenpoint.The Newtown Creek Wastewater Treatment Plant is also considered on this map for its daily transfer of wastewater sludge to a marine barge, and will be receiving truckloads of organic food waste to be processed at the plant."
     }, {
         title: "Polluted Sites",
         field: "An (E) designation comes from rezoning to notify an environmental requirement on a particular lot. The (E) designations in this map are lots that are required to address potential hazardous material contamination or air quality concerns (high ambient noise level (E) designations were omitted from this map) if the lot undergoes new construction or change in land use. An (E) designation does not signify pollution, but rather the potential for exposure to hazard material contamination or pollutants in ambient air quality. More information can be found on the NYC Office of Environmental Remediation’s website (http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml) <br/>Selected EPA sites: The EPA compiles sites that have regulation requirements through their Facility Registry Service. Facilities in this database must report to a variety of EPA programs, some as minimal as the Minor Air Facility Permit or as major as the Superfund program. There are over 1,000 facilities in Community Board 1 that have reported to the EPA at least once for any state or federal environmental programs. The sites shown in this map are the sites that have the largest burden of regulations to comply with, symbolizing potential for environmental risk. To access the full database, you can search by facility or geography here (http://www.epa.gov/enviro/facts/afs/search.html) or download the spatial data here (http://www.epa.gov/enviro/geo_data.html)<br>Spills are cataloged by NYS DEC for all accidental releases of petroleum, toxic chemicals, gases, and other hazardous materials. You can search for spills in their records on the DEC website (http://www.dec.ny.gov/cfmx/extapps/derexternal/index.cfm?pageid=2). Spills are categorized on this map as minor (smaller than 100 gallons) and major (100 gallons and greater) spills."
@@ -67,7 +85,8 @@ $div.css('background', 'none');
         field: "Residents of Williamsburg and Greenpoint experience higher instances of asthma due to proximity to truck routes and sources of air pollution. This layer shows distribution of hospital visits for asthma from 2008 to 2012. This data was retrieved from Infoshare.org of Community Studies of New York, Inc., a non-profit that compiles and aggregates data."
     },{
     	title:"Industrial History",
-    	field:"..."
+    	field:"Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents.
+Find out more information about the tour <a href='http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked/' target='blank'>here.</a>"
     }];
 
 
