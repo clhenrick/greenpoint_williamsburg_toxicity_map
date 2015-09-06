@@ -126,37 +126,37 @@ app.map = (function(w, d, $, H) {
     // call like: sublayerActions[i].layer_name();
     sublayerActions = {
         acs_pop : function() {
-            hideShow('acs_pop', 0);
+            hideShow('acs_pop');
             return true;
         },
         acs_income : function() {
-            hideShow('acs_income', 1);
+            hideShow('acs_income');
             return true;
         },
         asthma : function() {
-            hideShow('asthma', 2);
+            hideShow('asthma');
             return true;
         },
         flood_risk : function() {
-            hideShow('flood_risk', 3);
+            hideShow('flood_risk');
             return true;
         },
         polluted_polygons : function() {
-            hideShow('polluted_polygons', 4);
+            hideShow('polluted_polygons');
             return true;
         },
         polluted_points : function() {
-            hideShow('polluted_points', 7);
+            hideShow('polluted_points');
             return true;
         },
         waste_transfer_stations : function() {
-            hideShow('waste_transfer_stations', 8);
+            hideShow('waste_transfer_stations');
             return true;
         }
     };
 
     // hide or show the data layer
-    function hideShow(id, index) {
+    function hideShow(id) {
         var id_hash = '#' + id, // the button id
             $button = $(id_hash), // the css id of the selected button
             $buttons = $('.data-layer'), // the ui buttons for sublayers
