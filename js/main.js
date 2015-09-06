@@ -8,8 +8,7 @@ app.map = (function(w, d, $, H) {
         layerSource = app.layers,
         carto = app.cartocss,
         hb_source = d.getElementById('legend-template').innerHTML,
-        hb_template = H.compile(hb_source),
-        hb_data = [];
+        hb_template = H.compile(hb_source);
 
     // register handlebars helpers for rendering legends
     H.registerHelper('each', function(context, options) {
