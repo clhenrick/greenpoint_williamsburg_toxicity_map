@@ -101,7 +101,7 @@ app.legends = (function(){
       ]
     },
 
-    industrial_history : {
+    industrial_history_points : {
       title : "Industrial History Walking Tour",
       type : "point",
       items : [
@@ -135,7 +135,7 @@ app.legends = (function(){
       ]
     },
 
-    waster_transfer_stations : {
+    waste_transfer_stations : {
       title : "",
       type : 'point-donut',
       items : [
