@@ -33,7 +33,7 @@ $('#aboutdata').click(function() {
     }else if($aboutthedata.length > 0){
             console.log('no more append.'); 
     }
-    $('.metadata').toggle();  
+    $('.metadata').toggle();
 });
 /*
     $('.aboutdata').click(function() {
@@ -85,8 +85,7 @@ $('#aboutdata').click(function() {
         field: "Residents of Williamsburg and Greenpoint experience higher instances of asthma due to proximity to truck routes and sources of air pollution. This layer shows distribution of hospital visits for asthma from 2008 to 2012. This data was retrieved from Infoshare.org of Community Studies of New York, Inc., a non-profit that compiles and aggregates data."
     },{
     	title:"Industrial History",
-    	field:"Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents.
-Find out more information about the tour <a href='http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked/' target='blank'>here.</a>"
+    	field:"Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents. Find out more information about the tour(http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked/)"
     }];
 
 
