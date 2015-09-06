@@ -4,7 +4,7 @@ app.map = (function(w, d, $, H) {
     var sublayers = [], // For storing the cartodb sublayers
         sublayerActions = [], // for layer button interactions
         map_object,
-        legend_data = app.legends,
+        legend_data = app.legends.data,
         layerSource = app.layers,
         carto = app.cartocss,
         hb_source = d.getElementById('legend-template').innerHTML,
@@ -34,6 +34,18 @@ app.map = (function(w, d, $, H) {
             northEast = L.latLng(40.755792, -73.856475),
             bounds = L.latLngBounds(southWest, northEast);
 
+        //screen resolution setting for map user 
+        var zoomStart = 14; //defualt setting for 1440*900
+
+       function zoomStartSetting(){
+        //screen resolutions
+        //1920x1080   1366x768    1280x1024   1280x800    1024x768    800x600
+        var defaultWidth = 1280;
+        var defualtHeight = 1024; 
+        var screenWidth = $(window).width(); //get the current screen width
+        var screenHeight = $(window).height(); //get the current screen height
+       }
+
         var params = {
             center: [40.718640, -73.950605], //Greenpoint
             zoomControl: false,
@@ -46,6 +58,21 @@ app.map = (function(w, d, $, H) {
             infoControl: false,
             attributionControl: true
         };
+
+        /***  multiple popup at once 
+        http://jsfiddle.net/paulovieira/yVLJf/
+        ***/
+
+        L.Map = L.Map.extend({
+            openPopup: function(popup) {
+                //        this.closePopup();  // just comment this
+                this._popup = popup;
+
+                return this.addLayer(popup).fire('popupopen', {
+                    popup: this._popup
+                });
+            }
+        });
         
         map_object = new L.Map('map', params);
         var accessToken = 'pk.eyJ1IjoiYm93b25jIiwiYSI6InFDV2RBNjAifQ._F8zZ-AkgNHp0_h2XKk9Pw';
@@ -60,7 +87,7 @@ app.map = (function(w, d, $, H) {
     
     } // end init map
 
-    // grab the data-layers from cartodb
+
     function initCartoDBLayers() {        
         var cdb_options = {
                 cartodb_logo: false,
@@ -95,45 +122,60 @@ app.map = (function(w, d, $, H) {
             });
     }  
 
-    // gets a data-layer's index or id from the cartodb sublayer array
-    function getSubLayerIndex(val) {
-        var idx = null;
-        if (typeof val === 'number') {                    
-            layerSource.sublayers.forEach(function(d,i){
-                if (val === i) {
-                    idx = d.name;
-                }
-            });
-        } else {            
-            layerSource.sublayers.forEach(function(d,i){
-                if (d.name === val) {
-                    idx = i;
-                }
-            });
+    // button interactions object
+    // call like: sublayerActions[i].layer_name();
+    sublayerActions = {
+        acs_pop : function() {
+            hideShow('acs_pop', 0);
+            return true;
+        },
+        acs_income : function() {
+            hideShow('acs_income', 1);
+            return true;
+        },
+        asthma : function() {
+            hideShow('asthma', 2);
+            return true;
+        },
+        flood_risk : function() {
+            hideShow('flood_risk', 3);
+            return true;
+        },
+        polluted_polygons : function() {
+            hideShow('polluted_polygons', 4);
+            return true;
+        },
+        polluted_points : function() {
+            hideShow('polluted_points', 7);
+            return true;
+        },
+        waste_transfer_stations : function() {
+            hideShow('waste_transfer_stations', 8);
+            return true;
         }
-        return idx;
-    }
+    };
 
     // hide or show the data layer
-    function hideShow(id) {
+    function hideShow(id, index) {
         var id_hash = '#' + id, // the button id
             $button = $(id_hash), // the css id of the selected button
             $buttons = $('.data-layer'), // the ui buttons for sublayers
             $legends = $('.legend.dl'), // the sublayer legends currently displayed
             layer = sublayers[index], // the sublayer data,
-            sublayer_len = sublayers.length,
-            index = getSubLayerIndex(id);
+            sublayer_len = sublayers.length;
+
+        console.log('hideShow id: ', id, ' index: ', index);
 
         // if the layer is already selected turn it off
         if ($button.hasClass('selected')) {
             sublayers[index].hide();
-            removeLegend(id);
+            removeLegend(index);
             $button.removeClass('selected active pressed');
         
         } else if (!$button.hasClass('selected')) {
             // otherwise turn it on
             sublayers[index].show();
-            renderLegend(id);
+            renderLegend(index);
             $button.addClass('selected active pressed');
         }
 
@@ -141,16 +183,15 @@ app.map = (function(w, d, $, H) {
         if (index >= 0 && index < 3) {
             // remove other choropleth legends & layers if they are displayed
             for (var i=0; i<3; i++) {
-                
-                var x = getSubLayerIndex(i);
-                
-                if ($('#legend-' + x).length && i !== index) {
-                    removeLegend(x);
+                console.log('i: ', i);
+
+                if ($('#legend-' + i).length && i !== index) {
+                    removeLegend(i);
                     sublayers[i].hide();                 
                 }
 
                 if (i !== index) { 
-                    var id2 = '#' + $('.data-layer')[6 - i].getAttribute('id');
+                    var id2 = '#' + $('.data-layer')[6-i].getAttribute('id');
                     $(id2).removeClass('selected active pressed');
                 }
                
@@ -162,11 +203,11 @@ app.map = (function(w, d, $, H) {
 
     var legendIndex =[];
     
-    // renders the data-layer's legend
-    function renderLegend(id) {
-        var data = legend_data[id];
-        data.id = id;
-        console.log(data);
+    // renders the data layer's legend
+    function renderLegend(index) {
+        var data = legend_data[index];
+        //console.log(data);
+        data.id = index;
         
         function passData() {            
             var html = hb_template(data);
@@ -184,9 +225,8 @@ app.map = (function(w, d, $, H) {
         resizeLegendContainer();
     }
 
-    // removes the data-layer's legend
-    function removeLegend(id) {
-        var target = $('#legend-' + id),
+    function removeLegend(index) {
+        var target = $('#legend-' + index),
             lcontainer = $('#map-legend-container'),
             tHeight = target.innerHeight(),
             lHeight = lcontainer.innerHeight();
@@ -195,15 +235,12 @@ app.map = (function(w, d, $, H) {
         lcontainer.innerHeight(lHeight - tHeight);
     }
 
-    /*** 
-        Map Interaction Event Listeners 
-    ***/
-
-    // load the appropriate data-layer on its corresponding button click
+    /* event listeners */
+    // call the appropriate function when user clicks a button
     $('.data-layer').click(function() {
         var layer = $(this).attr('id');
         console.log('clicked button: ', layer);
-        hideShow(layer);
+        sublayerActions[layer]();
     });
 
     // clear all the layers
@@ -211,8 +248,7 @@ app.map = (function(w, d, $, H) {
         e.preventDefault();
         sublayers.forEach(function(sublayer,i) {
             sublayer.hide();
-            var id = getSubLayerIndex(i);
-            removeLegend(id);
+            removeLegend(i);
         });
         $('.data-layer').removeClass('selected pressed active');
     });
@@ -228,6 +264,7 @@ app.map = (function(w, d, $, H) {
         });
     };
 
+
     /* get it all going! */
     var init = function() {
         initMap();
@@ -236,14 +273,13 @@ app.map = (function(w, d, $, H) {
        // zoomStartSetting();
     };
 
-    // stuff that's publicly accessible outside the module
+
     return {
         init: init,
         sublayers : sublayers,
         sublayerActions: sublayerActions,
         hideShow : hideShow,
-        renderLegend : renderLegend,
-        getSubLayerIndex : getSubLayerIndex
+        renderLegend : renderLegend
     };
 
 })(window, document, jQuery, Handlebars);
