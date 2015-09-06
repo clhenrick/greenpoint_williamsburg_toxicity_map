@@ -47,7 +47,7 @@ app.map = (function(w, d, $, H) {
        }
 
         var params = {
-            center: [40.7237442, -73.9532883], //Greenpoint
+            center: [40.718640, -73.950605], //Greenpoint
             zoomControl: false,
             zoom: zoomStart,
             maxZoom: 19,
@@ -88,8 +88,7 @@ app.map = (function(w, d, $, H) {
     } // end init map
 
 
-    function initCartoDBLayers() {
-        var viz_json ="https://nag-brooklyn.cartodb.com/api/v2/viz/eebfa096-d35b-11e4-97b2-0e018d66dc29/viz.json";
+    function initCartoDBLayers() {        
         var cdb_options = {
                 cartodb_logo: false,
                 legends: false,
@@ -109,7 +108,7 @@ app.map = (function(w, d, $, H) {
                     layer.getSubLayer(i).hide();
                     sublayers.push(layer.getSubLayer(i));
 
-                    var fields = layerSource.sublayers[i].interactivity.split(",");
+                    var fields = layerSource.sublayers[i].interactivity.trim().split(",");
 
                     cartodb.vis.Vis.addInfowindow(
                         map_object, 
@@ -147,11 +146,11 @@ app.map = (function(w, d, $, H) {
             return true;
         },
         polluted_points : function() {
-            hideShow('polluted_points', 5);
+            hideShow('polluted_points', 7);
             return true;
         },
         waste_transfer_stations : function() {
-            hideShow('waste_transfer_stations', 6);
+            hideShow('waste_transfer_stations', 8);
             return true;
         }
     };
@@ -195,7 +194,7 @@ app.map = (function(w, d, $, H) {
                     var id2 = '#' + $('.data-layer')[6-i].getAttribute('id');
                     $(id2).removeClass('selected active pressed');
                 }
-                                
+               
             }
         }
         
@@ -209,7 +208,7 @@ app.map = (function(w, d, $, H) {
         var data = legend_data[index];
         //console.log(data);
         data.id = index;
-        console.log(index.id);
+        
         function passData() {            
             var html = hb_template(data);
             $('.map-legends').append(html);
@@ -247,8 +246,9 @@ app.map = (function(w, d, $, H) {
     // clear all the layers
     $('.nextsteps .clear').on('click', function(e) {
         e.preventDefault();
-        sublayers.forEach(function(sublayer) {
+        sublayers.forEach(function(sublayer,i) {
             sublayer.hide();
+            removeLegend(i);
         });
         $('.data-layer').removeClass('selected pressed active');
     });

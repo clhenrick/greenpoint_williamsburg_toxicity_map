@@ -93,19 +93,33 @@ app.legends = (function(){
 
       {
         title : "Polluted Places",
-        type : 'point',
+        type : 'polygon',
         items : [
           {
-            color : "#feb9f0",
+            color : "#FFCC00",
             label : "Plume"
-          },
+          }
+        ]
+      },
+
+      {
+        title : "Industrial History Walking Tour",
+        type : "line",
+        items : [
           {
-            color : "#feff83",
-            label : "Superfund"
-          },
+            color : "#000000",
+            label : "Industrial history route"            
+          }
+        ]
+      },
+
+      {
+        title : "",
+        type : "point",
+        items : [
           {
-            color : "#f3cc81",
-            label : "Brownfield"
+            color : "#2E5387",
+            label : "Industrial history location"          
           }
         ]
       },
@@ -138,7 +152,7 @@ app.legends = (function(){
         type : 'point-donut',
         items : [
           {
-            color : "#a00002",
+            color : "#fff",
             label : "Waste Transfer Stations"
           }
         ]

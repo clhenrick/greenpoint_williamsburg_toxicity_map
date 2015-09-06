@@ -28,6 +28,14 @@ app.layers = (function(){
           cartocss: cartocss["polluted-areas"],
           interactivity: "site_or_owner_name,address,description,program,link_for_more_information,reference_number"
       }, {
+          sql: "SELECT * FROM industrialhistory_l",
+          cartocss: cartocss["industrial-history-lines"],
+          interactivity: "cartodb_id"
+      }, {
+          sql: "SELECT * FROM industrialhistory",
+          cartocss: cartocss["industrial-history-points"],
+          interactivity: "gid"
+      }, {
           sql: "SELECT * FROM polluted_points_f",
           cartocss: cartocss["polluted-points"],
           interactivity: "facility_or_owner, description,type_of_pollution,address,date,agency_program,link_for_more_information,nag_id,quantity,remediated,responding_agency,source"
