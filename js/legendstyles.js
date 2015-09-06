@@ -103,6 +103,28 @@ app.legends = (function(){
       },
 
       {
+        title : "Industrial History Walking Tour",
+        type : "line",
+        items : [
+          {
+            color : "#000000",
+            label : "Industrial history route"            
+          }
+        ]
+      },
+
+      {
+        title : "",
+        type : "point",
+        items : [
+          {
+            color : "#2E5387",
+            label : "Industrial history location"          
+          }
+        ]
+      },
+
+      {
         title : "Poluted Sites",
         type : 'point',
         items : [

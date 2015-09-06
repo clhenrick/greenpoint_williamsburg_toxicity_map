@@ -146,11 +146,11 @@ app.map = (function(w, d, $, H) {
             return true;
         },
         polluted_points : function() {
-            hideShow('polluted_points', 5);
+            hideShow('polluted_points', 7);
             return true;
         },
         waste_transfer_stations : function() {
-            hideShow('waste_transfer_stations', 6);
+            hideShow('waste_transfer_stations', 8);
             return true;
         }
     };
