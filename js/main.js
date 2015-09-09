@@ -36,9 +36,9 @@ app.map = (function(w, d, $, H) {
         var params = {
             center: [40.718640, -73.950605], //Greenpoint
             zoomControl: false,
-            zoom: zoomStart,
+            zoom: 14,
             maxZoom: 19,
-            minZoom: 12,
+            minZoom: 14,
             scrollwheel: false,
             maxBounds: bounds,
             legends: true,
@@ -116,50 +116,90 @@ app.map = (function(w, d, $, H) {
     // hide or show the data layer
     function hideShow(id) {
         var id_hash = '#' + id, // the button id
-            $button = $(id_hash), // the css id of the selected button
-            $buttons = $('.data-layer'), // the ui buttons for sublayers
-            $legends = $('.legend.dl'), // the sublayer legends currently displayed
-            layer = sublayers[index], // the sublayer data,
-            sublayer_len = sublayers.length,
-            index = getSubLayerIndex(id);
+            $button = $(id_hash); // the button itself
 
-        // if the layer is already selected turn it off
-        if ($button.hasClass('selected')) {
-            sublayers[index].hide();
-            removeLegend(id);
-            $button.removeClass('selected active pressed');
-        
-        } else if (!$button.hasClass('selected')) {
-            // otherwise turn it on
-            sublayers[index].show();
-            renderLegend(id);
-            $button.addClass('selected active pressed');
-        }
+        if (id === "industry") {
+            var a = getSubLayerIndex('industrial_history_lines'),
+                b = getSubLayerIndex('industrial_history_points');
 
-        // determine if the index is for a choropleth layer
-        if (index >= 0 && index < 3) {
-            // remove other choropleth legends & layers if they are displayed
-            for (var i=0; i<3; i++) {
-                
-                var x = getSubLayerIndex(i);
-                
-                if ($('#legend-' + x).length && i !== index) {
-                    removeLegend(x);
-                    sublayers[i].hide();                 
+            // if the layer is already selected turn it off
+            if ($button.hasClass('selected')) {
+                sublayers[a].hide();
+                sublayers[b].hide();
+                // removeLegend('industrial_history_lines');
+                removeLegend('industrial_history_points');
+                $button.removeClass('selected active pressed');
+            
+            } else if (!$button.hasClass('selected')) {
+                // otherwise turn it on
+                sublayers[a].show();
+                sublayers[b].show();
+                // renderLegend('industrial_history_lines');
+                renderLegend('industrial_history_points');
+                $button.addClass('selected active pressed');
+            }
+
+        } else if (id === "polluted") {
+            var a = getSubLayerIndex('polluted_points'),
+                b = getSubLayerIndex('polluted_polygons');
+
+            // if the layer is already selected turn it off
+            if ($button.hasClass('selected')) {
+                sublayers[a].hide();
+                sublayers[b].hide();
+                removeLegend('polluted_points');
+                removeLegend('polluted_polygons');
+                $button.removeClass('selected active pressed');
+            
+            } else if (!$button.hasClass('selected')) {
+                // otherwise turn it on
+                sublayers[a].show();
+                sublayers[b].show();
+                renderLegend('polluted_points');
+                renderLegend('polluted_polygons');
+                $button.addClass('selected active pressed');
+            }
+
+        } else {
+
+            var index = getSubLayerIndex(id); // numeric index of the data-layer in the sublayers array
+
+            // if the layer is already selected turn it off
+            if ($button.hasClass('selected')) {
+                sublayers[index].hide();
+                removeLegend(id);
+                $button.removeClass('selected active pressed');
+            
+            } else if (!$button.hasClass('selected')) {
+                // otherwise turn it on
+                sublayers[index].show();
+                renderLegend(id);
+                $button.addClass('selected active pressed');
+            }
+
+            // determine if the index is for a choropleth layer
+            if (index >= 0 && index < 3) {
+                // remove other choropleth legends & layers if they are displayed
+                for (var i=0; i<3; i++) {
+                    
+                    var x = getSubLayerIndex(i);
+                    
+                    if ($('#legend-' + x).length && i !== index) {
+                        removeLegend(x);
+                        sublayers[i].hide();                 
+                    }
+
+                    if (i !== index) { 
+                        var id2 = '#' + $('.data-layer')[6 - i].getAttribute('id');
+                        $(id2).removeClass('selected active pressed');
+                    }
+                   
                 }
-
-                if (i !== index) { 
-                    var id2 = '#' + $('.data-layer')[6 - i].getAttribute('id');
-                    $(id2).removeClass('selected active pressed');
-                }
-               
             }
         }
         
-        return true;
+        // return true;
     }
-
-    var legendIndex =[];
     
     // renders the data-layer's legend
     function renderLegend(id) {
@@ -232,14 +272,12 @@ app.map = (function(w, d, $, H) {
         initMap();
         initCartoDBLayers();
         initZoomButtons();
-       // zoomStartSetting();
     };
 
     // stuff that's publicly accessible outside the module
     return {
         init: init,
         sublayers : sublayers,
-        sublayerActions: sublayerActions,
         hideShow : hideShow,
         renderLegend : renderLegend,
         getSubLayerIndex : getSubLayerIndex
