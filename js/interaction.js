@@ -1,7 +1,9 @@
 var app = app || {};
 
 app.interaction = (function(d, w, $) {
+    // This module creates non-map interaction UI elements and event listeners
 
+    // descriptions of the data layers to append to the DOM
     var desc = [{
             title: "Waste Transfer Stations",
             field: "This layer shows waste transfer stations, scrap metal facilities, and recycling sorting facilities. A waste transfer station is a facility that receives solid waste from waste collection vehicles, and it is transferred to larger tractor-trailers or marine barges to be taken to a processing facility outside of the city. These types of facilities are typically associated with truck traffic dropping off or picking up waste or recycling, and contribute to air pollution and truck congestion in Williamsburg and Greenpoint.The Newtown Creek Wastewater Treatment Plant is also considered on this map for its daily transfer of wastewater sludge to a marine barge, and will be receiving truckloads of organic food waste to be processed at the plant."
@@ -29,108 +31,118 @@ app.interaction = (function(d, w, $) {
         }],
         aboutthedata =[];  
 
-    //default setup 
-    // this should be done in CSS not jQuery
+    // this step should be done in CSS not jQuery
     $('a').css('cursor', 'pointer');
 
-    //layer tooltips
-    $('.dlayer').tooltip();  
+    function addToolTips() {
+        // add jquery UI tooltips
+        // we could do this without jQuery UI...
+        $('.dlayer').tooltip();  
+    }
 
-    $('#aboutdata').click(function() {
-        $('.tabs').not('.metadata').hide();
+    function aboutData() {
+        // add the "about the data" content to the DOM
+        $('#aboutdata').click(function() {
+            $('.tabs').not('.metadata').hide();
 
-        if(aboutthedata.length <= 0){
-            $.each(desc,function(i,val){
-                aboutthedata = $("<div class='desc'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
-                $('.metadata').append(aboutthedata);
-                $('.desc').css({
-                    "width":"230px",
-                    "overflow-y":"scroll auto"
+            if(aboutthedata.length <= 0){
+                $.each(desc,function(i,val){
+                    aboutthedata = $("<div class='desc'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
+                    $('.metadata').append(aboutthedata);
+                    $('.desc').css({
+                        "width":"230px",
+                        "overflow-y":"scroll auto"
+                    });
+                })
+            }else if(aboutthedata.length > 0){
+                    console.log('no more append.'); 
+            }
+            $('.metadata').toggle();
+        });
+    }
+
+    /*
+        // accordian style UI display for "about the data"
+        $('.aboutdata').click(function() {
+            $('.tabs').not('.metadata').hide();
+
+            if(aboutthedata.length <= 0){
+               	$.each(desc,function(i,val){
+                	aboutthedata = $("<div class='desc accordion'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
+                	$('.metadata').append(aboutthedata);
+                	$('.contents').hide();
+        	    })
+          		$('.accordion').accordion( {
+          			animate: 200,
+          			active:2,	
+          			collapsible: true,
+          			icons: false,
+          			heightStyle: "fill"
+
+          		});
+        	}else if(aboutthedata.length > 0){
+        		console.log('no more append.');	
+        	}
+
+            $('.metadata').toggle();
+        });
+    */
+
+    function screenshot() {
+        // implements the HTML 2 Canvas JS for a user to print the current map view
+        if (screen.width > 0 && screen.height > 0) {
+            try {
+                html2canvas(document.body, {
+                    allowTaint: false,
+                    logging: true,
+                    taintTest: false,
+                    useCORS: true,
+                    onrendered: function(canvas) {
+                        // canvas is the final rendered <canvas> element
+                        var cap = canvas.toDataURL();
+                        window.open(cap);
+                    }
                 });
-            })
-        }else if(aboutthedata.length > 0){
-                console.log('no more append.'); 
-        }
-        $('.metadata').toggle();
-    });
-
-/*
-    $('.aboutdata').click(function() {
-        $('.tabs').not('.metadata').hide();
-
-        if(aboutthedata.length <= 0){
-           	$.each(desc,function(i,val){
-            	aboutthedata = $("<div class='desc accordion'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
-            	$('.metadata').append(aboutthedata);
-            	$('.contents').hide();
-    	    })
-      		$('.accordion').accordion( {
-      			animate: 200,
-      			active:2,	
-      			collapsible: true,
-      			icons: false,
-      			heightStyle: "fill"
-
-      		});
-    	}else if(aboutthedata.length > 0){
-    		console.log('no more append.');	
-    	}
-
-        $('.metadata').toggle();
-    });
-
-
-*/
-
-function screenshot() {
-    if (screen.width > 0 && screen.height > 0) {
-        try {
-            html2canvas(document.body, {
-                allowTaint: false,
-                logging: true,
-                taintTest: false,
-                useCORS: true,
-                onrendered: function(canvas) {
-                    // canvas is the final rendered <canvas> element
-                    var cap = canvas.toDataURL();
-                    window.open(cap);
-                }
-            });
-        } catch (err) {
-            console.log(err.message);
+            } catch (err) {
+                console.log(err.message);
+            }
         }
     }
-}
 
-$('#print_b').click(function() {
-    screenshot();
-});
+    function addListeners() {
+        // adds the event listeners to the non-map interactions UI
+        $('#print_b').click(function() {
+            screenshot();
+        });
 
-$('#aboutus_b').click(function() {
-    $('.tabs').not('.aboutus').hide();
-    $('.aboutus').toggle();
-}); 
-$('#contact_b').click(function() {
-    $('.tabs').not('.contact').hide();
-    $('.contact').toggle();
+        $('#aboutus_b').click(function() {
+            $('.tabs').not('.aboutus').hide();
+            $('.aboutus').toggle();
+        }); 
+        $('#contact_b').click(function() {
+            $('.tabs').not('.contact').hide();
+            $('.contact').toggle();
 
-}); 
-$('#about_b').click(function() {
-    $('.tabs').not('.about').hide();
-    $('.about').toggle();
+        }); 
+        $('#about_b').click(function() {
+            $('.tabs').not('.about').hide();
+            $('.about').toggle();
 
-}); 
-$('#dlayer_b').click(function() {
-    $('.tabs').not('.dlayer').hide();
-    $('.dlayer').toggle();
-});
+        }); 
+        $('#dlayer_b').click(function() {
+            $('.tabs').not('.dlayer').hide();
+            $('.dlayer').toggle();
+        });        
+    }
 
-//not required yet
-var init = function() {
-    //layer_desc(); 
-};
-return {
-    init: init
-};
+    var init = function() {
+        addToolTips();
+        aboutData();
+        addListeners();
+    };
+
+    return {
+        init: init
+    };
 
 })(document, window, jQuery);

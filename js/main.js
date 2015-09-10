@@ -1,16 +1,18 @@
 var app = app || {};
 
-app.map = (function(w, d, $, H) {    
+app.map = (function(w, d, $, H) {
+
+    // "global" variables accessible within the entire app.map scope: 
     var sublayers = [], // For storing the cartodb sublayers
         sublayerActions = [], // for layer button interactions
-        map_object,
+        map_object, // variable for the <div id="map"></div> DOM element to pass to Leaflet JS
         legend_data = app.legends,
         layerSource = app.layers,
         carto = app.cartocss,
         hb_source = d.getElementById('legend-template').innerHTML,
         hb_template = H.compile(hb_source);
 
-    // register handlebars helpers for rendering legends
+    // register Handlebars JS helpers for rendering legends
     H.registerHelper('each', function(context, options) {
         var ret = "";
         for(var i=0, j=context.length; i<j; i++) {
@@ -27,12 +29,14 @@ app.map = (function(w, d, $, H) {
         }
     });        
 
+    // create the Leaflet Map
     function initMap() {
-        // map paramaters to pass to Leaflet
+        // bounding box for Williamsburg / Greenpoint to limit the map's panable area
         var southWest = L.latLng(40.679628, -74.089720),
             northEast = L.latLng(40.755792, -73.856475),
             bounds = L.latLngBounds(southWest, northEast);
 
+        // map paramaters to pass to Leaflet
         var params = {
             center: [40.718640, -73.950605], //Greenpoint
             zoomControl: false,
@@ -45,21 +49,25 @@ app.map = (function(w, d, $, H) {
             infoControl: false,
             attributionControl: true
         };
-        
-        map_object = new L.Map('map', params);
+
+        map_object = new L.Map('map', params); 
         var accessToken = 'pk.eyJ1IjoiYm93b25jIiwiYSI6InFDV2RBNjAifQ._F8zZ-AkgNHp0_h2XKk9Pw';
         var mapid = 'bowonc.n26oid7e';
-        //geocoding
+        // for geocoding
         //map_object.addControl(L.mapbox.geocoderControl('mapbox.places'));
-        var attr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
-        //mapbox basemap
-        var basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v4/' + mapid + '/{z}/{x}/{y}.png?access_token=' + accessToken, 
-        {attribution: attr}
-        ).addTo(map_object);
+        var attr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,' + 
+                    ' <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+        // mapbox basemap
+        var basemap = L.tileLayer(
+                'https://{s}.tiles.mapbox.com/v4/' + mapid + 
+                '/{z}/{x}/{y}.png?access_token=' + accessToken, 
+                { attribution: attr }
+            )
+            .addTo(map_object);
     
     } // end init map
 
-    // grab the data-layers from cartodb
+    // grab the map's data-layers from CartoDB
     function initCartoDBLayers() {        
         var cdb_options = {
                 cartodb_logo: false,
@@ -75,25 +83,30 @@ app.map = (function(w, d, $, H) {
 
                 // get the number of sublayers
                 var numSubLayers = layer.getSubLayerCount();
+
+                // iterate over the sublayers and do stuff with them
                 for (var i = 0; i < numSubLayers; i++) {
                     var idx = getSubLayerIndex(i);
 
-                    // only set interaction for layers that need it
+                    // only enable interaction for layers that need it
                     if (idx !== 'industrial_history_lines' || idx !== 'flood_risk' ) {
                         layer.getSubLayer(i).setInteraction(true);
                     } else {
                         layer.getSubLayer(i).setInteraction(false);
                     }
                     
+                    // hide all sublayers by default
                     layer.getSubLayer(i).hide();
+                    // add our sublayers to an array so we can act on them later
                     sublayers.push(layer.getSubLayer(i));
-
+                    // get the field names to use for the info windows, excluding "cartodb_id"
                     var fields = layerSource.sublayers[i].interactivity.trim().split(",");
 
                     if (fields.indexOf('cartodb_id') > -1) {
                         fields.splice('cartodb_id',1);
                     }
 
+                    // create the info-windows manually
                     cartodb.vis.Vis.addInfowindow(
                         map_object, 
                         layer.getSubLayer(i),
@@ -106,7 +119,7 @@ app.map = (function(w, d, $, H) {
             });
     }  
 
-    // gets a data-layer's index or id from the cartodb sublayer array
+    // gets a data-layer's numeric index or text id from the app.layers.sublayers
     function getSubLayerIndex(val) {
         var idx = null;
         if (typeof val === 'number') {                    
@@ -189,7 +202,8 @@ app.map = (function(w, d, $, H) {
 
             // determine if the index is for a choropleth layer
             if (index >= 0 && index < 3) {
-                // remove other choropleth legends & layers if they are displayed
+                // remove other choropleth legends & layers if they are displayed,
+                // multiple choropleth layers displayed simultaneously look muddy and aren't a useful UX
                 for (var i=0; i<3; i++) {
                     
                     var x = getSubLayerIndex(i);
@@ -209,7 +223,7 @@ app.map = (function(w, d, $, H) {
         }
     }
     
-    // renders the data-layer's legend
+    // renders the data-layer's legend using Handlebars JS
     function renderLegend(id) {
         var data = legend_data[id];
         data.id = id;
@@ -281,7 +295,8 @@ app.map = (function(w, d, $, H) {
         initZoomButtons();
     };
 
-    // stuff that's publicly accessible outside the module
+    // stuff that's publicly accessible outside the app.map module, 
+    // eg: in the console do app.map.sublayers;
     return {
         init: init,
         sublayers : sublayers,
@@ -294,5 +309,5 @@ app.map = (function(w, d, $, H) {
 
 window.addEventListener('DOMContentLoaded', function() {
     app.map.init();
-   // app.interaction.init();
+    app.interaction.init();
 });
