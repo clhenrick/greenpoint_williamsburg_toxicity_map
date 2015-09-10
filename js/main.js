@@ -76,11 +76,23 @@ app.map = (function(w, d, $, H) {
                 // get the number of sublayers
                 var numSubLayers = layer.getSubLayerCount();
                 for (var i = 0; i < numSubLayers; i++) {
-                    layer.getSubLayer(i).setInteraction(true);
+                    var idx = getSubLayerIndex(i);
+
+                    // only set interaction for layers that need it
+                    if (idx !== 'industrial_history_lines' || idx !== 'flood_risk' ) {
+                        layer.getSubLayer(i).setInteraction(true);
+                    } else {
+                        layer.getSubLayer(i).setInteraction(false);
+                    }
+                    
                     layer.getSubLayer(i).hide();
                     sublayers.push(layer.getSubLayer(i));
 
                     var fields = layerSource.sublayers[i].interactivity.trim().split(",");
+
+                    if (fields.indexOf('cartodb_id') > -1) {
+                        fields.splice('cartodb_id',1);
+                    }
 
                     cartodb.vis.Vis.addInfowindow(
                         map_object, 
