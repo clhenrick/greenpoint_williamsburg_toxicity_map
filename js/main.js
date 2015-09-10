@@ -197,8 +197,6 @@ app.map = (function(w, d, $, H) {
                 }
             }
         }
-        
-        // return true;
     }
     
     // renders the data-layer's legend
