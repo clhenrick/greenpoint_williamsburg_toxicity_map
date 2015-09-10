@@ -440,3 +440,8 @@ p> .copyright {
 div.cartodb-popup .jspPane {
     max-width: 190px;
 }
+
+/* use a pointer cursor for all things button related */
+button, a {
+    cursor: pointer;
+}
