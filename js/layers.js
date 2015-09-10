@@ -11,12 +11,12 @@ app.layers = (function(){
           name: 'acs_pop',
           sql: "SELECT * FROM acs_5yr_2013",
           cartocss: cartocss.popdensity,
-          interactivity: "people_per_square_mile"
+          interactivity: "cartodb_id, people_per_square_mile"
       }, {
           name: 'acs_income',
           sql: "SELECT * FROM acs_5yr_2013",
           cartocss: cartocss.income,
-          interactivity: "median_household_income, medianage, percent_nonhispanic_white, percent_hispanic, percent_nonhispanic_black, percent_nonhispanic_asian"
+          interactivity: "cartodb_id, median_household_income, medianage, percent_nonhispanic_white, percent_hispanic, percent_nonhispanic_black, percent_nonhispanic_asian"
       }, {
           name: 'asthma',
           sql: "SELECT * FROM asthma_5yr",
@@ -34,14 +34,14 @@ app.layers = (function(){
           interactivity: "site_or_owner_name,address,description,program,link_for_more_information,reference_number"
       }, {
           name: 'industrial_history_lines',
-          sql: "SELECT * FROM industrialhistory_l",
+          sql: "SELECT * FROM industrialhistory_lines",
           cartocss: cartocss["industrial-history-lines"],
           interactivity: "cartodb_id"
       }, {
           name: 'industrial_history_points',
-          sql: "SELECT * FROM industrialhistory",
+          sql: "SELECT * FROM industrialhistory_points",
           cartocss: cartocss["industrial-history-points"],
-          interactivity: "gid"
+          interactivity: "cartodb_id, id"
       }, {
           name: 'polluted_points',
           sql: "SELECT * FROM polluted_points_f",
