@@ -31,9 +31,6 @@ app.interaction = (function(d, w, $) {
         }],
         aboutthedata =[];  
 
-    // this step should be done in CSS not jQuery
-    $('a').css('cursor', 'pointer');
-
     function addToolTips() {
         // add jquery UI tooltips
         // we could do this without jQuery UI...
