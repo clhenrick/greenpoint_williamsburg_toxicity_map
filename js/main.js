@@ -127,7 +127,7 @@ app.map = (function(w, d, $, H) {
 
     // hide or show the data layer
     function hideShow(id) {
-        var id_hash = '#' + id, // the button id
+        var id_hash = '#' + id + '.data-layer', // the button id
             $button = $(id_hash); // the button itself
 
         if (id === "industry") {
@@ -138,7 +138,6 @@ app.map = (function(w, d, $, H) {
             if ($button.hasClass('selected')) {
                 sublayers[a].hide();
                 sublayers[b].hide();
-                // removeLegend('industrial_history_lines');
                 removeLegend('industrial_history_points');
                 $button.removeClass('selected active pressed');
             
@@ -146,7 +145,6 @@ app.map = (function(w, d, $, H) {
                 // otherwise turn it on
                 sublayers[a].show();
                 sublayers[b].show();
-                // renderLegend('industrial_history_lines');
                 renderLegend('industrial_history_points');
                 $button.addClass('selected active pressed');
             }
@@ -182,7 +180,7 @@ app.map = (function(w, d, $, H) {
                 removeLegend(id);
                 $button.removeClass('selected active pressed');
             
-            } else if (!$button.hasClass('selected')) {
+            } else {
                 // otherwise turn it on
                 sublayers[index].show();
                 renderLegend(id);
@@ -198,14 +196,14 @@ app.map = (function(w, d, $, H) {
                     
                     if ($('#legend-' + x).length && i !== index) {
                         removeLegend(x);
-                        sublayers[i].hide();                 
+                        sublayers[i].hide();
                     }
 
                     if (i !== index) { 
-                        var id2 = '#' + $('.data-layer')[6 - i].getAttribute('id');
-                        $(id2).removeClass('selected active pressed');
+                        var idx = getSubLayerIndex(i),
+                            $otherButton = $('#'+idx);
+                        $otherButton.removeClass('selected active pressed');
                     }
-                   
                 }
             }
         }
@@ -215,7 +213,6 @@ app.map = (function(w, d, $, H) {
     function renderLegend(id) {
         var data = legend_data[id];
         data.id = id;
-        console.log(data);
         
         function passData() {            
             var html = hb_template(data);
