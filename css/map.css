@@ -435,3 +435,8 @@ p> .copyright {
     max-height: 100px;
     overflow-y: scroll;
 }
+
+/* This is to fix an infowindow issue, do not remove */
+div.cartodb-popup .jspPane {
+    max-width: 190px;
+}
