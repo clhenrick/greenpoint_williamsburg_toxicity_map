@@ -99,12 +99,14 @@ app.map = (function(w, d, $, H) {
                     layer.getSubLayer(i).hide();
                     // add our sublayers to an array so we can act on them later
                     sublayers.push(layer.getSubLayer(i));
-                    // get the field names to use for the info windows, excluding "cartodb_id"
-                    var fields = layerSource.sublayers[i].interactivity.trim().split(",");
+                    // get the field names, in the form of an array, to use for the infowindows, excluding "cartodb_id"
+                    var fields = layerSource.sublayers[i].interactivity.replace(/ /g, '').split(",");
 
                     if (fields.indexOf('cartodb_id') > -1) {
                         fields.splice('cartodb_id',1);
                     }
+
+                    console.log(getSubLayerIndex(i), ' fields: ', fields);
 
                     // create the info-windows manually
                     cartodb.vis.Vis.addInfowindow(
