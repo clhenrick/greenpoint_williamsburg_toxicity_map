@@ -11,17 +11,17 @@ app.layers = (function(){
           name: 'acs_pop',
           sql: "SELECT * FROM acs_5yr_2013",
           cartocss: cartocss.popdensity,
-          interactivity: "cartodb_id, people_per_square_mile"
+          interactivity: "people_per_square_mile"
       }, {
           name: 'acs_income',
           sql: "SELECT * FROM acs_5yr_2013",
           cartocss: cartocss.income,
-          interactivity: "cartodb_id, median_household_income, medianage, percent_nonhispanic_white, percent_hispanic, percent_nonhispanic_black, percent_nonhispanic_asian"
+          interactivity: "median_household_income, medianage, percent_hispanic, percent_nonhispanic_white, percent_nonhispanic_black, percent_nonhispanic_asian"
       }, {
           name: 'asthma',
           sql: "SELECT * FROM asthma_5yr",
           cartocss: cartocss.asthma,
-          interactivity: "cartodb_id, asthptot"
+          interactivity: "asthptot"
       }, {
           name: 'flood_risk',
           sql: "SELECT * FROM floodrisk", 
@@ -31,7 +31,7 @@ app.layers = (function(){
           name: 'polluted_polygons',
           sql: "SELECT * FROM polluted_poly_f",
           cartocss: cartocss["polluted-areas"],
-          interactivity: "cartodb_id, site_or_owner_name,address,description,program,link_for_more_information,reference_number"
+          interactivity: "site_or_owner_name, address, description, program, link_for_more_information, reference_number"
       }, {
           name: 'industrial_history_lines',
           sql: "SELECT * FROM industrialhistory_lines",
@@ -41,20 +41,21 @@ app.layers = (function(){
           name: 'industrial_history_points',
           sql: "SELECT * FROM industrialhistory_points",
           cartocss: cartocss["industrial-history-points"],
-          interactivity: "cartodb_id, id"
+          interactivity: "id, name, address, type_of_industry_present_or_former, description, sources"
       }, {
           name: 'polluted_points',
           sql: "SELECT * FROM polluted_points_f",
           cartocss: cartocss["polluted-points"],
-          interactivity: "cartodb_id, facility_or_owner, description,type_of_pollution,address,date,agency_program,link_for_more_information,nag_id,quantity,remediated,responding_agency,source"
+          interactivity: "facility_or_owner, description, type_of_pollution, address, date, agency_program, link_for_more_information, quantity, remediated, responding_agency, source"
       }, {
           name: 'waste_transfer_stations',
           sql: "SELECT * FROM wts_July30", 
           cartocss: cartocss.wts,
-          interactivity: "cartodb_id, name, facilitytype, address, source"
+          interactivity: "name, facilitytype, address, source"
       }]
   }
 })();  
 
+// , median_household_income, medianage, percent_nonhispanic_white, percent_hispanic, percent_nonhispanic_black, percent_nonhispanic_asian
 
 
