@@ -68,9 +68,6 @@ div p{
     margin-left: 0px;
 }
 */
-.tabs div h4{
-    font-size: 24px;
-}
 
 .tabs a {
     color:#08185a; /*orange replacement*/
@@ -256,11 +253,6 @@ p> .copyright {
     overflow:auto;  
 }
 
-.tabs .title {
-    line-height: 16px;
-    color: #696969;
-    margin-bottom:2px;
-}
 /*.dlayer .env, 
 .dlayer .ngh, 
 .dlayer .ind */
