@@ -1,8 +1,9 @@
 html,
 body {
-  font-family: 'Open Sans', sans-serif;
-  margin: 0;
-  padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow:hidden
 }
 
 
@@ -59,15 +60,13 @@ div p{
     margin-left: 0px;
     max-width: 100%;
 }
-/*
-.tabs hr{
-    border: 1px #989898;
-    height: 1px;
-    margin: 10px 0px 10px 0px;
-    width: 240px;
-    margin-left: 0px;
+
+div h4 {
+    font-size: 20px;
+    color: #1f1f1f;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
-*/
 
 .tabs a {
     color:#08185a; /*orange replacement*/
@@ -80,8 +79,7 @@ div p{
 }
 
 #menu {
-    background-color: #d0cece;
-    line-height: 140%;
+    background-color: #dfdede;
     width: 321px; /*Should be changed to responsive later 301+20px*/ 
     height: 100% !important;
     overflow: hidden;
@@ -89,17 +87,17 @@ div p{
     border: 1px solid #cecece;
     box-shadow: 1px 1px 3px #9e9e9e;
 }
-#text1 {    
+#short-desc {    
     font-size: 11px;
     margin: 12px;
+    line-height: 140%;
     vertical-align: center;
+    width: 100%;
 
 }
 
 #menu .menunav{
     float:none;
-    background-color: #dedede;
-    width:100%;
     height: 50px;
 }
 
@@ -111,17 +109,13 @@ div p{
 
     padding-top: 0px;
     vertical-align: middle;
-    background-color: #dedede;
     color: #989898;
 }
 
-#menu .menunav li:hover {
-    background-color: hsl(0,0%,100%);
+#menu .menunav li:hover:active {
+    background-color: #f1f0f0;
 }
 
-#menu .menunav li a:active{
-    background-color: #fefefe; 
-}
 
 #menu .menunav li a:active:focus{
     background-color: #f0f0f0;
@@ -138,7 +132,7 @@ footer {
     text-align: justify;
     /*this part should be merged with menu*/
     width:301px;
-    background-color: #d0cece;
+    background-color: #dfdede;
     overflow: hidden;
     border: 1px solid #cecece;
     box-shadow: 1px 1px 3px #9e9e9e;
@@ -163,7 +157,7 @@ p> .copyright {
 
 
 .selected {
-    background-color: #cecece;  
+    background-color: #d1cece;  
 }
 
 /*Buttons at layers only*/
@@ -172,6 +166,7 @@ p> .copyright {
     height:50px;
     border-radius: 25px;
     box-shadow:none;
+
 }
 
 .data-layer:hover {
@@ -181,6 +176,7 @@ p> .copyright {
 /*layer button tab options*/
 .dlayer{
     overflow: hidden;
+    background-color:#f1f0f0;
 }
 .dlayer .env>button,
 .dlayer .ngh>button,
@@ -193,13 +189,13 @@ p> .copyright {
 .dlayer .env>button i,
 .dlayer .ngh>button i,
 .dlayer .ind>button i{
-   font-size: 24px;
+    font-size: 24px;
     color:#989898;
 }
 .dlayer .env>button i:hover:active,
 .dlayer .ngh>button i:hover:active,
 .dlayer .ind>button i:hover:active {
-   font-size: 24px;
+    font-size: 24px;
     color:#334a5a;
 
 }
@@ -240,74 +236,63 @@ p> .copyright {
 }
 
 .tabs {
-    height: 100% relative;
+    background-color:#f1f0f0;
+    width:280px;
     /*it should be width:24% just for instant fix of the text overflow ;*/
-    margin: 20px;
-    padding-top: 5px;
-    overflow-y: scroll;
-    display:none; /*$('tabs').hide() $('tabs').css() */
-    padding:15px;
+    padding:25px 20px 20px 25px;
     line-height: 180%;
-    height:auto;
-    max-height:150%;
     overflow:auto;  
+    display: none;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*.dlayer .env, 
 .dlayer .ngh, 
 .dlayer .ind */
 .tabs .subtitle{
-    margin: 0px 20px 20px 0px; 
+    margin: 20px 20px 20px 20px; 
     font: 14px bold;
-    font-family: 'Open Sans', sans-serif;
     border-left: 5px solid #989898;
-    color:#696969;
+    color: #9d9d9d;
     text-indent: 5px;
-}
-
-.tabs h4{
-    font-size: 18px;
-    color:#696969;
-    padding-bottom:15px; 
 }
 
 .tabs p{
     text-indent: 1em;
     margin-bottom: 10px;
+    width:100%;
 }
 /*submit data alignment */
 .nextsteps {
-    width:180px;  
+    width:220px;  
 }
-.nextsteps p{
-    width:200px;
-}
+
 .nextsteps >button {
-    margin:50px 0px 10px 0px;
+    margin: 50px 0px 10px 0px;
     padding: 10px;
     vertical-align: middle;
     background-color: #d9d9d9;
     color: #989898;
-    border: 1px solid #989898;
+    border: 0px solid #989898;
     font-size: 12px;
-    border-radius: 10px;
+    border-radius: 0px;
     width:120px;
 }
 
 .nextsteps >button:active:hover{
     background-color: #fefefe;
 }
+.tabs .metadata{ 
+    background-color: #f1f0f0;
+    overflow-y: scroll auto;
+}
 
 .tabs .metadata .desc{
     display:none;
     color:#696969;
-    overflow:auto;
-    padding:0px;
 }
 .tabs .metadata .contents {
-    overflow-y: scroll;
-    width:250px; 
-    padding-right:50px;
+    padding-right:0px;
 }
 
 /*about page*/
@@ -315,11 +300,9 @@ p> .copyright {
     display:hidden;
     text-indent: 1.6em;
     text-align: left;
-    width: 100%;
+    width: 250px;
     color: #1f1f1f;
     line-height: 180%;
-    background-color: none;/*#dbdad3*/
-   /* box-shadow: 1px 1px 3px #9e9e9e; */
 }
 
 
@@ -334,10 +317,11 @@ p> .copyright {
     display: none;
     padding:20px;
     padding-right: 30px;
-    width: 295px;
+    width: 250px;
     color: #696969;
     text-indent: 1.5em;
     overflow:scroll;
+    background-color:#f1f0f0;
 }
 
 .accodion{
@@ -349,9 +333,9 @@ p> .copyright {
 
 .tabs .contact {
     display: none;
-    width: 100%;
     color: #696969;
     padding:20px;
+    width:100%;
 
 }
 .contact #address {
@@ -371,7 +355,7 @@ p> .copyright {
 .zoombtn>button{
     width:25px;
     height:25px;
-    background-color: #cecece;
+    background-color: #dfdede;
     border:0px;
     vertical-align: middle;
     padding:3px;

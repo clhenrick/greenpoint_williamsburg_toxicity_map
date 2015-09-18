@@ -4,7 +4,7 @@ var app = app || {};
 app.legends = (function(){
   return {
     acs_pop : {
-      title : "Population Density", // ppl per sq mile
+      title : "Population Density( ppl /sqM )", // ppl per sq mile
       type : 'polygon',
       items : [
         {
@@ -53,7 +53,7 @@ app.legends = (function(){
     },
 
     asthma : {
-      title : "Asthma Rate",
+      title : "Asthma Rate ( ppl / 1000 )",
       type : 'polygon',
       items : [
           {
@@ -96,7 +96,7 @@ app.legends = (function(){
       items : [
         {
           color : "#FFCC00",
-          label : "Plume"
+          label : "Polluted/Remediated Places"
         }
       ]
     },
@@ -107,7 +107,7 @@ app.legends = (function(){
       items : [
         {
           color : "#000000",
-          label : "Industrial history route"
+          label : "Industrial History Tour Route"
         }
       ]
     },
