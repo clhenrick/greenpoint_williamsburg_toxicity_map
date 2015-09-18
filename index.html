@@ -6,9 +6,9 @@
     <meta charset=utf-8 />
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <!-- CSS libraries -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
     <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!-- My Style Sheet -->
     <link href="css/map.css" rel="stylesheet" />
@@ -126,8 +126,7 @@
  add it programmatically to `legendControl` -->
     <!-- handlebars template for map's data layers legend -->
     <script id="legend-template" type="text/x-handlebars-template">
-        <div class="legend dl" id="legend-{{id}}">
-            
+        <div class="legend dl" id="legend-{{id}}">            
             {{#if title}}
             <h3>{{title}}</h3>
             {{/if}}
@@ -152,9 +151,15 @@
     <!-- js code -->
     <script src="js/carto.js"></script>
     <script src="js/legendstyles.js"></script>
-    <script src="js/layers.js"></script>    
+    <script src="js/layers.js"></script>
+    <script src="js/html2canvas.js"></script>
     <script src="js/main.js"></script>
     <script src="js/interaction.js"></script>
-    <script src="js/html2canvas.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('DOMContentLoaded', function() {
+            app.map.init();
+            app.interaction.init();
+        });    
+    </script>
 </body>
 </html>
