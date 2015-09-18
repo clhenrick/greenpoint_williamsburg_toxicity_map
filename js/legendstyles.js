@@ -91,7 +91,7 @@ app.legends = (function(){
     },
 
     polluted_polygons : {
-      title : "Polluted Places",
+      title : "",
       type : 'polygon',
       items : [
         {
@@ -117,7 +117,7 @@ app.legends = (function(){
       type : 'point',
       items : [
         {
-          color : "#aa04ee",
+          color : "#7b0006",
           label : "EPA Regulated"
         },
         {
@@ -125,7 +125,7 @@ app.legends = (function(){
           label : "E-Designated"
         },
         {
-          color : "#7b0006",
+          color : "#aa04ee",
           label : "Spills > 100 Gallons"
         },
         {
