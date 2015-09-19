@@ -154,12 +154,22 @@ app.interaction = (function(d, w, $) {
         $('li').click(function() {
             var c = $(this).attr('class');
             console.log('.'+c);
-            $('.tabs').not('.'+c).hide();
-            $('.'+c).css("background-color","#f1f0f0");
-            $('li').not('.'+c).css({
-                "background-color":"transparent",
-                "border-left":"1px solid ##f1f0f0"
-            });
+
+            if( c === "metadata" ) {
+                aboutData();
+                $('.'+c).css("background-color","#f1f0f0");
+                $('li').not('.'+c).css({
+                    "background-color":"transparent",
+                    "border-left":"1px solid ##f1f0f0"
+                });
+            }else {
+                $('.tabs').not('.'+c).hide();
+                $('.'+c).css("background-color","#f1f0f0");
+                $('li').not('.'+c).css({
+                    "background-color":"transparent",
+                    "border-left":"1px solid ##f1f0f0"
+                });
+            }
             $('.tabs'+'.'+c).toggle();
         });
 
@@ -170,7 +180,6 @@ app.interaction = (function(d, w, $) {
 
     var init = function() {
         addToolTips();
-        aboutData();
         addListeners();
         resizingTabsHeight();
     };
