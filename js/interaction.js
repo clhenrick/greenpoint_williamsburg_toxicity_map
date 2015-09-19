@@ -150,9 +150,6 @@ app.interaction = (function(d, w, $) {
         });
         $('#about_b').click(function() {
             $('.tabs').not('.about').hide();
-            $('li>about.').css({
-                "backgroundColor":""
-            });
             $('.about').toggle("fade");
 
         });
@@ -160,8 +157,10 @@ app.interaction = (function(d, w, $) {
             $('.tabs').not('.dlayer').hide();
             $('.dlayer').toggle("fade");
         });
-        $('li').click(function() {  
-
+        $('li').click(function() {
+            $('li').is('#about_b').css({
+                    "backgroundColor":"#f1f0f0"
+            });
         });
     }
     //get the height of tab

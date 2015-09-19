@@ -21,9 +21,7 @@ html {
                 url('img/ajax-loader.gif')
                 50% 50%;
 }
-.loading{
 
-}
 #map {
   position: absolute;
   top: 0;
@@ -47,7 +45,7 @@ ul li{
     padding: 8px;
     white-space: nowrap;
     top:50%;
-    left:50%
+    left:50%;
 }
 
 div {
