@@ -138,7 +138,7 @@ footer a{
 
 
 .selected {
-    background-color: #d1cece;  
+    background-color: #f1f0f0; 
 }
 
 /*Buttons at layers only*/
@@ -158,8 +158,9 @@ footer a{
 .dlayer button:hover:focus{
     background-color: #f1f0f0;
 }
-.dlayer button:active{
+.dlayer .data-layer button:active{
     outline: none !important; 
+    background-color: #fff;
 }
 
 
@@ -191,24 +192,23 @@ footer a{
 .nextsteps {
     width:270px;  
     text-align: center;
+    vertical-align: middle;
     margin:0px 20px 0px 0px;
 }
 
 .nextsteps >button {
-    margin: 50px 0px 10px 0px;
+    margin: 50px 20px 30px 0px;
     padding: 10px;
-    vertical-align: middle;
     background-color: transparent;
     color: #989898;
-    border-bottom: 2px solid #989898;
-    border-top: none;
+    border-bottom: 1px solid #dfdede;
+    border-top: 1px solid #dfdede;
     border-left: none;
     border-right: none;
+
     font-size: 12px;
     border-radius: 0px;
-    width:90px;
-    margin-left: 10px;
-    margin-right: 20px;
+    width:110px;
 }
 
 .nextsteps >button:active:hover{

@@ -65,12 +65,11 @@ app.interaction = (function(d, w, $) {
     
     function aboutData() {
         // add the "about the data" content to the DOM
-        $('#aboutdata').click(function() {
-            $('.tabs').not('.metadata').hide();
+
             if (aboutthedata.length <= 0) {
                 $.each(desc, function(i, val) {
                     aboutthedata = $("<div class='desc'><h3>" + desc[i].title + "</h3> <div class='contents'><p>" + desc[i].field + "</p></div> </div>");
-                    $('.metadata').append(aboutthedata);
+                    $('.tabs .metadata').append(aboutthedata);
                     $('.contents').css({
                         "max-width": "260px",
                         "line-height": "200%",
@@ -80,8 +79,7 @@ app.interaction = (function(d, w, $) {
             } else if (aboutthedata.length > 0) {
                 // console.log('no more append.'); 
             }
-            $('.metadata').toggle("fade");
-        });
+
 
     }
 
@@ -138,7 +136,7 @@ app.interaction = (function(d, w, $) {
         $('#print_b').click(function() {
             screenshot();
         });
-
+/*
         $('#aboutus_b').click(function() {
             $('.tabs').not('.aboutus').hide();
             $('.aboutus').toggle("fade");
@@ -148,20 +146,23 @@ app.interaction = (function(d, w, $) {
             $('.contact').toggle("fade");
 
         });
-        $('#about_b').click(function() {
-            $('.tabs').not('.about').hide();
-            $('.about').toggle("fade");
-
-        });
         $('#dlayer_b').click(function() {   
             $('.tabs').not('.dlayer').hide();
             $('.dlayer').toggle("fade");
         });
+        */
         $('li').click(function() {
-            $('li').is('#about_b').css({
-                    "backgroundColor":"#f1f0f0"
+            var c = $(this).attr('class');
+            console.log('.'+c);
+            $('.tabs').not('.'+c).hide();
+            $('.'+c).css("background-color","#f1f0f0");
+            $('li').not('.'+c).css({
+                "background-color":"transparent",
+                "border-left":"1px solid ##f1f0f0"
             });
+            $('.tabs'+'.'+c).toggle();
         });
+
     }
     //get the height of tab
     //if it collide to the 
