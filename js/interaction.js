@@ -41,19 +41,20 @@ app.interaction = (function(d, w, $) {
         // we could do this without jQuery UI...
         $('.dlayer').tooltip();
     }
-    
-    //Detect collision between tabs and footer and fit the tab size in the footer while window resized.
-    function resizingTabsHeight() {
+    /*
+    //Detect collision between tabs and footer and fit the tab size to the footer position while window resized.
+    //return the proper height as a result 
+    function resizeTabsHeight(tab,footer) {
         //detecting Collisions at the bottom
         $(window).resize(function() {
             var position = $('.tabs').offset().top;
             var metadataHeight = $('.metadata').height();
             var footerPosition = $('footer').offset().top;
-            var height = footerPosition-position; //screensize - footer height 
+            var endOfTab = footerPosition-position; //screensize - footer height 
             //resizing tab heights if it extends over the footer position
             if( (position + metadataHeight) >= footerPosition ){
-                //assign the height to footer position
-                return height;
+                //assign the height of tab to footer position
+                return endOfTab;
             }else if(position + metadata_height < footer_position) {
                 //console.log("ok to increase the div size");
                 return metadataHeight;
@@ -62,23 +63,26 @@ app.interaction = (function(d, w, $) {
         });
             
     }
-    
+    */
+    function applyTabHeight(){
+
+    }
+
     function aboutData() {
         // add the "about the data" content to the DOM
-
-            if (aboutthedata.length <= 0) {
-                $.each(desc, function(i, val) {
-                    aboutthedata = $("<div class='desc'><h3>" + desc[i].title + "</h3> <div class='contents'><p>" + desc[i].field + "</p></div> </div>");
-                    $('.tabs .metadata').append(aboutthedata);
-                    $('.contents').css({
-                        "max-width": "260px",
-                        "line-height": "200%",
-                        "overflow-y": "none"
-                    });
-                })
-            } else if (aboutthedata.length > 0) {
-                // console.log('no more append.'); 
-            }
+        if (aboutthedata.length <= 0) {
+            $.each(desc, function(i, val) {
+                aboutthedata = $("<div class='desc'><h3>" + desc[i].title + "</h3> <div class='contents'><p>" + desc[i].field + "</p></div> </div>");
+                $('.tabs .metadata').append(aboutthedata);
+                $('.contents').css({
+                    "max-width": "260px",
+                    "line-height": "200%",
+                    "overflow-y": "none"
+                });
+            })
+        } else if (aboutthedata.length > 0) {
+            // console.log('no more append.'); 
+        }
 
 
     }
@@ -136,36 +140,22 @@ app.interaction = (function(d, w, $) {
         $('#print_b').click(function() {
             screenshot();
         });
-/*
-        $('#aboutus_b').click(function() {
-            $('.tabs').not('.aboutus').hide();
-            $('.aboutus').toggle("fade");
-        });
-        $('#contact_b').click(function() {
-            $('.tabs').not('.contact').hide();
-            $('.contact').toggle("fade");
-
-        });
-        $('#dlayer_b').click(function() {   
-            $('.tabs').not('.dlayer').hide();
-            $('.dlayer').toggle("fade");
-        });
-        */
+        //menu navigation bar
         $('li').click(function() {
             var c = $(this).attr('class');
-            console.log('.'+c);
             $('.tabs').not('.'+c).hide();
             if( c === "metadata" ) {
                 aboutData();
             }
-            $('.'+c).css("background-color","#f1f0f0");
+            $('.'+c).css({
+                "background-color":"#f1f0f0"
+            });
             $('li').not('.'+c).css({
                 "background-color":"transparent",
                 "border-left":"1px solid ##f1f0f0"
             });
             $('.tabs'+'.'+c).toggle();
         });
-
     }
     //get the height of tab
     //if it collide to the 
@@ -174,7 +164,8 @@ app.interaction = (function(d, w, $) {
     var init = function() {
         addToolTips();
         addListeners();
-        resizingTabsHeight();
+        //resizeTabsHeight();
+        aboutData();
     };
 
     return {

@@ -67,8 +67,7 @@ div a{
 
 
 div p{
-    text-indent: 1.5em;
-    line-height: 180%;
+    line-height: 200%;
     margin: 10px 0px 10px 0px;
 
 }
@@ -141,6 +140,9 @@ footer a{
     background-color: #f1f0f0; 
 }
 
+.tabs .dlayer{
+    margin-top: 10px;
+}
 /*Buttons at layers only*/
 .dlayer .data-layer {
     width:50px; 
@@ -151,25 +153,20 @@ footer a{
     margin: 10px 5px 25px 0px;
 }
 /*layer button tab options*/
-
-.dlayer button{
+.dlayer .data-layer> button{
     background-color: #d6d6d6;
 }
-.dlayer button:hover:focus{
+.dlayer .data-layer> button:hover{
+    background-color: #dfdede;   
+}
+.dlayer .data-layer> button:focus{
     background-color: #f1f0f0;
 }
-.dlayer .data-layer button:active{
-    outline: none !important; 
+.dlayer .data-layer> button:active{
     background-color: #fff;
 }
 
-
-
-/*.dlayer .data-layer  .env, 
-.dlayer .data-layer  .ngh, 
-.dlayer .data-layer  .ind */
 .dlayer .subtitle{
-    margin: 0px; 
     font-family: 'Open Sans', sans-serif;
     font: 14px bold;
     border-left: 3px solid #9d9d9d;
