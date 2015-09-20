@@ -25,37 +25,62 @@ app.interaction = (function(d, w, $) {
         }, {
             title: "Asthma Rates",
             field: "Residents of Williamsburg and Greenpoint experience higher instances of asthma due to proximity to truck routes and sources of air pollution. This layer shows distribution of hospital visits for asthma from 2008 to 2012. This data was retrieved from Infoshare.org of Community Studies of New York, Inc., a non-profit that compiles and aggregates data."
-        },{
-            title:"Industrial History",
-            field:"Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents. Find out more information about the tour(http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked/)"
+        }, {
+            title: "Industrial History",
+            field: "Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents. Find out more information about the tour(http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked/)"
         }],
-        aboutthedata =[];  
-
+        aboutthedata = [];
+    /*function loadingSpinner(){
+        $(document).on(function(){
+            ajaxStart:functin(){};
+            ajaxStop:function(){};
+        });
+    } */
     function addToolTips() {
         // add jquery UI tooltips
         // we could do this without jQuery UI...
-        $('.dlayer').tooltip();  
+        $('.dlayer').tooltip();
     }
+    
+    //Detect collision between tabs and footer and fit the tab size in the footer while window resized.
+    function resizingTabsHeight() {
+        //detecting Collisions at the bottom
+        $(window).resize(function() {
+            var position = $('.tabs').offset().top;
+            var metadataHeight = $('.metadata').height();
+            var footerPosition = $('footer').offset().top;
+            var height = footerPosition-position; //screensize - footer height 
+            //resizing tab heights if it extends over the footer position
+            if( (position + metadataHeight) >= footerPosition ){
+                //assign the height to footer position
+                return height;
+            }else if(position + metadata_height < footer_position) {
+                //console.log("ok to increase the div size");
+                return metadataHeight;
 
+            }
+        });
+            
+    }
+    
     function aboutData() {
         // add the "about the data" content to the DOM
-        $('#aboutdata').click(function() {
-            $('.tabs').not('.metadata').hide();
 
-            if(aboutthedata.length <= 0){
-                $.each(desc,function(i,val){
-                    aboutthedata = $("<div class='desc'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
-                    $('.metadata').append(aboutthedata);
-                    $('.desc').css({
-                        "width":"230px",
-                        "overflow-y":"scroll auto"
+            if (aboutthedata.length <= 0) {
+                $.each(desc, function(i, val) {
+                    aboutthedata = $("<div class='desc'><h3>" + desc[i].title + "</h3> <div class='contents'><p>" + desc[i].field + "</p></div> </div>");
+                    $('.tabs .metadata').append(aboutthedata);
+                    $('.contents').css({
+                        "max-width": "260px",
+                        "line-height": "200%",
+                        "overflow-y": "none"
                     });
                 })
-            }else if(aboutthedata.length > 0){
-                    console.log('no more append.'); 
+            } else if (aboutthedata.length > 0) {
+                // console.log('no more append.'); 
             }
-            $('.metadata').toggle();
-        });
+
+
     }
 
     /*
@@ -64,22 +89,22 @@ app.interaction = (function(d, w, $) {
             $('.tabs').not('.metadata').hide();
 
             if(aboutthedata.length <= 0){
-               	$.each(desc,function(i,val){
-                	aboutthedata = $("<div class='desc accordion'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
-                	$('.metadata').append(aboutthedata);
-                	$('.contents').hide();
-        	    })
-          		$('.accordion').accordion( {
-          			animate: 200,
-          			active:2,	
-          			collapsible: true,
-          			icons: false,
-          			heightStyle: "fill"
+                $.each(desc,function(i,val){
+                    aboutthedata = $("<div class='desc accordion'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
+                    $('.metadata').append(aboutthedata);
+                    $('.contents').hide();
+                })
+                $('.accordion').accordion( {
+                    animate: 200,
+                    active:2,   
+                    collapsible: true,
+                    icons: false,
+                    heightStyle: "fill"
 
-          		});
-        	}else if(aboutthedata.length > 0){
-        		console.log('no more append.');	
-        	}
+                });
+            }else if(aboutthedata.length > 0){
+                console.log('no more append.'); 
+            }
 
             $('.metadata').toggle();
         });
@@ -111,31 +136,52 @@ app.interaction = (function(d, w, $) {
         $('#print_b').click(function() {
             screenshot();
         });
-
+/*
         $('#aboutus_b').click(function() {
             $('.tabs').not('.aboutus').hide();
-            $('.aboutus').toggle();
-        }); 
+            $('.aboutus').toggle("fade");
+        });
         $('#contact_b').click(function() {
             $('.tabs').not('.contact').hide();
-            $('.contact').toggle();
+            $('.contact').toggle("fade");
 
-        }); 
-        $('#about_b').click(function() {
-            $('.tabs').not('.about').hide();
-            $('.about').toggle();
-
-        }); 
-        $('#dlayer_b').click(function() {
+        });
+        $('#dlayer_b').click(function() {   
             $('.tabs').not('.dlayer').hide();
-            $('.dlayer').toggle();
-        });        
+            $('.dlayer').toggle("fade");
+        });
+        */
+        $('li').click(function() {
+            var c = $(this).attr('class');
+            console.log('.'+c);
+
+            if( c === "metadata" ) {
+                aboutData();
+                $('.'+c).css("background-color","#f1f0f0");
+                $('li').not('.'+c).css({
+                    "background-color":"transparent",
+                    "border-left":"1px solid ##f1f0f0"
+                });
+            }else {
+                $('.tabs').not('.'+c).hide();
+                $('.'+c).css("background-color","#f1f0f0");
+                $('li').not('.'+c).css({
+                    "background-color":"transparent",
+                    "border-left":"1px solid ##f1f0f0"
+                });
+            }
+            $('.tabs'+'.'+c).toggle();
+        });
+
     }
+    //get the height of tab
+    //if it collide to the 
+
 
     var init = function() {
         addToolTips();
-        aboutData();
         addListeners();
+        resizingTabsHeight();
     };
 
     return {
