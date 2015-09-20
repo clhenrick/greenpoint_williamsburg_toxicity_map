@@ -8,11 +8,8 @@ app.legends = (function(){
       type : 'polygon',
       items : [
         {
-          color : "#ffffff",
-          label : "0"
-        },{
           color : "#fcfaef",
-          label : "1 - 2,500"
+          label : "0 - 2,500"
         },{
           color : "#f0ecd7",
           label : "2,501 - 4,000"
@@ -96,7 +93,7 @@ app.legends = (function(){
       items : [
         {
           color : "#FFCC00",
-          label : "Polluted/Remediated Places"
+          label : "Polluted and Remediated Sites"
         }
       ]
     },
@@ -126,7 +123,7 @@ app.legends = (function(){
         },
         {
           color : "#aa04ee",
-          label : "Spills > 100 Gallons"
+          label : "Spills >= 100 Gallons"
         },
         {
           color : "#e171fb",
