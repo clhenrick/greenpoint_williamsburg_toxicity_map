@@ -46,8 +46,3 @@ COMMIT;
 -- SET rounded_mhhi = a.rounded_mhhi 
 -- FROM acs_5yr_2013_merge a 
 -- WHERE acs_5yr_2013_merge_copy.cartodb_id = a.cartodb_id
-
-UPDATE acs_5yr_2013_merge_copy 
-SET roundedcpop = a.roundedcpop 
-FROM acs_5yr_2013_merge a 
-WHERE acs_5yr_2013_merge_copy.cartodb_id = a.cartodb_id
