@@ -16,7 +16,7 @@ app.layers = (function(){
           name: 'acs_income',
           sql: "SELECT * FROM acs_5yr_2013_merge_copy",
           cartocss: cartocss.income,
-          interactivity: "median_income_formatted, pct_hispanic_formatted, pct_nonhispanic_asian_formatted, pct_nonhispanic_black_formatted, pct_nonhispanic_white_formatted"
+          interactivity: "median_household_income, percent_hispanic, percent_nonhispanic_black, percent_nonhispanic_asian, percent_nonhispanic_white"
       }, {
           name: 'asthma',
           sql: "SELECT * FROM asthma_5yr",
