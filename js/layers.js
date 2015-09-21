@@ -21,7 +21,7 @@ app.layers = (function(){
           name: 'asthma',
           sql: "SELECT * FROM asthma_5yr",
           cartocss: cartocss.asthma,
-          interactivity: "asthptot"
+          interactivity: "asthma_rate_per_1000_people"
       }, {
           name: 'flood_risk',
           sql: "SELECT * FROM floodrisk", 

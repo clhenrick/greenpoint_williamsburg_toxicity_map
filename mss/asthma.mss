@@ -6,19 +6,19 @@
 	line-opacity: 0.5; 
 	polygon-comp-op:multiply; 
 
-	[ asthptot >= 21 ][ asthptot <= 35 ] { 
+	[ asthma_rate_per_1000_people >= 21 ][ asthma_rate_per_1000_people <= 35 ] { 
 		polygon-fill: #5a3072; 
 	} 
 
-	[ asthptot <= 10][ asthptot <= 20 ] { 
+	[ asthma_rate_per_1000_people <= 10][ asthma_rate_per_1000_people <= 20 ] { 
 		polygon-fill: #7a518b; 
 	} 
 
-	[ asthptot <= 6][ asthptot <= 9] { 
+	[ asthma_rate_per_1000_people <= 6][ asthma_rate_per_1000_people <= 9] { 
 		polygon-fill: #9c7aac; 
 	} 
 
-	[ asthptot <= 1][ asthptot <= 5] { 
+	[ asthma_rate_per_1000_people >=1][ asthma_rate_per_1000_people <= 5] { 
 		polygon-fill: #bfa4cd; 
 	} 
 
