@@ -327,12 +327,3 @@ button, a {
     cursor: pointer;
 }
 
-/*infowindow outline*/
-div.cartodb-popup div.cartodb-popup-content-wrapper {
-    width:190px;
-    max-width: 190px;
-    padding:0px;
-    overflow-x: hidden;
-    background:none;
-    box-shadow: 1px;
-  }
