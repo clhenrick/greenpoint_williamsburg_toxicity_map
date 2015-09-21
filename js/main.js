@@ -302,8 +302,3 @@ app.map = (function(w, d, $, H) {
     };
 
 })(window, document, jQuery, Handlebars);
-
-window.addEventListener('DOMContentLoaded', function() {
-    app.map.init();
-    app.interaction.init();
-});
