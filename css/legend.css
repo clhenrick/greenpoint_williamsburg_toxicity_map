@@ -23,7 +23,7 @@
   display: inline-block;  
 }
 
-.ui a, li {
+undefined/**.ui a, **/li {
   list-style-type: none;
   text-decoration: none;
 }
@@ -35,10 +35,10 @@
   height: 100px;
 }
 
-#map-legend-container p{
+undefined/**#map-legend-container p{
   text-align: right;
 }
-
+**/
 #map-legend-container ul {
   list-style-type: none;
 

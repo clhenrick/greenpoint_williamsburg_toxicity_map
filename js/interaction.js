@@ -45,27 +45,6 @@ app.interaction = (function(d, w, $) {
         $('.dlayer').tooltip();
     }
     
-    //Detect collision between tabs and footer and fit the tab size in the footer while window resized.
-    function resizingTabsHeight() {
-        //detecting Collisions at the bottom
-        $(window).resize(function() {
-            var position = $('.tabs').offset().top;
-            var metadataHeight = $('.metadata').height();
-            var footerPosition = $('footer').offset().top;
-            var height = footerPosition-position; //screensize - footer height 
-            //resizing tab heights if it extends over the footer position
-            if( (position + metadataHeight) >= footerPosition ){
-                //assign the height to footer position
-                return height;
-            }else if(position + metadata_height < footer_position) {
-                //console.log("ok to increase the div size");
-                return metadataHeight;
-
-            }
-        });
-            
-    }
-    
     // add the "about the data" content to the DOM
     function aboutData() {        
         $.each(desc, function(i, val) {
@@ -154,6 +133,38 @@ app.interaction = (function(d, w, $) {
         });
     }
 
+    //Detect the collision between tabs and footer.
+    //return the proper height as a result 
+    function detectTabsHeight(tabClassname) {
+        //detecting Collisions at the bottom
+        var c = tabClassname;
+        var f = footer;
+
+        var tabPosition = $('.'+c).offset().top;
+        var footerPosition = $(f).offset().top;
+        var tabHeight = $('.'+c).height(); //original height
+        var endOfTab = footerPosition-tabPosition; //screensize - footer height 
+        //resizing tab heights if it extends over the footer position
+        if( (tabPosition + tabHeight) >= footerPosition ){
+            return endOfTab;
+        }else if(tabPosition + tabHeight < footer_position) {
+            return tabHeight;
+        }      
+    } 
+
+
+    // Fit the tab size to the footer position 
+    //when it collide while window resized/contents are too long.
+    function applyTabHeight(){
+        //in case window resized and makes new collision
+        $(window).resize(function() {
+        });
+        //in case window size is very small and make the collision 
+        //in case tab is originally too long 
+    }
+    //get the height of tab
+    //if it collide to the footer
+
     // initially open map layer selection UI for dev debugging.
     // remove this code when ready for production.
     $('.menu.tabs.dlayer').css('display', 'block');
@@ -162,8 +173,9 @@ app.interaction = (function(d, w, $) {
     var init = function() {
         addToolTips();
         addListeners();
-        resizingTabsHeight();
+        // resizingTabsHeight();
         aboutData();
+        //detectTabsHeight();
     };
 
     return {
