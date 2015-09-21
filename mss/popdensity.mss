@@ -1,4 +1,4 @@
-#acs_5yr_2013 {   
+#acs_5yr_2013_merge_copy {   
   line-join: round;
   polygon-fill: #FFFFFF;  
   polygon-opacity: .7; 
@@ -11,7 +11,7 @@
     polygon-fill: #cfb928; 
   }
 
-  [roundedcpop >= 55001][roundedpop <= 75000] {
+  [roundedcpop >= 55001][roundedcpop <= 75000] {
     polygon-fill: #dfcd66;
   }
 
