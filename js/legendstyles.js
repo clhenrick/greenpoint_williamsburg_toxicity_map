@@ -10,19 +10,19 @@ app.legends = (function(){
       items : [
         {
           color : "#fcfaef",
-          label : "0 - 2,500"
+          label : "0 - 25,000"
         },{
           color : "#f0ecd7",
-          label : "2,501 - 4,000"
+          label : "25,001 - 40,000"
         },{
           color : "#e8dc91",
-          label : "4,001 - 5,500"
+          label : "40,001 - 50,500"
         },{
           color : "#dfcd66",
-          label : "5,501 - 7,500"
+          label : "50,501 - 75,000"
         },{
           color : "#cfb928",
-          label : "7,501 or more"
+          label : "75,001 or more"
         }
       ]
     },
@@ -103,7 +103,7 @@ app.legends = (function(){
       items : [
         {
           color : "#000000",
-          label : "Industrial History Tour Route"
+          label : "Industrial History Tour Site"
         }
       ]
     },
