@@ -33,28 +33,23 @@ html {
 }
 
 ul{
-    list-style-type: none;
+    list-stylele-type: none;
     text-align: justify;
     display: table;
     width:100%;
+    padding:0px;
 }
 ul li{
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    padding: 8px;
     white-space: nowrap;
-    top:50%;
-    left:50%;
 }
 
-div {
-    float: left;
+div{
     clear: both;
-    margin: 0px;
     border: 1px;
     position: relative;
-    text-align: left;
 }
 
 
@@ -82,14 +77,12 @@ div h4 {
 
 #logo{
     display: block;
-    margin-right: auto
-
+    margin-right: 0;
 }
 
 .menu {
     background-color: #dfdede;
     width: 321px; /*Should be changed to responsive later 301+20px*/ 
-    height: 100% !important;
     overflow: hidden;
     border-right: 1px solid #cecece;
     box-shadow: 1px 0px 3px -2px #9e9e9e;
@@ -100,6 +93,7 @@ div h4 {
     line-height: 140%;
     vertical-align: middle;
     width: 100%;
+    text-indent: 0.5em;
 
 }
 
@@ -198,8 +192,8 @@ footer a{
     padding: 10px;
     background-color: transparent;
     color: #989898;
-    border-bottom: 1px solid #dfdede;
-    border-top: 1px solid #dfdede;
+    border-bottom: 2px solid #dfdede;
+    border-top: none;
     border-left: none;
     border-right: none;
 
@@ -224,7 +218,6 @@ footer a{
     color:#696969;
 }
 .menu .tabs .metadata .contents {
-    padding-right:0px;
     color:#1f1f1f;
 }
 
@@ -290,13 +283,7 @@ footer a{
     padding:3px;
     box-shadow: 1px 1px 3px #9e9e9e;
 }
-.glyphzoom {
-    font-size: 15px;
-    color:#696969;
-    text-align: center;
-    vertical-align: middle;
-    margin-top:3px;
-}
+
 
 /*accodion at about the data*/
 .ui-accordion{
@@ -339,3 +326,13 @@ div.cartodb-popup .jspPane {
 button, a {
     cursor: pointer;
 }
+
+/*infowindow outline*/
+div.cartodb-popup div.cartodb-popup-content-wrapper {
+    width:190px;
+    max-width: 190px;
+    padding:0px;
+    overflow-x: hidden;
+    background:none;
+    box-shadow: 1px;
+  }
