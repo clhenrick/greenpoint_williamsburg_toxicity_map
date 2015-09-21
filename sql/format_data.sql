@@ -38,7 +38,12 @@ alter table acs_5yr_2013_merge_copy drop column percent_nonhispanic_black restri
 alter table acs_5yr_2013_merge_copy drop column percent_nonhispanic_white restrict;
 alter table acs_5yr_2013_merge_copy drop column median_household_income restrict;
 
-
+-- rename new columns to be more readable
+alter table acs_5yr_2013_merge_copy rename column pct_hispanic_formatted to percent_hispanic;
+alter table acs_5yr_2013_merge_copy rename column pct_nonhispanic_white_formatted to percent_nonhispanic_white;
+alter table acs_5yr_2013_merge_copy rename column pct_nonhispanic_asian_formatted to percent_nonhispanic_asian;
+alter table acs_5yr_2013_merge_copy rename column pct_nonhispanic_black_formatted to percent_nonhispanic_black;
+alter table acs_5yr_2013_merge_copy rename column median_income_formatted to median_household_income;
 
 COMMIT;
 
