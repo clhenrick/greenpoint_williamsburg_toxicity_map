@@ -127,7 +127,12 @@
     <script id="legend-template" type="text/x-handlebars-template">
         <div class="legend dl" id="legend-{{id}}">
             {{#if title}}
-            <h3>{{title}}</h3> {{/if}}
+            <h3>{{title}}</h3> 
+            {{/if}}
+            {{#if subtitle}}
+            <br>
+            <strong>{{subtitle}}</strong>
+            {{/if}}
             <ul class="legend-labels">
                 {{#each items}}
                 <li><span style="background: {{color}}" class="{{../type}}"></span>{{label}}</li>

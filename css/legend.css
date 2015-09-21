@@ -23,7 +23,7 @@
   display: inline-block;  
 }
 
-undefined/**.ui a, **/li {
+li {
   list-style-type: none;
   text-decoration: none;
 }
@@ -35,10 +35,6 @@ undefined/**.ui a, **/li {
   height: 100px;
 }
 
-undefined/**#map-legend-container p{
-  text-align: right;
-}
-**/
 #map-legend-container ul {
   list-style-type: none;
 
@@ -46,6 +42,11 @@ undefined/**#map-legend-container p{
 
 div.legend {
   padding: 10px 20px 0px 10px;
+}
+
+div.legend strong {
+  display: inline-block;
+  margin-bottom: 8px;
 }
 
 ul.legend-labels li {

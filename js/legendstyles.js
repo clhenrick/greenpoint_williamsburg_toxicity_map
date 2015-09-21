@@ -4,7 +4,8 @@ var app = app || {};
 app.legends = (function(){
   return {
     acs_pop : {
-      title : "Population Density( ppl /sqM )", // ppl per sq mile
+      title : "Population Density",
+      subtitle: "People per sq mile", // ppl per sq mile
       type : 'polygon',
       items : [
         {
@@ -50,15 +51,13 @@ app.legends = (function(){
     },
 
     asthma : {
-      title : "Asthma Rate ( ppl / 1000 )",
+      title : "Asthma Rate",
+      subtitle : "# of cases per 1,000 people, 2008-2012",
       type : 'polygon',
       items : [
-          {
-          color : "#ffffff",
-          label : "0"
-        },{
+        {
           color : "#bfa4cd",
-          label : "0 - 5"
+          label : "1 - 5"
         },{
           color : "#9c7aac",
           label : "6 - 9"
