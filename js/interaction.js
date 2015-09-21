@@ -3,7 +3,7 @@ var app = app || {};
 app.interaction = (function(d, w, $) {
     // This module creates non-map interaction UI elements and event listeners
 
-    // descriptions of the data layers to append to the DOM
+    // descriptions of the data layers to append to the "About the data" in the DOM
     var desc = [{
             title: "Waste Transfer Stations",
             field: "This layer shows waste transfer stations, scrap metal facilities, and recycling sorting facilities. A waste transfer station is a facility that receives solid waste from waste collection vehicles, and it is transferred to larger tractor-trailers or marine barges to be taken to a processing facility outside of the city. These types of facilities are typically associated with truck traffic dropping off or picking up waste or recycling, and contribute to air pollution and truck congestion in Williamsburg and Greenpoint.The Newtown Creek Wastewater Treatment Plant is also considered on this map for its daily transfer of wastewater sludge to a marine barge, and will be receiving truckloads of organic food waste to be processed at the plant."
@@ -66,8 +66,8 @@ app.interaction = (function(d, w, $) {
             
     }
     
-    function aboutData() {
-        // add the "about the data" content to the DOM
+    // add the "about the data" content to the DOM
+    function aboutData() {        
         $.each(desc, function(i, val) {
             var html = "<div class='desc'><h3>" + val.title + "</h3> <div class='contents'><p>" + val.field + "</p></div> </div>";
             $('.tabs.metadata').append(html);
@@ -109,8 +109,8 @@ app.interaction = (function(d, w, $) {
         });
     */
 
-    function screenshot() {
-        // implements the HTML 2 Canvas JS for a user to print the current map view
+    // implements the HTML 2 Canvas JS for a user to print the current map view
+    function screenshot() {        
         if (screen.width > 0 && screen.height > 0) {
             try {
                 html2canvas(document.body, {
@@ -130,12 +130,14 @@ app.interaction = (function(d, w, $) {
         }
     }
 
+    // adds the event listeners to the non-map interactions UI
     function addListeners() {
-        // adds the event listeners to the non-map interactions UI
+        // listener to create a screenshot
         $('#print_b').click(function() {
             screenshot();
         });
 
+        // listener to hide / show data layer UI & other content
         $('li.nav').click(function() {
             var c = $(this).attr('id'),
                 menu_tabs = $('.tabs');
@@ -150,7 +152,6 @@ app.interaction = (function(d, w, $) {
                 }
             });
         });
-
     }
 
     // initially open map layer selection UI for dev debugging.
