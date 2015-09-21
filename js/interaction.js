@@ -29,13 +29,16 @@ app.interaction = (function(d, w, $) {
             title: "Industrial History",
             field: "Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents. Find out more information about the tour(http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked/)"
         }],
-        aboutthedata = [];
+        
+    aboutthedata = [];
+    
     /*function loadingSpinner(){
         $(document).on(function(){
             ajaxStart:functin(){};
             ajaxStop:function(){};
         });
     } */
+
     function addToolTips() {
         // add jquery UI tooltips
         // we could do this without jQuery UI...
@@ -65,22 +68,18 @@ app.interaction = (function(d, w, $) {
     
     function aboutData() {
         // add the "about the data" content to the DOM
+        $.each(desc, function(i, val) {
+            var html = "<div class='desc'><h3>" + val.title + "</h3> <div class='contents'><p>" + val.field + "</p></div> </div>";
+            $('.tabs.metadata').append(html);
+            aboutthedata.push(html);
 
-            if (aboutthedata.length <= 0) {
-                $.each(desc, function(i, val) {
-                    aboutthedata = $("<div class='desc'><h3>" + desc[i].title + "</h3> <div class='contents'><p>" + desc[i].field + "</p></div> </div>");
-                    $('.tabs .metadata').append(aboutthedata);
-                    $('.contents').css({
-                        "max-width": "260px",
-                        "line-height": "200%",
-                        "overflow-y": "none"
-                    });
-                })
-            } else if (aboutthedata.length > 0) {
-                // console.log('no more append.'); 
-            }
-
-
+            // this should be in the CSS style sheet, not here
+            $('.contents').css({
+                "max-width": "260px",
+                "line-height": "200%",
+                "overflow-y": "none"
+            });
+        });
     }
 
     /*
@@ -136,56 +135,37 @@ app.interaction = (function(d, w, $) {
         $('#print_b').click(function() {
             screenshot();
         });
-/*
-        $('#aboutus_b').click(function() {
-            $('.tabs').not('.aboutus').hide();
-            $('.aboutus').toggle("fade");
-        });
-        $('#contact_b').click(function() {
-            $('.tabs').not('.contact').hide();
-            $('.contact').toggle("fade");
 
-        });
-        $('#dlayer_b').click(function() {   
-            $('.tabs').not('.dlayer').hide();
-            $('.dlayer').toggle("fade");
-        });
-        */
-        $('li').click(function() {
-            var c = $(this).attr('class');
-            console.log('.'+c);
+        $('li.nav').click(function() {
+            var c = $(this).attr('id'),
+                menu_tabs = $('.tabs');
 
-            if( c === "metadata" ) {
-                aboutData();
-                $('.'+c).css("background-color","#f1f0f0");
-                $('li').not('.'+c).css({
-                    "background-color":"transparent",
-                    "border-left":"1px solid ##f1f0f0"
-                });
-            }else {
-                $('.tabs').not('.'+c).hide();
-                $('.'+c).css("background-color","#f1f0f0");
-                $('li').not('.'+c).css({
-                    "background-color":"transparent",
-                    "border-left":"1px solid ##f1f0f0"
-                });
-            }
-            $('.tabs'+'.'+c).toggle();
+            $.each(menu_tabs, function(i, el) {
+                var $el = $(el);
+                if ($el.attr('class') === "menu tabs " + c) {
+                    $(this).css('display','block');
+                } else {
+                    $(this).css('display','none');
+                }
+            });
         });
 
     }
+
     //get the height of tab
     //if it collide to the 
-
 
     var init = function() {
         addToolTips();
         addListeners();
         resizingTabsHeight();
+        aboutData();
     };
 
     return {
-        init: init
+        init: init,
+        desc : desc,
+        aboutthedata : aboutthedata
     };
 
 })(document, window, jQuery);
