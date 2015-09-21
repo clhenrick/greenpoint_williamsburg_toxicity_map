@@ -142,6 +142,7 @@ app.interaction = (function(d, w, $) {
 
             $.each(menu_tabs, function(i, el) {
                 var $el = $(el);
+
                 if ($el.attr('class') === "menu tabs " + c) {
                     $(this).css('display','block');
                 } else {
@@ -151,6 +152,10 @@ app.interaction = (function(d, w, $) {
         });
 
     }
+
+    // initially open map layer selection UI for dev debugging.
+    // remove this code when ready for production.
+    $('.menu.tabs.dlayer').css('display', 'block');
 
     //get the height of tab
     //if it collide to the 
