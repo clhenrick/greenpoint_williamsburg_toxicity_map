@@ -158,9 +158,7 @@ app.interaction = (function(d, w, $) {
     // remove this code when ready for production.
     $('.menu.tabs.dlayer').css('display', 'block');
 
-    //get the height of tab
-    //if it collide to the 
-
+    // get it all going...
     var init = function() {
         addToolTips();
         addListeners();
