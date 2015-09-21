@@ -29,7 +29,7 @@ app.interaction = (function(d, w, $) {
             title: "Industrial History",
             field: "Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents. Find out more information about the tour(http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked/)"
         }],
-        aboutthedata = [];
+    aboutthedata = [];
     /*function loadingSpinner(){
         $(document).on(function(){
             ajaxStart:functin(){};
@@ -41,32 +41,8 @@ app.interaction = (function(d, w, $) {
         // we could do this without jQuery UI...
         $('.dlayer').tooltip();
     }
-    /*
-    //Detect collision between tabs and footer and fit the tab size to the footer position while window resized.
-    //return the proper height as a result 
-    function resizeTabsHeight(tab,footer) {
-        //detecting Collisions at the bottom
-        $(window).resize(function() {
-            var position = $('.tabs').offset().top;
-            var metadataHeight = $('.metadata').height();
-            var footerPosition = $('footer').offset().top;
-            var endOfTab = footerPosition-position; //screensize - footer height 
-            //resizing tab heights if it extends over the footer position
-            if( (position + metadataHeight) >= footerPosition ){
-                //assign the height of tab to footer position
-                return endOfTab;
-            }else if(position + metadata_height < footer_position) {
-                //console.log("ok to increase the div size");
-                return metadataHeight;
 
-            }
-        });
-            
-    }
-    */
-    function applyTabHeight(){
 
-    }
 
     function aboutData() {
         // add the "about the data" content to the DOM
@@ -76,15 +52,13 @@ app.interaction = (function(d, w, $) {
                 $('.tabs .metadata').append(aboutthedata);
                 $('.contents').css({
                     "max-width": "260px",
-                    "line-height": "200%",
+                    "line-height": "18  0%",
                     "overflow-y": "none"
                 });
             })
         } else if (aboutthedata.length > 0) {
             // console.log('no more append.'); 
         }
-
-
     }
 
     /*
@@ -141,31 +115,64 @@ app.interaction = (function(d, w, $) {
             screenshot();
         });
         //menu navigation bar
-        $('li').click(function() {
+
+        $('ul li').click(function() {
             var c = $(this).attr('class');
+            console.log(c);
             $('.tabs').not('.'+c).hide();
             if( c === "metadata" ) {
                 aboutData();
             }
-            $('.'+c).css({
-                "background-color":"#f1f0f0"
+            $('.tabs'+'.'+c).toggle(10,function(){
+                $('.tabs'+'.'+c).animate({
+                    easing: "easeOut"
+                });
+                $('li'+'.'+c).css({"background-color":"#f1f0f0"});
+                $('li').not('.'+c).css({"background-color":"transparent"});
+                var isVisible = $('.tabs'+'.'+c).is('hidden');
+                var isHidden = $('.tabs'+'.'+c).is('visible');
             });
-            $('li').not('.'+c).css({
-                "background-color":"transparent",
-                "border-left":"1px solid ##f1f0f0"
-            });
-            $('.tabs'+'.'+c).toggle();
         });
+
+
+    }
+    //Detect the collision between tabs and footer.
+    //return the proper height as a result 
+    function detectTabsHeight(tabClassname) {
+        //detecting Collisions at the bottom
+        var c = tabClassname;
+        var f = footer;
+
+        var tabPosition = $('.'+c).offset().top;
+        var footerPosition = $(f).offset().top;
+        var tabHeight = $('.'+c).height(); //original height
+        var endOfTab = footerPosition-tabPosition; //screensize - footer height 
+        //resizing tab heights if it extends over the footer position
+        if( (tabPosition + tabHeight) >= footerPosition ){
+            return endOfTab;
+        }else if(tabPosition + tabHeight < footer_position) {
+            return tabHeight;
+        }      
+    } 
+
+
+    // Fit the tab size to the footer position 
+    //when it collide while window resized/contents are too long.
+    function applyTabHeight(){
+        //in case window resized and makes new collision
+        $(window).resize(function() {
+        });
+        //in case window size is very small and make the collision 
+        //in case tab is originally too long 
     }
     //get the height of tab
-    //if it collide to the 
+    //if it collide to the footer
 
 
     var init = function() {
         addToolTips();
         addListeners();
-        //resizeTabsHeight();
-        aboutData();
+        //detectTabsHeight();
     };
 
     return {
