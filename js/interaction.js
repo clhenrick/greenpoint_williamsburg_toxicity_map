@@ -109,11 +109,37 @@ app.interaction = (function(d, w, $) {
         }
     }
 
+    // ideally we would use the Static Maps API to create a "screenshot" of the current map state
+    // however there's currently a bug with it that needs to be resolved: https://github.com/CartoDB/cartodb.js/issues/657
+    function cdbStaticMap() {
+        var basemap = {
+            type: "http",
+            options: {
+                urlTemplate : 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+                subdomains: ['a', 'b', 'c']
+            }
+        };
+
+        var layerSource = app.layers;
+
+        cartodb.Image(layerSource, {
+            basemap : basemap,
+            override_bbox : true
+        })
+        .size(1200, 900)
+        .center([40.718640, -73.950605])
+        .zoom(14)
+        .getUrl(function(err, url) {
+            if (err) console.log('error: ', err);
+            console.log('image url: ', url);
+        });        
+    }    
+
     // adds the event listeners to the non-map interactions UI
     function addListeners() {
         // listener to create a screenshot
         $('#print_b').click(function() {
-            screenshot();
+            // screenshot();
         });
 
         // listener to hide / show data layer UI & other content
