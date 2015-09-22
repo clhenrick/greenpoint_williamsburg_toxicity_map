@@ -18,7 +18,17 @@ SELECT
 FROM 
        acs_5yr_2013_merge;
 
---- TO DO: condense the formatting code from here to line 38
+--- TO DO: condense the formatting code from here to line 50
+-- Update acs_5yr_2013 Set calc_pop = ( mhhi / totpop ) *1000
+-- Update acs_5yr_2013 Set roundedcpop = round(Calc_pop)
+
+-- Update asthma Set asthma5ypop = ( Asthma5y / totpop ) *1000
+-- Update asthma Set rounyed_asthma5ypop = round(asthma5ypop)
+
+
+--- for making industrial historical tour line
+-- SELECT ST_MakeLine(the_geom order by id ASC) as the_geom_webmercator  FROM industrialhistory
+
 -- ALTER TABLE acs_5yr_2013_copy ADD COLUMN per_hispanic numeric;
 -- ALTER TABLE acs_5yr_2013_copy ADD COLUMN per_nonhis_asian numeric;
 -- ALTER TABLE acs_5yr_2013_copy ADD COLUMN per_nonhis_black numeric;
