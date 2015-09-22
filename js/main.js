@@ -270,7 +270,12 @@ app.map = (function(w, d, $, H) {
             var id = getSubLayerIndex(i);
             removeLegend(id);
         });
+        
+        // de-activate the buttons
         $('.data-layer').removeClass('selected pressed active');
+        
+        // close all open cartodb-infowindows
+        $('div.cartodb-infowindow').css('display', 'none');
     });
 
     // set up custom zoom buttons
