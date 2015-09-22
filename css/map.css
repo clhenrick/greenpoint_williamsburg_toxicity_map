@@ -317,9 +317,15 @@ footer a{
 }
 
 
-/* This is to fix an infowindow issue, do not remove */
+/* These are hacks to fix the infowindow issues, do not remove */
 div.cartodb-popup .jspPane {
     max-width: 190px;
+}
+.cartodb-popup-content.jspScrollable {
+    max-height: 180px !important;
+}
+.cartodb-popup-content.jspScrollable .jspContainer {
+    height: 180px !important;
 }
 
 /* use a pointer cursor for all things button related */
