@@ -1,0 +1,49 @@
+_prefs: 
+  disabled: []
+  inspector: false
+  mapid: ''
+  rev: ''
+  saveCenter: true
+attribution: ''
+center: 
+  - -73.9464
+  - 40.7311
+  - 13
+description: Custom data overlays for the basemap tiles
+Layer: 
+  - id: cb1_zip_4326
+    Datasource: 
+      file: /Users/clhenrick/Dropbox (Personal)/projects/pratt_center/cdb_backup/CB1_zip_new2/cb1_zip_4326.shp
+      type: shape
+    description: Zipcodes in BK CB 1
+    fields: 
+      ZipCode: Number
+    properties: 
+      "buffer-size": 32
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+  - id: through_truck_dissolve
+    Datasource: 
+      file: /Users/clhenrick/Dropbox (Personal)/projects/pratt_center/cdb_backup/through_truck_dissolve/through_truck_dissolve.shp
+      type: shape
+    description: Through truck routes in NYC, dissolved
+    fields: 
+      id: Number
+      cartodb_id: Number
+      created_at: String
+      updated_at: String
+    properties: 
+      "buffer-size": 32
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+  - id: NoCB1_dissolve
+    Datasource: 
+      file: /Users/clhenrick/Dropbox (Personal)/projects/pratt_center/cdb_backup/NoCB1_dissolve/NoCB1_dissolve.shp
+      type: shape
+    description: Mask for rest of NYC
+    fields: 
+      Id: Number
+    properties: 
+      "buffer-size": 32
+    srs: +proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +datum=NAD83 +units=us-ft +no_defs
+maxzoom: 16
+minzoom: 0
+name: Nag BK basemap data layers

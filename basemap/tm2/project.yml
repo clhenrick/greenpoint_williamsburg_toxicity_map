@@ -1,0 +1,32 @@
+_prefs: 
+  mapid: bowonc.0d7fc4e3
+  saveCenter: true
+_properties: 
+  bridge: 
+    "group-by": layer
+attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"
+bounds: 
+  - -180
+  - -85.0511
+  - 180
+  - 85.0511
+center: 
+  - -73.9543
+  - 40.7187
+  - 15
+description: A custom basemap for NAG Project
+format: "png8:m=h"
+interactivity_layer: ''
+layers: null
+maxzoom: 18
+minzoom: 13
+name: NagMapbox_baseMap
+source: "mapbox:///mapbox.mapbox-streets-v5,chenrick.d5d92cbc"
+styles: 
+  - style.mss
+  - labels.mss
+  - roads.mss
+  - trucks.mss
+  - shapes.mss
+  - zipcode_labels.mss
+template: ''
