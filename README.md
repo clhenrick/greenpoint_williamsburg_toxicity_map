@@ -16,5 +16,5 @@ An interactive map for The Nag showing pollution and demographic data in the nei
 2. Do `node carto-to-js.js` to update the app.cartocss module in `js/carto.js`
 
 ## Contributors:
-- Bowon Chung
+- [Bowon Chung](https://github.com/bowon)
 - [Chris Henrick](http://chrishenrick.com) / [@clhenrick](https://github.com/clhenrick/)
