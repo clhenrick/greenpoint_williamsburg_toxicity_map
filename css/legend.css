@@ -1,38 +1,9 @@
-.ui {
-  position: absolute;
-  display: inline-block;
-
-  font-family: 'Open Sans',sans-serif;
-  font-size: 12px;  
-  
-  background: #FFFFFF;
-  border: 0px;
-  border-radius: 3px;
-  box-shadow: 1px 1px 3px #9e9e9e;
-  
-  padding: 0px 10px 10px 0px;
-  margin: 0px 0px 10px 10px;
-
-  z-index: 5;
-}
-
-.ui h3 {
-  padding-bottom: 2px;
-  margin: 0;
-  letter-spacing: 1px;  
-  display: inline-block;  
-}
-
-li {
-  list-style-type: none;
-  text-decoration: none;
-}
-
 #map-legend-container {
   top: 10px;
   right: 10px;
   width: 200px;
   height: 100px;
+  background-color: #fff;
 }
 
 #map-legend-container ul {
@@ -41,7 +12,9 @@ li {
 }
 
 div.legend {
-  padding: 10px 20px 0px 10px;
+  padding-top: 0;
+  padding-bottom: 10px;
+  background: #fff;
 }
 
 div.legend strong {
@@ -49,8 +22,13 @@ div.legend strong {
   margin-bottom: 8px;
 }
 
+div.lengend h3 {
+
+}
+
 ul.legend-labels li {
   display: block;
+  font-size: 1.2em;
   list-style: none;
   margin-left: 0;
   text-align: left;

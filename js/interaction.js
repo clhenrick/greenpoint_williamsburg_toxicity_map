@@ -42,7 +42,7 @@ app.interaction = (function(d, w, $) {
     function addToolTips() {
         // add jquery UI tooltips
         // we could do this without jQuery UI...
-        $('.dlayer').tooltip();
+        // $('.dlayer').tooltip();
     }
     
     // add the "about the data" content to the DOM
@@ -147,14 +147,20 @@ app.interaction = (function(d, w, $) {
             var c = $(this).attr('id'),
                 menu_tabs = $('.tabs');
 
+            $('li.nav').removeClass('active');
+            
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active');
+            } 
+
             $.each(menu_tabs, function(i, el) {
                 var $el = $(el);
 
+                $el.removeClass('active');
+
                 if ($el.attr('class') === "menu tabs " + c) {
-                    $(this).css('display','block');
-                } else {
-                    $(this).css('display','none');
-                }
+                    $(this).addClass('active');
+                } 
             });
         });
     }
@@ -193,7 +199,8 @@ app.interaction = (function(d, w, $) {
 
     // initially open map layer selection UI for dev debugging.
     // remove this code when ready for production.
-    $('.menu.tabs.dlayer').css('display', 'block');
+    $('.menu.tabs.dlayer').addClass('active');
+    $('.nav.dlayer').addClass('active');
 
     // get it all going...
     var init = function() {
