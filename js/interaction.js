@@ -46,19 +46,20 @@ app.interaction = (function(d, w, $) {
     }
     
     // add the "about the data" content to the DOM
-    function aboutData() {        
-        $.each(desc, function(i, val) {
-            var html = "<div class='desc'><h3>" + val.title + "</h3> <div class='contents'><p>" + val.field + "</p></div> </div>";
-            $('.tabs.metadata').append(html);
-            aboutthedata.push(html);
-
-            // this should be in the CSS style sheet, not here
-            $('.contents').css({
-                "max-width": "260px",
-                "line-height": "200%",
-                "overflow-y": "none"
-            });
-        });
+    function bindingMetadata(){
+        if (aboutthedata.length <= 0) {
+            $.each(desc, function(i, val) {
+                aboutthedata = $("<div class='desc'><h3>"+ desc[i].title + "</h3> <div class='contents'><p>" + desc[i].field + "</p></div> </div>");
+                $('.tabs.metadata').append(aboutthedata);
+                $('.contents').css({
+                    "max-width": "260px",
+                    "line-height": "180%"
+                });
+            });//end of .each
+        detectTabsHeight('metadata');
+        } else if (aboutthedata.length > 0) {
+            // console.log('no more append.'); 
+        }
     }
 
     /*
@@ -137,52 +138,81 @@ app.interaction = (function(d, w, $) {
 
     // adds the event listeners to the non-map interactions UI
     function addListeners() {
-        // listener to create a screenshot
+
+        // adds the event listeners to the non-map interactions UI
         $('#print_b').click(function() {
             // screenshot();
         });
 
-        // listener to hide / show data layer UI & other content
-        $('li.nav').click(function() {
-            var c = $(this).attr('id'),
+ 
+
+        //menu navigation bar
+        var navbarHover = function () {
+            var id = $(this).attr('id'),
                 menu_tabs = $('.tabs');
-
-            $('li.nav').removeClass('active');
-            
-            if (!$(this).hasClass('active')) {
-                $(this).addClass('active');
-            } 
-
+            var c = $(this).attr('class');
+            if($(this).hasClass('.footer')){ //for footer nav
+                $(this).css({
+                    "background-color":"#f1f0f0"
+                });
+                $('li.nav').not('#'+id).css({
+                    "background-color":'transparent'
+                }); 
+            }
+        };
+        var navbarClick = function (){
+            //navbar color change
+            var id = $(this).attr('id'),
+                menu_tabs = $('.tabs');
+            var c = $(this).attr('class');
+            $('li.nav'+'#'+id).css({
+                "background-color":"#f1f0f0"
+            });
+            $('li.nav').not('#'+id).css({
+                "background-color":"transparent"
+            });
+            //Open the contents page 
             $.each(menu_tabs, function(i, el) {
                 var $el = $(el);
 
-                $el.removeClass('active');
+                if ($el.attr('class') === "menu tabs " + id) {
+                    $(this).css('display','block');
 
-                if ($el.attr('class') === "menu tabs " + c) {
-                    $(this).addClass('active');
-                } 
-            });
-        });
+                } else {
+                    $(this).css('display','none');
+                }
+            }); //end of .each
+            if($(this).attr('id') === 'metadata' || $(this).attr('id') === 'about'  || $(this).attr('id') === 'dlaye'){
+                var v = $('.'+id).is(':visible');
+                if(v === true){
+                    bindingMetadata();
+                }
+            }
+        };
+        $('li.nav').hover(navbarHover).click(navbarClick);
     }
 
     //Detect the collision between tabs and footer.
     //return the proper height as a result 
-    function detectTabsHeight(tabClassname) {
+    function detectTabsHeight(id) {
         //detecting Collisions at the bottom
-        var c = tabClassname;
-        var f = footer;
+        var tabPosition = $('.tabs.'+id).offset().top;
+        var tabsOriginalHeight = $('.tabs.'+id).height(); //original heights of .tabs
+        var footer_height =$('footer').height();
+        var footerPosition = $(window).height()-footer_height;
+        var tabCurrentHeights = footerPosition-tabPosition - 48; //screensize - footer position - footer height 
+        tabHeights = tabsOriginalHeight - tabCurrentHeights;
+        if( tabHeights >= 0){
+            console.log("tab is too long");
+            $('.tabs.'+id).css({
+                "height":tabCurrentHeights,
+                "overflow-y":"scroll !important"
+            });
+        }else if( tabHeights < 0){
+            console.log("tab is short. no need to replace the .tabs height value");
+        }
 
-        var tabPosition = $('.'+c).offset().top;
-        var footerPosition = $(f).offset().top;
-        var tabHeight = $('.'+c).height(); //original height
-        var endOfTab = footerPosition-tabPosition; //screensize - footer height 
-        //resizing tab heights if it extends over the footer position
-        if( (tabPosition + tabHeight) >= footerPosition ){
-            return endOfTab;
-        }else if(tabPosition + tabHeight < footer_position) {
-            return tabHeight;
-        }      
-    } 
+    }//eof :detectTabsHeight 
 
 
     // Fit the tab size to the footer position 
