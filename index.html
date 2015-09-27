@@ -7,7 +7,7 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <!-- CSS libraries -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
     <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -54,7 +54,7 @@
                 <br />
 
                 <p class="copyright">The Greenpoint-Williamsburg ToxiCity Map <br> 
-                    &copy; 2015 <a href="#mainsite">NAG-Brooklyn</a>
+                    &copy; 2015 <a target="_blank" href="http://nag-brooklyn.org">NAG-Brooklyn</a>
                 </p>
             </div>
 
@@ -99,29 +99,84 @@
             </div>
 
             <div class="menu tabs metadata">
+                <h3>Waste Transfer Stations</h3>
+                <p>
+                    This layer shows waste transfer stations, scrap metal facilities, and recycling sorting facilities. A waste transfer station is a facility that receives solid waste from waste collection vehicles, and it is transferred to larger tractor-trailers or marine barges to be taken to a processing facility outside of the city. These types of facilities are typically associated with truck traffic dropping off or picking up waste or recycling, and contribute to air pollution and truck congestion in Williamsburg and Greenpoint.The Newtown Creek Wastewater Treatment Plant is also considered on this map for its daily transfer of wastewater sludge to a marine barge, and will be receiving truckloads of organic food waste to be processed at the plant.
+                </p>
+
+                <h3>Polluted Sites</h3>
+                <p>
+                    An (E) designation comes from rezoning to notify an environmental requirement on a particular lot. The (E) designations in this map are lots that are required to address potential hazardous material contamination or air quality concerns (high ambient noise level (E) designations were omitted from this map) if the lot undergoes new construction or change in land use. An (E) designation does not signify pollution, but rather the potential for exposure to hazard material contamination or pollutants in ambient air quality. More information can be found on the <a target="_blank" href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml">NYC Office of Environmental Remediation’s website.</a> 
+                </p>
+                <p>
+                    Selected EPA sites: The EPA compiles sites that have regulation requirements through their Facility Registry Service. Facilities in this database must report to a variety of EPA programs, some as minimal as the Minor Air Facility Permit or as major as the Superfund program. There are over 1,000 facilities in Community Board 1 that have reported to the EPA at least once for any state or federal environmental programs. The sites shown in this map are the sites that have the largest burden of regulations to comply with, symbolizing potential for environmental risk. To access the full database, you can <a target="_blank" href="http://www.epa.gov/enviro/facts/afs/search.html">search by facility or geography</a> or <a target="_blank" href="http://www.epa.gov/enviro/geo_data.html">download the spatial data.</a>
+                </p>
+                <p>
+                    Spills are cataloged by NYS DEC for all accidental releases of petroleum, toxic chemicals, gases, and other hazardous materials. <a target="_blank" href="http://www.dec.ny.gov/cfmx/extapps/derexternal/index.cfm?pageid=2">You can search for spills in their records on the DEC website</a>. Spills are categorized on this map as minor (smaller than 100 gallons) and major (100 gallons and greater) spills.
+                </p>
+
+                <h3>Polluted and Remediated Sites</h3>
+                <p>
+                    There are Superfund and brownfield sites at the state and federal level. A brownfield site is a property where soil contamination exceeds standards set by NYS DEC (state) or US EPA (federal). These properties must be remediated before being redeveloped. Severely contaminated sites are designated as Superfund sites. This map includes all state and federally designated brownfield and Superfund sites, including those that have been remediated.
+                </p>
+                <p>
+                     The Exxon-Mobil Oil Spill was a decades-long oil leak that was discovered in 1978. Exxon has already removed 12.5 million gallons of oil, of the estimated 17 to 30 million gallons. Remediation of this site is on-going and overseen by NYS DEC. The oil spill was drawn from a map created by Riverkeeper in 2004 found in the Brownfield Opportunity Area nomination report from 2012. More information can be found on the <a target="_blank" href="http://nysdecgreenpoint.com/ProjectHistory.aspx">NYS DEC website.</a> 
+                </p>
+                <p>
+                     The Meeker plume was found during the Exxon-Mobil Oil Spill investigation. The plume of chlorinated solvents (teatrachloroethene – PCE and trichloroethene – TCE), was found in soil, soil vapor and groundwater. These solvents typically come from dry cleaning and degreaser compounds. The investigation for the source of this plume is ongoing and overseen by the NYS DEC. The Meeker Plume was drawn from an online map by the Newtown Creek Alliance.
+                </p>
+                <p>
+                     The NuHart plume is the remnants of the NuHart Plastics plants. Phthalate and TCE contaminate the site, making it a Class 2 State Superfund site, a “significant threat to public health and/or the environment requiring action.” The plume on this map was drawn from a report from April 2015 from NYS DEC.
+                </p>
+
+                <h3>Future Flood Risk</h3>
+                <p>
+                    The New York Panel on Climate Change has projected what the flood plain will look like in a 100-year and 500-year storm (a storm that typically occurs once every 100 and 500 years, respectively). This map shows the projected flood plains for the year 2020.
+                </p>
+
+                <h3>Population Density</h3>
+                <p>
+                    This data reflects population estimates from 2009-2013 American Community Survey (ACS). ACS is a running sample of approximately 1 in 40 households in the U.S. This sample is taken each month over a 1, 3 or 5-year period. The longer the sample time, generally the higher reliability of the data due to a larger sample size. These maps use the 5-year estimate from 2009-2013, the latest available 5-year data.
+                </p>
+
+                <h3>Median Household Income</h3>
+                <p>
+                    Median household income is the middle income value, meaning half the population has an income above that amount, and half have an income below that amount. Median household income was $52,259 for New York City and $53,046 for the United States, according to the 2009-2013 American Community Survey.
+                </p>
+
+                <h3>Asthma Rates</h3>
+                <p>
+                    Residents of Williamsburg and Greenpoint experience higher instances of asthma due to proximity to truck routes and sources of air pollution. This layer shows distribution of hospital visits for asthma from 2008 to 2012. This data was retrieved from Infoshare.org of Community Studies of New York, Inc., a non-profit that compiles and aggregates data.
+                </p>
+
+                <h3>Industrial History</h3>
+                <p>
+                    Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents. Find out <a target="_blank" href="http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked"/>more information about the tour.</a>
+                </p>
             </div>
 
             <div class="menu tabs aboutus">
-                <h4>Credit</h4>
+                <h3>Credit</h3>
                 <p>
-                    <a href="http://nag-brooklyn.org/" class="short-desc">Neighbors Allied for Good Growth</a> (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
+                    <a target="_blank" href="http://nag-brooklyn.org/" class="short-desc">Neighbors Allied for Good Growth</a> (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
                 </p>
                 <p>
-                    This project is funded by a grant from <a href="http://www.dec.ny.gov/" class="short-desc">the NYS Department of Environmental Conservation.</a> 
+                    This project is funded by a grant from <a target="_blank" href="http://www.dec.ny.gov/" class="short-desc">the NYS Department of Environmental Conservation.</a> 
                 </p>
                 <p>
-                    GIS and interactive mapping consultation was from <a href="https://www.pratt.edu/pratt-research-and-centers/spatial-analysis-visualization-initiative/" target=blank>the Spatial Analysis and Visualization Initiative (SAVI)</a> at <a href="http://pratt.edu" target=blank>Pratt Institute</a>. The mapping platform for this project was generously donated through CartoDB.
+                    GIS and interactive mapping consultation was from <a target="_blank" href="https://www.pratt.edu/pratt-research-and-centers/spatial-analysis-visualization-initiative/" target=blank>the Spatial Analysis and Visualization Initiative (SAVI)</a> at <a target="_blank" href="http://pratt.edu" target=blank>Pratt Institute</a>. The mapping platform for this project was generously donated through CartoDB.
                 </p>
             </div>
+
             <div class="menu tabs contact">
-                <h4>Contact</h4>
-                <div id="address">
+                <h3>Contact</h3>
+                <p>
                     <strong>NAG-Brooklyn</strong>
                     <br /> 110 Kent Avenue
                     <br /> Brooklyn, NY 11249
                     <br /> 718.384.2248
                     <br /> <a href="mailto:&#110;&#097;&#103;&#046;&#098;&#107;&#108;&#121;&#110;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">nag.bklyn@gmail.com</a>
-                </div>
+                </p>
             </div>
 
             <!-- footer menu -->
@@ -170,7 +225,7 @@
     <!-- Javascript Libraries -->
     <script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
     <script src='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.standalone.js'></script>
-    <!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/bower_components/handlebars/handlebars.js"></script>
     
     <!-- js code -->

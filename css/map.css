@@ -60,16 +60,10 @@ div a {
 
 
 div p {
-    font-size: 1.2em;
+    font-size: 1.3em;
     line-height: 1.5em;
     text-indent: 1.2em;
-}
-
-div h4 {
-    /*font-size: 20px;*/
-    color: #1f1f1f;
-    padding-top: 5px;
-    padding-bottom: 15px;
+    padding-bottom: .4em;
 }
 
 li {
@@ -104,16 +98,30 @@ footer {
     height: 60px; 
 }
 
-footer a {
-    color:#202257;  
-}
-
+/* Map container */
 #map {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+/* Zoom in and out */
+.zoombtn {
+    position: absolute;
+    width:15px;
+    top: 10px;
+    right: 240px;
+}
+.zoombtn > button{
+    width:25px;
+    height:25px;
+    background-color: #fff;
+    border:0px;
+    vertical-align: middle;
+    padding:3px;
+    box-shadow: 1px 1px 3px #9e9e9e;
 }
 
 #container {
@@ -138,11 +146,15 @@ footer a {
 }
 
 .ui h3 {
-  font-size: 1.4em;
+  font-size: 1.5em;
   padding-bottom: 2px;
   margin: 0;
-  letter-spacing: 1px;  
+  letter-spacing: 0.05em;  
   display: inline-block;  
+}
+
+.ui h4 {
+
 }
 
 .ui.ui-left {
@@ -171,22 +183,24 @@ footer a {
     height: auto;
 }
 
+.tabs .dlayer{
+    margin-top: 10px;
+}
+
+.tabs.metadata h3:not(:first-child) {
+    margin-top: 15px;
+}
+
 .copyright {
     text-indent: 0;
     text-align: center;
     color:#696969;
 }
 
-/*glyphicons from awesome font : size fa-2x*/
-
-
 .selected {
     background-color: #f1f0f0; 
 }
 
-.tabs .dlayer{
-    margin-top: 10px;
-}
 /*Buttons at layers only*/
 .dlayer .data-layer {
     width:50px; 
@@ -221,16 +235,8 @@ footer a {
     text-indent: 5px;
 }
 
-/*credit at footer*/
-.menu .tabs .aboutus {
-    display: none;
-    width: 270px;
-    margin-bottom: 10px;
-}
-
 .aboutus p {
     text-indent: 1em;
-    overflow:hidden;
 }
 
 .nextsteps {
@@ -255,77 +261,16 @@ footer a {
     color:#202257;
 }
 
-
-/*.accodion{
-    width:250px;
-}*/
-
 #aboutus_b {
     color: #696969; 
 }
 
-.menu .tabs .contact {
-    display: none;
-    color: #696969;
-    padding:20px;
-    width:100%;
-
-}
-.contact #address {
-    width:100%;
+.menu.tabs.contact p {
+    margin-top: 15px;
+    text-indent: 0;
 }
 
 
-
-
-/*Zoomin and out */
-.zoombtn {
-    position: absolute;
-    width:15px;
-    top: 10px;
-    right: 240px;
-}
-.zoombtn > button{
-    width:25px;
-    height:25px;
-    background-color: #fff;
-    border:0px;
-    vertical-align: middle;
-    padding:3px;
-    box-shadow: 1px 1px 3px #9e9e9e;
-}
-
-
-/*accodion at about the data*/
-.ui-accordion{
-    width:250px;
-    border:0px;
-    background-color: #d0cece;
-}
-.ui-accordion:hover{
-    border:0px;
-}
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-    background-color: #d0cece;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-    border:0px;
-    border-left: 5px solid #989898;
-    border-radius: 0px;
-    
-    } 
-.ui-state-default:active:hover, 
-.ui-widget-content:active:hover 
-.ui-state-default:active:hover, 
-.ui-widget-header:active:hover 
-.ui-state-default:active:hover {
-    border:0px;
-}
-
-.ui-widget-content{
-    border:0px;
-     background: #f1f0f0;   
-}
 
 
 /* These are hacks to fix the infowindow issues, do not remove */
