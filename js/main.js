@@ -144,18 +144,18 @@ app.map = (function(w, d, $, H) {
                 b = getSubLayerIndex('industrial_history_points');
 
             // if the layer is already selected turn it off
-            if ($button.hasClass('selected')) {
+            if ($button.hasClass('active')) {
                 sublayers[a].hide();
                 sublayers[b].hide();
                 removeLegend('industrial_history_points');
-                $button.removeClass('selected active pressed');
+                $button.removeClass('active');
             
-            } else if (!$button.hasClass('selected')) {
+            } else if (!$button.hasClass('active')) {
                 // otherwise turn it on
                 sublayers[a].show();
                 sublayers[b].show();
                 renderLegend('industrial_history_points');
-                $button.addClass('selected active pressed');
+                $button.addClass('active');
             }
 
         } else if (id === "polluted") {
@@ -163,20 +163,20 @@ app.map = (function(w, d, $, H) {
                 b = getSubLayerIndex('polluted_polygons');
 
             // if the layer is already selected turn it off
-            if ($button.hasClass('selected')) {
+            if ($button.hasClass('active')) {
                 sublayers[a].hide();
                 sublayers[b].hide();
                 removeLegend('polluted_points');
                 removeLegend('polluted_polygons');
-                $button.removeClass('selected active pressed');
+                $button.removeClass('active');
             
-            } else if (!$button.hasClass('selected')) {
+            } else if (!$button.hasClass('active')) {
                 // otherwise turn it on
                 sublayers[a].show();
                 sublayers[b].show();
                 renderLegend('polluted_points');
                 renderLegend('polluted_polygons');
-                $button.addClass('selected active pressed');
+                $button.addClass('active');
             }
 
         } else {
@@ -184,16 +184,16 @@ app.map = (function(w, d, $, H) {
             var index = getSubLayerIndex(id); // numeric index of the data-layer in the sublayers array
 
             // if the layer is already selected turn it off
-            if ($button.hasClass('selected')) {
+            if ($button.hasClass('active')) {
                 sublayers[index].hide();
                 removeLegend(id);
-                $button.removeClass('selected active pressed');
+                $button.removeClass('active');
             
             } else {
                 // otherwise turn it on
                 sublayers[index].show();
                 renderLegend(id);
-                $button.addClass('selected active pressed');
+                $button.addClass('active');
             }
 
             // determine if the index is for a choropleth layer
@@ -211,8 +211,8 @@ app.map = (function(w, d, $, H) {
 
                     if (i !== index) { 
                         var idx = getSubLayerIndex(i),
-                            $otherButton = $('#'+idx);
-                        $otherButton.removeClass('selected active pressed');
+                        $otherButton = $('#'+idx);
+                        $otherButton.removeClass('active');
                     }
                 }
             }
@@ -226,14 +226,15 @@ app.map = (function(w, d, $, H) {
         
         function passData() {            
             var html = hb_template(data);
-            $('.map-legends').append(html);
+            $('#map-legend-container').append(html);
         }
 
         function resizeLegendContainer() {
-            var h1 = $('.map-legends').innerHeight(),
-                h2 = $('.legend-sources').innerHeight(),
-                total = h1 + h2 + 10;
-            $('#map-legend-container').innerHeight(total);
+            var h1 = $('#map-legend-container').innerHeight(),
+                h2 = $('#legend-' + id).innerHeight(),
+                total = h1 + h2;
+            
+            $('#map-legend-container').height(total);
         }
 
         passData();
@@ -245,10 +246,11 @@ app.map = (function(w, d, $, H) {
         var target = $('#legend-' + id),
             lcontainer = $('#map-legend-container'),
             tHeight = target.innerHeight(),
-            lHeight = lcontainer.innerHeight();
+            lHeight = lcontainer.innerHeight(),
+            newHeight = lHeight - tHeight;
 
         target.remove();
-        lcontainer.innerHeight(lHeight - tHeight);
+        lcontainer.height(newHeight);
     }
 
     /*** 
@@ -258,7 +260,6 @@ app.map = (function(w, d, $, H) {
     // load the appropriate data-layer on its corresponding button click
     $('.data-layer').click(function() {
         var layer = $(this).attr('id');
-        console.log('clicked button: ', layer);
         hideShow(layer);
     });
 

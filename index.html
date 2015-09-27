@@ -24,7 +24,7 @@
         <div id='map'></div>
 
         <!--zoom buttons -->
-        <div class="ui zoombtn">
+        <div class="zoombtn">
             <button type="button" id="zoom-in"><i class="ui-icon  ui-icon-plusthick"></i></button>
             <button type="button" id="zoom-out"> <i class="ui-icon ui-icon-minusthick"></i></button>
         </div>        
@@ -32,7 +32,7 @@
         <!-- left aligned UI elements -->
         <div class="ui ui-left">
             <div class="menu header">
-                <a href="javascript:window.location.reload(true)" title="refresh the over all page"> <img src="img/logo.png" id="logo"></a>
+                <img src="img/logo.png" id="logo">
                 <p id="short-desc">
                     Exploring environmental conditions in the Greenpoint-Williamsburg neighborhoods.
                 </p>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="nextsteps">
                         <button class="clear" type="button" id="clear_selection">Reset Layers</button>
-                        <button class="print" type="button" id="print_b">Save as image</button>
+                        <!-- <button class="print" type="button" id="print_b">Save as image</button> -->
                 </div>
             </div>
 
@@ -190,15 +190,13 @@
         
         <!-- map legend container -->
         <div id="map-legend-container" class="ui">
-            <div class="map-legends">
-                <div class="legend">
-                    <h3>Basemap Layers</h3>
-                    <ul class="legend-labels">
-                        <li><span class="through-truck"></span> Through Truck Route</li>
-                        <li><span class="local-truck"></span> Local Truck Route</li>
-                        <li><span class="zipcodes"></span> Zipcodes</li>
-                    </ul>
-                </div>
+            <div class="legend">
+                <h3>Basemap Layers</h3>
+                <ul class="legend-labels">
+                    <li><span class="through-truck"></span> Through Truck Route</li>
+                    <li><span class="local-truck"></span> Local Truck Route</li>
+                    <li><span class="zipcodes"></span> Zipcodes</li>
+                </ul>
             </div>
         </div>        
 

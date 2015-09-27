@@ -6,7 +6,9 @@ app.interaction = (function(d, w, $) {
     function addToolTips() {
         // add jquery UI tooltips
         // we could probably do this without jQuery UI...
-        $('.dlayer').tooltip();
+        $('.dlayer').tooltip({
+            tooltipClass: "dlayer-tooltip"
+        });
     }
 
     // implements the HTML 2 Canvas JS for a user to print the current map view
