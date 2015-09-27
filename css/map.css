@@ -58,14 +58,6 @@ div a {
     text-decoration: none;
 }
 
-
-div p {
-    font-size: 1.3em;
-    line-height: 1.5em;
-    text-indent: 1.2em;
-    padding-bottom: .4em;
-}
-
 li {
   list-style-type: none;
   text-decoration: none;
@@ -74,6 +66,7 @@ li {
 li.nav {
     display: inline-block;
     text-align: center;
+    text-transform: uppercase;
     width: 99px;
     height: 46px;
     padding: 3px 0;
@@ -147,14 +140,11 @@ footer {
 
 .ui h3 {
   font-size: 1.5em;
+  text-transform: uppercase;
   padding-bottom: 2px;
   margin: 0;
   letter-spacing: 0.05em;  
   display: inline-block;  
-}
-
-.ui h4 {
-
 }
 
 .ui.ui-left {
@@ -183,22 +173,21 @@ footer {
     height: auto;
 }
 
-.tabs .dlayer{
-    margin-top: 10px;
+.tabs p {
+    font-size: 1.3em;
+    line-height: 1.5em;
+    text-indent: 1.2em;
+    padding-bottom: .4em;
 }
 
-.tabs.metadata h3:not(:first-child) {
-    margin-top: 15px;
-}
-
-.copyright {
+.tabs p.copyright {
     text-indent: 0;
     text-align: center;
     color:#696969;
 }
 
-.selected {
-    background-color: #f1f0f0; 
+.tabs.metadata h3:not(:first-child) {
+    margin-top: 15px;
 }
 
 /*Buttons at layers only*/
@@ -228,15 +217,10 @@ footer {
 }
 
 .dlayer .subtitle{
-    font-family: 'Open Sans', sans-serif;
-    font: 14px bold;
+    font-size: 1.4em;
     border-left: 3px solid #9d9d9d;
     color: #9d9d9d;
     text-indent: 5px;
-}
-
-.aboutus p {
-    text-indent: 1em;
 }
 
 .nextsteps {
