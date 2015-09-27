@@ -168,13 +168,13 @@ footer a {
     background-color:#f1f0f0;
     padding:25px 20px 20px 25px;
     line-height: 180%;
-    overflow-y: visible;
+    overflow-y: hidden;
     display: none;
 }
 
 .tabs.active {
     display: block;
-    overflow-y: scroll;
+    overflow-y: visible;
     height: 400px;
 }
 
@@ -230,14 +230,8 @@ footer a {
     text-indent: 5px;
 }
 
-.menu .about {
-    overflow-y: visible;
-}
-
 .menu .tabs .metadata{ 
     background-color: #f1f0f0;
-    overflow-y: scroll;
-    height:400px solid;
 }
 
 .menu .tabs .metadata .desc{

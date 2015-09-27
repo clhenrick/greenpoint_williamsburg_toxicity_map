@@ -47,6 +47,7 @@ app.interaction = (function(d, w, $) {
     }
 
     // implements the HTML 2 Canvas JS for a user to print the current map view
+    // currently not working
     function screenshot() {        
         if (screen.width > 0 && screen.height > 0) {
             try {
@@ -93,12 +94,31 @@ app.interaction = (function(d, w, $) {
         });        
     }    
 
+    function setLeftUIheight() {
+        var wh = $(w).innerHeight(),
+              fh = $('footer').innerHeight(),
+              hh = $('.menu.header').innerHeight(),
+              tnh = $('.menu.top-nav').innerHeight(),
+              $uiLeft = $('.ui-left'),
+              uiLeftPaddingTop = $uiLeft.css('padding-top').replace('px', ''),
+              $menuTabs = $('.menu.tabs'),
+              mtHeight = wh - hh - tnh - fh - uiLeftPaddingTop;
+
+        console.log(wh, fh, mtHeight);
+
+        $uiLeft.height(wh);
+        $menuTabs.height(mtHeight);
+
+    }
+
     // adds the event listeners to the non-map interactions UI
     function addListeners() {
         // listener to create a screenshot
         $('#print_b').click(function() {
             // screenshot();
         });
+
+        $(w).on('resize', setLeftUIheight);
 
         // listener to hide / show data layer UI & other content
         $('li.nav').click(function() {
@@ -123,50 +143,16 @@ app.interaction = (function(d, w, $) {
         });
     }
 
-    //Detect the collision between tabs and footer.
-    //return the proper height as a result 
-    function detectTabsHeight(tabClassname) {
-        //detecting Collisions at the bottom
-        var c = tabClassname;
-        var f = footer;
-
-        var tabPosition = $('.'+c).offset().top;
-        var footerPosition = $(f).offset().top;
-        var tabHeight = $('.'+c).height(); //original height
-        var endOfTab = footerPosition-tabPosition; //screensize - footer height 
-        //resizing tab heights if it extends over the footer position
-        if( (tabPosition + tabHeight) >= footerPosition ){
-            return endOfTab;
-        }else if(tabPosition + tabHeight < footer_position) {
-            return tabHeight;
-        }      
-    } 
-
-
-    // Fit the tab size to the footer position 
-    //when it collide while window resized/contents are too long.
-    function applyTabHeight(){
-        //in case window resized and makes new collision
-        $(window).resize(function() {
-        });
-        //in case window size is very small and make the collision 
-        //in case tab is originally too long 
-    }
-    //get the height of tab
-    //if it collide to the footer
-
-    // initially open map layer selection UI for dev debugging.
-    // remove this code when ready for production.
+    // initially open map layer selection UI for dev debugging. remove this code when ready for production.
     $('.menu.tabs.dlayer').addClass('active');
     $('.nav.dlayer').addClass('active');
 
     // get it all going...
     var init = function() {
         addToolTips();
+        setLeftUIheight();
         addListeners();
-        // resizingTabsHeight();
         aboutData();
-        //detectTabsHeight();
     };
 
     return {
