@@ -4,7 +4,8 @@ app.interaction = (function(d, w, $) {
     // This module creates non-map interaction UI elements and event listeners
 
     // descriptions of the data layers to append to the "About the data" in the DOM
-    var desc = [{
+    var desc = [
+        {
             title: "Waste Transfer Stations",
             field: "This layer shows waste transfer stations, scrap metal facilities, and recycling sorting facilities. A waste transfer station is a facility that receives solid waste from waste collection vehicles, and it is transferred to larger tractor-trailers or marine barges to be taken to a processing facility outside of the city. These types of facilities are typically associated with truck traffic dropping off or picking up waste or recycling, and contribute to air pollution and truck congestion in Williamsburg and Greenpoint.The Newtown Creek Wastewater Treatment Plant is also considered on this map for its daily transfer of wastewater sludge to a marine barge, and will be receiving truckloads of organic food waste to be processed at the plant."
         }, {
@@ -28,16 +29,8 @@ app.interaction = (function(d, w, $) {
         }, {
             title: "Industrial History",
             field: "Follow the points and paths on this layer to experience NAG’s Industrial History Walking Tour. The points of interest on this tour commemorate the neighborhood’s industrial legacy while bringing attention to the chemical contamination they have left behind, and its impact to the health and well-being of current residents. Find out more information about the tour(http://nag-brooklyn.org/2015/04/nags-industrial-history-walking-tours-of-williamsburg-and-greenpoint-coming-in-may-kick-off-event-april-28th-featuring-a-screening-of-the-film-shellshocked/)"
-        }],
-        
-    aboutthedata = [];
-    
-    /*function loadingSpinner(){
-        $(document).on(function(){
-            ajaxStart:functin(){};
-            ajaxStop:function(){};
-        });
-    } */
+        }
+    ];
 
     function addToolTips() {
         // add jquery UI tooltips
@@ -48,45 +41,10 @@ app.interaction = (function(d, w, $) {
     // add the "about the data" content to the DOM
     function aboutData() {        
         $.each(desc, function(i, val) {
-            var html = "<div class='desc'><h3>" + val.title + "</h3> <div class='contents'><p>" + val.field + "</p></div> </div>";
+            var html = "<h3>" + val.title + "</h3><p>" + val.field + "</p>";
             $('.tabs.metadata').append(html);
-            aboutthedata.push(html);
-
-            // this should be in the CSS style sheet, not here
-            $('.contents').css({
-                "max-width": "260px",
-                "line-height": "200%",
-                "overflow-y": "none"
-            });
         });
     }
-
-    /*
-        // accordian style UI display for "about the data"
-        $('.aboutdata').click(function() {
-            $('.tabs').not('.metadata').hide();
-
-            if(aboutthedata.length <= 0){
-                $.each(desc,function(i,val){
-                    aboutthedata = $("<div class='desc accordion'><h3 class='desc'>"+desc[i].title+"</h3> <div class='contents'>"+desc[i].field+"</div> </div>");
-                    $('.metadata').append(aboutthedata);
-                    $('.contents').hide();
-                })
-                $('.accordion').accordion( {
-                    animate: 200,
-                    active:2,   
-                    collapsible: true,
-                    icons: false,
-                    heightStyle: "fill"
-
-                });
-            }else if(aboutthedata.length > 0){
-                console.log('no more append.'); 
-            }
-
-            $('.metadata').toggle();
-        });
-    */
 
     // implements the HTML 2 Canvas JS for a user to print the current map view
     function screenshot() {        
@@ -213,8 +171,7 @@ app.interaction = (function(d, w, $) {
 
     return {
         init: init,
-        desc : desc,
-        aboutthedata : aboutthedata
+        desc : desc
     };
 
 })(document, window, jQuery);
