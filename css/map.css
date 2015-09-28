@@ -253,18 +253,16 @@ div.dlayer-tooltip {
 
 .nextsteps button {
     padding: 10px;
-    background-color: transparent;
-    color: #989898;
-    border: 2px solid #dfdede;
-
+    border:1px solid #9d9d9d;
+    color:#4d4d4d;
+    background-color: #d6d6d6;
     font-size: 1em;
     border-radius: 0px;
     width:110px;
 }
 
-.nextsteps button:hover, button:active {
-    background-color: #fefefe;
-    color:#202257;
+.nextsteps button:hover {
+    background-color: #E6E6E6;
 }
 
 #aboutus_b {

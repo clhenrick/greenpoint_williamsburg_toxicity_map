@@ -38,7 +38,7 @@ app.map = (function(w, d, $, H) {
 
         // map paramaters to pass to Leaflet
         var params = {
-            center: [40.718640, -73.950605], //Greenpoint
+            center: [40.718640, -73.94], //Greenpoint
             zoomControl: false,
             zoom: 14,
             maxZoom: 19,
