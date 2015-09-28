@@ -51,8 +51,8 @@ app.map = (function(w, d, $, H) {
         };
 
         map_object = new L.Map('map', params); 
-        var accessToken = 'pk.eyJ1IjoiYm93b25jIiwiYSI6InFDV2RBNjAifQ._F8zZ-AkgNHp0_h2XKk9Pw';
-        var mapid = 'bowonc.n26oid7e';
+        var accessToken = 'pk.eyJ1IjoibmFnLWJyb29rbHluIiwiYSI6IjAwNjM4ZTJkZDRkNTFiMTM2MWFlODMwMWY2NTI4MTVkIn0.rfHaluqYngEAYxoSJ_Jn4A';
+        var mapid = 'nag-brooklyn.66cbd2ef';
         // for geocoding
         //map_object.addControl(L.mapbox.geocoderControl('mapbox.places'));
         var attr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,' + 
