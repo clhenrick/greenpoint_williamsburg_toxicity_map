@@ -14,7 +14,13 @@
   text-opacity:0.2;
 //  text-avoid-edges:true;
   [ZipCode=11205] {
-    text-dx: -10;
-    text-dy: -30;
+    [zoom>=14] {
+      text-dx: -1;
+      text-dy: -30;
+    }
+    [zoom>=15] {
+      text-dx: -35;
+      text-dy: -30;
+    }    
   }
  }

@@ -1,5 +1,5 @@
 _prefs: 
-  mapid: bowonc.0d7fc4e3
+  mapid: nag-brooklyn.66cbd2ef
   saveCenter: true
 _properties: 
   bridge: 
@@ -11,8 +11,8 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - -73.9543
-  - 40.7187
+  - -73.9449
+  - 40.7149
   - 15
 description: A custom basemap for NAG Project
 format: "png8:m=h"

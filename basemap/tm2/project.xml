@@ -5,7 +5,7 @@
 <Parameters>
   <Parameter name="attribution"><![CDATA[<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>]]></Parameter>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-73.9543,40.7187,15</Parameter>
+  <Parameter name="center">-73.9449,40.7149,15</Parameter>
   <Parameter name="description"><![CDATA[A custom basemap for NAG Project]]></Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">18</Parameter>
@@ -3549,8 +3549,20 @@
 
 <Style name="CB1_zip_new2_labels" filter-mode="first">
   <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
     <Filter>([ZipCode] = 11205)</Filter>
-    <TextSymbolizer dx="-10" dy="-30" face-name="Arial Unicode MS Bold" allow-overlap="true" size="19" halo-fill="#f1f2ee" halo-radius="0" fill="#000000" opacity="0.2" ><![CDATA[[ZipCode]]]></TextSymbolizer>
+    <TextSymbolizer dx="-35" dy="-30" face-name="Arial Unicode MS Bold" allow-overlap="true" size="19" halo-fill="#f1f2ee" halo-radius="0" fill="#000000" opacity="0.2" ><![CDATA[[ZipCode]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>25000</MinScaleDenominator>
+    <Filter>([ZipCode] = 11205)</Filter>
+    <TextSymbolizer dx="-1" dy="-30" face-name="Arial Unicode MS Bold" allow-overlap="true" size="19" halo-fill="#f1f2ee" halo-radius="0" fill="#000000" opacity="0.2" ><![CDATA[[ZipCode]]]></TextSymbolizer>
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <Filter>([ZipCode] = 11205)</Filter>
+    <TextSymbolizer face-name="Arial Unicode MS Bold" allow-overlap="true" size="19" halo-fill="#f1f2ee" halo-radius="0" fill="#000000" opacity="0.2" ><![CDATA[[ZipCode]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <TextSymbolizer face-name="Arial Unicode MS Bold" allow-overlap="true" size="19" halo-fill="#f1f2ee" halo-radius="0" fill="#000000" opacity="0.2" ><![CDATA[[ZipCode]]]></TextSymbolizer>

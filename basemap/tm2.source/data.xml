@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Map[]>
+<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+
+<Parameters>
+  <Parameter name="center">-73.9511,40.7171,16</Parameter>
+  <Parameter name="description"><![CDATA[Custom data overlays for the basemap tiles]]></Parameter>
+  <Parameter name="format">pbf</Parameter>
+  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"cb1_zip_4326","description":"Zipcodes in BK CB 1","fields":{"ZipCode":"Number"}},{"id":"through_truck_dissolve","description":"Through truck routes in NYC, dissolved","fields":{"id":"Number","cartodb_id":"Number","created_at":"String","updated_at":"String"}},{"id":"NoCB1_dissolve","description":"Mask for rest of NYC","fields":{"Id":"Number"}},{"id":"CB1_zip_new2_labels","description":"Labels for zipcodes","fields":{"ZipCode":"Number"}}]}]]></Parameter>
+  <Parameter name="maxzoom">16</Parameter>
+  <Parameter name="minzoom">12</Parameter>
+  <Parameter name="name"><![CDATA[Nag BK basemap data layers]]></Parameter>
+</Parameters>
+
+
+<Layer name="cb1_zip_4326"
+  buffer-size="32"
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/clhenrick/Dropbox (Personal)/projects/pratt_center/cdb_backup/CB1_zip_new2/cb1_zip_4326.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Layer name="through_truck_dissolve"
+  buffer-size="32"
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/clhenrick/Dropbox (Personal)/projects/pratt_center/cdb_backup/through_truck_dissolve/through_truck_dissolve.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Layer name="NoCB1_dissolve"
+  buffer-size="32"
+  srs="+proj=lcc +lat_1=40.66666666666666 +lat_2=41.03333333333333 +lat_0=40.16666666666666 +lon_0=-74 +x_0=300000 +y_0=0 +datum=NAD83 +units=us-ft +no_defs">
+    
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/clhenrick/Dropbox (Personal)/projects/pratt_center/cdb_backup/NoCB1_dissolve/NoCB1_dissolve.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Layer name="CB1_zip_new2_labels"
+  buffer-size="32"
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/clhenrick/Dropbox (Personal)/projects/pratt_center/cdb_backup/CB1_zip_new2/CB1_zip_new2_labels.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+</Map>
