@@ -1,7 +1,7 @@
 {
   "name": "Greenpoint Williamsburg Toxicity Map",
-  "version": "0.0.0",
-  "homepage": "https://github.com/bowon/demo_july10",
+  "version": "0.0.1",
+  "homepage": "https://github.com/clhenrick/greenpoint_williamsburg_toxicity_map",
   "authors": [
     "chris henrick",
     "bowon chung"
@@ -20,7 +20,6 @@
     "tests"
   ],
   "dependencies": {
-    "underscore": "~1.8.3",
     "handlebars": "~3.0.3"
   }
 }
