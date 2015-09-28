@@ -29,7 +29,7 @@ The `basemap` directory contains sub-directories containing the necessary files 
 - `data/`: contains zipped ESRI Shapefiles that are required for `tm2.source/`.
 
 ## Updating Map's CartoDB Data Layers' Styles
-To make the editing of CartoCSS easier for the CartoDB data layers, each layer's corresponding CartoCSS has been saved to a `.mss` file in the `mss/` directory. The `carto-to-js.js` script is then used to minify each `.mss` file and compile them into and object that is returned by the `app.cartocss` module.
+To make the editing of CartoCSS easier for the CartoDB data layers, each layer's corresponding CartoCSS has been saved to a `.mss` file in the `mss/` directory. The `carto-to-js.js` script is then used to minify each `.mss` file and compile them into an object that is returned by the `app.cartocss` module.
 
 ### To update the CartoCSS do the following:  
 
