@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "homepage": "https://github.com/clhenrick/greenpoint_williamsburg_toxicity_map",
   "authors": [
-    "chris henrick",
-    "bowon chung"
+    "Chris L Henrick",
+    "Bowon Chung"
   ],
   "description": "interactive map",
   "main": "main.js",
@@ -20,6 +20,10 @@
     "tests"
   ],
   "dependencies": {
-    "handlebars": "~3.0.3"
+    "cartodb.js": "~3.15.6",
+    "handlebars": "~3.0.3",
+    "jquery-ui": "jquery.ui#~1.11.4",
+    "mapbox.js": "~2.2.1",
+    "normalize-css": "normalize.css#~3.0.3"
   }
 }
