@@ -114,7 +114,7 @@ app.legends = (function(){
       items : [
         {
           color : "#7b0006",
-          label : "EPA Regulated"
+          label : "Highly Regulated Sites"
         },
         {
           color : "#fba782",
