@@ -109,7 +109,7 @@ app.legends = (function(){
     },
 
     polluted_points : {
-      title : "Polluted Sites",
+      title : "Potentially Polluted Sites",
       type : 'point',
       items : [
         {
