@@ -288,6 +288,23 @@ app.map = (function(w, d, $, H) {
         $('#zoom-out').on('click', function(){
           map_object.zoomOut();
         });
+
+        // set the zoom out button to be initially not active
+        $('#zoom-out').addClass('not-active');
+
+        // gray out the zoom button if user is at max-zoom or min-zoom
+        map_object.on('zoomend', function(){
+            var curZoom = map_object.getZoom();
+            
+            if (curZoom === 19) {
+                $('#zoom-in').addClass('not-active');
+            } else if (curZoom === 14) {
+                $('#zoom-out').addClass('not-active');
+            } else {
+                $('#zoom-in').removeClass('not-active');
+                $('#zoom-out').removeClass('not-active');
+            }
+        });
     };
 
     /* get it all going! */
