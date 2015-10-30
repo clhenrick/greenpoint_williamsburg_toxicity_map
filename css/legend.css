@@ -8,12 +8,13 @@
 
 #map-legend-container ul {
   list-style-type: none;
-
+  padding-left: 0; /* fire fox fix */
+  margin: 0;
 }
 
 div.legend {
   padding-top: 0;
-  padding-bottom: 10px;
+  /*padding-bottom: 10px;*/
   /*background: #fff;*/
 }
 
