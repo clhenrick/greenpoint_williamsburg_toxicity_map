@@ -175,7 +175,7 @@ footer {
     overflow: hidden;
 }
 
-.menu.top-nav ul {
+.menu.top-nav ul, .menu.footernav ul {
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
@@ -201,6 +201,7 @@ footer {
     line-height: 1.5em;
     text-indent: 1.2em;
     padding-bottom: .4em;
+    margin-top: 0;
 }
 
 .tabs p a {
@@ -218,6 +219,11 @@ footer {
     text-indent: 0;
     text-align: center;
     color:#696969;
+}
+
+.tabs.contact p, .tabs.aboutus p {
+    margin-top: 15px;
+    text-indent: 0;
 }
 
 .tabs.metadata h3:not(:first-child) {
@@ -285,11 +291,6 @@ div.dlayer-tooltip {
 
 #aboutus_b {
     color: #696969; 
-}
-
-.menu.tabs.contact p {
-    margin-top: 15px;
-    text-indent: 0;
 }
 
 
