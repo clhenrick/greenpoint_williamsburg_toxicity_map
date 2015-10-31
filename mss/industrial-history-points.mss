@@ -5,7 +5,11 @@
   marker-line-opacity: 1;
   marker-placement: point;
   marker-type: ellipse;
-  marker-width: 14;
+  marker-width: 10;
   marker-fill: #2E5387;
   marker-allow-overlap: true;
+  
+  [zoom>=16] {
+    marker-width: 14;
+  }
 }
