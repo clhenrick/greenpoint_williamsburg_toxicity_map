@@ -304,3 +304,11 @@ div.cartodb-popup .jspPane {
 .cartodb-popup-content.jspScrollable .jspContainer {
     height: 180px !important;
 }
+
+/* Pelias Geocoder UI positioning */
+
+.leaflet-top.leaflet-right .leaflet-pelias-control.leaflet-bar.leaflet-control {
+    position: relative;
+    right: 220px;
+    top: 65px;
+}

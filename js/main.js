@@ -34,7 +34,7 @@ app.map = (function(w, d, $, H) {
         // bounding box for Williamsburg / Greenpoint to limit the map's panable area
         var southWest = L.latLng(40.679628, -74.089720),
             northEast = L.latLng(40.755792, -73.856475),
-            bounds = L.latLngBounds(southWest, northEast);
+            mapBounds = L.latLngBounds(southWest, northEast);
 
         // map paramaters to pass to Leaflet
         var params = {
@@ -44,7 +44,7 @@ app.map = (function(w, d, $, H) {
             maxZoom: 19,
             minZoom: 14,
             scrollwheel: false,
-            maxBounds: bounds,
+            maxBounds: mapBounds,
             legends: true,
             infoControl: false,
             attributionControl: true
@@ -53,17 +53,26 @@ app.map = (function(w, d, $, H) {
         map_object = new L.Map('map', params); 
         var accessToken = 'pk.eyJ1IjoibmFnLWJyb29rbHluIiwiYSI6IjAwNjM4ZTJkZDRkNTFiMTM2MWFlODMwMWY2NTI4MTVkIn0.rfHaluqYngEAYxoSJ_Jn4A';
         var mapid = 'nag-brooklyn.66cbd2ef';
-        // for geocoding
-        //map_object.addControl(L.mapbox.geocoderControl('mapbox.places'));
         var attr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,' + 
                     ' <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
-        // mapbox basemap
+        
+        // mapbox custom basemap tiles
         var basemap = L.tileLayer(
                 'https://{s}.tiles.mapbox.com/v4/' + mapid + 
                 '/{z}/{x}/{y}.png?access_token=' + accessToken, 
                 { attribution: attr }
             )
             .addTo(map_object);
+
+        // parameters for the Pelias geocoder
+        var geocoderOptions = {
+            bounds: mapBounds,
+            placeholder : 'Search for an address',
+            position: 'topright'
+        };
+
+        // add the Pelias geocoder
+        L.control.geocoder('search-9FVHbsE', geocoderOptions).addTo(map_object);
     
     } // end init map
 
