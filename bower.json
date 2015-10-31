@@ -24,6 +24,7 @@
     "handlebars": "~3.0.3",
     "jquery-ui": "jquery.ui#~1.11.4",
     "mapbox.js": "~2.2.1",
-    "normalize-css": "normalize.css#~3.0.3"
+    "normalize-css": "normalize.css#~3.0.3",
+    "pelias-leaflet-geocoder": "~1.0.1"
   }
 }
