@@ -1,32 +1,28 @@
 _prefs: 
-  mapid: nag-brooklyn.66cbd2ef
+  mapid: ''
   saveCenter: true
-_properties: 
-  bridge: 
-    "group-by": layer
-attribution: "<a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a> <a class='mapbox-improve-map' href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a>"
+_properties: {}
+attribution: ''
 bounds: 
   - -180
   - -85.0511
   - 180
   - 85.0511
 center: 
-  - -73.9449
-  - 40.7149
-  - 15
-description: A custom basemap for NAG Project
+  - -73.96122694015503
+  - 40.71493574852984
+  - 17
+description: ''
 format: "png8:m=h"
 interactivity_layer: ''
 layers: null
-maxzoom: 18
-minzoom: 13
-name: NagMapbox_baseMap
-source: "mapbox:///mapbox.mapbox-streets-v5,chenrick.d5d92cbc"
+maxzoom: 22
+minzoom: 0
+name: nag-bk-toxicity-map
+source: "mapbox:///mapbox.mapbox-streets-v5,nag-brooklyn.702fdc44"
 styles: 
   - style.mss
-  - labels.mss
   - roads.mss
-  - trucks.mss
-  - shapes.mss
-  - zipcode_labels.mss
+  - data-layers.mss
+  - labels.mss
 template: ''

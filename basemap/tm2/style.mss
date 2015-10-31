@@ -5,17 +5,13 @@
 @sans: 'Arial Unicode MS Regular';
 @sans_bold: 'Arial Unicode MS Bold';
 
-/*
-This style is designed to be easily recolored by adjusting the color
-variables below. For predicatable feature relationships,
-maintain or invert existing value (light to dark) scale.
-*/
-
 // Color palette //
 @road:  #e5e8df;
 @road2:  #e1e4d7; 
 @land:  #f1f2ee;
-
+@park: #b0c0af;
+@water: #586c88;
+@water2: #2f6363;
 @fill1: #faf7f5;
 @fill2: #e4e2e2;
 @fill3: #c2c1c1;
@@ -25,33 +21,12 @@ maintain or invert existing value (light to dark) scale.
 
 Map [zoom<10]{ background-color: @land; }
 Map [zoom>=10]{ background-color: @fill1; }
-// Political boundaries //
-#admin[admin_level=2][maritime=0] {
-  line-join: round;
-  line-color: mix(@fill3,@fill2,50);
-  line-width: 1;
-  [zoom>=5] { line-width: 1.4; }
-  [zoom>=6] { line-width: 1.8; }
-  [zoom>=8] { line-width: 2; }
-  [zoom>=10] { line-width: 3; }
-  [disputed=1] { line-dasharray: 4,4; }
- 
-}
-
-#admin[admin_level>2][maritime=0] {
-  line-join: round;
-  line-color: @fill2;
-  line-width: 1;
-  line-dasharray: 3,2;
-  [zoom>=6] { line-width: 1.5; }
-  [zoom>=8] { line-width: 1.8; }
-}
 
 // Land Features //
-@park: #b0c0af;
 #landuse[class='park']{
     polygon-fill: mix(@land,@park,80);
 }
+
 #landuse[class='cemetery'],
 #landuse[class='wood'],
 #landuse_overlay {
@@ -110,23 +85,14 @@ Map [zoom>=10]{ background-color: @fill1; }
 
 // Water color is calculated by sampling the resulting color from
 // the soft-light comp-op in the #water layer style above. 
-@water: #586c88;
-@water2: #2f6363;
-
 #waterway {
   [type='river'],
   [type='canal'] {
     line-color: @water;
-    line-width: 0.5;
-    [zoom>=12] { line-width: 1; }
-    [zoom>=14] { line-width: 2; }
-    [zoom>=16] { line-width: 3; }
+    line-width: 0;
   }
   [type='stream'] {
     line-color: @water;
-    line-width: 0.5;
-    [zoom>=14] { line-width: 1; }
-    [zoom>=16] { line-width: 2; }
-    [zoom>=18] { line-width: 3; }
+    line-width: 0;
   }
 }
