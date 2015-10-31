@@ -84,6 +84,6 @@ span.local-truck {
 }
 
 span.zipcodes {
-  border: 1px dashed #989898;
+  border: 1px dashed #989898 !important;
   background-color: #fefefe;
 }
