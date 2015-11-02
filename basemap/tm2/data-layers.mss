@@ -27,7 +27,7 @@
   }
  }
 
-#cd1_zip_boundaries_3857{
+#zip_boundaries{
   [zoom>=11] {line-width:1;line-dasharray: 4, 4;}
   [zoom>=14] { line-width:1;line-dasharray: 6, 6;} 
   [zoom>=16] { line-width:2;line-dasharray: 8, 8;} 

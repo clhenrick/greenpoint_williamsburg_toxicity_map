@@ -10,6 +10,7 @@
   text-halo-radius: 2;
   text-fill: mix(@text,@fill1,50);
   text-comp-op: src-over;
+  text-avoid-edges: true;
   [zoom>=15] { 
     text-size: 8;
     text-fill: @text;

@@ -3,36 +3,13 @@
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
 
 <Parameters>
-  <Parameter name="attribution"><![CDATA[NYC DOT, NYC Planning]]></Parameter>
-  <Parameter name="center">-73.94056320190428,40.71319139560073,15</Parameter>
-  <Parameter name="description"><![CDATA[Zip Code boundaries & labels, truck routes thru and local, cd1 mask]]></Parameter>
+  <Parameter name="center">-73.94562721252441,40.726104216543966,15</Parameter>
   <Parameter name="format">pbf</Parameter>
-  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"zip_boundaries","description":"Zipcode boundaries","fields":{"gid":"Number","#opacity":"Number","#component":"Number","#layername":"String","#id":"Number","#name":"String","#vertexcou":"Number","#style":"String","#strokewei":"Number","#pathclose":"String","#length":"Number","#artscale":"Number"}},{"id":"cd1_zip_labels","description":"","fields":{"ZipCode":"String"}},{"id":"local_truck_routes","description":"local-truck-routes","fields":{"gid":"Number","objectid":"Number","street":"String","safstreetn":"String","featuretyp":"String","segmenttyp":"String","incexflag":"String","rb_layer":"String","nonped":"String","trafdir":"String","trafsrc":"String","specaddr":"String","facecode":"String","seqnum":"String","streetcode":"String","safstreetc":"String","lgc1":"String","lgc2":"String","lgc3":"String","lgc4":"String","lgc5":"String","lgc6":"String","lgc7":"String","lgc8":"String","lgc9":"String","boe_lgc":"String","segmentid":"String","segcount":"String","locstatus":"String","lzip":"String","rzip":"String","lboro":"Number","rboro":"Number","l_cd":"String","r_cd":"String","latomicpol":"String","ratomicpol":"String","lct2010":"String","lct2010suf":"String","rct2010":"String","rct2010suf":"String","lcb2010":"String","lcb2010suf":"String","rcb2010":"String","rcb2010suf":"String","lct2000":"String","lct2000suf":"String","rct2000":"String","rct2000suf":"String","lcb2000":"String","lcb2000suf":"String","rcb2000":"String","rcb2000suf":"String","lct1990":"String","lct1990suf":"String","rct1990":"String","rct1990suf":"String","lassmdist":"String","lelectdist":"String","rassmdist":"String","relectdist":"String","splitelect":"String","lschldist":"String","rschldist":"String","splitschl":"String","lsubsect":"String","rsubsect":"String","sandistind":"String","mapfrom":"String","mapto":"String","borobndry":"String","mh_ri_flag":"String","xfrom":"Number","yfrom":"Number","xto":"Number","yto":"Number","arccenterx":"Number","arccentery":"Number","curveflag":"String","radius":"Number","nodeidfrom":"String","nodeidto":"String","nodelevelf":"String","nodelevelt":"String","conparity":"String","twisted":"String","rw_type":"String","physicalid":"Number","genericid":"Number","nypdid":"String","fdnyid":"String","lblockface":"String","rblockface":"String","legacyid":"String","status":"String","streetwidt":"Number","streetwi_1":"String","bikelane":"String","snow_prior":"String","fcc":"String","row_type":"String","llo_hyphen":"String","lhi_hyphen":"String","rlo_hyphen":"String","rhi_hyphen":"String","fromleft":"Number","toleft":"Number","fromright":"Number","toright":"Number","join_id":"String","truckroute":"String","routetype":"String","descriptio":"String","restrictio":"String","nyc_reg":"String","ltdlocal":"String","thruexwy":"String","localbrg":"String","localtunl":"String","thrubrg":"String","thrutunl":"String","shape_leng":"Number"}},{"id":"truck-routes-through-clipped","description":"truck-routes-through","fields":{"gid":"Number","objectid":"Number","street":"String","safstreetn":"String","featuretyp":"String","segmenttyp":"String","incexflag":"String","rb_layer":"String","nonped":"String","trafdir":"String","trafsrc":"String","specaddr":"String","facecode":"String","seqnum":"String","streetcode":"String","safstreetc":"String","lgc1":"String","lgc2":"String","lgc3":"String","lgc4":"String","lgc5":"String","lgc6":"String","lgc7":"String","lgc8":"String","lgc9":"String","boe_lgc":"String","segmentid":"String","segcount":"String","locstatus":"String","lzip":"String","rzip":"String","lboro":"Number","rboro":"Number","l_cd":"String","r_cd":"String","latomicpol":"String","ratomicpol":"String","lct2010":"String","lct2010suf":"String","rct2010":"String","rct2010suf":"String","lcb2010":"String","lcb2010suf":"String","rcb2010":"String","rcb2010suf":"String","lct2000":"String","lct2000suf":"String","rct2000":"String","rct2000suf":"String","lcb2000":"String","lcb2000suf":"String","rcb2000":"String","rcb2000suf":"String","lct1990":"String","lct1990suf":"String","rct1990":"String","rct1990suf":"String","lassmdist":"String","lelectdist":"String","rassmdist":"String","relectdist":"String","splitelect":"String","lschldist":"String","rschldist":"String","splitschl":"String","lsubsect":"String","rsubsect":"String","sandistind":"String","mapfrom":"String","mapto":"String","borobndry":"String","mh_ri_flag":"String","xfrom":"Number","yfrom":"Number","xto":"Number","yto":"Number","arccenterx":"Number","arccentery":"Number","curveflag":"String","radius":"Number","nodeidfrom":"String","nodeidto":"String","nodelevelf":"String","nodelevelt":"String","conparity":"String","twisted":"String","rw_type":"String","physicalid":"Number","genericid":"Number","nypdid":"String","fdnyid":"String","lblockface":"String","rblockface":"String","legacyid":"String","status":"String","streetwidt":"Number","streetwi_1":"String","bikelane":"String","snow_prior":"String","fcc":"String","row_type":"String","llo_hyphen":"String","lhi_hyphen":"String","rlo_hyphen":"String","rhi_hyphen":"String","fromleft":"Number","toleft":"Number","fromright":"Number","toright":"Number","join_id":"String","truckroute":"String","routetype":"String","descriptio":"String","restrictio":"String","nyc_reg":"String","ltdlocal":"String","thruexwy":"String","localbrg":"String","localtunl":"String","thrubrg":"String","thrutunl":"String","shape_leng":"Number"}},{"id":"cd1_mask_3857","description":"Mask for BK CD 1","fields":{"Id":"Number"}}]}]]></Parameter>
-  <Parameter name="maxzoom">19</Parameter>
-  <Parameter name="minzoom">14</Parameter>
-  <Parameter name="name"><![CDATA[nag-toxicity-map-data-layers]]></Parameter>
+  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"cd1_zip_labels","description":"zipcode labels","fields":{"ZipCode":"String"}},{"id":"truck_routes_local_3857_clipped","description":"truck routes local","fields":{"OBJECTID":"Number","Street":"String","SAFStreetN":"String","FeatureTyp":"String","SegmentTyp":"String","IncExFlag":"String","RB_Layer":"String","NonPed":"String","TrafDir":"String","TrafSrc":"String","SpecAddr":"String","FaceCode":"String","SeqNum":"String","StreetCode":"String","SAFStreetC":"String","LGC1":"String","LGC2":"String","LGC3":"String","LGC4":"String","LGC5":"String","LGC6":"String","LGC7":"String","LGC8":"String","LGC9":"String","BOE_LGC":"String","SegmentID":"String","SegCount":"String","LocStatus":"String","LZip":"String","RZip":"String","LBoro":"Number","RBoro":"Number","L_CD":"String","R_CD":"String","LATOMICPOL":"String","RATOMICPOL":"String","LCT2010":"String","LCT2010Suf":"String","RCT2010":"String","RCT2010Suf":"String","LCB2010":"String","LCB2010Suf":"String","RCB2010":"String","RCB2010Suf":"String","LCT2000":"String","LCT2000Suf":"String","RCT2000":"String","RCT2000Suf":"String","LCB2000":"String","LCB2000Suf":"String","RCB2000":"String","RCB2000Suf":"String","LCT1990":"String","LCT1990Suf":"String","RCT1990":"String","RCT1990Suf":"String","LAssmDist":"String","LElectDist":"String","RAssmDist":"String","RElectDist":"String","SplitElect":"String","LSchlDist":"String","RSchlDist":"String","SplitSchl":"String","LSubSect":"String","RSubSect":"String","SanDistInd":"String","MapFrom":"String","MapTo":"String","BoroBndry":"String","MH_RI_Flag":"String","XFrom":"Number","YFrom":"Number","XTo":"Number","YTo":"Number","ArcCenterX":"Number","ArcCenterY":"Number","CurveFlag":"String","Radius":"Number","NodeIDFrom":"String","NodeIDTo":"String","NodeLevelF":"String","NodeLevelT":"String","ConParity":"String","Twisted":"String","RW_TYPE":"String","PhysicalID":"Number","GenericID":"Number","NYPDID":"String","FDNYID":"String","LBlockFace":"String","RBlockFace":"String","LegacyID":"String","Status":"String","StreetWidt":"Number","StreetWi_1":"String","BikeLane":"String","Snow_Prior":"String","FCC":"String","ROW_Type":"String","LLo_Hyphen":"String","LHi_Hyphen":"String","RLo_Hyphen":"String","RHi_Hyphen":"String","FromLeft":"Number","ToLeft":"Number","FromRight":"Number","ToRight":"Number","Join_ID":"String","TruckRoute":"String","RouteType":"String","Descriptio":"String","Restrictio":"String","NYC_Reg":"String","LtdLocal":"String","ThruExwy":"String","LocalBrg":"String","LocalTunl":"String","ThruBrg":"String","ThruTunl":"String","Shape_Leng":"Number"}},{"id":"truck_routes_through_3857_clipped","description":"truck routes - through","fields":{"OBJECTID":"Number","Street":"String","SAFStreetN":"String","FeatureTyp":"String","SegmentTyp":"String","IncExFlag":"String","RB_Layer":"String","NonPed":"String","TrafDir":"String","TrafSrc":"String","SpecAddr":"String","FaceCode":"String","SeqNum":"String","StreetCode":"String","SAFStreetC":"String","LGC1":"String","LGC2":"String","LGC3":"String","LGC4":"String","LGC5":"String","LGC6":"String","LGC7":"String","LGC8":"String","LGC9":"String","BOE_LGC":"String","SegmentID":"String","SegCount":"String","LocStatus":"String","LZip":"String","RZip":"String","LBoro":"Number","RBoro":"Number","L_CD":"String","R_CD":"String","LATOMICPOL":"String","RATOMICPOL":"String","LCT2010":"String","LCT2010Suf":"String","RCT2010":"String","RCT2010Suf":"String","LCB2010":"String","LCB2010Suf":"String","RCB2010":"String","RCB2010Suf":"String","LCT2000":"String","LCT2000Suf":"String","RCT2000":"String","RCT2000Suf":"String","LCB2000":"String","LCB2000Suf":"String","RCB2000":"String","RCB2000Suf":"String","LCT1990":"String","LCT1990Suf":"String","RCT1990":"String","RCT1990Suf":"String","LAssmDist":"String","LElectDist":"String","RAssmDist":"String","RElectDist":"String","SplitElect":"String","LSchlDist":"String","RSchlDist":"String","SplitSchl":"String","LSubSect":"String","RSubSect":"String","SanDistInd":"String","MapFrom":"String","MapTo":"String","BoroBndry":"String","MH_RI_Flag":"String","XFrom":"Number","YFrom":"Number","XTo":"Number","YTo":"Number","ArcCenterX":"Number","ArcCenterY":"Number","CurveFlag":"String","Radius":"Number","NodeIDFrom":"String","NodeIDTo":"String","NodeLevelF":"String","NodeLevelT":"String","ConParity":"String","Twisted":"String","RW_TYPE":"String","PhysicalID":"Number","GenericID":"Number","NYPDID":"String","FDNYID":"String","LBlockFace":"String","RBlockFace":"String","LegacyID":"String","Status":"String","StreetWidt":"Number","StreetWi_1":"String","BikeLane":"String","Snow_Prior":"String","FCC":"String","ROW_Type":"String","LLo_Hyphen":"String","LHi_Hyphen":"String","RLo_Hyphen":"String","RHi_Hyphen":"String","FromLeft":"Number","ToLeft":"Number","FromRight":"Number","ToRight":"Number","Join_ID":"String","TruckRoute":"String","RouteType":"String","Descriptio":"String","Restrictio":"String","NYC_Reg":"String","LtdLocal":"String","ThruExwy":"String","LocalBrg":"String","LocalTunl":"String","ThruBrg":"String","ThruTunl":"String","Shape_Leng":"Number"}},{"id":"cd1_mask_3857","description":"cd1 mask","fields":{"Id":"Number"}},{"id":"cd1_zip_boundaries_3857","description":"zip code boundaries","fields":{"#Opacity":"Number","#Component":"Number","#LayerName":"String","#Id":"Number","#Name":"String","#VertexCou":"Number","#Style":"String","#StrokeWei":"Number","#PathClose":"String","#Length":"Number","#ArtScale":"Number"}}]}]]></Parameter>
+  <Parameter name="maxzoom">16</Parameter>
+  <Parameter name="minzoom">0</Parameter>
 </Parameters>
 
-
-<Layer name="zip_boundaries"
-  buffer-size="16"
-  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    
-    <Datasource>
-       <Parameter name="dbname"><![CDATA[nag_toxicity_map]]></Parameter>
-       <Parameter name="extent"><![CDATA[-20037508.34,-20037508.34,20037508.34,20037508.34]]></Parameter>
-       <Parameter name="geometry_field"><![CDATA[geom]]></Parameter>
-       <Parameter name="geometry_table"><![CDATA[]]></Parameter>
-       <Parameter name="host"><![CDATA[localhost]]></Parameter>
-       <Parameter name="key_field"><![CDATA[]]></Parameter>
-       <Parameter name="max_size"><![CDATA[512]]></Parameter>
-       <Parameter name="password"><![CDATA[]]></Parameter>
-       <Parameter name="port"><![CDATA[5432]]></Parameter>
-       <Parameter name="table"><![CDATA[cd1_zip_boundaries]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[chrislhenrick]]></Parameter>
-    </Datasource>
-  </Layer>
 
 <Layer name="cd1_zip_labels"
   buffer-size="8"
@@ -44,43 +21,23 @@
     </Datasource>
   </Layer>
 
-<Layer name="local_truck_routes"
+<Layer name="truck_routes_local_3857_clipped"
   buffer-size="8"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[nag_toxicity_map]]></Parameter>
-       <Parameter name="extent"><![CDATA[-20037508.34,-20037508.34,20037508.34,20037508.34]]></Parameter>
-       <Parameter name="geometry_field"><![CDATA[geom]]></Parameter>
-       <Parameter name="geometry_table"><![CDATA[]]></Parameter>
-       <Parameter name="host"><![CDATA[localhost]]></Parameter>
-       <Parameter name="key_field"><![CDATA[]]></Parameter>
-       <Parameter name="max_size"><![CDATA[512]]></Parameter>
-       <Parameter name="password"><![CDATA[]]></Parameter>
-       <Parameter name="port"><![CDATA[5432]]></Parameter>
-       <Parameter name="table"><![CDATA[truck_routes_local_clipped]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[chrislhenrick]]></Parameter>
+       <Parameter name="file"><![CDATA[/Volumes/Sputnik/DATA/tmp/truck_routes_local_3857_clipped.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
     </Datasource>
   </Layer>
 
-<Layer name="truck-routes-through-clipped"
+<Layer name="truck_routes_through_3857_clipped"
   buffer-size="8"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     
     <Datasource>
-       <Parameter name="dbname"><![CDATA[nag_toxicity_map]]></Parameter>
-       <Parameter name="extent"><![CDATA[-20037508.34,-20037508.34,20037508.34,20037508.34]]></Parameter>
-       <Parameter name="geometry_field"><![CDATA[geom]]></Parameter>
-       <Parameter name="geometry_table"><![CDATA[]]></Parameter>
-       <Parameter name="host"><![CDATA[localhost]]></Parameter>
-       <Parameter name="key_field"><![CDATA[]]></Parameter>
-       <Parameter name="max_size"><![CDATA[512]]></Parameter>
-       <Parameter name="password"><![CDATA[]]></Parameter>
-       <Parameter name="port"><![CDATA[5432]]></Parameter>
-       <Parameter name="table"><![CDATA[truck_routes_through_clipped]]></Parameter>
-       <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="user"><![CDATA[chrislhenrick]]></Parameter>
+       <Parameter name="file"><![CDATA[/Volumes/Sputnik/DATA/tmp/truck_routes_through_3857_clipped.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -90,6 +47,16 @@
     
     <Datasource>
        <Parameter name="file"><![CDATA[/Volumes/Sputnik/DATA/tmp/cd1_mask_3857.shp]]></Parameter>
+       <Parameter name="type"><![CDATA[shape]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Layer name="cd1_zip_boundaries_3857"
+  buffer-size="8"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/chrislhenrick/development/pratt_center/greenpoint_williamsburg_toxicity_map/basemap/data/cd1_zip_boundaries_3857.shp]]></Parameter>
        <Parameter name="type"><![CDATA[shape]]></Parameter>
     </Datasource>
   </Layer>

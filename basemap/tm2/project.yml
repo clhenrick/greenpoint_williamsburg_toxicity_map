@@ -2,17 +2,17 @@ _prefs:
   mapid: ''
   saveCenter: true
 _properties: {}
-attribution: ''
+attribution: NAG Brooklyn, SAVI, Pratt Center
 bounds: 
   - -180
   - -85.0511
   - 180
   - 85.0511
 center: 
-  - -73.96122694015503
-  - 40.71493574852984
-  - 17
-description: ''
+  - -73.95176410675049
+  - 40.708995002751216
+  - 15
+description: 'Basemap for NAG's Greenpoint-Williamsburg Toxicity Map '
 format: "png8:m=h"
 interactivity_layer: ''
 layers: null

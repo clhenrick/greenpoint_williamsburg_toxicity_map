@@ -3,8 +3,10 @@
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" background-color="#f1f2ee">
 
 <Parameters>
+  <Parameter name="attribution"><![CDATA[NAG Brooklyn, SAVI, Pratt Center]]></Parameter>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">-73.96122694015503,40.71493574852984,17</Parameter>
+  <Parameter name="center">-73.95176410675049,40.708995002751216,15</Parameter>
+  <Parameter name="description"><![CDATA[Basemap for NAG's Greenpoint-Williamsburg Toxicity Map ]]></Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -1191,17 +1193,17 @@
 <Style name="road_label" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>5000</MaxScaleDenominator>
-    <TextSymbolizer size="11" fill="#95afb0" placement="line" text-transform="uppercase" face-name="Arial Unicode MS Regular" minimum-distance="100" halo-fill="#f1f2ee" halo-radius="2" comp-op="src-over" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="11" fill="#95afb0" placement="line" text-transform="uppercase" face-name="Arial Unicode MS Regular" minimum-distance="100" halo-fill="#f1f2ee" halo-radius="2" comp-op="src-over" avoid-edges="true" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
     <MinScaleDenominator>5000</MinScaleDenominator>
-    <TextSymbolizer size="8" fill="#95afb0" placement="line" text-transform="uppercase" face-name="Arial Unicode MS Regular" minimum-distance="100" halo-fill="#f1f2ee" halo-radius="2" comp-op="src-over" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer size="8" fill="#95afb0" placement="line" text-transform="uppercase" face-name="Arial Unicode MS Regular" minimum-distance="100" halo-fill="#f1f2ee" halo-radius="2" comp-op="src-over" avoid-edges="true" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
   <Rule>
     <MaxScaleDenominator>50000</MaxScaleDenominator>
     <MinScaleDenominator>25000</MinScaleDenominator>
-    <TextSymbolizer placement="line" text-transform="uppercase" face-name="Arial Unicode MS Regular" size="7" minimum-distance="100" halo-fill="#f1f2ee" halo-radius="2" fill="#c8d3d3" comp-op="src-over" ><![CDATA[[name_en]]]></TextSymbolizer>
+    <TextSymbolizer placement="line" text-transform="uppercase" face-name="Arial Unicode MS Regular" size="7" minimum-distance="100" halo-fill="#f1f2ee" halo-radius="2" fill="#c8d3d3" comp-op="src-over" avoid-edges="true" ><![CDATA[[name_en]]]></TextSymbolizer>
   </Rule>
 </Style>
 <Layer name="road_label"
@@ -1232,6 +1234,30 @@
 <Layer name="housenum_label"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
       </Layer>
+
+<Style name="zip_boundaries" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>12500</MaxScaleDenominator>
+    <LineSymbolizer stroke-width="2" stroke-dasharray="8, 8" stroke="#4b4b51" stroke-opacity="0.4" stroke-linejoin="bevel" stroke-linecap="square" smooth="0" comp-op="multiply" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>50000</MaxScaleDenominator>
+    <MinScaleDenominator>12500</MinScaleDenominator>
+    <LineSymbolizer stroke-width="1" stroke-dasharray="6, 6" stroke="#4b4b51" stroke-opacity="0.4" stroke-linejoin="bevel" stroke-linecap="square" smooth="0" comp-op="multiply" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>400000</MaxScaleDenominator>
+    <MinScaleDenominator>50000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="1" stroke-dasharray="4, 4" stroke="#4b4b51" stroke-opacity="0.4" stroke-linejoin="bevel" stroke-linecap="square" smooth="0" comp-op="multiply" />
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>400000</MinScaleDenominator>
+    <LineSymbolizer stroke="#4b4b51" stroke-opacity="0.4" stroke-linejoin="bevel" stroke-linecap="square" smooth="0" comp-op="multiply" />
+  </Rule>
+</Style>
+<Layer name="zip_boundaries"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>zip_boundaries</StyleName>  </Layer>
 
 <Style name="cd1_zip_labels" filter-mode="first">
   <Rule>
@@ -1329,29 +1355,5 @@
 <Layer name="cd1_mask_3857"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>cd1_mask_3857</StyleName>  </Layer>
-
-<Style name="cd1_zip_boundaries_3857" filter-mode="first">
-  <Rule>
-    <MaxScaleDenominator>12500</MaxScaleDenominator>
-    <LineSymbolizer stroke-width="2" stroke-dasharray="8, 8" stroke="#4b4b51" stroke-opacity="0.4" stroke-linejoin="bevel" stroke-linecap="square" smooth="0" comp-op="multiply" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>50000</MaxScaleDenominator>
-    <MinScaleDenominator>12500</MinScaleDenominator>
-    <LineSymbolizer stroke-width="1" stroke-dasharray="6, 6" stroke="#4b4b51" stroke-opacity="0.4" stroke-linejoin="bevel" stroke-linecap="square" smooth="0" comp-op="multiply" />
-  </Rule>
-  <Rule>
-    <MaxScaleDenominator>400000</MaxScaleDenominator>
-    <MinScaleDenominator>50000</MinScaleDenominator>
-    <LineSymbolizer stroke-width="1" stroke-dasharray="4, 4" stroke="#4b4b51" stroke-opacity="0.4" stroke-linejoin="bevel" stroke-linecap="square" smooth="0" comp-op="multiply" />
-  </Rule>
-  <Rule>
-    <MinScaleDenominator>400000</MinScaleDenominator>
-    <LineSymbolizer stroke="#4b4b51" stroke-opacity="0.4" stroke-linejoin="bevel" stroke-linecap="square" smooth="0" comp-op="multiply" />
-  </Rule>
-</Style>
-<Layer name="cd1_zip_boundaries_3857"
-  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>cd1_zip_boundaries_3857</StyleName>  </Layer>
 
 </Map>
