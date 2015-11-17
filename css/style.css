@@ -35,6 +35,10 @@ img#logo {
     margin: 0 auto;
 }
 
+strong {
+    font-weight: 700;
+}
+
 p#short-desc {    
     margin-bottom: 10px;
     line-height: 140%;
