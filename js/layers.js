@@ -41,7 +41,7 @@ app.layers = (function(){
           name: 'industrial_history_points',
           sql: "SELECT * FROM industrialhistory_points",
           cartocss: cartocss["industrial-history-points"],
-          interactivity: "id, name, address, type_of_industry_present_or_former, description, source_one, source_two"
+          interactivity: "name, address, type_of_industry_present_or_former, description, source_one, source_two"
       }, {
           name: 'polluted_points',
           sql: "SELECT * FROM polluted_points_f",
