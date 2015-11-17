@@ -21,10 +21,6 @@ body {
   -ms-box-sizing: border-box;
 }
 
-*:focus {
-    outline-width: 0;
-}
-
 img {
     max-width: 100%;
 }
@@ -310,9 +306,34 @@ div.cartodb-popup .jspPane {
 }
 
 /* Pelias Geocoder UI positioning */
-
 .leaflet-top.leaflet-right .leaflet-pelias-control.leaflet-bar.leaflet-control {
     position: relative;
     right: 220px;
     top: 65px;
+}
+
+@media only screen and (max-width: 480px) {
+    /* Don't display the map and related ui elements on mobile */
+    #map-legend-container, #map, .zoombtn {
+        display: none;
+    }
+
+    #container {
+        background: hsl(0, 0%, 65%);
+    }
+    
+    .ui.ui-left {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        border: none;
+        box-shadow: none;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    /* Don't display the map and related ui elements on mobile */
+    #map-legend-container, #map, .zoombtn {
+        display: none;
+    }
 }
