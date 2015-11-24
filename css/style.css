@@ -312,6 +312,13 @@ div.cartodb-popup .jspPane {
     top: 65px;
 }
 
+/* hide the mobile message on larger screen sizes */
+.mobile-message {
+    display: none;
+}
+
+
+/* Media queries for mobile display */
 @media only screen and (max-width: 480px) {
     /* Don't display the map and related ui elements on mobile */
     #map-legend-container, #map, .zoombtn {
@@ -330,12 +337,24 @@ div.cartodb-popup .jspPane {
         box-shadow: none;
     }
 
-    #dlayer.nav.dlayer.active {
-        background: hsl(0,0%,85%);
+    #dlayer {
+        cursor: default;
+        background: rgba(0,0,0,0.3);
     }
 
-    .menu.tabs.dlayer.active {
+    #dlayer a {
+        color: rgba(0,0,0,0.5);
+    }
+
+    .menu.tabs.dlayer .env,
+    .menu.tabs.dlayer .ngh,
+    .menu.tabs.dlayer .ind,
+    .menu.tabs.dlayer .nextsteps {
         display: none !important;
+    }
+
+    .menu.tabs.dlayer .mobile-message {
+        display: block;
     }
 
 /*    #about.nav.about {

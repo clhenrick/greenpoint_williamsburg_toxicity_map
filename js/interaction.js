@@ -104,19 +104,35 @@ app.interaction = (function(d, w, $) {
                 } 
             });
         });
+
+        // check screen size before applying active classs
+        $(w).on('resize', checkScreenWidth )
     }
 
+    function checkScreenWidth() {
+        if (w.innerWidth <= 420 ) {
 
-    // to do: check screen size before applying active class?
-    // initially open map layer selection UI for dev debugging. remove this code when ready for production.
-    $('.menu.tabs.dlayer').addClass('active');
-    $('.nav.dlayer').addClass('active');
+            $('#dlayer').removeClass('active');
+            $('.tabs.dlayer').removeClass('active');
+
+            $('#about').addClass('active');
+            $('.tabs.about').addClass('active');
+            
+        } else {
+            $('#dlayer').addClass('active');
+            $('.tabs.dlayer').addClass('active');
+
+            $('#about').removeClass('active');
+            $('.tabs.about').removeClass('active');
+        }
+    }
 
     // get it all going...
     var init = function() {
         addToolTips();
         setLeftUIheight();
         addListeners();
+        checkScreenWidth();
     };
 
     return {
