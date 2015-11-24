@@ -40,7 +40,7 @@
       panToPoint: true,
       pointIcon: 'images/point_icon.png',
       polygonIcon: 'images/polygon_icon.png',
-      fullWidth: 650,
+      fullWidth: 300,
       markers: true,
       expanded: false,
       autocomplete: true
