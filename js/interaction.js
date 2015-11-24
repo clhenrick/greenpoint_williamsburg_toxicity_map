@@ -106,6 +106,8 @@ app.interaction = (function(d, w, $) {
         });
     }
 
+
+    // to do: check screen size before applying active class?
     // initially open map layer selection UI for dev debugging. remove this code when ready for production.
     $('.menu.tabs.dlayer').addClass('active');
     $('.nav.dlayer').addClass('active');

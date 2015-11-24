@@ -329,11 +329,27 @@ div.cartodb-popup .jspPane {
         border: none;
         box-shadow: none;
     }
+
+    #dlayer.nav.dlayer.active {
+        background: hsl(0,0%,85%);
+    }
+
+    .menu.tabs.dlayer.active {
+        display: none !important;
+    }
+
+/*    #about.nav.about {
+        background: #F2F2F2;
+    }*/
+
+/*    .menu.tabs.about {
+        display: block;
+    }*/
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (max-width: 420px) {
     /* Don't display the map and related ui elements on mobile */
-    #map-legend-container, #map, .zoombtn {
+    #map-legend-container, #map {
         display: none;
     }
 }
