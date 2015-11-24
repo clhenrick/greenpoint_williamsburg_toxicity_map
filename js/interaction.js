@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.interaction = (function(d, w, $) {
-    // This module creates non-map interaction UI elements and event listeners
+    // This module creates UI to map interactions on DOM elements
 
     function addToolTips() {
         // add jquery UI tooltips
@@ -11,8 +11,9 @@ app.interaction = (function(d, w, $) {
         });
     }
 
-    // implements the HTML 2 Canvas JS for a user to print the current map view
-    // currently not working
+    // create a static image of the map's current state option 1:
+    // using the HTML 2 Canvas JS library: http://html2canvas.hertzen.com/
+    // currently not working, as such I've removed the html2canvas.js file from being loaded in index.html
     function screenshot() {        
         if (screen.width > 0 && screen.height > 0) {
             try {
@@ -33,8 +34,10 @@ app.interaction = (function(d, w, $) {
         }
     }
 
-    // ideally we would use the Static Maps API to create a "screenshot" of the current map state
-    // however there's currently a bug with it that needs to be resolved: https://github.com/CartoDB/cartodb.js/issues/657
+    // create a static image of the map's current state option 2:
+    // ideally we would use CartoDB's Static Maps API to create a "screenshot" of the current map state
+    // however there's currently a bug with it that needs to be resolved before it can be implemented: 
+    // https://github.com/CartoDB/cartodb.js/issues/657
     function cdbStaticMap() {
         var basemap = {
             type: "http",
@@ -59,8 +62,9 @@ app.interaction = (function(d, w, $) {
         });        
     }    
 
+    // sets the height of the left UI & .menu.tabs to fit the user's browser window
     function setLeftUIheight() {
-        // sets the height of the left UI & .menu.tabs
+        
         var wh = $(w).innerHeight(),
               fh = $('footer').innerHeight(),
               hh = $('.menu.header').innerHeight(),
