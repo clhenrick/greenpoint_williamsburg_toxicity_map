@@ -1,88 +1,86 @@
-// dummy styles to set ordering (case below fill)
-#tunnel, #bridge, #road {
-  ::case { opacity: 1; }
-  ::fill { opacity: 1; }
-} 
-
-// consistent case size
-@case: 2;
-
-// Road & Railway Fills //
-#tunnel { opacity: 0.5; }
-
-#road[zoom<11],
-#tunnel[zoom<11],
-#bridge[zoom<11] {
-    line-color: mix(@road,@land,50);
-    line-width: 0.5;
-  [class='motorway'] { line-width: 1;}
-}
-
-#road::fill[zoom>=11],
-#tunnel::fill[zoom>=11],
-#bridge::fill[zoom>=11] {
-  ['mapnik::geometry_type'=2] {
-    line-color: @road;
-    line-width: 4;
-    [zoom>=15] { line-width: 1; } 
-    [class='path'] { line-dasharray: 2,2;}
-    [class='major_rail'],
-    [class='minor_rail'] { line-dasharray: 3,3; }
-    [class='motorway'] { 
-      [zoom>=11] { line-width: 2; }
-      [zoom>=12] { line-width: 3; }
-      [zoom>=14] { line-width: 4; }
-      [zoom>=16] { line-width: 7; 
-          line-color: @land;}
-      [zoom>=18] { line-width: 10; }
-    }
-    [class='motorway_link'],
-    [class='main'] {
-      [zoom>=11] { line-width: 1; }
-      [zoom>=12] { line-width: 2; }
-      [zoom>=14] { line-width: 3; }
-      [zoom>=16] { line-width: 5; }
-      [zoom>=18] { line-width: 7; }
-    }
-    [class='street'],
-    [class='street_limited'] {
-      [zoom<=13] { line-width: 1; }
-      [zoom>=14] { line-width: 1; line-color: mix(@road,@road2,70)}
-      [zoom>=16] { line-width: 2; line-color: @land;}
-      [zoom>=18] { line-width: 4; }
-    }
-    [class='street_limited'] { line-dasharray: 4,2; }
+// Road labels
+#road_label[zoom>=14]{ 
+  text-placement: line;
+  text-transform: uppercase;
+  text-face-name: @sans;
+  text-name: @name;
+  text-size: 7;
+  text-min-distance: 100;
+  text-halo-fill: @land;
+  text-halo-radius: 2;
+  text-fill: mix(@text,@fill1,50);
+  text-comp-op: src-over;
+  [zoom>=15] { 
+    text-size: 8;
+    text-fill: @text;
+  }
+  [zoom>=17] {
+    text-size: 11;
   }
 }
 
-// Casing for high-zoom roads //
-#road::case[zoom>=11],
-#tunnel::case[zoom>=11],
-#bridge::case[zoom>=11] {
-  ['mapnik::geometry_type'=2] {
-    line-color: @land;
-    line-width: 1;
-    [class='motorway_link'] { 
-      [zoom>=11] { line-width: 2 + @case; }
-      [zoom>=12] { line-width: 3 + @case; }
-      [zoom>=14] { line-width: 4 + @case; }
-      [zoom>=16] { line-width: 7 + @case; }
-      [zoom>=18] { line-width: 10 + @case; }
-    }
-    [class='motorway_link'],
-    [class='main'] {
-      [zoom>=11] { line-width: 1 + @case; }
-      [zoom>=12] { line-width: 2 + @case; }
-      [zoom>=14] { line-width: 3 + @case; }
-      [zoom>=16] { line-width: 5 + @case; }
-      [zoom>=18] { line-width: 7 + @case; }
-    }
-    [class='street'],
-    [class='street_limited'] {
-      [zoom>=14] { line-width: 1 + @case; }
-      [zoom>=16] { line-width: 2 + @case; }
-      [zoom>=18] { line-width: 4 + @case; }
-    }
-    [class='street_limited'] { line-dasharray: 4,2; }
+// Water labels
+#marine_label { 
+  text-name: @name;
+  text-face-name: @sans_bold;
+  text-fill: @text;
+  text-size: 12;
+  text-halo-fill: @water;
+  text-halo-radius: 1;
+  text-wrap-before: true;
+  text-wrap-width: 90;
+  [labelrank=1] {
+   text-size: 18;
   }
+}
+
+#water_label {
+  [zoom<=13],
+  [zoom>=14],
+  [zoom>=16],
+  [zoom>=17] {
+    text-name: @name;
+    text-face-name: @sans_bold;
+    text-fill: @text;
+    text-size: 12;
+    text-halo-fill: @water;
+    text-halo-radius: .1;
+    text-wrap-width: 55;
+    text-wrap-before: true;
+    text-avoid-edges: true;
+  }
+}
+
+#waterway_label[type='river'][zoom>=13],
+#waterway_label[type='canal'][zoom>=14],
+#waterway_label[type='stream'][zoom>=15] { 
+  text-name: @name;
+  text-face-name: @sans_bold;
+  text-fill: mix(@text,@road,12);
+  text-min-distance: 60;
+  text-size:10;
+  text-halo-fill: mix(@water,@road,50);
+  text-halo-radius: .4;
+  text-wrap-before: true;
+  text-avoid-edges: true;
+  text-placement: line;
+}
+
+// Place labels
+#poi_label[maki='park'][scalerank<=2],
+#poi_label[maki='airport'][scalerank<=2],
+#poi_label[maki='airfield'][scalerank<=2],
+#poi_label[maki='rail'][scalerank<=2],
+#poi_label[maki='school'][scalerank<=2],
+#poi_label[scalerank='hospital'][scalerank<=2] { 
+  text-face-name: @sans_bold;
+  text-allow-overlap: false;
+  text-name: @name;
+  text-size: 9;
+  text-line-spacing: -2;
+  text-min-distance: 50;
+  text-wrap-width: 60;
+  text-halo-fill: @land;
+  text-halo-radius: 1;
+  text-fill: @text;
 }
