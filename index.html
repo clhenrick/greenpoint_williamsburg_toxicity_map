@@ -8,7 +8,7 @@
     <!-- CSS libraries -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="//libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="//cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
     <link rel="stylesheet" href="css/pelias-leaflet-geocoder.css">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -28,7 +28,7 @@
         <div class="zoombtn">
             <button type="button" id="zoom-in"><i class="ui-icon  ui-icon-plusthick"></i></button>
             <button type="button" id="zoom-out"> <i class="ui-icon ui-icon-minusthick"></i></button>
-        </div>        
+        </div>
 
         <!-- left aligned UI elements -->
         <div class="ui ui-left">
@@ -38,7 +38,7 @@
                     Exploring environmental conditions in the Greenpoint-Williamsburg neighborhoods.
                 </p>
             </div>
-            
+
             <div class="menu top-nav">
                 <ul>
                     <li id="about" class="nav about"><a>About</a></li>
@@ -49,12 +49,12 @@
 
             <div class="menu tabs about">
                 <p>The NAG Greenpoint-Williamsburg ToxiCity Map is an interactive map of toxic “hot spots” in Greenpoint and Williamsburg. Data used to compile this map came from city, state and federal sources, guided by on-the-ground knowledge from local activists. Click through the data layers on the map to understand some neighborhood trends such as population density and asthma hospital visits, and locate some specific sites such as former NuHart Plastics factory and the Exxon oil spill. Sites that have already been remediated and sites that require future remediation are included on this map.</p>
-                
+
                 <p>NAG hopes that this project will help the community better understand the environmental concerns in the area they live in and ultimately to improve the health and well-being of the community by motivating and empowering community members to be more engaged in their local governing and policy-making process. </p>
-                
+
                 <br />
 
-                <p class="copyright">The Greenpoint-Williamsburg ToxiCity Map <br> 
+                <p class="copyright">The Greenpoint-Williamsburg ToxiCity Map <br>
                     &copy; 2015 <a target="_blank" href="http://nag-brooklyn.org">NAG-Brooklyn</a>
                 </p>
             </div>
@@ -115,7 +115,7 @@
                     <strong>Highly Regulated Sites:</strong> The EPA compiles sites that have regulation requirements through their Facility Registry Service. Facilities in this database must report to a variety of EPA programs, some as minimal as the Minor Air Facility Permit or as major as the Superfund program. There are over 1,000 facilities in Community Board 1 that have reported to the EPA at least once for any state or federal environmental programs. The sites shown in this map are the sites that have the largest burden of regulations to comply with, symbolizing potential for environmental risk. To access the full database, you can <a target="_blank" href="http://www.epa.gov/enviro/facts/afs/search.html">search by facility or geography</a> or <a target="_blank" href="http://www.epa.gov/enviro/geo_data.html">download the spatial data.</a>
                 </p>
                 <p>
-                    An <strong>(E) designation</strong> comes from rezoning to notify an environmental requirement on a particular lot. The (E) designations in this map are lots that are required to address potential hazardous material contamination or air quality concerns (high ambient noise level (E) designations were omitted from this map) if the lot undergoes new construction or change in land use. An (E) designation does not signify pollution, but rather the potential for exposure to hazard material contamination or pollutants in ambient air quality. More information can be found on the <a target="_blank" href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml">NYC Office of Environmental Remediation’s website.</a> 
+                    An <strong>(E) designation</strong> comes from rezoning to notify an environmental requirement on a particular lot. The (E) designations in this map are lots that are required to address potential hazardous material contamination or air quality concerns (high ambient noise level (E) designations were omitted from this map) if the lot undergoes new construction or change in land use. An (E) designation does not signify pollution, but rather the potential for exposure to hazard material contamination or pollutants in ambient air quality. More information can be found on the <a target="_blank" href="http://www.nyc.gov/html/oer/html/e-designation/e-designation.shtml">NYC Office of Environmental Remediation’s website.</a>
                 </p>
                 <p>
                     <strong>Spills</strong> are cataloged by NYS DEC for all accidental releases of petroleum, toxic chemicals, gases, and other hazardous materials. <a target="_blank" href="http://www.dec.ny.gov/cfmx/extapps/derexternal/index.cfm?pageid=2">You can search for spills in their records on the DEC website</a>. Spills are categorized on this map as minor (smaller than 100 gallons) and major (100 gallons and greater) spills.
@@ -126,7 +126,7 @@
                     There are Superfund and brownfield sites at the state and federal level. A brownfield site is a property where soil contamination exceeds standards set by NYS DEC (state) or US EPA (federal). These properties must be remediated before being redeveloped. Severely contaminated sites are designated as Superfund sites. This map includes all state and federally designated brownfield and Superfund sites, including those that have been remediated.
                 </p>
                 <p>
-                     The Exxon-Mobil Oil Spill was a decades-long oil leak that was discovered in 1978. Exxon has already removed 12.5 million gallons of oil, of the estimated 17 to 30 million gallons. Remediation of this site is on-going and overseen by NYS DEC. The oil spill was drawn from a map created by Riverkeeper in 2004 found in the Brownfield Opportunity Area nomination report from 2012. More information can be found on the <a target="_blank" href="http://nysdecgreenpoint.com/ProjectHistory.aspx">NYS DEC website.</a> 
+                     The Exxon-Mobil Oil Spill was a decades-long oil leak that was discovered in 1978. Exxon has already removed 12.5 million gallons of oil, of the estimated 17 to 30 million gallons. Remediation of this site is on-going and overseen by NYS DEC. The oil spill was drawn from a map created by Riverkeeper in 2004 found in the Brownfield Opportunity Area nomination report from 2012. More information can be found on the <a target="_blank" href="http://nysdecgreenpoint.com/ProjectHistory.aspx">NYS DEC website.</a>
                 </p>
                 <p>
                      The Meeker plume was found during the Exxon-Mobil Oil Spill investigation. The plume of chlorinated solvents (teatrachloroethene – PCE and trichloroethene – TCE), was found in soil, soil vapor and groundwater. These solvents typically come from dry cleaning and degreaser compounds. The investigation for the source of this plume is ongoing and overseen by the NYS DEC. The Meeker Plume was drawn from an online map by the Newtown Creek Alliance.
@@ -162,7 +162,7 @@
                     <a target="_blank" href="http://nag-brooklyn.org/" class="short-desc">Neighbors Allied for Good Growth</a> (formerly Neighbors Against Garbage) developed out of our neighborhood’s desire to recapture its waterfront, reduce local environmental hazards, and advocate for public policies promoting healthy mixed-use communities. We advocate with and for the people who live and work in the North Brooklyn neighborhoods of Greenpoint and Williamsburg.
                 </p>
                 <p>
-                    This project is funded by a grant from <a target="_blank" href="http://www.dec.ny.gov/" class="short-desc">the NYS Department of Environmental Conservation.</a> 
+                    This project is funded by a grant from <a target="_blank" href="http://www.dec.ny.gov/" class="short-desc">the NYS Department of Environmental Conservation.</a>
                 </p>
                 <p>
                     GIS and interactive mapping consultation was from <a target="_blank" href="https://www.pratt.edu/pratt-research-and-centers/spatial-analysis-visualization-initiative/" target="_blank">the Spatial Analysis and Visualization Initiative (SAVI)</a> at <a target="_blank" href="http://pratt.edu" target="_blank">Pratt Institute</a>. The mapping platform for this project was generously donated through <a target="_blank" href="https://cartodb.com/">CartoDB</a>.
@@ -188,7 +188,7 @@
                 </ul>
             </footer>
         </div> <!-- end .ui-left -->
-        
+
         <!-- map legend container -->
         <div id="map-legend-container" class="ui">
             <div class="legend">
@@ -199,7 +199,7 @@
                     <li><span class="zipcodes"></span> Zipcode Boundaries</li>
                 </ul>
             </div>
-        </div>        
+        </div>
 
     </div>  <!-- end #container -->
 
@@ -207,7 +207,7 @@
     <script id="legend-template" type="text/x-handlebars-template">
         <div class="legend dl" id="legend-{{id}}">
             {{#if title}}
-            <h3>{{title}}</h3> 
+            <h3>{{title}}</h3>
             {{/if}}
             {{#if subtitle}}
             <br>
@@ -222,25 +222,25 @@
     </script>
 
     <!-- Javascript Libraries -->
-    <script src="//libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script src="//cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
     <script src='//api.tiles.mapbox.com/mapbox.js/v2.2.1/mapbox.standalone.js'></script>
     <script src="js/pelias-leaflet-geocoder.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/bower_components/handlebars/handlebars.js"></script>
-    
+
     <!-- js code -->
     <script src="js/carto.js"></script>
     <script src="js/legendstyles.js"></script>
     <script src="js/layers.js"></script>
     <script src="js/main.js"></script>
     <script src="js/interaction.js"></script>
-    
+
     <!-- inits the app once DOM content has loaded -->
     <script type="text/javascript">
-        window.addEventListener('DOMContentLoaded', function() {       
-            app.map.init();        
-            app.interaction.init();        
-        })    
+        window.addEventListener('DOMContentLoaded', function() {
+            app.map.init();
+            app.interaction.init();
+        })
     </script>
 </body>
 
